@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>交集选择器</title>
+	<style>
+/*		p.wshr,span{
+			color: red;
+		}*/
+		div.wshr{
+			color: green;
+		}
+		div,p,span{
+			color: yellow;
+		}
+		span,.ss{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="wshr">我是好人</div>
+	<p class="wshr">我是好人</p>
+	<p class="wshr" class="yw">我是hr</p>
+	<p class="ss" class="yw">我是hr</p>
+	<span class="ts">我是ts</span>
+	<div class="fz">我是fz</div>
+</body>
+</html>

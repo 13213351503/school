@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>混合选择器优先选择</title>
+	<style>
+		p{
+			color: red;
+		}
+		div ul p{
+			color:green;
+		}
+		.xqs{
+			color: purple !im;
+		}
+		p.xqs{
+			color: yellow;
+		}
+		#xqs{
+			color: aqua;
+		}
+		ul p#xqs{
+			color: gray;
+		}
+		p.xqs#xqs{
+			color: orange;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<ul>
+			<li>
+				<ul>
+					<li>
+						<p class="xqs" id="xqs">星期四</p>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

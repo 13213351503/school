@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动画练习</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.a1{
+			width: 830px;
+			height: 440px;
+			border: 1px solid;
+			margin: 50px auto;
+			position: relative;
+			overflow: hidden;
+		}
+		li:nth-child(1){
+			list-style: none;
+			transform: rotateY(0deg);
+			animation: aa 2s ease 9s;
+			position: absolute;
+			animation-fill-mode: both;
+		}
+		li:nth-child(2){
+			transform: rotateY(0deg);
+			animation: aa 2s ease 7s;
+			position: absolute;
+			animation-fill-mode: both;
+		}
+		li:nth-child(3){
+			transform: rotateY(0deg);
+			animation: aa 2s ease 5s;
+			position: absolute;
+			animation-fill-mode: both;
+		}
+		li:nth-child(4){
+			transform: rotateY(0deg);
+			animation: aa 2s ease 3s;
+			position: absolute;
+			animation-fill-mode: both;
+		}
+		li:nth-child(5){
+			transform: rotateY(0deg);
+			animation: aa 2s ease 1s;
+			position: absolute;
+			animation-fill-mode: both;
+		}
+		@keyframes aa{
+			0%{
+				top: 0px;
+				left: 0px;
+			}
+			100%{
+				top: 0px;
+				left: -830px;
+		}
+		
+
+		
+
+	</style>
+</head>
+<body>
+	<ul class="a1">
+		<li><img src="img/ad1.jpg"></li>
+		<li><img src="img/ad2.jpg"></li>
+		<li><img src="img/ad3.jpg"></li>
+		<li><img src="img/ad4.png"></li>
+		<li><img src="img/ad5.jpg"></li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>清除浮动的方式1-3</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.a1{
+			background: red;
+			/*height: 21px;*/
+		}
+		.a2{
+			background: blue;
+			/*clear: right;*/
+			/*clear: left;*/
+			/*clear: both;*/
+			/*clear: none;*/
+			margin-top: 10px;
+		}
+		.a1 p{
+			width: 100px;
+			background: green;
+			float: left;
+		}
+		.a2 p{
+			width: 100px;
+			background: orange;
+			float: left;
+		}
+		.a3{
+			clear: both;
+			/*margin-bottom: 10px;*/
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="a1">
+		<p>1</p>
+		<p>2</p>
+		<p>3</p>
+	</div>
+	<div class="a3"></div>
+	<div class="a2">
+		<p>4</p>
+		<p>5</p>
+		<p>6</p>
+	</div>
+</body>
+</html>

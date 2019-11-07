@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动画</title>
+	<style>
+		*{
+			width: 0;
+			padding: 0;
+		}
+		.a1{
+			width: 200px;
+			height: 200px;
+			background: red;
+			transition: all 2s;
+		}
+		.a1:hover{
+			width: 600px;	
+		}
+		.a2{
+			width: 200px;
+			height: 200px;
+			background: green;
+			animation-name: aaa;
+			animation-duration: 2s;
+		}
+		@keyframes aaa{
+			form{
+				width: 200px;
+				height: 200px;
+			}
+			to{
+				width: 600px;
+				height: 600px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="a1"></div>
+	<div class="a2"></div>
+</body>
+</html>

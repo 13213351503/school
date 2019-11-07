@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动画的其他属性02</title>
+	<style>
+		*{
+			width: 0;
+			padding: 0;
+		}
+		.a1{
+			width: 200px;
+			height: 200px;
+			background: red;
+			animation-name: aaa;
+			animation-duration: 1s;
+			/*animation-play-state: running;			*/
+			/*animation-play-state:paused;*/
+			animation-direction: alternate;
+			animation-iteration-count: infinite;
+		}
+		.a1:hover{
+			animation-play-state:paused;
+		}
+		.a2{
+			width: 200px;
+			height: 200px;
+			background: green;
+			animation-name: aaa;
+			animation-duration: 2s;
+		}
+		@keyframes aaa{
+			form{
+				width: 200px;
+			}
+			to{
+				width: 1600px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="a1"></div>
+	<div class="a2"></div>
+</body>
+</html>

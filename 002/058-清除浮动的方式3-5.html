@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>清除浮动的方式4-5</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.a1{
+			background: red;
+		}
+		.a2{
+			background: blue;
+		}
+		.clearfix:after{
+			clear: both;
+			content: "";
+			display: block;
+			visibility: hidden;
+			height: 0px;
+		}
+		.clearfix{
+			*zoom:1;
+		}
+		.a1 p{
+			width: 100px;
+			background: green;
+			float: left;
+		}
+		.a2 p{
+			width: 100px;
+			background: orange;
+			float: left;
+		}
+/*		.a3{
+			clear: both;
+		}*/
+	</style>
+</head>
+<body>
+	<div class="a1 clearfix">
+		<p>1</p>
+		<p>2</p>
+		<p>3</p>
+		<!-- <div class="a3"></div> -->
+	</div>
+	<div class="a2">
+		<p>4</p>
+		<p>5</p>
+		<p>6</p>
+	</div>
+</body>
+</html>

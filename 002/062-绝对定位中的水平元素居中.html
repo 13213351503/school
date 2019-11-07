@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绝对定位中的水平元素居中</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.a1{
+			width: 631px;
+			height: 600px;	
+			background: gray;
+			margin: 50px auto;
+		}
+		.a2{
+			width: 200px;
+			height: 200px;
+			background: green;
+			position: absolute;
+			left: 50%;
+			margin-left: -100px;
+		}
+	</style>
+</head>
+<body>
+	<div class="a1">
+		<div class="a2"></div>
+	</div>
+</body>
+</html>

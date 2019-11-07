@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>旋转菜单</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.a1{
+			width: 400px;
+			height: 500px;
+			border: 1px solid;
+			margin: 50px auto;
+		}
+		.a2{
+			width: 400px;
+			height: 50px;
+			background: gray;
+			/*overflow: hidden;*/
+		}
+		li{
+			list-style: none;
+		}
+		.a2>li{
+			width: 100px;
+			height: 50px;
+			float: left;
+			background: yellow;
+			text-align: center;
+			line-height: 50px;
+			margin-left: 25px;
+		}
+		.b1:hover .b2{
+			opacity: 1;
+			transform: rotateY(360deg);
+		}
+		ul>.b2:nth-child(1){
+			transition-delay: 0.6s;
+		}
+		ul>.b2:nth-child(2){
+			transition-delay: 0.4s;
+		}
+		ul>.b2:nth-child(3){
+			transition-delay: 0.2s;
+		}
+		ul>.b2:nth-child(4){
+			transition-delay: 0s;
+		}
+		.b1:hover .b2:nth-child(1){
+			transition-delay: 0s;
+		}
+		.b1:hover .b2:nth-child(2){
+			transition-delay: 0.2s;
+		}
+		.b1:hover .b2:nth-child(3){
+			transition-delay: 0.4s;
+		}
+		.b1:hover .b2:nth-child(4){
+			transition-delay: 0.6s;
+		}
+		.b1>ul li{
+			width: 100px;
+			height: 50px;
+			background: pink;
+			opacity: 0;
+			transform: rotateY(180deg);
+			transition: all 2s;
+		}
+		.a3{
+			width: 400px;
+			height: 450px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="a1">
+		<ul class="a2">
+			<li class="b1">一级餐单
+				<ul>
+					<li class="b2">二级菜单</li>
+					<li class="b2">二级菜单</li>
+					<li class="b2">二级菜单</li>
+					<li class="b2">二级菜单</li>
+				</ul>
+			</li>
+			<li class="b1">一级餐单
+				<ul>
+					<li class="b2">二级菜单</li>
+					<li class="b2">二级菜单</li>
+					<li class="b2">二级菜单</li>
+					<li class="b2">二级菜单</li>
+				</ul>
+			</li>
+			<li class="b1">一级餐单
+				<ul>
+					<li class="b2">二级菜单</li>
+					<li class="b2">二级菜单</li>
+					<li class="b2">二级菜单</li>
+					<li class="b2">二级菜单</li>
+				</ul>
+			</li>
+		</ul>
+		<div class="a3">内容</div>
+	</div>
+</body>
+</html>

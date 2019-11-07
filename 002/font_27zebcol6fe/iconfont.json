@@ -1,0 +1,44 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "977459",
+      "name": "Contact us",
+      "font_class": "contactus",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    },
+    {
+      "icon_id": "1084694",
+      "name": "home",
+      "font_class": "home",
+      "unicode": "e65e",
+      "unicode_decimal": 58974
+    },
+    {
+      "icon_id": "1138741",
+      "name": "service",
+      "font_class": "service",
+      "unicode": "e643",
+      "unicode_decimal": 58947
+    },
+    {
+      "icon_id": "6652220",
+      "name": "about",
+      "font_class": "about",
+      "unicode": "e6b4",
+      "unicode_decimal": 59060
+    },
+    {
+      "icon_id": "7239920",
+      "name": "team",
+      "font_class": "team",
+      "unicode": "e75a",
+      "unicode_decimal": 59226
+    }
+  ]
+}

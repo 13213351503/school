@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>属性选择器</title>
+	<style>
+/*		[title=a2]{
+			color: red
+		}*/
+/*		[title|=a4-1]{
+			color: red;
+		}*/
+/*		[title^=a5-1]{
+			color: red;
+		}*/
+/*		[title~=s1]{
+			color: red;
+		}*/
+/*		[title$=s1]{
+			color: red;
+		}*/
+		[title*=a5]{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<a href="#" title="a s1">1</a><br>
+	<a href="#" title="a2">2</a><br>
+	<a href="#" title="a3.1">3.1</a><br>
+	<a href="#" title="a4-1">4-1</a><br>
+	<a href="#" title="a 5">5</a><br>
+	<a href="#" title="a5.1">5.1</a><br>
+	<a href="#" title="a5-s1">5-1</a><br>
+</body>
+</html>

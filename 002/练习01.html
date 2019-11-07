@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>练习</title>
+	<style>
+		textarea{
+			resize: none;
+		}
+	</style>
+</head>
+<body>
+	<p><h1 align="center">新生报到大会</h1></p>
+	<p>恭喜2019界学生在今天入校，欢迎你们。希望你们以后能在在这里度过愉快的四年</p>
+	<form action="http://www.baidu.com" method="get"  <!-- align="center -->">
+		<p><label for="1">用户名：<input type="text" name="zh" id="1" autocomplete="on" placeholder="账号"></label>
+		</p>
+		<p><label for="2">密码：<input type="password" name="zh" id="2" placeholder="******"></label>
+		</p>
+		<p>出生日期：<input type="date" name="rq">
+		</p>
+		<p>年龄：<input type="number" name="age">
+		</p>
+		<p>性别：<input type="radio" name="sex" value="man">男
+			<input type="radio" name="sex" value="women">女
+		</p>
+		<p>喜欢的颜色：<input type="color" name="ys">
+		</p>
+		<p>喜欢的运动：	<input type="checkbox" name="ah">篮球		
+					<input type="checkbox" name="ah">足球	
+					<input type="checkbox" name="ah">羽毛球
+				</p>
+		<p>邮箱：<input type="email" name="email">
+		</p>
+		<p>上传的文件：<input type="file" name="wenjian">
+		</p>
+		<p>
+			<input type="button" name="wancheng" value="完成">
+			<input type="reset" name="chongzhi">			
+			<input type="submit" name="tijiao">
+			<input type="hidden" name="偷偷">
+		</p>
+		<p>
+			所在区域：<select name="city" id="">
+						<optgroup label="直辖市">
+							<option value="北京">北京</option>
+							<option value="上海">上海</option>
+							<option value="天津">天津</option>
+							<option value="重庆">重庆</option>
+						</optgroup>
+						<optgroup label="省份">
+							<option value="河南">河南</option>
+							<option value="河北">河北</option>
+							<option value="江苏">江苏</option>
+							<option value="四川">四川</option>
+						</optgroup>
+					</select>
+		</p>
+		<p>自我介绍：<textarea name="zwjs" id="" cols="30" rows="10"></textarea>
+		</p>
+	</form>
+
+	<table cellspacing="1px" bgcolor="black" width="800px">
+		<caption><h2>本人简历</h2></caption>
+		<thead>
+			<tr bgcolor="white" height="50px">
+				<th rowspan="4">本人简历</th>
+				<th>起止时间</th>
+				<th>在何学校</th>
+				<th>担任职务</th>
+			</tr>
+			<tr bgcolor="white" height="50px">
+				<!-- <td></td> -->
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr bgcolor="white" height="50px">
+				<!-- <td></td> -->
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr bgcolor="white" height="50px">
+				<!-- <td></td> -->
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr bgcolor="white">
+				<td colspan="4" align="center">注：本表作为重要存档和注册资料，需真实、有效和全面，不得涂改。</td>
+				<!-- <td></td> -->
+				<!-- <td></td> -->
+				<!-- <td></td> -->
+			</tr>
+		</tfoot>
+	</table>
+	
+</body>
+</html>

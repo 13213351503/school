@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3D转换</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;	
+		}
+		.a1{
+			width: 500px;
+			height: 500px;	
+			border: 1px solid;
+			background: gray;
+			margin: 100px auto;
+			perspective: 600px;
+			transform-style: preserve-3d;	
+			transform: rotateX(15deg);
+		}
+		.a2{
+			width: 200px;
+			height: 200px;	
+			background: green;
+			margin: 150px 150px;
+			transform: rotateY(45deg);
+		}
+	</style>
+</head>
+<body>
+	<div class="a1">
+		<div class="a2"></div>
+	</div>
+</body>
+</html>

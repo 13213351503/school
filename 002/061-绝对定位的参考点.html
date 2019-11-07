@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绝对定位的参考点</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.a1{
+			width: 500px;
+			height: 5000px;
+			background:gray;
+			margin: 50px auto;
+			border: 10px solid;
+			/*position: relative; */
+		}
+		.a2{
+			width: 300px;
+			height: 300px;
+			background:green;
+			border: 10px solid;
+			margin: 0px auto;
+			position: absolute;
+			/*top: 20px;*/
+			left: 0px;
+			bottom: 0px;
+		}
+		.a3{
+			width: 200px;
+			height: 200px;
+			background: purple;
+			border: 10px solid;
+			margin: 0px auto;
+			position: absolute;
+			top: 10px;
+			left: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="a1">
+		 <div class="a2">
+		 	<div class="a3"></div>
+		 </div>
+	</div>
+</body>
+</html>

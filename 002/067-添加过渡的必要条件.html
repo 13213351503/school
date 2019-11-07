@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>添加过渡的必要条件</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.a1{
+			width: 500px;
+			height: 1000px;
+			background: green;
+			transition-property: height,background,width;
+			transition-duration: 20s,9s,5s;
+		}
+		.a1:hover{
+			height: 300px;
+			background: orange;
+			width: 1000px;
+		}
+	</style>
+</head>
+<body>
+	<div class="a1"></div>
+</body>
+</html>

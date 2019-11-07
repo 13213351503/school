@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>过渡的其他属性</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	/*	.a1{
+			width: 200px;
+			height: 200px;
+			background: green;
+			transition-property: width;
+			transition-duration: 2s;
+			transition-delay: 2s;
+		}
+		.a1:hover{
+			width:500px;
+		}*/
+		.a1{
+			width: 800px;
+			height: 500px;
+			border: 1px solid;
+			margin: 50px auto;
+		}
+		ul li:nth-child(1){
+			transition-timing-function:linear;
+		}ul li:nth-child(2){
+			transition-timing-function:ease;
+		}ul li:nth-child(3){
+			transition-timing-function:ease-in;
+		}ul li:nth-child(4){
+			transition-timing-function:ease-out;
+		}ul li:nth-child(5){
+			transition-timing-function:ease-in-out;
+		}ul li:nth-child(6){
+			transition-timing-function:cubic-bezier(0,0,1,1);
+		}
+		ul li{
+			width: 100px;
+			height: 60px;
+			background: green;
+			margin-top: 20px;
+			transition-property: width;
+			transition-duration: 2s;
+			list-style:none;
+		}
+		.a1 .a2:hover{
+			width: 800px;
+		}
+	</style>
+</head>
+<body>
+	<!-- <div class="a1"></div> -->
+	<div class="a1">
+		<ul class="a2">
+			<li>linear</li>
+			<li>ease</li>
+			<li>ease-in</li>
+			<li>ease-out</li>
+			<li>ease-in-out</li>
+			<li>cubic-bezier</li>
+		</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>子选择器</title>
+	<style>
+	/*	p div{
+			color: red;
+		}
+		.son>p{
+			color: green;
+		}*/
+		div>div>div{
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son">
+			<p>黎明</p>
+				<div>郭富城</div>
+		</div>
+		<div class="son">张学友
+			<p>刘德华</p>
+			<div class="son">成龙</div>
+		</div>
+	</div>
+	
+</body>
+</html>

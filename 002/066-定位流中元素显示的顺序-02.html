@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定位流中元素显示的顺序-02</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.a1{
+			width: 400px;
+			height: 400px;
+			background: red;
+			position: relative;
+			z-index: 3;
+		}
+		.a2{
+			width: 200px;
+			height: 200px;
+			background: green;
+			position: absolute;
+			left: 350px;
+			top: 250px;
+			z-index: 1;
+		}
+		.b1{
+			width: 400px;
+			height: 400px;
+			background: blue;	
+			position: relative;
+			z-index: 2;
+			top: -50px;
+			left: -50px;
+		}
+		.b2{
+			width: 200px;
+			height: 200px;
+			background: purple;
+			position: absolute;
+			left: 350px;
+			top: -50px;
+		}
+		}
+	</style>
+</head>
+<body>
+	<div class="a1">
+		<div class="a2"></div>
+	</div>
+	<div class="b1">
+		<div class="b2"></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>盒模型分类</title>
+	<style>
+		.father{
+			/*box-sizing: border-box;	*/
+			border: 1px solid black;
+			width: 300px;
+			height: 100px;
+		}
+		.father div{
+			width: 100px;
+			height: 100px;
+			display: inline-block;
+		}
+		.son1{
+			
+			background-color: red;
+		}
+		.son2{
+			box-sizing: border-box;	
+			background-color: green;
+			border: 5px solid orange;
+		}
+		.son3{
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son1"></div><div class="son2"></div><div class="son3"></div>
+	</div>
+</body>
+</html>

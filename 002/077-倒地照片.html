@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>旋转案例</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 270px;
+			height: 300px;
+			border: 1px solid;
+			margin: 80px auto;
+			perspective: 600px;
+			border-radius: 5px;
+		}
+		img{
+			transform-origin: center bottom;
+			transition:all 2s;
+		}
+		div:hover img{
+			transform: rotateX(90deg);
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<img src="css/001.jpg" alt="">
+	</div>
+</body>
+</html>

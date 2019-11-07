@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>练习-色块布局</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<style>
+		.a0{
+			width: 100%;
+		}
+		.a1{
+			width: 100px;
+			height: 100px;
+			background: rgb(235,95,69);
+			float: left;
+		}
+		.a2{
+			width: 250px;
+			height: 50px;
+			background: gray;
+			float: right;
+		}
+		.clear:after{
+			content: "";
+			clear: both;
+			display: block;
+			height: 0px;
+			visibility: hidden;
+		}
+		.clear{
+			*zoom:1;
+		}
+		/*.clear{
+			clear: both;
+		}*/
+		.a3{
+			width: 1700px;
+			height: 50px;
+			background: purple;
+			float: right;
+			/*margin-top: -50px;*/
+		}
+		.a4{
+			width: 1450px;
+			height: 400px;
+			background: rgb(255,250,152);
+			margin-top: 20px;
+			float: left;
+		}
+		.a5{
+			width: 1450px;
+			height: 300px;
+			background: rgb(255,250,152);
+			margin-top: 20px;
+			float: left;
+		}	
+		.a6{
+			width: 200px;
+			height: 790px;
+			background: rgb(135,206,236);
+			float: right;
+			margin-top: -400px;
+		}
+		.a7{
+			width: 200px;
+			height: 720px;
+			background: rgb(240,151,151);
+			float: right;
+			margin-top: -400px;	
+			margin-right: 25px;
+		}
+		.a8{
+			width: 1680px;
+			height: 50px;
+			background: rgb(235,65,44);
+			float: left;
+			margin-top: 20px;
+		}
+		.a9{
+			width: 100%;
+			height: 55px;
+			background: blue;
+			float: left;
+			margin-top: 20px;
+		}
+	
+	</style>
+</head>
+<body>
+	<div class="a0">
+		<div class="a1"></div>
+		<div class="a2"></div>
+		<!-- <div class="clear"></div> -->
+		<div class="a3"></div>
+		<div class="a4"></div>
+		<div class="a5"></div>
+		<div class="a6"></div>
+		<div class="a7"></div>
+		<div class="a8"></div>
+		<div class="a9"></div>
+	</div>
+</body>
+</html>

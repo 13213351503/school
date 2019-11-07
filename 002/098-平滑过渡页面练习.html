@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>平滑过度页面练习</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="font_27zebcol6fe/iconfont.css">
+	<style>
+		.a1 input:checked+a{
+			color: red;
+		}
+		html,body{
+			height: 100%;
+		}
+		.a1 input{
+			opacity: 0;
+			z-index: 9;
+			cursor: pointer;
+		}
+		.a1 a i{
+			font-size: 30px;
+			margin-right: 5px;
+		}
+		.a3{
+			font-size: 26px;
+			color: white;
+			text-decoration: none;
+			/*cursor: pointer;*/
+			z-index: 8;
+		}
+		input:hover+a{
+			background: black;
+		}
+		input,.a3{
+			width: 20%;
+			height: 40px;
+			position: fixed;
+			top: 0px;
+			text-align: center;
+			line-height: 40px;
+			background: gray;
+		}
+		#aa1,#aa1+.a3{
+			left: 0%
+		}
+		#aa2,#aa2+.a3{
+			left: 20%
+		}
+		#aa3,#aa3+.a3{
+			left: 40%
+		}
+		#aa4,#aa4+.a3{
+			left: 60%
+		}
+		#aa5,#aa5+.a3{
+			left: 80%
+		}
+		.a1{
+			height: 100%;
+			overflow: hidden;
+		}
+		.b2{
+			width: 100%;
+			height: 100%;
+			background-repeat: no-repeat;
+			background-size: 100%;
+		}
+		.b1{
+			margin-top: 40px;
+			height: 100%;
+		}
+		#home{
+			background-image: url(img/home.png);
+		}
+		#service{
+			background-image: url(img/service.png);
+		}
+		#about{
+			background-image: url(img/about.png);
+		}
+		#team{
+			background-image: url(img/team.png);
+		}
+		#contact{
+			background-image: url(img/contact.png);
+		}
+		#aa1:checked~.b1{
+			transform: translateY(0%);
+		}
+		#aa2:checked~.b1{
+			transform: translateY(-100%);
+		}
+		#aa3:checked~.b1{
+			transform: translateY(-200%);
+		}
+		#aa4:checked~.b1{
+			transform: translateY(-300%);
+		}
+		#aa5:checked~.b1{
+			transform: translateY(-400%);
+		}
+		#aa1:checked~.b1 #home{
+			animation: aa 1.5s;
+		}
+		#aa2:checked~.b1 #service{
+			animation: aa 1.5s;
+		}
+		#aa3:checked~.b1 #about{
+			animation: aa 1.5s;
+		}
+		#aa4:checked~.b1 #team{
+			animation: aa 1.5s;
+		}
+		#aa5:checked~.b1 #contact{
+			animation: aa 1.5s;
+		}
+		@keyframes aa{
+			from{
+				opacity: 0;
+			}
+			to{
+				opacity: 1;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="a1">
+		<input type="radio" name="xz" id="aa1" checked>
+		<a href="#" class="a3"><i class="iconfont icon-home"></i>Home</a>
+		<input type="radio" name="xz" id="aa2">
+		<a href="#" class="a3"><i class="iconfont icon-service"></i>Service</a>
+		<input type="radio" name="xz" id="aa3">
+		<a href="#" class="a3"><i class="iconfont icon-about"></i>About</a>
+		<input type="radio" name="xz" id="aa4">
+		<a href="#" class="a3"><i class="iconfont icon-team"></i>Team</a>
+		<input type="radio" name="xz" id="aa5">
+		<a href="#" class="a3"><i class="iconfont contactus"></i>Contact</a>
+		<div class="b1">
+			<div class="b2" id="home"></div>
+			<div class="b2" id="service"></div>
+			<div class="b2" id="about"></div>
+			<div class="b2" id="team"></div>
+			<div class="b2" id="contact"></div>
+		</div>
+	</div>
+</body>
+</html>

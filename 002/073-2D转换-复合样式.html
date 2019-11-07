@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2D旋转-复合样式</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			width: 800px;
+			margin: 50px auto;
+			border: 1px solid;
+		}
+		li{
+			list-style: none;
+			width: 200px;
+			height: 200px;
+			background: green;
+			margin: 100px auto;
+		}
+		li:nth-child(1){
+			transform: translate(100px,100px) scale(1.2) rotate(180deg);
+		}
+		li:nth-child(2){
+			transform: scale(1.2) translate(100px,100px) rotate(180deg);
+		}
+		li:nth-child(3){
+			transform: rotate(180deg) translate(100px,100px) scale(1.2);
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+	</ul>
+</body>
+</html>

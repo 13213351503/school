@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用百分比创建动画</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.a1{
+			width: 600px;
+			height: 600px;
+			border: 1px solid;
+			margin: 50px auto;
+			position: relative;
+		}
+		.a2{
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			text-align: center;	
+			background: green;
+			position: absolute;
+			transform:rotate(15deg);
+			animation: aaa 4s ease 0s infinite;
+		}
+		@keyframes aaa{
+			0%{
+				left: 0px;
+				top: 0px;
+			}
+			25%{
+				top: 0px;
+				left: 400px;	
+			}
+			50%{
+				top: 400px;
+				left: 400px;
+			}
+			75%{
+				top: 400px;
+				left: 0px;
+			}
+			100%{
+				left: 0px;
+				top: 0px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="a1">
+		<div class="a2">动画</div>
+	</div>
+</body>
+</html>
