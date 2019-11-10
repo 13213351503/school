@@ -1,0 +1,97 @@
+.top{
+	width: 100%;
+	height: 40px;
+	background: gray;
+}
+.top .nav{
+	float: left;
+	width: 720px;
+	height: 40px;
+}
+.top .nav .nav-item{
+	float: left;
+	line-height: 40px
+}
+.top .nav .shuxian{
+	color: #373b40;
+	margin-left: 7px;
+	margin-right: 7px;
+}
+.top .user-info{
+	float: right;
+	width: 160px;
+	height: 40px;
+}
+.top .user-info .nav-item{
+	float: left;
+	line-height: 40px;
+	margin-left: 7px;
+	margin-right: 7px;
+}
+.top .cart{
+	float: right;
+	width: 120px;
+	height: 40px;
+	line-height: 40px;
+	color: #b0b0b0;
+	vertical-align:1px;
+	font-size: 11px;
+}
+.top .cart i{
+	font-size: 22px;
+	margin-left: 15px;
+}
+.top .cart:hover{
+	background: white;
+	color: #ff6700;
+}
+.focus{
+	width: 100%;
+	height: 770px;
+	}
+	.header{
+		width: 100%;
+		height: 100px;
+	}
+	.focus .header h1{
+		width: 55px;
+		height: 55px;
+		background: green;
+		float: left;
+		margin-top: 22.5px;
+	}
+	.focus .header .header-nav{
+		width: 660px;
+		height: 100px;
+		background: skyblue;
+		float: left;
+		margin-left: 180px;
+	}
+	.focus .header .search{
+		width: 296px;
+		height: 50px;
+		background: lime;
+		float: right;
+		margin-top: 25px;
+	}
+	.focus-content{
+		width: 100%;
+		height: 460px;
+		background: purple;
+	}
+	.hot{
+		width: 100%;
+		height: 170px;
+		background: orange;
+		margin-top: 14px;
+	}
+.main{
+	width: 100%;
+	height: 6035px;
+	background: red;
+}
+.footer{
+	width: 100%;
+	height: 522px;
+	background: blue;
+}
