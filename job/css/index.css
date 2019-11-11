@@ -1,12 +1,14 @@
+/*头部样式开始 */
 .top{
 	width: 100%;
 	height: 40px;
-	background: gray;
+	background: #333333;
 }
 .top .nav{
 	float: left;
 	width: 720px;
 	height: 40px;
+	cursor: pointer;
 }
 .top .nav .nav-item{
 	float: left;
@@ -19,14 +21,20 @@
 }
 .top .user-info{
 	float: right;
-	width: 160px;
+	width: 166px;
 	height: 40px;
+	cursor: pointer;
 }
 .top .user-info .nav-item{
 	float: left;
 	line-height: 40px;
 	margin-left: 7px;
 	margin-right: 7px;
+}
+.top .user-info .shuxian{
+	color: #373b40;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 .top .cart{
 	float: right;
@@ -36,6 +44,7 @@
 	color: #b0b0b0;
 	vertical-align:1px;
 	font-size: 11px;
+	cursor: pointer;
 }
 .top .cart i{
 	font-size: 22px;
@@ -45,6 +54,8 @@
 	background: white;
 	color: #ff6700;
 }
+/*头部样式结束 */
+/*焦点区域开始 */
 .focus{
 	width: 100%;
 	height: 770px;
@@ -56,28 +67,125 @@
 	.focus .header h1{
 		width: 55px;
 		height: 55px;
-		background: green;
 		float: left;
 		margin-top: 22.5px;
+		overflow: hidden;
+	}
+	.focus .header h1 a{
+		width: 110px;
+		height: 55px;
+		float: left;
+		background-image: url(../images/logo.png)
+	}
+	.focus .header h1:hover a{
+		transform:translateX(-55px);
+		transition: all 0.5s;
 	}
 	.focus .header .header-nav{
 		width: 660px;
 		height: 100px;
-		background: skyblue;
 		float: left;
 		margin-left: 180px;
+	}
+	.focus .header .header-nav a{
+		float: left;
+		line-height: 100px;
+		margin-left: 20px;
+		font-size: 16px;
+		color: #333;
 	}
 	.focus .header .search{
 		width: 296px;
 		height: 50px;
-		background: lime;
 		float: right;
 		margin-top: 25px;
+		border: 0.1px solid #e0e0e0;
+		position: relative;
+	}
+	.focus .header .search:hover input,.focus .header .search:hover input+.seach-btn{
+		border: 0.1px solid #b0b0b0;
+	}
+	.focus .header .search input{
+		width: 243px;
+		height: 50px;
+		float: left;
+		border: 0.1px solid #e0e0e0;
+		border-right: none;
+		outline: none;
+		box-sizing: border-box;
+	}
+	.focus .header .search .seach-btn{
+		width: 53px;
+		height: 50px;
+		float: right;
+		cursor: pointer;
+		box-sizing: border-box;
+		border: 0.1px solid #e0e0e0;
+	}
+	.focus .header .search .seach-btn:hover{
+		background:#ff6700;
+	}
+	.focus .header .search .seach-btn:hover .seach-btn{
+		border: none;
+	}
+	.focus .header .search .seach-btn:hover i{
+		color: white;
+	}
+	.focus .header .search .seach-btn{
+		width: 53px;
+		height: 50px;
+		border: 0.1px solid #e0e0e0;
+		float: right;		
+	}
+	.focus .header .search .search-hot-word{
+		color: #8a7575;
+		font-size: 11px;
+		background: #eee;
+		position: absolute;
+	}
+	.focus .header .search .word1{
+		top: 16px;
+		left: 56px;
+	}
+	.focus .header .search .word2{
+		top: 16px;
+		left: 146px;
+	}
+	.focus .header .search .seach-btn i{
+		line-height: 50px;
+		margin-left: 14px;
+		font-size: 26px;
+		color: #616161;
+		text-align: center;
+	}
+	.focus .header .search ul{
+		width: 243px;
+		box-sizing: border-box;
+		border: 0.1px solid #e0e0e0;
+		line-height: 30px;
+		padding-left: 10px;
+	}
+	.focus .header .search ul .search-item{
+		color: #333;
 	}
 	.focus-content{
 		width: 100%;
 		height: 460px;
 		background: purple;
+		position: relative;
+	}
+	.focus-content .cate{
+		width: 234px;
+		height: 460px;
+		background: rgba(0,0,0,0.5);
+		position: absolute;
+		top: 0px;
+	}
+	.focus-content .carousel{
+		width: 100%;
+		height: 460px;
+		position: absolute;
+		top: 0px;
 	}
 	.hot{
 		width: 100%;
@@ -85,6 +193,7 @@
 		background: orange;
 		margin-top: 14px;
 	}
+/*焦点区域结束 */
 .main{
 	width: 100%;
 	height: 6035px;
