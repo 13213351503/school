@@ -87,6 +87,9 @@
 		float: left;
 		margin-left: 180px;
 	}
+	.focus .header .header-nav .herader-item:hover a{
+		color: #ff6700;
+	}
 	.focus .header .header-nav a{
 		float: left;
 		line-height: 100px;
@@ -99,20 +102,30 @@
 		height: 50px;
 		float: right;
 		margin-top: 25px;
-		border: 0.1px solid #e0e0e0;
 		position: relative;
 	}
-	.focus .header .search:hover input,.focus .header .search:hover input+.seach-btn{
-		border: 0.1px solid #b0b0b0;
-	}
 	.focus .header .search input{
-		width: 243px;
+		width: 244px;
 		height: 50px;
 		float: left;
 		border: 0.1px solid #e0e0e0;
 		border-right: none;
 		outline: none;
 		box-sizing: border-box;
+		padding-left: 10px;
+	}
+	.focus .header .search:hover input,.focus .header .search:hover input+.seach-btn{
+		border: 0.1px solid #b0b0b0;
+	}
+	.focus .header .search input:focus~ul{
+		display:block;
+		background: #fff;
+	}
+	.focus .header .search input:focus~.search-hot-word{
+		display: none;
+	}
+	.focus .header .search input:focus,.focus .header .search input:focus+.seach-btn{
+		border-color: #ff6700;
 	}
 	.focus .header .search .seach-btn{
 		width: 53px;
@@ -120,19 +133,17 @@
 		float: right;
 		cursor: pointer;
 		box-sizing: border-box;
-		border: 0.1px solid #e0e0e0;
+		border: 1px solid #e0e0e0;
 	}
 	.focus .header .search .seach-btn:hover{
 		background:#ff6700;
-	}
-	.focus .header .search .seach-btn:hover .seach-btn{
-		border: none;
+		border: none;	
 	}
 	.focus .header .search .seach-btn:hover i{
 		color: white;
 	}
-	.focus .header .search .seach-btn{
-		width: 53px;
+	.focus .container .header .search .seach-btn{
+		width: 52px;
 		height: 50px;
 		border: 0.1px solid #e0e0e0;
 		float: right;		
@@ -143,13 +154,18 @@
 		background: #eee;
 		position: absolute;
 	}
+	.focus .header .search .search-hot-word:hover{
+		background: #ff6700;
+		cursor: pointer;
+		color: white;
+	}
 	.focus .header .search .word1{
 		top: 16px;
-		left: 56px;
+		left: 78px;
 	}
 	.focus .header .search .word2{
 		top: 16px;
-		left: 146px;
+		left: 156px;
 	}
 	.focus .header .search .seach-btn i{
 		line-height: 50px;
@@ -159,19 +175,28 @@
 		text-align: center;
 	}
 	.focus .header .search ul{
-		width: 243px;
+		width: 245px;
 		box-sizing: border-box;
-		border: 0.1px solid #e0e0e0;
+		border: 0.1px solid #ff6700;
+		border-top: none;
 		line-height: 30px;
 		padding-left: 10px;
+		display: none;	
+		position: absolute;
+		top: 50px;
+		z-index: 3;
 	}
-	.focus .header .search ul .search-item{
+	.focus .header .search ul .search-item a{
 		color: #333;
+	}
+	.focus .header .search ul .search-item:hover{
+		cursor: pointer;
+		background: #fafafa;
 	}
 	.focus-content{
 		width: 100%;
 		height: 460px;
-		background: purple;
+		/*background: purple;*/
 		position: relative;
 	}
 	.focus-content .cate{
@@ -180,24 +205,188 @@
 		background: rgba(0,0,0,0.5);
 		position: absolute;
 		top: 0px;
+		left: 0px;
+		z-index: 1;
 	}
-	.focus-content .carousel{
+	.focus .focus-content .cate .cate-list{
+		padding: 20px 0px;
+	}
+	.focus .focus-content .cate .cate-item{
+		line-height: 42px;
+		padding: 0px 20px 0px 30px;
+	}
+	.focus .container .focus-content .cate .cate-item:hover{
+		background: #ff6700;
+		cursor: pointer;
+	}
+	.focus .focus-content .cate .cate-item a{
+		color: #fff;
+		font-size: 14px;
+	}
+	.focus .focus-content .cate .cate-item a i{
+		float: right;
+		font-size: 20px;
+		color: #e0e0e0;
+	}
+	.focus .focus-content .carousel{
 		width: 100%;
 		height: 460px;
 		position: absolute;
 		top: 0px;
+		left: 0px;
+	}
+	.focus .focus-content .carousel .carousel-item{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+	}
+	.focus .focus-content .carousel .carousel-item img{
+		width: 100%;
+		height: 460px;
+	}
+	.focus .focus-content .carousel .arrow{
+		position: absolute;
+		width: 40px;
+		height: 70px;
+		line-height: 70px;
+		text-align: center;	
+		top: 50%;
+		margin-top: -35px;
+		z-index: 10;
+		font-size: 34px;
+		color: #d3d2d4;
+		cursor: pointer;
+	}
+	.focus .focus-content .carousel .arrow:hover{
+		background: rgba(0,0,0,0.5);
+		color: #fff;
+	}
+	.focus .focus-content .carousel .left-arrow:hover{
+		border-top-right-radius: 3px;
+		border-bottom-right-radius: 3px;
+	}
+	.focus .focus-content .carousel .right-arrow:hover{
+		border-top-left-radius: 3px;
+		border-bottom-left-radius: 3px;
+	}
+	.focus .focus-content .carousel .left-arrow{
+		left: 234px;
+	}
+	.focus .focus-content .carousel .right-arrow{
+		right: 0px;
+	}
+	.focus .focus-content .carousel .btn-list{
+		position: absolute;
+		bottom: 20px;
+		right: 30px;
+		z-index: 10;
+	}
+	.focus .focus-content .carousel .btn-item{
+		width: 10px;
+		height: 10px;
+		border: 2px solid #b1b0b3;
+		float: left;
+		margin-right: 10px;	
+		border-radius: 50%;
+		background: #8f8e92;
+	}
+	.focus .focus-content .carousel .btn-item:hover{
+		background: #f5f4f8;
+		cursor: pointer;
 	}
 	.hot{
 		width: 100%;
-		height: 170px;
-		background: orange;
+		/*height: 170px;*/
+		/*background: orange;*/
 		margin-top: 14px;
+	}
+	.hot .hot-left{
+		width: 234px;
+		height: 170px;
+		background: purple;
+		float: left;
+		position: relative;
+	}
+	.hot .hot-left .road-item{
+		position: absolute;
+		top:;
+		display: block;
+	}
+	.hot .hot-right{
+		width: 978px;
+		height: 170px;
+		/*background: red;*/
+		float: right;
+	}
+	.hot .hot-right .hot-item{
+		width: 316px;
+		height: 100%;
+		float: left;
+		margin-left: 15px;
+		/*background: green;*/
+	}
+	.hot .hot-right .hot-item img{
+		width: 316px;
+		height: 100%;
+	}
+	.hot .hot-right .hot-item:first-child{
+		margin-left: 0px;
 	}
 /*焦点区域结束 */
 .main{
 	width: 100%;
 	height: 6035px;
-	background: red;
+	background: #f5f5f5;
+}
+.main .flash .hd{
+	width: 100%;
+	height: 62px;
+	/*background: orange;*/
+	line-height: 62px;
+
+}
+.main .flash .hd h2{
+	float: left;
+	font-size: 22px;
+}
+.main .flash .hd .more{
+	float: right;
+}
+.main .flash .hd .more a{
+	width: 36px;
+	height: 24px;
+	border: 1px solid;
+	display: block;
+	float: left;
+}
+.main .flash .bd .time{
+	width: 234px;
+	height: 340px;
+	background: #f1eded;
+	float: left;
+}
+.main .flash .bd .col2{
+	width: 978px;
+	height: 340px;
+	/*background: pink;*/
+	float: right;
+}
+.main .flash .bd .col2 .product-item{
+	width: 234px;
+	height: 340px;
+	background: green;
+	float: left;
+	margin-left: 14px;
+}
+.main .flash .bd .col2 .product-item:first-child{
+	margin-left: 0px;
+}
+.main .flash .ad{
+	width: 100%;
+	height: 120px;
+	margin-top: 12px;
+	margin-bottom: 18px;
+	float: left;
 }
 .footer{
 	width: 100%;
