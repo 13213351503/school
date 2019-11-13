@@ -45,6 +45,7 @@
 	vertical-align:1px;
 	font-size: 11px;
 	cursor: pointer;
+	display:inline;
 }
 .top .cart i{
 	font-size: 22px;
@@ -303,13 +304,48 @@
 	.hot .hot-left{
 		width: 234px;
 		height: 170px;
-		background: purple;
+		background: #5f5750;
 		float: left;
 		position: relative;
 	}
-	.hot .hot-left .road-item{
+	.hot .hot-left ul{
 		position: absolute;
-		top:;
+		top: 22px;
+		/*text-align: center;*/
+	}
+	.hot .hot-left .road-item{
+		width: 78px;
+		height: 85px;
+		float: left;
+		position: relative;
+		text-align: center;
+	}
+	.hot .hot-left .road-item i{
+		font-size: 22px;
+	}
+	.hot .hot-left .road-item span{
+		display: block;
+		font-size: 10px;
+		margin-top: 5px;	
+	}
+	.hot .hot-left .road-item:after{
+		position: absolute;
+		top:-13px;
+		left: 4px;
+		content: "";
+		width: 1px;
+		height: 70px;
+		background: #665e57;
+		display: block;
+	}
+	.hot .hot-left .road-item:before{
+		position: absolute;
+		top:-20px;
+		left:13px;
+		content: "";
+		width: 60px;
+		height: 1px;
+		background: #665e57;
 		display: block;
 	}
 	.hot .hot-right{
@@ -358,12 +394,55 @@
 	border: 1px solid;
 	display: block;
 	float: left;
+	box-sizing: border-box;
+	margin-top: 28px;
+	line-height: 24px;
+	text-align: center;
+	border: 1px solid #e0e0e0;
+}
+.main .flash .hd .more a:hover i{
+	color: #ff6700;
+}
+.main .flash .hd .more .more-left{
+	border-right: none;
 }
 .main .flash .bd .time{
 	width: 234px;
 	height: 340px;
 	background: #f1eded;
 	float: left;
+	text-align: center;
+	border-top: 1px solid #e53935;
+	box-sizing: border-box;
+}
+.main .flash .bd .time .time-timer{
+	font-size: 20px;
+	color: #ef3a3b;
+	margin-top: 60px;
+}
+.main .flash .bd .time img{
+	margin-top: 32px;
+}
+.main .flash .bd .time .time-three{
+	color: #6f6d6d;
+	font-size: 14px;
+	margin-top: 35px;
+}
+.main .flash .bd .time .time-four{
+	margin-top: 33px;
+}
+.main .flash .bd .time .time-num{
+	width: 46px;
+	height: 46px;
+	background: #605751;
+	font-size: 18px;
+	display: inline-block;
+	line-height: 46px;
+	color: #fff;
+}
+.main .flash .bd .time .time-fh{
+	font-size: 30px;
+	color: #605751;
 }
 .main .flash .bd .col2{
 	width: 978px;
@@ -374,12 +453,68 @@
 .main .flash .bd .col2 .product-item{
 	width: 234px;
 	height: 340px;
-	background: green;
+	/*background: green;*/
 	float: left;
 	margin-left: 14px;
+	text-align: center;
+	position: relative;
+}
+.main .flash .bd .col2 .product-item img{
+	margin-top: 38px;
+}
+.main .flash .bd .col2 .product-item .product-two{
+	font-size: 12px;
+	color: #202020;
+	margin-top: 29px;
+}
+.main .flash .bd .col2 .product-item .product-three{
+	color: #adadad;
+	font-size: 12px;
+	margin-top: 11px;
+}
+.main .flash .bd .col2 .product-item span{
+	color: #fa6509;
+	font-size: 11px;
+	margin-top: 15px;
+	display: inline-block;
+}
+.main .flash .bd .col2 .product-item del{
+	color: #adadad;
+	font-size: 11px;
+	margin-top: 15px;
+	display: inline-block;
 }
 .main .flash .bd .col2 .product-item:first-child{
 	margin-left: 0px;
+	border-top: 1px solid #e53935;
+}
+.main .flash .bd .col2 .product-item:nth-child(2){
+	border-top: 1px solid #00c0a5;
+}
+.main .flash .bd .col2 .product-item:nth-child(3){
+	border-top: 1px solid #ffac13;
+}
+.main .flash .bd .col2 .product-item:nth-child(4){
+	border-top: 1px solid #83c44e;
+}
+.main .flash .bd .col2 .product-item .product-one{
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.01);
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+.main .flash .bd .col2 .product-item .product-one:after{
+	content: "5折";
+	width: 64px;
+	height: 20px;
+	position: absolute;
+	top: 0px;
+	left: 50%;
+	margin-left: -32px;
+	background: #e13834;
+	color: #fafafa;
 }
 .main .flash .ad{
 	width: 100%;
@@ -388,8 +523,14 @@
 	margin-bottom: 18px;
 	float: left;
 }
+.phone h2{
+	float: left;
+}
+.phone .more{
+	float: right;
+}
 .footer{
 	width: 100%;
 	height: 522px;
-	background: blue;
+	/*background: blue;*/
 }
