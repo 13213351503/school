@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-js使用的注意点.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			border: 1px solid;
+			width: 300px;
+			height: 300px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">111</div>
+	<div id="box">222</div>
+	<!-- <button onclick="document.getElementById('box').style.borderRadius='50%'">点击</button> -->
+	<!-- <button onclick="document.getElementById('box').style.background='green'">点我</button> -->
+	<button onclick="document.getElementById('box').style.transform:rotate='(50%)'">点我</button>
+</body>
+</html>
