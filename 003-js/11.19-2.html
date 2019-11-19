@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			background: green;
+			border: 1px solid #000;
+			margin: 100px auto;
+		}
+	</style>
+	<script>
+		function haha(){
+			var a = document.getElementById('box')
+			a.style.background='red';
+			a.style.width='500px';
+			a.style.height='500px';
+		}
+	</script>
+</head>
+<body>
+	<div id="box" onclick="haha()"></div>
+</body>
+</html>

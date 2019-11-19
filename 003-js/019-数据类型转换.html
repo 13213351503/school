@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>019-数据类型转换.html</title>
+	<!-- <script>
+		alert(5+'10');
+		alert(5+5);
+	</script> -->
+</head>
+<body>
+	<input type="text" id="text1">+
+	<input type="text" id="text2">=
+	<input type="button" value="相加" id="btn">
+	<script>
+		var t1 = document.getElementById('text1')
+		var	t2 = document.getElementById('text2')
+		var h1 = document.getElementById('btn')
+		h1.onclick = function(){
+			var val1 = parseInt(t1.value);
+			var val2 = parseInt(t2.value);
+			console.log(isNaN(val1))
+			console.log(typeof val1)
+			if (isNaN(val1)){
+				alert('第一行错误')
+			}
+			else if(isNaN(val2)){
+				alert('第二行错误')
+			}
+			else{
+				alert(val1+val2);
+			}
+		}
+	</script>
+</body>
+</html>

@@ -4,4 +4,4 @@ function fn(){
 	obox.style.height='300px';
 	obox.style.background='green';
 }
-obox.onclick=fn;
+obox.onmouseover=fn;
