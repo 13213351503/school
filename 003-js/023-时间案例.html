@@ -9,14 +9,15 @@
 		var	minute = parseInt((5426%3600)/60);
 		var second = (5426%3600)%60;
 		if(hour<10){
-			alert('0'+hour)
+			hour='0'+hour;
 		}
 		if(minute<10){
-			alert('0'+minute)
+			minute='0'+minute;
 		}
 		if(second<10){
-			alert('0'+second)
+			second='0'+second;
 		}
+		alert(hour+':'+minute+':'+second)
 		console.log(second)
 	</script>
 </head>

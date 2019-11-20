@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>逻辑运算</title>
+	<script>
+		var a = 1;
+		// console.log(!!a);//真变假假变真，可以多次连续使用逻辑非运算符
+		
+		console.log(1 && 2);//2    一假则假！！！！！
+		console.log(0 && null);//0  		如果条件A不成立, 则返回条件A的数值本身
+		console.log(null && 2);//null		如果条件A成立, 不管条件B成不成立都返回条件B数值本身
+		console.log(2 && 0);//0
+
+		console.log(1 || 2);//1   一真则真！！！！！
+		console.log(0 || null);//null		如果条件A不成立, 则不管条件B成不成立都返回条件B数值本身
+		console.log(null || 2);//2			如果条件A成立, 则返回条件A的数值本身
+		console.log(2 || 0);//2
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

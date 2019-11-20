@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>030-显示隐藏.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			background: green;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn">显示和隐藏</button>
+	<div id="box">内容</div>
+</body>
+<script>
+	var	oBtn = document.getElementById('btn');
+	var	oBox = document.getElementById('box');
+	console.log(oBtn);
+	console.log(oBox);
+	oBtn.onclick=function(){
+		if(oBox.style.display=='none'){
+		 	oBox.style.display='block'
+		}else{
+			oBox.style.display='none'
+		}
+	}
+</script>
+</html>
