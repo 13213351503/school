@@ -69,16 +69,15 @@
 	// console.log(oBox)
 	for (var i = 0; i <oBox.length; i++) {
 		// console.log(oBox[i]);
-		 oBox[i].index=i;
+		oBox[i].index=i;
 		oBox[i].onmouseover=function(){
 			// alert('haha');
-			
 			for(var k =0;k<i;k++){
-				console.log(k);
+				// console.log(k);
 				oBox[k].className='';
 			}
 			this.className='active';
-			oPlan.innerHTML='<h2>'+(this.index+1)+'月</h2></h2><p>'+aPlan[this.index]+'</p>	'
+			oPlan.innerHTML='<h2>'+(this.index+1)+'月</h2></h2><p>'+aPlan[this.index]+'</p>';
 		}
 	}
 </script>

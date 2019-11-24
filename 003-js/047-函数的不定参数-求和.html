@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>047-函数的不定参数-求和.html</title>
+	<script>
+		// function sum(n1,n2,n3,n4,n5){
+		// 	alert(n1+n2+n3+n4+n5);
+		// }
+		function sum(){
+			// console.log(arguments);
+			var result=0;
+			for(var i =0;i<arguments.length;i++){
+				result=result+arguments[i];
+			}
+			console.log(result);
+			alert(result);
+		}
+		sum(4,5,7,10,5,50);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
