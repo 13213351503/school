@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>035-循环改变所有元素.html</title>
+</head>
+<body>
+	<div>2</div>
+	<div>256</div>
+	<div>56</div>
+	<div>56</div>
+	<div>56</div>
+	<div>56</div>
+	<div>56</div>
+	<div>6</div>
+	<div>6</div>
+	<div>64</div>
+	<div>64</div>
+	<div>64</div>
+	<div>64</div>
+	<div>6</div>
+	<div>4</div>
+	<div>4</div>
+	<div>4</div>
+	<div>4</div>
+	<div>4</div>
+	<div>4</div>
+	<div>54</div>
+	<div>4</div>
+	<div>4</div>
+	<div>4</div>
+	<div>4</div>
+	<div>4</div>
+	<div>4</div>
+</body>
+<script>
+	var aDiv = document.getElementsByTagName('div')
+	console.log(aDiv)
+	// aDiv[1].style.background='green';
+	// aDiv[2].style.background='green';
+	// aDiv[5].style.background='green';
+	// aDiv[6].style.background='green';
+	for(var i = 0;i<aDiv.length;i++){
+		console.log(i);
+		aDiv[i].style.background='green';
+	}
+</script>
+</html>

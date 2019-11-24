@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>041-月历.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 380px;
+			height: 600px;
+			background: gray;
+			margin: 30px auto;
+		}
+		ul{
+			overflow: hidden;
+		}
+		li{
+			list-style: none;
+			width: 100px;
+			height: 100px;
+			background: black;
+			float: left;
+			margin: 20px 0px 0px 20px;
+			line-height: 100px;
+			text-align: center;
+			color: white;
+			font-size: 30px;
+		}
+		.plan{
+			padding-left: 20px;	
+			margin-top: 20px;
+		}
+		.active{
+			background: #fff;
+			color: #000;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+			<li>10</li>
+			<li>11</li>
+			<li>12</li>
+		</ul>
+		<div class="plan">
+			<h2>一月</h2>
+			<p>吃饭</p>
+		</div>
+	</div>	
+</body>
+<script>
+	var oBox = document.getElementsByTagName('li')
+	var oPlan = document.querySelector('.plan')
+	var aPlan=['吃饭','睡觉','打豆豆','开心','高兴','做梦','吃饭','睡觉','打豆豆','开心','高兴','做梦']
+	oPlan.innerHTML='<h2>一月</h2><p>睡觉</p>'
+	// console.log(oBox)
+	for (var i = 0; i <oBox.length; i++) {
+		// console.log(oBox[i]);
+		 oBox[i].index=i;
+		oBox[i].onmouseover=function(){
+			// alert('haha');
+			
+			for(var k =0;k<i;k++){
+				console.log(k);
+				oBox[k].className='';
+			}
+			this.className='active';
+			oPlan.innerHTML='<h2>'+(this.index+1)+'月</h2></h2><p>'+aPlan[this.index]+'</p>	'
+		}
+	}
+</script>
+</html>

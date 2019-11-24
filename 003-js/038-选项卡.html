@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>038-选项卡.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.nav{
+			overflow: hidden;
+		}
+		.nav .nav-item{
+			float: left;
+			list-style:none;
+			width: 100px;
+			margin-bottom: 20px;
+			text-align: center;
+		}
+		.content .content-item{
+			width: 400px;
+			height: 400px;
+			background: green;
+			text-align: center;
+			border: 1px solid #000;
+			margin-top: 10px;
+			line-height: 400px;
+			font-size: 36px;
+			display: none;
+		}
+		.active{
+			color: #ff6700;
+		}
+	</style>
+</head>
+<body>
+	<ul class="nav">
+		<li class="nav-item active">一</li>
+		<li class="nav-item">二</li>
+		<li class="nav-item">三</li>
+		<li class="nav-item">四</li>
+	</ul>
+	<ul class="content">
+		<li class="content-item" style="display: block;">一</li>
+		<li class="content-item">二</li>
+		<li class="content-item">三</li>
+		<li class="content-item">四</li>
+	</ul>
+</body>
+<script>
+	var aBtn = document.querySelectorAll('.nav .nav-item')
+	var aBox = document.querySelectorAll('.content .content-item')
+	console.log(aBtn)
+	console.log(aBox)
+	for(var i = 0;i<aBtn.length;i++){
+		// alert('a')
+		console.log(aBtn[i]);
+		aBtn[i].index=i;
+		aBtn[i].onclick=function(){
+			// alert('a');
+			for(var	k =0;k<aBtn.length;k++){
+				aBtn[k].className='nav-item';
+				aBox[k].style.display='none';
+			}
+			this.className='active nav-item';
+			aBox[this.index].style.display='block';
+		}
+	}	
+</script>
+</html>
