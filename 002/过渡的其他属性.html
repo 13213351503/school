@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>过渡的其他属性</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<style>
+		.a1{
+			width: 800px;
+			height: 500px;
+			border: 1px solid;
+			margin: 50px auto;
+		}
+		li{
+			width: 200px;
+			height: 60px;
+			background: green;
+			margin-top: 20px;
+			transition-property: margin-left;
+			transition-duration: 2s;
+		}
+		.a1 li:nth-child(1){
+			transition-timing-function: linear;
+		}
+		.a1 li:nth-child(2){
+			transition-timing-function: ease;
+		}
+		.a1 li:nth-child(3){
+			transition-timing-function: ease-in;
+		}
+		.a1 li:nth-child(4){
+			transition-timing-function: ease-out;
+		}
+		.a1 li:nth-child(5){
+			transition-timing-function: ease-in-out;
+		}
+		.a1 li:nth-child(6){
+			transition-timing-function: cubic-bezier(0,1,2,3);
+		}
+		.a1:hover li{
+			margin-left: 600px;
+		}
+	</style>
+</head>
+<body>
+	<ul class="a1">
+		<li>linear</li>
+		<li>ease</li>
+		<li>ease-in</li>
+		<li>ease-out</li>
+		<li>ease-in-out</li>
+		<li>cubic-bezier</li>
+	</ul>
+</body>
+</html>

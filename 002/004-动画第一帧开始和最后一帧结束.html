@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>百分比动画</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.a1{
+			width: 600px;
+			height: 600px;
+			border: 1px solid;
+			margin: 50px auto;
+			position: relative;
+		}
+		.a2{
+			width: 100px;
+			height: 100px;
+			background: green;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			animation: aaa 1s 2s;
+			animation-fill-mode: both;
+		}
+		@keyframes aaa{
+			0%{
+				top: 0px;
+				left: 10px;
+			}
+			25%{
+				top: 0px;
+				left: 500PX;
+			}
+			50%{
+				top: 500PX;
+				left: 500PX;
+			}
+			75%{
+				top: 500PX;
+				left: 0px;
+			}
+			100%{
+				top: 10px;
+				left: 0px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="a1">
+		<div class="a2"></div>
+	</div>	
+</body>
+</html>

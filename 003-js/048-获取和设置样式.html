@@ -23,9 +23,17 @@
 	<div id="box"></div>
 </body>
 <script>
-	function css(obj,attr,val){
-		obj.style[attr]=val
-	}
+	// function css(obj,attr,val){
+	// 	obj.style[attr]=val
+	// }
+	function css(obj,attr,val){			//设置和获取都可以同时进行
+		// obj.style[attr]=val
+		if (arguments.length == 2) {
+			alert(getComputedStyle(arguments[0],false)[arguments[1]]);
+		}else{
+			arguments[0].style[arguments[1]]=arguments[2];
+		}
+	 }
 	var oBtn1 =document.getElementById('btn1')				
 	var oBtn2 =document.getElementById('btn2')
 	var oBtn3 =document.getElementById('btn3')
@@ -44,9 +52,9 @@
 		css(oBox,'background','green')
 	}
 	oBtn4.onclick=function(){
-		css(oBox,'background');
-		// alert(oBox.style.width);
-		alert(getComputedStyle(oBox,false).background);		
+		css(oBox,'height');
+		// alert(oBox.style.width);		//只能够获取行内样式
+		// alert(getComputedStyle(oBox,false).background);		
 	}
 </script>
 </html>

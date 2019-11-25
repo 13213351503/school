@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>平滑过渡页面</title>
+	<link rel="stylesheet" href="font_m14s0hyv1h/iconfont.css">
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.a1 input:checked+.a3{
+			color: red;
+		}
+		input{
+			z-index: 9;
+			opacity: 0;
+		}
+		input:hover +a{
+			background: black;
+		}
+		.a1 a i{
+			font-size: 28px;
+			margin-right: 5px;
+		}
+		.a3{
+			text-decoration: none;
+			color: white;
+			font-size: 24px;
+		}
+		input,.a3{
+			width: 20%;
+			height: 40px;
+			background: gray;
+			position: fixed;
+			top: 0px;
+			line-height: 40px;
+			text-align: center;
+		}
+		#aa1,#aa1+a{
+			left: 0%;
+		}
+		#aa2,#aa2+a{
+			left: 20%;
+		}
+		#aa3,#aa3+a{
+			left: 40%;
+		}
+		#aa4,#aa4+a{
+			left: 60%;
+		}
+		#aa5,#aa5+a{
+			left: 80%;
+		}
+	</style>
+</head>
+<body>
+	<div class="a1">
+		<input type="radio" name="dh" id="aa1" checked>
+		<a href="#" class="a3"><i class="iconfont icon-home"></i>Home</a>
+		<input type="radio" name="dh" id="aa2">
+		<a href="#" class="a3"><i class="iconfont icon-service"></i>Service</a>
+		<input type="radio" name="dh" id="aa3">
+		<a href="#" class="a3"><i class="iconfont icon-aboutus"></i>About</a>
+		<input type="radio" name="dh" id="aa4">
+		<a href="#" class="a3"><i class="iconfont icon-team"></i>Team</a>
+		<input type="radio" name="dh" id="aa5">
+		<a href="#" class="a3"><i class="iconfont icon-contact"></i>Contact</a>
+	</div>
+</body>
+</html>
