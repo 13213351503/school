@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数的返回值</title>
+	<script>
+		function sum(){
+			var result = 0;
+			for(var i = 0;i<arguments.length;i++){
+				result=result+arguments[i]
+			}
+			// alert(result);				//在函数中，遇见return，函数就不会在继续执行
+			// return;						//没有返回值或者只有return的函数，返回值是undefined
+			// return result;				//在函数体内通过return把函数的执行结果返回
+			// console.log(result);			//一个函数只能有一个返回值
+		}
+		// sum(4,8,6);
+		var res = sum(4,8,6);				//函数的返回值是在调用的时候获取的
+		// console.log(res);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

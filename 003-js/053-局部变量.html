@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>053-局部变量.html</title>
+	<script>
+		function fn1(){			//定义在函数的内部,只能在函数内部或者函数的子函数中使用
+			var a = 2;
+			console.log('fn1',a);
+			function fn2(){
+				a = 6;
+				console.log('fn2',a)
+			}
+			fn2();
+		}
+		fn1();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

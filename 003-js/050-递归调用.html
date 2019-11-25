@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>050-递归调用.html</title>
+	<script>
+		function fact(n){
+			// console.log(arguments)
+			if(n == 1){		//递归调用必须要有终止条件,否则就会爆栈
+				return 1;
+			}
+			return n * arguments.callee(n-1)		//递归调用中的函数可以使用arguments.callee来代替
+		}
+		fact(5);
+		// console.log(fact(5))
+		var fact2 = fact;
+		fact = 1;
+		console.log(fact2(5))
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
