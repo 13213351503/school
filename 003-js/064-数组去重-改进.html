@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>064-数组去重-改进.html</title>
+	<script>
+		var arr = [3,7,2,4,9,2,3,8,4]
+		console.log(arr);
+		function uniqueArray(arr){
+			var result =[];
+			for(var i = 0;i<arr.length;i++){
+				if(result.indexOf(arr[i])==-1){
+					result.push(arr[i]);
+					console.log(result);
+				}
+			}
+			return result
+		}
+		var res =uniqueArray(arr)
+		console.log(res);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

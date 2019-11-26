@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>065-节点类型.html</title>
+</head>
+<body>
+	<ul id="ul1">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+</body>
+<script>
+	var oUl =document.getElementById('ul1')
+	var aNodes =oUl.childNodes;
+	console.log(aNodes);
+	var result=[]
+	for(var i =0;i<aNodes.length;i++){
+		// console.log(aNodes[i]);
+		if(aNodes[i].nodeType==1){
+			result.push(aNodes[i]);
+		}
+	}
+	console.log(result);
+	console.log(document);
+	console.log(document.nodeType);
+
+</script>
+</html>

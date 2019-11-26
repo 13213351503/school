@@ -6,8 +6,8 @@
 	<script>
 		var a = 1;
 		function fn1(){
-			console.log('fn1',a);//undefined 变量的声明！！！
-			 a = 3;		//在函数内不使用var定义a的时候，啊属于全局变量。  使用var定义的时候属于局部变量。
+			console.log('fn1',a);//undefined 变量的声明！！！1
+			a = 3;		//在函数内不使用var定义a的时候，啊属于全局变量。  使用var定义的时候属于局部变量。
 			function fn2(){
 				console.log('fn2',a);//3
 				function fn3(){
@@ -19,7 +19,7 @@
 		}
 		console.log('1',a);//1
 		fn1();
-		console.log('2',a);//1
+		console.log('2',a);//3
 	</script>
 </head>
 <body>

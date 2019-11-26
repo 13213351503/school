@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>063-数组去重.html</title>
+	<script>
+		var arr = [3,7,2,4,9,2,3,8,4]
+		console.log(arr);
+		function uniqueArray(arr){
+			var result =[];			//初始化目标数组为空数组用来存放去除重复后的值
+			for(var i = 0;i<arr.length;i++){		//遍历原数组
+				var isDup = false;
+				// console.log(arr[i]);
+				for(var k = 0;k<result.length;k++){		//用原始数组中的每一项和目标数组中每一项比较
+					if (arr[i]==result[k]) {
+						isDup = true;
+						break;						//如果有相等的值存在说明在原始数组中是重复值,则不添加该值
+					}	
+				}
+				if(!isDup){
+					result.push(arr[i]);			//如果整个目标数组都没有相等的值说明当前原数组的值不是重复值,则添加
+				}
+			}
+			return result
+		}
+		var res =uniqueArray(arr)
+		console.log(res);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

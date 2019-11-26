@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>061-冒泡排序.html</title>
+	<script>
+		var arr = [3,5,1,8,0,6,2,7,9,50,16,20];
+		// console.log(arr);
+		// var arr1 = arr.sort();
+		// console.log(arr);
+		//冒泡排序
+		//1 遍历原数组；
+		//2 拿到每一项与后面每一项进行比较；
+		//3如果当前的值大于后边某一项的值，就让两数互换位置。
+		var temp;
+		for(var i = 0;i<arr.length;i++){
+			for(var k =i+1;k<arr.length;k++){
+				if(arr[i]>arr[k]){
+					temp=arr[i];
+					arr[i]=arr[k];
+					arr[k]=temp;
+				}
+			}
+			console.log(arr);
+		}
+		console.log(arr);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>066-获取子节点.html</title>
+</head>
+<body>
+	<ul id="ul1">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+</body>
+<script>
+	var oUl =document.getElementById('ul1')
+	var aNodes=oUl.childNodes;
+	var achild =oUl.children;
+	var aLastchild=oUl.lastChild;
+	var aFirstchild=oUl.firstChild;
+	var afirstElementChild=oUl.firstElementChild;
+	var alastElementChild=oUl.lastElementChild;
+	console.log(aNodes);
+	console.log(achild);
+	console.log(aLastchild);
+	console.log(aLastchild ==aNodes[10]);
+	console.log(aFirstchild);
+	console.log(aFirstchild ==aNodes[0]);
+	console.log(afirstElementChild);
+	console.log(alastElementChild);
+
+</script>
+</html>
