@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>070-案例:隐藏父元素案例.html</title>
+</head>
+<body>
+	<ul>
+		<li>1<a href="#">隐藏</a></li>
+		<li>2<a href="#">隐藏</a></li>
+		<li>3<a href="#">隐藏</a></li>
+		<li>4<a href="#">隐藏</a></li>
+		<li>5<a href="#">隐藏</a></li>
+		<li>6<a href="#">隐藏</a></li>
+		<li>7<a href="#">隐藏</a></li>
+		<li>8<a href="#">隐藏</a></li>
+	</ul>
+</body>
+<script>
+	var aA = document.getElementsByTagName('a')
+	console.log(aA);
+	for(var	i = 0;i<aA.length;i++){
+		console.log(aA[i]);
+		aA[i].onclick=function(){
+			console.log(this.parentNode);		
+			this.parentNode.style.display='none';
+		}
+	}
+</script>
+</html>

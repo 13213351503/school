@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装通过类名获取元素函数</title>
+</head>
+<body>
+	<ul id="ul1">
+		<li class="box"></li>
+		<li></li>
+		<li class="box"></li>
+		<li></li>
+		<li class="box"></li>
+		<li></li>
+	</ul>
+	<div id="div1">
+		<div></div>
+		<div class="box"></div>
+		<div></div>
+		<div class="box"></div>
+		<div></div>
+	</div>
+</body>
+<script>
+	// // var oLi = document.getElementsByClassName('box')
+	// // console.log(oLi)
+	// var	oUl =document.getElementById('ul1')
+	// console.log(oUl)
+	// var oLi = oUl.children;
+	// console.log(oLi)
+	// function getElementsByClassName(parentNode,className){
+	// 	var result=[];
+	// 	var aEle=parentNode.children;
+	// 	for(var i = 0;i<aEle.length;i++){
+	// 		if(aEle[i].className==className){
+	// 			result.push(aEle[i])
+	// 		}
+	// 	}
+	// 	return result;
+	// }
+	// var ali =getElementsByClassName(ul1,'box')
+	// console.log(ali)
+	var odi = document.getElementById('div1')	
+	console.log(odi);
+	
+	// console.log(odiv)
+	function getElementsClassName(parentNode,className){	
+		var result =[];
+		var odiv = parentNode.children;
+		for(var i = 0;i<odiv.length;i++){
+			if (odiv[i].className==className) {
+				result.push(odiv[i]);
+			}
+		}
+		return result;
+	}
+	var adiv =getElementsClassName(odi,'box')
+	console.log(adiv)
+</script>
+</html>

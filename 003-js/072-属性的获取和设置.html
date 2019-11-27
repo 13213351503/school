@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>072-属性的获取和设置.html</title>
+</head>
+<body>
+	<input type="text" id="txt" value="111">
+	<input type="button" value='提交' id="btn">
+	<textarea name="" id="area" cols="30" rows="10"></textarea>
+</body>
+<script>
+	var oTxt = document.getElementById('txt')
+	var oBtn = document.getElementById('btn')
+	var oArea = document.getElementById('area')
+	oBtn.onclick=function(){
+		// alert('aa')
+		// var val =oTxt.value;
+		// oArea.value=val;
+
+		// var	val =oTxt['value'];
+		// oArea['value'] = val;	
+		var	val=oTxt.getAttribute('value')
+		oTxt.setAttribute('value',11111) 
+	}
+</script>
+</html>
