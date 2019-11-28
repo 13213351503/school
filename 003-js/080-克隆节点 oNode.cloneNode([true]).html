@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>080-克隆节点 oNode.cloneNode([true]).html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.son{
+			width: 200px;
+			height: 200px;
+			background: green;
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="true" id="btn">;
+	<input type="button" value="false" id="btn2">;
+	<div class="son">
+		box
+	</div>
+</body>
+<script>
+	var	oBtn = document.getElementById('btn');
+	var	oBtn2 = document.getElementById('btn2');
+	var oSon = document.querySelector('.son');
+	oBtn.onclick=function(){
+		var newSon =oSon.cloneNode(true);
+		document.body.appendChild(newSon);
+	}
+	oBtn2.onclick=function(){
+		var newSon =oSon.cloneNode(false);
+		document.body.appendChild(newSon);
+	}
+</script>
+</html>

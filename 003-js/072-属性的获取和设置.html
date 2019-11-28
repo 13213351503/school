@@ -5,7 +5,7 @@
 	<title>072-属性的获取和设置.html</title>
 </head>
 <body>
-	<input type="text" id="txt" value="111">
+	<input type="text" id="txt" value="" test=''>
 	<input type="button" value='提交' id="btn">
 	<textarea name="" id="area" cols="30" rows="10"></textarea>
 </body>
@@ -15,13 +15,21 @@
 	var oArea = document.getElementById('area')
 	oBtn.onclick=function(){
 		// alert('aa')
-		// var val =oTxt.value;
-		// oArea.value=val;
+		// var val =oTxt.value;		//获取
+		// oArea.value=val;			//设置
 
-		// var	val =oTxt['value'];
-		// oArea['value'] = val;	
-		var	val=oTxt.getAttribute('value')
-		oTxt.setAttribute('value',11111) 
+		// var	val =oTxt['value'];		//获取
+		// oArea['value'] = val;		//设置
+		 
+		
+		// var val=oTxt.getAttribute('value')		//有属性获取值,没有属性返回null 
+		// console.log(val)
+		
+
+		// var	val =oTxt['value']
+		// oTxt.setAttribute('value',val) 
+		// console.log(oTxt.getAttribute('test'));		//获取input中test的值
+		oTxt.setAttribute('test','aaa')					//设置input中test的值
 	}
 </script>
 </html>

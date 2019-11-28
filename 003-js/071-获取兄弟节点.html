@@ -6,21 +6,26 @@
 </head>
 <body>
 	<ul id="ul1">
-		<li></li>
-		<li></li>
-		<li id="son"></li>
-		<li></li>
-		<li></li>
+		<li>1</li>
+		<li>2</li>
+		<li id="son">3</li>
+		<li>4</li>
+		<li>5</li>
 	</ul>
 </body>
 <script>
 	var oSon = document.getElementById('son')
-	var oUl = document.getElementsByTagName('ul1')
-	var aEle = oUl.childNodes;
+	var oUl = document.getElementById('ul1')
+	var	aEle = oUl.childNodes;
 	console.log(aEle);
-	console.log(oUl);
-	console.log(oSon);
-	console.log(oSon.previousSibling);
-	console.log(oSon.nextSibling);
+	// console.log(oUl);
+	// console.log(oSon);
+	console.log(oSon.previousSibling);				//上一个文本节点
+	console.log(oSon.previousSibling ==aEle[4] );	//和所有文本节点和元素节点	相比较		
+	console.log(oSon.nextSibling);					//下一个文本节点
+	console.log(oSon.nextSibling ==aEle[6] );		//和所有文本节点和元素节点	相比较			
+
+	console.log(oSon.nextElementSibling);			//下一个元素节点
+	console.log(oSon.previousElementSibling);		//上一个元素节点
 </script>
 </html>

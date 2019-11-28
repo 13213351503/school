@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>075-appendChild会把要追加的节点从原父节点中删除.html</title>
+</head>
+<body>
+	<ul id="ul1">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+	<input type="button" value="插入" id="btn">
+	<ul id="ul2">
+		
+	</ul>
+</body>
+<script>
+	var oUl1 = document.getElementById('ul1')
+	var oBtn = document.getElementById('btn')
+	var oUl2 = document.getElementById('ul2')
+	var aLi = oUl1.children;
+	console.log(aLi);
+	oBtn.onclick=function(){							//appendChild会把要追加的节点从原父节点中删除
+		oUl2.appendChild(oUl1.firstElementChild);		//将指定节点追加到另一个节点的最后面
+	}
+</script>
+</html>
