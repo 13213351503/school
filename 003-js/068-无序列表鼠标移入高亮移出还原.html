@@ -24,19 +24,29 @@
 	console.log(oLi)
 	for(var i = 0;i<oLi.length;i++){
 		console.log(oLi[i]);
-		if(i%2){
+		if(i%2){	
 			oLi[i].style.background='green';
 		}else{
 			oLi[i].style.background='red';
 		}
-		var color;
+	// 	var color;	//存color
+	// 	oLi[i].onmouseover=function(){
+	// 		color=this.style.background;	
+	// 		this.style.background='yellow';
+	// 	}
+	// 	oLi[i].onmouseout=function(){
+	// 		// color=this.style.background;
+	// 		this.style.background=color;
+	// 	}
+	// }
+
+
 		oLi[i].onmouseover=function(){
-			color=this.style.background='yellow';
+			this.color=this.style.background;
 			this.style.background='yellow';
 		}
 		oLi[i].onmouseout=function(){
-			color
-			this.style.background=color;
+			this.style.background=this.color;
 		}
 	}
 </script>

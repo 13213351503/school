@@ -22,39 +22,40 @@
 	</div>
 </body>
 <script>
-	// // var oLi = document.getElementsByClassName('box')
-	// // console.log(oLi)
-	// var	oUl =document.getElementById('ul1')
+	var oLi = document.getElementsByClassName('box')
+	console.log(oLi)
+	var	oUl =document.getElementById('ul1')
 	// console.log(oUl)
-	// var oLi = oUl.children;
+	var oLi = oUl.children;
 	// console.log(oLi)
-	// function getElementsByClassName(parentNode,className){
-	// 	var result=[];
-	// 	var aEle=parentNode.children;
-	// 	for(var i = 0;i<aEle.length;i++){
-	// 		if(aEle[i].className==className){
-	// 			result.push(aEle[i])
+	function getElementsByClassName(parentNode,className){	
+		var result=[];		//准备一个空数组
+		var aEle=parentNode.children;		//把li这个数组重新定义
+		for(var i = 0;i<aEle.length;i++){	//循环带有li的数组
+			console.log(aEle[i].className)	//获取带有box类名的li
+			if(aEle[i].className==className){	//如果aEle[i]的类名和调入进来的'box'相等的话
+				result.push(aEle[i])			//则把类名为'box'的添加到数组resule中
+			}
+		}
+		return result;							//把数组返回出去
+	}
+	var ali =getElementsByClassName(ul1,'box')	//把调用的函数定义
+	console.log(ali)
+	
+
+	// var oD = document.getElementById('div1');
+	// console.log(oD);
+	// function getElementsClassName(od,box){
+	// 	var aEle =oD.children;
+	// 	var result = [];
+	// 	for(var i =0;i<aEle.length;i++){
+	// 		if(aEle[i].className==box){
+	// 			result.push(aEle[i]);
 	// 		}
 	// 	}
 	// 	return result;
 	// }
-	// var ali =getElementsByClassName(ul1,'box')
-	// console.log(ali)
-	var odi = document.getElementById('div1')	
-	console.log(odi);
-	
-	// console.log(odiv)
-	function getElementsClassName(parentNode,className){	
-		var result =[];
-		var odiv = parentNode.children;
-		for(var i = 0;i<odiv.length;i++){
-			if (odiv[i].className==className) {
-				result.push(odiv[i]);
-			}
-		}
-		return result;
-	}
-	var adiv =getElementsClassName(odi,'box')
-	console.log(adiv)
+	// var ali = getElementsClassName(oD,'box');
+	// console.log(ali);
 </script>
 </html>
