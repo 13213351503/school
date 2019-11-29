@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>085-关闭窗口.html</title>
+</head>
+<body>
+	<input type="button" value="关闭窗口" id="btn">
+	<input type="button" value="打开窗口" id="btn1">
+</body>
+<script>
+	var oBtn = document.getElementById('btn');
+	var oBtn1 = document.getElementById('btn1');
+	oBtn.onclick=function(){
+		window.close();		//,该方法不能关闭用户打开的窗口,只能关闭程序打开的窗口
+	}	
+	oBtn1.onclick=function(){
+		window.open('https://www.baidu.com');
+	}
+</script>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>091-延迟性定时器.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// setTimeout('console.log(123)',1000)；
+	// function aa(){
+	// 	console.log('haha');
+	// }					// setTimeout(函数或者代码字符串,时间) 开启延迟型定时器,返回一个唯一的整型数字代表定时器的ID
+	// setTimeout(aa,2000);
+	var time= setTimeout(function(){
+		console.log(456)	//返回一个唯一的整型数字代表定时器的ID
+	},2000)
+	console.log(time);	//clearTimeout(定时器的ID) 关闭延迟型定时器
+	clearTimeout(1);	//关闭延迟型定时器
+</script>
+</html>

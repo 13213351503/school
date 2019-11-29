@@ -28,11 +28,11 @@
 	var	oBtn2 = document.getElementById('btn2');
 	var oSon = document.querySelector('.son');
 	oBtn.onclick=function(){
-		var newSon =oSon.cloneNode(true);
+		var newSon =oSon.cloneNode(true);		//参数true表示克隆节点的同时克隆所有后代
 		document.body.appendChild(newSon);
 	}
 	oBtn2.onclick=function(){
-		var newSon =oSon.cloneNode(false);
+		var newSon =oSon.cloneNode(false);		//不带参数true只克隆节点
 		document.body.appendChild(newSon);
 	}
 </script>

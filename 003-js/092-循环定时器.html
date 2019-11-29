@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>092-循环定时器.html</title>
+</head>
+<body>
+	<input type="button" id="btn" value="暂停">
+</body>
+<script>
+	var oBtn = document.getElementById('btn');
+	var time = 0;	//定义定时器的ID
+	// setInterval('console.log(111)',1000);
+	
+	// function aa(){
+	// 	console.log(666);
+	// }
+	// setInterval(aa,1000);		//setInterval(函数或者代码字符串,时间) 开启循环型定时器,返回一个唯一的整型数字代表定时器的ID
+	time = setInterval(function(){	
+	 	console.log(666);
+	 },1000);
+	
+	oBtn.onclick =function(){
+		clearInterval(time);		//clearInterval(定时器的ID) 关闭循环型定时器
+	}
+</script>
+</html>

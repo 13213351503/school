@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>087-location对象.html</title>
+</head>
+<body>
+	<input type="button" id="btn" value="提交">
+</body>
+<script>
+	// console.log(window.location);	//document.location和window.location是同一个对象,代表当前页面的相关信息对象,可以读取和赋值
+	// console.log(document.location);
+	// console.log(window.location.href);	//window.location.href 属性代表当前页面的完整url
+	// console.log(window.location.assign('https://www.baidu.com'));
+	var oBtn = document.getElementById('btn')
+	oBtn.onclick=function(){
+		// window.location.href='https://www.kuazhu.com';
+		window.location.assign('https://www.kuazhu.com');
+
+	}
+</script>
+</html>

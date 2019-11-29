@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>086-执行代码.html</title>
+</head>
+<body>
+	<textarea name="" id="txt" cols="30" rows="10"></textarea>
+	<input type="button" id="btn" value="提交">
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	var oBtn = document.getElementById('btn');
+	oBtn.onclick=function(){
+		var val =oTxt.value;
+		var newwindow= window.open();
+		newwindow.document.write(val);
+
+	}
+</script>
+</html>

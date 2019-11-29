@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>095-数码时钟.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background: #000;
+		}
+		#box{
+			text-align: center;
+			font-size:100px;
+			color: #fff;
+			margin-top: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		20:20:20
+	</div>
+</body>
+<script>
+	function aa(){
+		var	oBox = document.getElementById('box');
+	var tody = new Date();
+	var Hours = tody.getHours();
+	var Minutes = tody.getMinutes();
+	var Seconds = tody.getSeconds();
+	var time = Hours+':'+Minutes+':'+Seconds
+	// console.log(Hours);
+	// console.log(Minutes);
+	// console.log(Seconds);
+	console.log(time);
+
+	oBox.innerHTML=time;
+	}
+	
+	setInterval(aa,1000);
+	aa()
+</script>
+</html>

@@ -10,31 +10,40 @@
 		}
 		#box{
 			position: relative;
+			margin-top: 10px;
 		}
 		.son{
 			width: 100px;
 			height: 100px;
-			background: green;
+			background: red;
 			position: absolute;
-			top: 0px;
-			left: 0px;
-		}
+		}	
 	</style>
 </head>
 <body>
 	<input type="button" value="出现" id="btn">
 	<div id="box">
 		<div class="son"></div>
-		<div class="son"></div>
-		<div class="son"></div>
-		<div class="son"></div>
-		<div class="son"></div>
-		<div class="son"></div>
-		<div class="son"></div>
-		<div class="son"></div>
 	</div>
 </body>
 <script>
+	var oBtn = document.getElementById('btn')
+	var oBox = document.getElementById('box')
+	var aSon = oBox.children;
+	var iCols = 3;
+	var iWidth = 100;
+	var	iHeight = 100;
+	var iMargin = 10;
 	
+	oBtn.onclick = function(){
+		var newBox =aSon[0].cloneNode();
+		oBox.appendChild(newBox);
+		for(var i = 0;i<aSon.length;i++){
+			var iCols = i % iCols;
+			var iRow = parseInt(i / iCols);
+			aSon[i].style.top = (iHeight + iMargin) * iRow +'px';
+			aSon[i].style.left = (iHeight + iMargin) * iCols +'px';
+		}
+	}
 </script>
 </html>

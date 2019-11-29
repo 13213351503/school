@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>089-history对象.html</title>
+</head>
+<body>
+	<input type="button" value="向前" id="btn">
+	<input type="button" value="向后" id="btn1">
+	<a href="https://www.baidu.com">百度</a>
+</body>
+<script>
+	var oBtn = document.getElementById('btn')
+	var oBtn1 = document.getElementById('btn1')
+	oBtn.onclick=function(){
+		// alert('aa')
+		// history.go(1);
+		history.forward(1)
+	}
+	oBtn.onclick=function(){
+		// alert('aa')
+		// history.go(-1);
+		history.back(-1)
+	}
+</script>
+</html>
