@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>097-倒计时.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background: #000;
+		}
+		#time{
+			text-align: center;
+			color: #FFF;
+			font-size: 100px;
+			margin-top: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div id='time'>
+		<!-- 距离结束还有02时06分06秒 -->
+	</div>
+</body>
+<script>
+	var endTimer = 0;								//定义一个
+	var oTime = document.getElementById('time');	//获取id为‘time’的元素
+	var endTime = new Date('2019/12/1 16:59:20')	//获取结束时间
+	function time(){
+		var nowTime =Date.now();						//获取现在时间距离1970年的毫秒数
+		var ttTime = endTime-nowTime;					//获取结束时间和现在时间的时间差
+		var timeOver = parseInt(ttTime/1000);			//把毫秒转化为秒
+		if(ttTime<=0){									//如果获取的时间差为0
+			ttTime=0;									//防止时间变为负数
+			clearInterval(endTimer);					//关闭定时器
+		}
+		var hours = parseInt(timeOver/3600);			//获取小时
+		var	minute = parseInt((timeOver%3600)/60);		//获取分钟
+		var second = (timeOver%3600)%60;				//获取秒
+		function bb(num){								//定义一个确保时分秒为两位数的函数
+			if(num<10){									//如果传进来的数字小于10
+				return '0'+num						//把字符串0和传进来的数字一起返出去
+			}else{										//如果不大于0
+				return ''+num							//把空字符和传进来的数字一起返出去
+			}
+		}
+		console.log(hours);
+		console.log(minute);
+		console.log(second);
+		// console.log(timeOver);
+		// console.log(ttTime);
+		// console.log(endTime);
+		// console.log(nowTime);
+		oTime.innerHTML='距离结束还有'+bb(hours)+'时'+bb(minute)+'分'+bb(second)+'秒';	//每一个显示的字符都要加引号
+	}
+	endTimer=setInterval(time,1000);	//打开定时器，给定时器添加endTimer	
+	time()								//调用time函数，防止在刷新的时候有黑屏情况
+</script>
+</html>

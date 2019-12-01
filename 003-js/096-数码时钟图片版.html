@@ -21,11 +21,19 @@
 </head>
 <body>
 	<div id="box">
-		20:20:20
+		<img src="images/0.png" alt="">
+		<img src="images/0.png" alt=""> :
+		<img src="images/0.png" alt="">
+		<img src="images/0.png" alt=""> :
+		<img src="images/0.png" alt="">
+		<img src="images/0.png" alt="">
 	</div>
 </body>
 <script>
 	var	oBox = document.getElementById('box');
+	var aImg = oBox.children;
+	// console.log(aImg)
+	
 	function bb(num){
 		if(num<10){
 			return '0'+num
@@ -52,6 +60,9 @@
 		// console.log(Minutes);
 		// console.log(Seconds);
 		console.log(time);
+		for(var i =0,i<aImg.length,i++){
+			aImg[i].src="images/"+time[i]+".png";
+		}
 
 		oBox.innerHTML=time;
 	}
