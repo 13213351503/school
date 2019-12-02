@@ -27,17 +27,17 @@
 <script>
 	function aa(){
 		var	oBox = document.getElementById('box');
-	var tody = new Date();
-	var Hours = tody.getHours();
-	var Minutes = tody.getMinutes();
-	var Seconds = tody.getSeconds();
-	var time = Hours+':'+Minutes+':'+Seconds
-	// console.log(Hours);
-	// console.log(Minutes);
-	// console.log(Seconds);
-	console.log(time);
+		var tody = new Date();
+		var Hours = tody.getHours();
+		var Minutes = tody.getMinutes();
+		var Seconds = tody.getSeconds();
+		var time = Hours+':'+Minutes+':'+Seconds
+		// console.log(Hours);
+		// console.log(Minutes);
+		// console.log(Seconds);
+		console.log(time);
 
-	oBox.innerHTML=time;
+		oBox.innerHTML=time;
 	}
 	
 	setInterval(aa,1000);
