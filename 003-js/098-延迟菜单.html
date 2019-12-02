@@ -45,22 +45,25 @@
 			oBox2.style.display='block'
 		
 	}
-	oBox2.onmouseout=function(){	//右边移出的时候，盒子不显示，
+	//右边移出的时候，盒子不显示，
+	oBox2.onmouseout=function(){	
 		timer=setTimeout(function(){
 			oBox2.style.display='none';
 		},500)
 	}
+	//放在右边盒子时，盒子依然显示；
+	oBox2.onmouseover=function(){		
+		clearTimeout(timer);
+		oBox2.style.display='block'
+	}
 	//2.移出左边盒子，右边盒子消失
 	oBox1.onmouseout=function(){
-		timer=setTimeout(function(){	//左边盒子移开时，右边盒子不显示
+		timer=setTimeout(function(){	
 			oBox2.style.display='none';
 		},500)
 		
 	}
-	oBox2.onmouseover=function(){		//放在右边盒子时，盒子依然显示；
-		clearTimeout(timer);
-		oBox2.style.display='block'
-	}
+	
 
 
 	//优化结果

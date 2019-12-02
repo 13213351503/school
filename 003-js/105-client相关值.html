@@ -1,0 +1,38 @@
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>105-client相关值.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			width: 3000px;
+			height: 3000px;
+		}
+	</style>
+</head>
+<body>
+	
+</body>
+<script>
+	console.log('document.compatMode',document.compatMode)
+	console.log('document.documentElement.clientWidth',document.documentElement.clientWidth)	//元素的客户区宽(水平方向上内边距+内容宽),不包括滚动条
+	console.log('document.documentElement.clientHeight',document.documentElement.clientHeight)	//元素的客户区高(垂直方向上内边距+内容高),不包括滚动条
+	console.log('document.body.clientWidth',document.body.clientWidth);
+	console.log('document.body.clientHeight',document.body.clientHeight);
+	var w =0,h=0
+	if(document.compatMode=='CSS1Compat'){
+		w=document.documentElement.clientWidth;
+		h=document.documentElement.clientHeight;
+	}else if(document.compatMode=='BackCompat'){
+		w=document.body.clientWidth;
+		h=document.body.clientHeight;
+	}
+	console.log(w);
+	console.log(h);
+
+</script>
+</html>

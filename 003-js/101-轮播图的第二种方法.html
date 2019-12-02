@@ -2,29 +2,30 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>099-轮播图.html</title>
+	<title>101-轮播图的第二种方法.html</title>
 	<style>
-		*{
-			margin: 0;
-			padding: 0;
-			list-style: none;
-		}
+	*{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
 	.carousel{
 		position: absolute;
 		top: 100px;
 		left: 380px;
 		width: 1226px;
 		height: 460px;
-
+		overflow: hidden;
+	}
+	.carousel .carousel-imgs{
+		width: 3678px;
+		height: 460px;
 	}
 	.carousel .carousel-item{
-		position: absolute;
-		top: 0px;
-		left: 0px;
-		transition: all 0.5s;
-	}
+		float: left;
+	}	
 	.carousel .carousel-item img{
-		width: 100%;
+		width: 1226px;
 		height: 460px;
 	}
 	.carousel-item:first-child{
@@ -89,7 +90,7 @@
 		<ul class="carousel-imgs">
 			<li class="carousel-item"><img src="images/carousel-1.jpg" alt=""></li>
 			<li class="carousel-item"><img src="images/ia_100000010.png" alt=""></li>
-			<li class="carousel-item"><img src="images/ia_100000011.png" alt=""></li>
+			<li class="carousel-item"><img src="images/ad1.jpg" alt=""></li>
 		</ul>
 		<span class="arrow left-arrow"><i class="iconfont">&lt;</i></span>
 		<span class="arrow right-arrow"><i class="iconfont">&gt;</i></span>
@@ -101,47 +102,45 @@
 	</div>
 </body>
 <script>
-	//1.获取元素
-	var aImgli = document.querySelectorAll('.carousel-item')	
-	var oLeft = document.querySelector('.left-arrow')
-	var oCarousel = document.querySelector('.carousel')
-	var oRight = document.querySelector('.right-arrow')
-	var aBtn = document.querySelectorAll('.btn-item')
-	var now = 0;	//用来表示默认显示图片的下标
-	var timer;
-	// console.log(aImgli)
-	// console.log(oLeft)
-	// console.log(oRight)
-	// console.log(aBtn)
-	//2.点击左边按钮切换下一张(通过修改li中的图片Zindex)
+	var oCarousel = document.querySelector('.carousel');	//获取类名为carousel的div盒子
+	var aImg = document.querySelectorAll('.carousel-item');	//获取类名为carousel-item的li
+	var oLeftBtn = document.querySelector('.left-arrow');	//获取左按钮
+	var oRightBtn = document.querySelector('.right-arrow');	//获取右按钮
+	var aBtn = document.querySelectorAll('.btn-item');		//获取右下角的按钮
+	var now = 0;											//用来表示默认显示图片的下标
+	var step = -1226;										//定义每次移动的额距离
+	var timer;												//定义定时器的id
+	console.log(aImg);
+	console.log(oLeftBtn);
+	console.log(oRightBtn);
+	console.log(aBtn);
 	function tab(){
-		for(var i = 0;i<aImgli.length;i++){		//循环得到每一个li，方便存值
-			aBtn[i].className='btn-item';		//aBtn中的每一项储存类名'btn-item'
-			aImgli[i].style.zIndex='0';			//aImgli中的每一项zIndex的值为0
-			aImgli[i].style.opacity='0';		//aImgli中的每一项opacity的值为0
+		for(var i = 0;i<aImg.length;i++){		
+			aBtn[i].className='btn-item';		
+			aImg[i].style='transform:translate(1226px,0px)';			
+			// aImg[i].style.opacity='0';	
+			aImg[now].style.transitionDuration='0s';	
 		}
-		aImgli[now].style.opacity='1';			//每一次使aImgli的opacity的值为1
-		aImgli[now].style.zIndex='20';			//aImgli中的每一项zIndex的值为20
-		aBtn[now].className='btn-item active';	//为aBtn添加类名btn-item 和 active
+		// aImg[now].style.opacity='1';			
+		aImg[now].style='transform:translate('+this.now*this.step+'px,0px);'
+		aImg[now].style.transitionDuration='0.3s';	
+		aBtn[now].className='btn-item active';	
 	}
-	oRight.onclick=function(){
-		now++;		//每次点击下标加1
-		//(清空操作)
-		if(now>aImgli.length-1){	//为了每次循环到最后一张的时候可以重新回到第一张
-			now=0;					//now代表了图片的下标
+	oRightBtn.onclick=function(){
+		now++;		
+		if(now>aImg.length-1){	
+			now=0;					
 		}
-		tab()						//调用tab函数
+		tab()						
 	}
-	//3.点击右边按钮切换上一张
-	oLeft.onclick=function(){
-		now--;		//每次点击下标减1
+	oLeftBtn.onclick=function(){
+		now--;		
 		if(now<0){
-			now=aImgli.length-1		//为了点击左按钮的时候可以正常使用
+			now=aImg.length-1		
 		}
 
 		tab()
 	}
-	//4.点击底部按钮切换图片
 	for(var i = 0;i<aBtn.length;i++){	//遇见数组先循环
 		aBtn[i].index=i;  				//存i值，因为下面的点击事件属于异步操作，每次拿到的i值只能是3
 		aBtn[i].onclick=function(){
@@ -149,13 +148,12 @@
 			tab()						//调用函数tab
 		}
 	}
-	//5.自动轮播
-	timer=setInterval(oRight.onclick,2000);		//向右切换的时候延迟两秒
+	timer=setInterval(oRightBtn.onclick,2000);		//向右切换的时候延迟两秒
 	oCarousel.onmouseover=function(){
 		clearInterval(timer);					//当鼠标放在oCarousel上的时候，轮播停止
 	}
 	oCarousel.onmouseout=function(){
-		timer=setInterval(oRight.onclick,2000);	//当鼠标移开oCarousel上的时候，轮播开始
+		timer=setInterval(oRightBtn.onclick,2000);	//当鼠标移开oCarousel上的时候，轮播开始
 	}
 </script>
 </html>

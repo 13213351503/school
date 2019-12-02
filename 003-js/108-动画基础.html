@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>108-动画基础.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background: green;
+			position: absolute;
+			top: 50px;
+			left: 0px;
+		}
+		.lin{
+			width: 1px;
+			height: 620px;
+			background: #000;
+			position: absolute;
+			top: 0px;
+			left: 600px;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn">开始动画</button>
+	<div id="box"></div>
+	<div class="lin"></div>
+</body>
+<script>
+	var oBtn = document.getElementById('btn');
+	var oBox = document.getElementById('box');
+	var timer;
+	oBtn.onclick=function(){
+		setInterval(function(){
+			if(oBox.offsetLeft==600){
+				clearInterval(timer);
+			}else{
+				timer=oBox.style.left=oBox.offsetLeft + 10 +'px';
+			}
+			
+		},30)
+		
+	}
+</script>
+</html>
