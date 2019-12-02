@@ -25,22 +25,38 @@
 	</div>
 </body>
 <script>
-	function aa(){
-		var	oBox = document.getElementById('box');
-		var tody = new Date();
-		var Hours = tody.getHours();
-		var Minutes = tody.getMinutes();
-		var Seconds = tody.getSeconds();
-		var time = Hours+':'+Minutes+':'+Seconds
-		// console.log(Hours);
-		// console.log(Minutes);
-		// console.log(Seconds);
-		console.log(time);
+		var	oBox = document.getElementById('box');	//获取ID为box的div
+		function bb(num){							//定义一个名字为bb的函数
+			if(num<10){								//当传进来的数值小于10
+				return '0'+num						//返回出去的是字符串0加上传进来的数值
+			}else{									//如果大于0
+				return ''+num						//直接返回出去
+			}
+		}
+		function aa(){								//定义一个名字为aa的函数
+			var tody = new Date();					//获取当前系统时间
+			var iHours = tody.getHours();			//获取tady上面的小时
+			// if(iHours<10){
+			// 	iHours='0'+iHours
+			// }
+			var iMinutes = tody.getMinutes();		//获取tady上面的分钟
+			// if(iMinutes<10){
+			// 	iMinutes='0'+iMinutes
+			// }
+			var iSeconds = tody.getSeconds();		//获取tady上面的秒
+			// if(iSeconds<10){
+			// 	iSeconds='0'+iSeconds
+			// }
+			var time = bb(iHours)+':'+bb(iMinutes)+':'+bb(iSeconds);	//得到一个小时，分钟，秒数相加的数字
+			// console.log(Hours);
+			// console.log(Minutes);
+			// console.log(Seconds);
+			console.log(time);
 
-		oBox.innerHTML=time;
-	}
-	
-	setInterval(aa,1000);
-	aa()
+			oBox.innerHTML=time;		//在页面显示time的值
+		}
+		
+		setInterval(aa,1000);			//调用函数aa并使它延迟1秒
+		aa()							//调用函数aa，防止每次刷新的时候出现黑屏现象
 </script>
 </html>

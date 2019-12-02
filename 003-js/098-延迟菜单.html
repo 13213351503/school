@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>098-延迟菜单.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 400px;
+			margin: 200px auto;
+		}
+		.box1{
+			width: 50px;
+			height: 300px;
+			background: green;
+			float: left;
+		}
+		.box2{
+			width: 300px;
+			height: 300px;
+			background: red;
+			float: right;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="box1"></div>
+		<div class="box2"></div>
+	</div>
+</body>
+<script>
+	var oBox1 = document.querySelector('.box1');
+	var oBox2 = document.querySelector('.box2');
+	var timer;
+	// console.log(oBox1);
+	// console.log(oBox2);
+	// 1.放在左边盒子，右边盒子显示
+	oBox1.onmouseover=function(){
+			clearTimeout(timer);	
+			oBox2.style.display='block'
+		
+	}
+	oBox2.onmouseout=function(){	//右边移出的时候，盒子不显示，
+		timer=setTimeout(function(){
+			oBox2.style.display='none';
+		},500)
+	}
+	//2.移出左边盒子，右边盒子消失
+	oBox1.onmouseout=function(){
+		timer=setTimeout(function(){	//左边盒子移开时，右边盒子不显示
+			oBox2.style.display='none';
+		},500)
+		
+	}
+	oBox2.onmouseover=function(){		//放在右边盒子时，盒子依然显示；
+		clearTimeout(timer);
+		oBox2.style.display='block'
+	}
+
+
+	//优化结果
+	// oBox2.onmouseover=oBox1.onmouseover=function(){
+	// 		clearTimeout(timer);
+	// 		oBox2.style.display='block'
+		
+	// }
+	// oBox1.onmouseout=oBox2.onmouseout=function(){	
+	// 	timer=setTimeout(function(){
+	// 		oBox2.style.display='none';
+	// 	},500)
+	// }
+</script>
+</html>
