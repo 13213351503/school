@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>修改透明值</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			width: 500px;
+			height: 500px;
+			margin: 100px auto;
+		}
+		#box{
+			width: 200px;
+			height: 200px;
+			opacity: 0.2;
+			margin-top: 20px;
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<button id="btn">透明度</button>
+		<div id="box"></div>
+	</div>
+</body>
+<script>
+	var oBtn = document.getElementById('btn');	//获取id为btn的元素
+	var oBox = document.getElementById('box');	//获取id为box的元素
+	var timer = 0;								//定义关闭定时器的id
+	// oBtn.onclick=function(){					//当oBtn点击时
+		clearInterval(timer);					//这里设置关闭定时器是为了防止多次点击总会有一个定时器无法关闭
+		timer=setInterval(function(){
+			console.log(getComputedStyle(oBox,false['opacity']))
+			// console.log(oBox.offsetLeft)
+			var iSpeed = 0						//定义速度
+			if(oBox.offsetLeft<600){			//如果oBox的左外边框小于600
+				iSpeed = 7;					//给他设置速度为正10
+			}else{								//如果oBox的左外边框大于600
+				iSpeed = -7;					//给他设置速度为负10
+			}
+			// console.log('timer',timer,'is running');
+			if(Math.abs(oBox.offsetLeft-600) <Math.abs(iSpeed)){			
+				oBox.style.left='600px'
+				clearInterval(timer);			//关闭定时器
+			}else{								//如果oBox的左外边框不等于600
+				oBox.style.left=oBox.offsetLeft + iSpeed +'px';		//则盒子的left值就是oBox的左外边框+速度+像素单位
+			}
+			
+		},30)
+		
+	<!-- } -->
+</script>
+</html>

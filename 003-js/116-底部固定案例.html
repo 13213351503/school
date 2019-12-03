@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>116-底部固定案例.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			height: 3000px;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			right:0px;
+			bottom: 0px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script src="js/util.js"></script>
+<script>
+	var oBox = document.getElementById('box');
+	
+	// console.log(window.innerHeight)
+	// console.log(oBox.offsetHeight)
+	// console.log(iTop)
+	window.onscroll=window.onload=window.onresize=function(){
+		var	iTop =window.innerHeight - oBox.offsetHeight + getScrollTop()
+		animate(oBox,'top',iTop);
+	}
+</script>
+</html>
