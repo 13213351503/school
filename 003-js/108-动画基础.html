@@ -32,15 +32,15 @@
 	<div class="lin"></div>
 </body>
 <script>
-	var oBtn = document.getElementById('btn');
-	var oBox = document.getElementById('box');
-	var timer;
-	oBtn.onclick=function(){
-		setInterval(function(){
-			if(oBox.offsetLeft==600){
-				clearInterval(timer);
-			}else{
-				timer=oBox.style.left=oBox.offsetLeft + 10 +'px';
+	var oBtn = document.getElementById('btn');		//获取id为btn的元素
+	var oBox = document.getElementById('box');		//获取id为box的元素
+	var timer;										//定义关闭定时器的id
+	oBtn.onclick=function(){						//当oBtn点击时
+		timer=setInterval(function(){				//循环定时器开启，并给定时器赋值id
+			if(oBox.offsetLeft==600){				//如果oBox的左外边框等于600
+				clearInterval(timer);				//关闭定时器
+			}else{									//如果oBox的左外边框不等于600
+				oBox.style.left=oBox.offsetLeft + 10 +'px';		//则盒子的left值就是oBox的左外边框+速度+像素单位
 			}
 			
 		},30)

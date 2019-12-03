@@ -27,22 +27,22 @@
 	</div>
 </body>
 <script>
-	var oBtn = document.getElementById('btn')
-	var oBox = document.getElementById('box')
-	var aSon = oBox.children;
-	var iCols = 3;
-	var iWidth = 100;
-	var	iHeight = 100;
-	var iMargin = 10;
+	var oBtn = document.getElementById('btn')	//获取id为btn的按钮
+	var oBox = document.getElementById('box')	//获取id为BOX的盒子
+	var aSon = oBox.children;					//获取所有box的子元素，并且命名为aSon
+	var iCols = 3;								//定义一个变量为3的iCols，
+	var iWidth = 100;							//定义盒子的宽
+	var	iHeight = 100;							//定义盒子的高
+	var iMargin = 10;							//定义盒子的margin值
 	
-	oBtn.onclick = function(){
-		var newBox =aSon[0].cloneNode();
-		oBox.appendChild(newBox);
-		for(var i = 0;i<aSon.length;i++){
-			var iCols = i % iCols;
-			var iRow = parseInt(i / iCols);
-			aSon[i].style.top = (iHeight + iMargin) * iRow +'px';
-			aSon[i].style.left = (iHeight + iMargin) * iCols +'px';
+	oBtn.onclick = function(){					//当oBtn点击时
+		var newBox =aSon[0].cloneNode();		//定义newBox，并且克隆下标为0的aSon盒子
+		oBox.appendChild(newBox);				//把生成的元素newBox插入到父元素oBox中
+		for(var i = 0;i<aSon.length;i++){		//循环aSon
+			var iCol = i % iCols;				//每次循环的I模iCols得到列数
+			var iRow = parseInt(i / iCols);		//每次循环的I除iCols得到行数，需要取整数
+			aSon[i].style.top = (iHeight + iMargin) * iRow +'px';	//利用定位的属性决定top值
+			aSon[i].style.left = (iHeight + iMargin) * iCol +'px';	//利用定位的属性决定left值
 		}
 	}
 </script>

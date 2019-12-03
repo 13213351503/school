@@ -10,8 +10,10 @@
 <script>
 	console.log('document',document)
 	console.log('document.documentElement',document.documentElement)
-	console.log('document.documentElement',document.documentElement == document.html)
+	//document.documentElement,返回文档对象（document）的根元素的只读属性（通常指HTML文档的 <html> 元素）
+	console.log('document.documentElement',document.documentElement == document.querySelector('html'))
 	
 	console.log('document.body',document.body)
+	//document.body,返回当前文档中的<body>元素
 </script>
 </html>
