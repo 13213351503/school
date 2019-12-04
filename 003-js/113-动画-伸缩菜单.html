@@ -35,47 +35,47 @@
 	var oBox1 = document.getElementById('father');	//获取id为btn的元素
 	var oBox2 = document.getElementById('son');	//获取id为box的元素
 	var timer = 0;								//定义关闭定时器的id
-	oBox1.onmouseover=function(){					//当oBtn点击时
+	oBox1.onmouseover=function(){				//当放在oBox1时
 		clearInterval(timer);					//这里设置关闭定时器是为了防止多次点击总会有一个定时器无法关闭
 		timer=setInterval(function(){			//循环定时器开启，并给定时器赋值id
-			console.log(oBox1.offsetLeft);
+			// console.log(oBox1.offsetLeft);
 			var iSpeed = 0						//定义速度
-			if(oBox1.offsetLeft<0){			//如果oBox的左外边框小于600
-				iSpeed = 6;					//给他设置速度为正10
-			}else{								//如果oBox的左外边框大于600
-				iSpeed = -6;					//给他设置速度为负10
+			if(oBox1.offsetLeft<0){				//如果oBox1的左外边框小于0
+				iSpeed = 9;						//给他设置速度为正9
+			}else{								//如果oBox的左外边框大于0
+				iSpeed = -9;					//给他设置速度为负9
 			}
 			// console.log('timer',timer,'is running');
-			if(Math.abs(0-oBox1.offsetLeft) <Math.abs(iSpeed)){			
-				oBox1.style.left='0px'
-				clearInterval(timer);			//关闭定时器
-			}else{								//如果oBox的左外边框不等于600
-				oBox1.style.left=oBox1.offsetLeft + iSpeed +'px';		//则盒子的left值就是oBox的左外边框+速度+像素单位
+			if(Math.abs(0-oBox1.offsetLeft) < Math.abs(iSpeed)){		//如果目标值-当前值小于速度值时	
+				oBox1.style.left='0'									//oBox的left值直接为0
+				clearInterval(timer);									//关闭定时器
+			}else{														//如果目标值-当前值大于速度值时
+				oBox1.style.left=oBox1.offsetLeft + iSpeed +'px';		//则盒子的left值就是oBox1的左外边框+速度+像素单位
+			} 
+			
+		},30)
+		
+	}
+	oBox1.onmouseout=function(){				//当离开oBox1时
+		clearInterval(timer);					//这里设置关闭定时器是为了防止多次点击总会有一个定时器无法关闭
+		timer=setInterval(function(){			//循环定时器开启，并给定时器赋值id
+			console.log(oBox1.offsetLeft)
+			var iSpeed = 0						//定义速度
+			if(oBox1.offsetLeft < -600){		//如果oBox1的左外边框小于-600
+				iSpeed = 9;						//给他设置速度为正9
+			}else{								//如果oBox的左外边框大于-600
+				iSpeed = -9;					//给他设置速度为负9
+			}
+			// console.log('timer',timer,'is running');
+			if(Math.abs(-600 - oBox1.offsetLeft) < Math.abs(iSpeed)){			//如果目标值-当前值小于速度值时
+				oBox1.style.left='-600px'										//oBox的left值直接为0
+				clearInterval(timer);											//关闭定时器
+			}else{																//如果目标值-当前值大于速度值时
+				oBox1.style.left=oBox1.offsetLeft + iSpeed +'px';				//则盒子的left值就是oBox的左外边框+速度+像素单位
 			}
 			
 		},30)
 		
 	}
-	// oBox1.onmouseout=function(){					//当oBtn点击时
-	// 	clearInterval(timer);					//这里设置关闭定时器是为了防止多次点击总会有一个定时器无法关闭
-	// 	timer=setInterval(function(){			//循环定时器开启，并给定时器赋值id
-	// 		// console.log(oBox.offsetLeft)
-	// 		var iSpeed = 0						//定义速度
-	// 		if(oBox1.offsetLeft<-600){			//如果oBox的左外边框小于600
-	// 			iSpeed = 7;					//给他设置速度为正10
-	// 		}else{								//如果oBox的左外边框大于600
-	// 			iSpeed = -7;					//给他设置速度为负10
-	// 		}
-	// 		// console.log('timer',timer,'is running');
-	// 		if(Math.abs(oBox1.offsetLeft-600) <Math.abs(iSpeed)){			
-	// 			oBox1.style.left='-600px'
-	// 			clearInterval(timer);			//关闭定时器
-	// 		}else{								//如果oBox的左外边框不等于600
-	// 			oBox1.style.left=oBox1.offsetLeft + iSpeed +'px';		//则盒子的left值就是oBox的左外边框+速度+像素单位
-	// 		}
-			
-	// 	},30)
-		
-	// }
 </script>
 </html>

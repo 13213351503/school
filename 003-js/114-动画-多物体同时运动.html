@@ -32,41 +32,43 @@
 <script>
 	var oBox1 = document.getElementById('box1');
 	var oBox2 = document.getElementById('box2');
-	var oBox3 = document.getElementById('box3');
+	var oBox3 = document.getElementById('box3');	//获取元素oBox1，oBox2，oBox3
 	// var timer;
-	oBox1.onmouseover=function(){
-		clearInterval(oBox1.timer);					//这里设置关闭定时器是为了防止多次点击总会有一个定时器无法关闭
+	oBox1.onmouseover=function(){					//这里设置关闭定时器是为了防止多次点击总会有一个定时器无法关闭，为了能保证三个盒子同时执行，共同													使用一个定时器是不够的，就给每个盒子设定一个专属的定时器
+		clearInterval(oBox1.timer);					
 		oBox1.timer=setInterval(function(){			//循环定时器开启，并给定时器赋值id
-			var iSpeed = 0						//定义速度
-			if(oBox1.offsetWidth<300){			//如果oBox的左外边框小于600
-				iSpeed = 10;					//给他设置速度为正10
-			}else{								//如果oBox的左外边框大于600
-				iSpeed = -10;					//给他设置速度为负10
+			var iSpeed = 0							//定义速度
+			if(oBox1.offsetWidth<300){				//如果oBox1的左外边框小于300
+				iSpeed = 2;							//给他设置速度为正2
+			}else{									//如果oBox1的左外边框大于300
+				iSpeed = -2;						//给他设置速度为负2
 			}
 			// console.log('timer',timer,'is running');
-			if(Math.abs(oBox1.offsetWidth-300) <Math.abs(iSpeed)){			//如果oBox的左外边框等于600
-				clearInterval(oBox1.timer);			//关闭定时器
-			}else{								//如果oBox的左外边框不等于600
-				oBox1.style.width=oBox1.offsetWidth + iSpeed +'px';		//则盒子的left值就是oBox的左外边框+速度+像素单位
+			if(Math.abs(300-oBox1.offsetWidth) <Math.abs(iSpeed)){			//如果oBox1目标值和左外边框的差小于速度值
+				oBox1.style.width='300px'									//使盒子的宽度直接变为300
+				clearInterval(oBox1.timer);									//关闭定时器
+			}else{															//如果oBox的左外边框不等于600
+				oBox1.style.width=oBox1.offsetWidth + iSpeed +'px';			//则盒子的left值就是oBox1的左外边框+速度+像素单位
 			}
 			
 		},30)
 		
 	}
 	oBox2.onmouseover=function(){
-		clearInterval(oBox2.timer);					//这里设置关闭定时器是为了防止多次点击总会有一个定时器无法关闭
-		oBox2.timer=setInterval(function(){			//循环定时器开启，并给定时器赋值id
+		clearInterval(oBox2.timer);				//这里设置关闭定时器是为了防止多次点击总会有一个定时器无法关闭
+		oBox2.timer=setInterval(function(){		//循环定时器开启，并给定时器赋值id
 			var iSpeed = 0						//定义速度
-			if(oBox2.offsetHeight<300){			//如果oBox的左外边框小于600
-				iSpeed = 6;					//给他设置速度为正10
-			}else{								//如果oBox的左外边框大于600
-				iSpeed = -6;					//给他设置速度为负10
+			if(oBox2.offsetHeight<300){			//如果oBox2的左外边框小于300
+				iSpeed = 2;						//给他设置速度为正2
+			}else{								//如果oBox2的左外边框大于300
+				iSpeed = -2;					//给他设置速度为负2
 			}
 			// console.log('timer',timer,'is running');
-			if(Math.abs(oBox2.offsetHeight-300) <Math.abs(iSpeed)){			//如果oBox的左外边框等于600
-				clearInterval(oBox2.timer);			//关闭定时器
-			}else{								//如果oBox的左外边框不等于600
-				oBox2.style.height=oBox2.offsetHeight + iSpeed +'px';		//则盒子的left值就是oBox的左外边框+速度+像素单位
+			if(Math.abs(300-oBox2.offsetHeight) <Math.abs(iSpeed)){		//如果oBox2目标值和左外边框的差小于速度值
+				oBox2.style.height='300px'								//使盒子的长度直接变为300
+				clearInterval(oBox2.timer);								//关闭定时器
+			}else{														//如果oBox2的左外边框不等于300
+				oBox2.style.height=oBox2.offsetHeight + iSpeed +'px';		//则盒子的left值就是oBox2的左外边框+速度+像素单位
 			}
 			
 		},30)
@@ -74,23 +76,23 @@
 	}
 	oBox3.onmouseover=function(){
 		clearInterval(oBox3.timer);					//这里设置关闭定时器是为了防止多次点击总会有一个定时器无法关闭
-		oBox3.timer=setInterval(function(){
+		oBox3.timer=setInterval(function(){			//开启定时器
 			// console.log(getComputedStyle(oBox3,false)['opacity']);
-			var tm =parseFloat(getComputedStyle(oBox3,false)['opacity']);
+			var tm =parseFloat(getComputedStyle(oBox3,false)['opacity']);	//获取oBox盒子的透明度，并且把获取到的字符串转化为数字
 			// console.log(oBox.offsetLeft)
-			tm = tm*100
+			tm =  Math.round(tm*100);			//因为获取的透明度值在0-1之间不易运算，把它*100方便函数运算
 			var iSpeed = 0						//定义速度
-			if(oBox3.opacity<100){			//如果oBox的左外边框小于600
-				iSpeed = 7;					//给他设置速度为正10
-			}else{								//如果oBox的左外边框大于600
-				iSpeed = -7;					//给他设置速度为负10
+			if(tm<100){							//如果oBox3的透明度大于0.2
+				iSpeed = 2;						//给他设置速度为正2
+			}else{								//如果oBox3的透明度大于0.2
+				iSpeed = -2;					//给他设置速度为负2
 			}
 			// console.log('timer',timer,'is running');
-			if(Math.abs(oBox3.opacity-100) <Math.abs(iSpeed)){			
-				oBox3.style.opacity='1'
-				clearInterval(oBox3.timer);			//关闭定时器
-			}else{								//如果oBox的左外边框不等于600
-				oBox3.style.opacity=(oBox3.opacity + iSpeed)/100 ;		//则盒子的left值就是oBox的左外边框+速度+像素单位
+			if(Math.abs(tm-20) <Math.abs(iSpeed)){			//如果当前值和目标值的差小于当前速度值
+				oBox3.style.opacity='0.2'					//使oBox3的盒子透明度变为0.2
+				clearInterval(oBox3.timer);					//关闭定时器
+			}else{											//如果当前值和目标值的差大于当前速度值
+				oBox3.style.opacity=(tm + iSpeed)/100 ;		//因为前面透明度因为方面计算把透明度*100，最后的时候要/100；
 			}
 			
 		},30)

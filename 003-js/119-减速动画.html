@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>108-动画-动画结束的条件.html</title>
+	<title>119-减速动画.html</title>
 	<style>
 		*{
 			margin: 0;
@@ -40,14 +40,10 @@
 		timer=setInterval(function(){			//循环定时器开启，并给定时器赋值id
 			console.log(oBox.offsetLeft)
 			var iSpeed = 0						//定义速度
-			if(oBox.offsetLeft<600){			//如果oBox的左外边框小于600
-				iSpeed = 7;					//给他设置速度为正10
-			}else{								//如果oBox的左外边框大于600
-				iSpeed = -7;					//给他设置速度为负10
-			}
-			// console.log('timer',timer,'is running');
-			if(Math.abs(600-oBox.offsetLeft) <Math.abs(iSpeed)){	////如果oBox1目标值和左外边框的差小于速度值		
-				oBox.style.left='600px'			//使盒子的宽度直接变为600
+			iSpeed =(600-oBox.offsetLeft)/10	
+			//执行速度和目标值减去当前值的差成正比,即离目标的越远速度越快,因此执行速度可以是(目标值 - 当前值) / 系数;
+			iSpeed = Math.ceil(iSpeed)			//由于减速动画的速度有除法,所以会产生小数,需要取整
+			if(oBox.offsetLeft == 600 ){		//如果oBox的当前值等于600；	
 				clearInterval(timer);			//关闭定时器
 			}else{								//如果oBox的左外边框不等于600
 				oBox.style.left=oBox.offsetLeft + iSpeed +'px';		//则盒子的left值就是oBox的左外边框+速度+像素单位

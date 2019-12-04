@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>121-减速动画-透明度修改.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background: green;
+			opacity: 0.2;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn">开始动画</button>
+	<div id="box"></div>
+</body>
+<script>
+	var oBtn = document.getElementById('btn');	//获取id为btn的元素
+	var oBox = document.getElementById('box');	//获取id为box的元素
+	var timer = 0;								//定义关闭定时器的id
+	oBtn.onclick=function(){					//当oBtn点击时
+		clearInterval(timer);					//这里设置关闭定时器是为了防止多次点击总会有一个定时器无法关闭
+		timer=setInterval(function(){			//循环定时器开启，并给定时器赋值id
+			var iSpeed = 0						//定义速度
+			var current = parseFloat(getComputedStyle(oBox,false)['opacity']);
+			current = Math.round(current *100);
+			console.log(iSpeed);
+			iSpeed =(100-current)/10
+			iSpeed > 0 ? iSpeed = Math.ceil(iSpeed) : iSpeed = Math.floor(iSpeed)
+			if(!iSpeed){			
+				clearInterval(timer);							//关闭定时器
+			}else{												//如果oBox的左外边框不等于600
+				oBox.style.opacity=(current + iSpeed)/100;		//则盒子的left值就是oBox的左外边框+速度+像素单位
+			}
+			
+		},30)
+		
+	}
+</script>
+</html>

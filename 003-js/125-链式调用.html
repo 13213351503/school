@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>125-链式调用.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			width: 100px;
+			margin: 50px auto;
+		}
+		.father div{
+			width: 100px;
+			height: 100px;
+			background: red;
+			line-height: 100px;
+			text-align:center;
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div id="box1">变宽</div>
+		<div id="box2">变高</div>
+		<div id="box3">变透明</div>
+	</div>
+</body>
+<script>
+	function animate2(obj,attr,target,isLinear){
+		if(isLinear == undefined){
+				isLinear=true
+			}
+			var isStop = false;
+
+		clearInterval(obj.timer);
+		obj.timer =setInterval(function(){
+			var iSpeed = 0;
+			var current = parseFloat(getComputedStyle(obj,false)[attr]);
+			if(attr == 'opacity'){
+				current = Math.round(current *100);
+			}
+			if(isLinear){
+				if(current<target){							//当前值小于目标值
+					iSpeed = 2;									//给他设置速度为正2
+				}else{										//当前值大于目标值
+					iSpeed = -2;							//给他设置速度为负2
+				}
+				if(Math.abs(current-target) <Math.abs(iSpeed)){	
+
+					if(attr == 'opacity'){							//如果属性的“透明度”
+						obj.style[attr] = target/100;				//让它的当前值/100
+					}else{
+																//如果属性不是透明度
+						obj.style[attr] = target + 'px';			//让他的当前值加上PX单位
+					}
+					isStop = true;
+				}
+			}else{
+				iSpeed =(target-current)/10;
+				iSpeed > 0 ? iSpeed = Math.ceil(iSpeed) : iSpeed = Math.floor(iSpeed)
+				if(!iSpeed){
+					isStop = true;							
+				}
+				if(isStop){
+					clearInterval(obj.timer);
+				}else{	
+					if(attr == 'opacity'){
+						obj.style[attr]=(current + iSpeed)/100;
+					}else{
+						obj.style[attr]=current + iSpeed + 'px';
+					}											//如果oBox的左外边框不等于600
+				}
+			}
+		},30)
+	}
+
+
+
+
+
+
+
+
+
+
+	// function animate1(obj,attr,target){
+	// 	clearInterval(obj.timer);					//这里设置关闭定时器是为了防止多次点击总会有一个定时器无法关闭
+	// 	obj.timer=setInterval(function(){			//循环定时器开启，并给定时器赋值id
+	// 		var iSpeed = 0						//定义速度
+	// 		var current = parseFloat(getComputedStyle(obj,false)[attr]);
+	// 		if(attr == 'opacity'){
+	// 			current = Math.round(current *100);
+	// 		}
+
+	// 		iSpeed =(target-current)/10
+	// 		iSpeed > 0 ? iSpeed = Math.ceil(iSpeed) : iSpeed = Math.floor(iSpeed)
+
+
+	// 		if(!iSpeed){
+					
+	// 			clearInterval(obj.timer);							//关闭定时器
+	// 		}else{	
+	// 			if(attr == 'opacity'){
+	// 				obj.style[attr]=(current + iSpeed)/100;
+	// 			}else{
+	// 				obj.style[attr]=current + iSpeed + 'px';
+	// 			}											//如果oBox的左外边框不等于600
+	// 		}
+			
+	// 	},30)
+	// }
+
+	var oBox1 = document.getElementById('box1');
+	var oBox2 = document.getElementById('box2');
+	var oBox3 = document.getElementById('box3');	//获取元素oBox1，oBox2，oBox3
+	// var timer;
+	oBox1.onmouseover=function(){					//这里设置关闭定时器是为了防止多次点击总会有一个定时器无法关闭，为了能保证三个盒子同时执行，共同		
+		animate2(oBox1,'width',300,false);
+		
+	}
+	oBox2.onmouseover=function(){
+		
+		animate2(oBox2,'height',300,false);
+	}
+		
+
+	oBox3.onmouseover=function(){
+	
+		animate2(oBox3,'opacity',50,false);
+	}
+</script>
+</html>

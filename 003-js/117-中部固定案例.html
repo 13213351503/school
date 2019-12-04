@@ -32,7 +32,7 @@
 	// console.log(oBox.offsetHeight)
 	// console.log(iTop)
 	window.onscroll=window.onload=window.onresize=function(){
-		var	iTop =(window.innerHeight - oBox.offsetHeight)/2 + getScrollTop()
+		var	iTop =(window.innerHeight - oBox.offsetHeight)/2 + getScrollTop()	//（页面可视高度-盒子自身高度）/2+隐藏在内容区域上侧的高度
 		animate(oBox,'top',iTop);
 	}
 </script>

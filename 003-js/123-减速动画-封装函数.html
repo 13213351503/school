@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>123-减速动画-封装函数.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			width: 100px;
+			margin: 50px auto;
+		}
+		.father div{
+			width: 100px;
+			height: 100px;
+			background: red;
+			line-height: 100px;
+			text-align:center;
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div id="box1">变宽</div>
+		<div id="box2">变高</div>
+		<div id="box3">变透明</div>
+	</div>
+</body>
+<script>
+
+	function animate1(obj,attr,target){
+		clearInterval(obj.timer);					//这里设置关闭定时器是为了防止多次点击总会有一个定时器无法关闭
+		obj.timer=setInterval(function(){			//循环定时器开启，并给定时器赋值id
+			var iSpeed = 0							//定义速度
+			var current = parseFloat(getComputedStyle(obj,false)[attr]);
+			if(attr == 'opacity'){
+				current = Math.round(current *100);
+			}
+			
+			console.log(iSpeed,current);
+			iSpeed =(target-current)/10
+			iSpeed > 0 ? iSpeed = Math.ceil(iSpeed) : iSpeed = Math.floor(iSpeed)
+			if(!iSpeed){
+					
+				clearInterval(obj.timer);							//关闭定时器
+			}else{	
+				if(attr == 'opacity'){
+					obj.style[attr]=(current + iSpeed)/100;
+				}else{
+					obj.style[attr]=current + iSpeed + 'px';
+				}											//如果oBox的左外边框不等于600
+				// obj.style.attr=(current + iSpeed)/100;		//则盒子的left值就是oBox的左外边框+速度+像素单位
+			}
+			
+		},30)
+	}
+
+	var oBox1 = document.getElementById('box1');
+	var oBox2 = document.getElementById('box2');
+	var oBox3 = document.getElementById('box3');	//获取元素oBox1，oBox2，oBox3
+	// var timer;
+	oBox1.onmouseover=function(){					//这里设置关闭定时器是为了防止多次点击总会有一个定时器无法关闭，为了能保证三个盒子同时执行，共同													使用一个定时器是不够的，就给每个盒子设定一个专属的定时器
+		// clearInterval(oBox1.timer);					//这里设置关闭定时器是为了防止多次点击总会有一个定时器无法关闭
+		// oBox1.timer=setInterval(function(){			//循环定时器开启，并给定时器赋值id
+		// 	var iSpeed = 0						//定义速度
+		// 	// iSpeed =(600-oBox1.offsetLeft)/10	
+		// 	// //执行速度和目标值减去当前值的差成正比,即离目标的越远速度越快,因此执行速度可以是(目标值 - 当前值) / 系数;
+		// 	// iSpeed = Math.ceil(iSpeed)			//由于减速动画的速度有除法,所以会产生小数,需要取整
+			 
+		// 	iSpeed =(300-oBox1.offsetWidth)/10
+		// 	// iSpeed = Math.floor(iSpeed)
+		// 	iSpeed > 0 ? iSpeed = Math.ceil(iSpeed) : iSpeed = Math.floor(iSpeed)
+		// 	if(!iSpeed){						//如果速度为0，动画结束，因为0的布尔值为false，所以要取非才能进去	
+		// 		clearInterval(oBox1.timer);			//关闭定时器
+		// 	}else{								//如果oBox1的左外边框不等于600
+		// 		oBox1.style.width=oBox1.offsetWidth + iSpeed +'px';		//则盒子的left值就是oBox的左外边框+速度+像素单位
+		// 	}
+			
+		// },30)
+		animate1(oBox1,'width',300);
+		
+	}
+	oBox2.onmouseover=function(){
+		// clearInterval(oBox2.timer);					//这里设置关闭定时器是为了防止多次点击总会有一个定时器无法关闭
+		// oBox2.timer=setInterval(function(){			//循环定时器开启，并给定时器赋值id
+		// 	var iSpeed = 0						//定义速度
+		// 	// iSpeed =(600-oBox2.offsetLeft)/10	
+		// 	// //执行速度和目标值减去当前值的差成正比,即离目标的越远速度越快,因此执行速度可以是(目标值 - 当前值) / 系数;
+		// 	// iSpeed = Math.ceil(iSpeed)			//由于减速动画的速度有除法,所以会产生小数,需要取整
+			 
+		// 	iSpeed =(300-oBox2.offsetHeight)/10
+		// 	// iSpeed = Math.floor(iSpeed)
+		// 	iSpeed > 0 ? iSpeed = Math.ceil(iSpeed) : iSpeed = Math.floor(iSpeed)
+		// 	if(!iSpeed){						//如果速度为0，动画结束，因为0的布尔值为false，所以要取非才能进去	
+		// 		clearInterval(oBox2.timer);			//关闭定时器
+		// 	}else{								//如果oBox2的左外边框不等于600
+		// 		oBox2.style.height=oBox2.offsetHeight + iSpeed +'px';		//则盒子的left值就是oBox的左外边框+速度+像素单位
+		// 	}
+			
+		// },30)
+		animate1(oBox2,'height',300);
+	}
+		
+
+	oBox3.onmouseover=function(){
+		// clearInterval(oBox3.timer);					//这里设置关闭定时器是为了防止多次点击总会有一个定时器无法关闭
+		// oBox3.timer=setInterval(function(){			//循环定时器开启，并给定时器赋值id
+		// 	var iSpeed = 0						//定义速度
+		// 	var current = parseFloat(getComputedStyle(oBox3,false)['opacity']);
+		// 	current = Math.round(current *100);
+		// 	console.log(iSpeed);
+		// 	iSpeed =(20-current)/10
+		// 	iSpeed > 0 ? iSpeed = Math.ceil(iSpeed) : iSpeed = Math.floor(iSpeed)
+		// 	if(!iSpeed){			
+		// 		clearInterval(oBox3.timer);							//关闭定时器
+		// 	}else{												//如果oBox的左外边框不等于600
+		// 		oBox3.style.opacity=(current + iSpeed)/100;		//则盒子的left值就是oBox的左外边框+速度+像素单位
+		// 	}
+			
+		// },30)
+		animate1(oBox3,'opacity',50);
+	}
+</script>
+</html>

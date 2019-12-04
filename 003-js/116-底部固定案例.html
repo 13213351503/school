@@ -32,8 +32,8 @@
 	// console.log(oBox.offsetHeight)
 	// console.log(iTop)
 	window.onscroll=window.onload=window.onresize=function(){
-		var	iTop =window.innerHeight - oBox.offsetHeight + getScrollTop()
-		animate(oBox,'top',iTop);
+		var	iTop =window.innerHeight - oBox.offsetHeight + getScrollTop()	//页面可视高度-盒子自身高度+隐藏在内容区域上侧的高度
+		animate(oBox,'top',iTop);											//调用外部引入的函数
 	}
 </script>
 </html>

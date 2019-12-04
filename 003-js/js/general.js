@@ -1,35 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>115-函数封装.html</title>
-	<style>
-		*{
-			margin: 0;
-			padding: 0;
-		}
-		.father{
-			width: 100px;
-			margin: 50px auto;
-		}
-		.father div{
-			width: 100px;
-			height: 100px;
-			background: red;
-			line-height: 100px;
-			text-align:center;
-			margin-top: 20px;
-		}
-	</style>
-</head>
-<body>
-	<div class="father">
-		<div id="box1">变宽</div>
-		<div id="box2">变高</div>
-		<div id="box3">变透明</div>
-	</div>
-</body>
-<script>
+
+		// 【元素，属性，值】
+
 	function animate(obj,attr,target){				//定义一个封装函数，里面传的值为【元素，属性，值】
 		clearInterval(obj.timer);					//这里设置关闭定时器是为了防止多次点击总会有一个定时器无法关闭
 		obj.timer=setInterval(function(){			//开启定时器
@@ -39,9 +10,9 @@
 				current =  Math.round(current*100);			//让它的透明度的值都*100，方便函数计算
 			}
 			if(current<target){							//当前值小于目标值
-				iSpeed = 2;								//给他设置速度为正2
+				iSpeed = 6;								//给他设置速度为正2
 			}else{										//当前值大于目标值
-				iSpeed = -2;							//给他设置速度为负2
+				iSpeed = -6;							//给他设置速度为负2
 			}
 			if(Math.abs(current-target) <Math.abs(iSpeed)){		//如果当前值和目标值的差小于当前速度值
 				if(attr == 'opacity'){							//如果属性的“透明度”
@@ -63,21 +34,3 @@
 	function getScrollTop(){
 		return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
 	}
-
-
-	var oBox1 = document.getElementById('box1');
-	var oBox2 = document.getElementById('box2');
-	var oBox3 = document.getElementById('box3');
-	// var timer;
-	oBox1.onmouseover=function (){
-		animate(oBox1,'width',300)
-	}
-	oBox2.onmouseover=function (){
-		animate(oBox2,'height',300)
-	}	
-	
-	oBox3.onmouseover=function (){
-		animate(oBox3,'opacity',20)
-	}
-</script>
-</html>

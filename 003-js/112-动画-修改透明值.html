@@ -32,27 +32,29 @@
 	var oBtn = document.getElementById('btn');	//获取id为btn的元素
 	var oBox = document.getElementById('box');	//获取id为box的元素
 	var timer = 0;								//定义关闭定时器的id
-	// oBtn.onclick=function(){					//当oBtn点击时
+	oBtn.onclick=function(){					//当oBtn点击时
 		clearInterval(timer);					//这里设置关闭定时器是为了防止多次点击总会有一个定时器无法关闭
-		timer=setInterval(function(){
-			console.log(getComputedStyle(oBox,false['opacity']))
+		// console.log(parseFloat(getComputedStyle(oBox,false)['opacity']));				
+		timer=setInterval(function(){			//开启定时器
+			var current = parseFloat(getComputedStyle(oBox,false)['opacity'])	//获取oBox盒子的透明度，并且把获取到的字符串转化为数字
 			// console.log(oBox.offsetLeft)
-			var iSpeed = 0						//定义速度
-			if(oBox.offsetLeft<600){			//如果oBox的左外边框小于600
-				iSpeed = 7;					//给他设置速度为正10
-			}else{								//如果oBox的左外边框大于600
-				iSpeed = -7;					//给他设置速度为负10
+			current = Math.round(current *100);		//因为获取的透明度值在0-1之间不易运算，把它*100方便函数运算
+			var iSpeed = 0							//定义速度
+			if(current<100){						//如果透明度的当前值小于100
+				iSpeed = 2;							//给他设置速度为正2
+			}else{									//如果透明度的当前值大于100
+				iSpeed = -2;						//给他设置速度为负2
 			}
 			// console.log('timer',timer,'is running');
-			if(Math.abs(oBox.offsetLeft-600) <Math.abs(iSpeed)){			
-				oBox.style.left='600px'
+			if(Math.abs(100-current) < Math.abs(iSpeed)){	//如果当前值和目标值的差小于当前速度值		
+				oBox.style.opacity='1'			//则oBox的透明度直接变为1
 				clearInterval(timer);			//关闭定时器
-			}else{								//如果oBox的左外边框不等于600
-				oBox.style.left=oBox.offsetLeft + iSpeed +'px';		//则盒子的left值就是oBox的左外边框+速度+像素单位
+			}else{								//如果当前值和目标值的差大于当前速度值
+				oBox.style.opacity=(current + iSpeed)/100;		//因为前面透明度因为方面计算把透明度*100，最后的时候要/100；
 			}
 			
 		},30)
 		
-	<!-- } -->
+	}
 </script>
 </html>

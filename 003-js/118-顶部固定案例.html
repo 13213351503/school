@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>118-顶部固定案例.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box1{
+			width: 100%;
+			height: 100px;
+			background:green;
+		}
+		.box2{
+			width: 100%;
+			height: 0px;
+			position: fixed;
+			top: 0px;
+			left: 0px;
+			background: orange;
+
+		}
+		.box3{
+			width: 100%;
+			height: 3000px;
+			background: gray;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+	<div class="box2"></div>
+	<div class="box3"></div>
+</body>
+<script src="js/general.js"></script>
+<script>
+	var oBox2 = document.querySelector('.box2')		//获取元素
+	var show = false;								//定义一个变量为false，为了防止滚动条滚动的时候定时器来回开关
+	window.onscroll = function(){					//拖动滚动条是触发函数
+		if(getScrollTop() > 200){					//如果垂直滚动距离大于200
+			if(!show){								//把show变为true进入判断中
+				animate(oBox2,'height',100);		//把oBox2的高变为100
+				console.log(222)			
+				show =true;							//同时把show的值改为true，表示height的高度已经变为100，不需要再去触发动画
+			}
+		}else{										//如果垂直滚动距离小于200
+			if(show){								//同时show的值为true时
+				animate(oBox2,'height',0);			//把oBox2的高变为0
+				console.log(111)
+				show = false;						//同时把show的值改为false，表示height的高度已经变为0，不需要再去触发动画
+			}
+			
+		}
+	}
+</script>
+</html>
