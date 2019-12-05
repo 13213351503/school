@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>131-onmousemove鼠标移动.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			width: 5000px;
+			height: 5000px;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background: green;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script src="js/general.js"></script>
+<script>
+	var oBox = document.getElementById('box');
+	window.addEventListener('mousemove',function(ev){
+		oBox.style.left= getScrollLeft()+ev.clientX + 'px';
+		oBox.style.top=getScrollTop()+ev.clientY + 'px';
+		// console.log('ev.clientX','ev.clientY');
+	},false)
+</script>
+</html>

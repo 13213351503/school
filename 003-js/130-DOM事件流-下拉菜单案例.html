@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>130-DOM事件流-下拉菜单案例.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			display: none;
+			width: 100px;
+			height: 320px;
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn">消息</button>
+	<div id="box"></div>
+</body>
+<script>
+	var oBtn = document.getElementById('btn');
+	var oBox = document.getElementById('box');
+
+	oBtn.addEventListener('click',function(ev){
+		ev.stopPropagation();
+		oBox.style.display='block';
+	},false)
+	oBox.addEventListener('click',function(ev){
+		ev.stopPropagation();
+	},false)
+	window.addEventListener('click',function(){
+		oBox.style.display='none'
+	},false)
+</script>
+</html>

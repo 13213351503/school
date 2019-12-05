@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>132-多个物体跟随鼠标移动.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			width: 5000px;
+			height: 5000px;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background: green;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+		div:first-child{
+			z-index: 99;
+		}
+	</style>
+</head>
+<body>
+	<div><img src="images/00000.jpg" alt=""></div>
+	<div><img src="images/00000.jpg" alt=""></div>
+	<div><img src="images/00000.jpg" alt=""></div>
+	<div><img src="images/00000.jpg" alt=""></div>
+	<div><img src="images/00000.jpg" alt=""></div>
+	<div><img src="images/00000.jpg" alt=""></div>
+	<div><img src="images/00000.jpg" alt=""></div>
+	<div><img src="images/00000.jpg" alt=""></div>
+	<div><img src="images/00000.jpg" alt=""></div>
+	<div><img src="images/00000.jpg" alt=""></div>
+	<div><img src="images/00000.jpg" alt=""></div>
+	
+</body>
+<script src="js/general.js"></script>
+<script>
+	var oBox = document.getElementsByTagName('div')
+	window.addEventListener('mousemove',function(ev){
+	oBox[0].style.top = getScrollTop() + ev.clientY + 'px';
+	oBox[0].style.left = getScrollLeft() + ev.clientX + 'px';
+	for(var i=oBox.length-1;i>0;i--){
+		oBox[i].style.top = oBox[i-1].offsetTop + 30 +'px';
+		oBox[i].style.left = oBox[i-1].offsetLeft + 30 +'px';
+	}
+	},false)
+</script>
+</html>

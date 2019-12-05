@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM事件流</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 200px;
+			height: 200px;
+			background: green;
+			margin: 200px auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	var oBox =document.getElementById('box')
+	// oBox.addEventListener('click',function(){
+	// 	console.log('click','oBox')
+	// },false);
+	// window.addEventListener('click',function(){
+	// 	console.log('click','window')
+	// },false);
+	// document.addEventListener('click',function(){
+	// 	console.log('click','document')
+	// },false);
+	// document.body.addEventListener('click',function(){
+	// 	console.log('click','body')
+	// },false);
+	// document.documentElement.addEventListener('click',function(){
+	// 	console.log('click','documentElement')
+	// },false);
+	oBox.addEventListener('click',function(){
+		console.log('click','oBox')
+	},true);
+	window.addEventListener('click',function(){
+		console.log('click','window')
+	},true);
+	document.addEventListener('click',function(){
+		console.log('click','document')
+	},true);
+	document.body.addEventListener('click',function(){
+		console.log('click','body')
+	},true);
+	document.documentElement.addEventListener('click',function(){
+		console.log('click','documentElement')
+	},true);
+</script>
+</html>

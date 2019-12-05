@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>128-事件处理程序.html</title>
+</head>
+<body>
+	<button id="btn">点击</button>
+	<button id="btn1">移出</button>
+</body>
+<script>
+	var oBtn = document.getElementById('btn');
+	var oBtn1 = document.getElementById('btn1');
+	function haha(){
+		alert('111')
+	}
+	function heihei(){
+		alert('666')
+	}
+	// oBtn.onclick=haha;
+	// oBtn.onclick=heihei;
+
+	oBtn.addEventListener('click',haha,false)
+	oBtn.addEventListener('click',heihei,false)
+	oBtn1.onclick=function(){
+		oBtn.removeEventListener('click',haha,false);	
+	}
+
+</script>
+</html>

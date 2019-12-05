@@ -78,7 +78,7 @@
 	oBox3.onmouseover=function(){
 		clearInterval(oBox3.timer);					//这里设置关闭定时器是为了防止多次点击总会有一个定时器无法关闭
 		oBox3.timer=setInterval(function(){			//循环定时器开启，并给定时器赋值id
-			var iSpeed = 0						//定义速度
+			var iSpeed = 0							//定义速度
 			var current = parseFloat(getComputedStyle(oBox3,false)['opacity']);
 			current = Math.round(current *100);
 			console.log(iSpeed);
