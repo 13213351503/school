@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>133-基础拖拽.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 100px;
+			height: 100px;
+			background: green;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	var oBox = document.getElementById('box');		//获取元素
+	oBox.onmousedown = function(ev){				//当oBox点击的时候
+		var disX = ev.clientX - oBox.offsetLeft;	//点击的时候鼠标距离盒子左边的距离
+		var disY = ev.clientY - oBox.offsetTop;		//点击的时候鼠标距离盒子顶部的距离
+		// console.log(disY,disX)
+		document.onmousemove = function(ev){		//点击的时候鼠标移动带动盒子的移动
+			oBox.style.top = ev.clientY - disY + 'px';	//盒子的topzhi
+			oBox.style.left = ev.clientX - disX+ 'px';
+		}
+		document.onmouseup = function(){
+			document.onmousemove = null;
+			document.onmouseup = null;
+		}
+	}
+</script>
+</html>

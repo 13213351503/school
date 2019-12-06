@@ -22,17 +22,17 @@
 </body>
 <script>
 	var oBtn = document.getElementById('btn');
-	var oBox = document.getElementById('box');
+	var oBox = document.getElementById('box');		//获取元素
 
-	oBtn.addEventListener('click',function(ev){
-		ev.stopPropagation();
-		oBox.style.display='block';
+	oBtn.addEventListener('click',function(ev){		//当oBtn点击时，给oBtn添加事件处理程序
+		ev.stopPropagation();						//阻止事件冒泡 event.stopPropagation()
+		oBox.style.display='block';					//oBox的盒子显示
+	},false)	
+	oBox.addEventListener('click',function(ev){		//当oBox点击时，给oBox添加事件处理程序
+		ev.stopPropagation();						//阻止事件冒泡 
 	},false)
-	oBox.addEventListener('click',function(ev){
-		ev.stopPropagation();
-	},false)
-	window.addEventListener('click',function(){
-		oBox.style.display='none'
-	},false)
+	window.addEventListener('click',function(){		//当window点击时，给oBox添加事件处理程序
+		oBox.style.display='none'					//oBox的盒子隐藏
+	},false)	
 </script>
 </html>

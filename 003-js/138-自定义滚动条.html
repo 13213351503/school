@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>138-自定义滚动条.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box1{
+			width: 500px;
+			height: 50px;
+			background: red;
+			position: relative;
+			margin: 100px auto;
+		}
+		#box{
+			width: 50px;
+			height: 50px;
+			background: green;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+		#son{
+			width: 100px;
+			height: 100px;
+			background: orange;
+			opacity: 0.1;
+		}
+	</style>
+</head>
+<body>
+	<div id="box1">
+		<div id="box"></div>
+	</div>
+	<div id="son"></div>
+</body>
+<script>
+	var oBox = document.getElementById('box');		//获取元素
+	var oSon = document.getElementById('son');		//获取元素
+	var oBox1 = document.getElementById('box1');		//获取元素
+	var disX=0;
+	oBox.onmousedown = function(ev){				//当oBox点击的时候
+		disX = ev.clientX - oBox.offsetLeft;		//点击的时候鼠标距离盒子左边的距离
+		document.onmousemove = function(ev){
+			var l = ev.clientX - disX;
+			if(l<0){
+				l=0
+			}else if(l>oBox1.offsetWidth - oBox.offsetWidth){
+				l=oBox1.offsetWidth - oBox.offsetWidth
+			}
+			
+			oBox.style.left = l + 'px';
+			var scale = l / (oBox1.offsetWidth - oBox.offsetWidth);
+			console.log(scale);
+			oSon.style.width = 600 * scale + 100 +'px';
+			oSon.style.height = 600 * scale + 100 +'px';
+			oSon.style.opacity = 1 * scale + 0.2;
+		}
+		document.onmouseup = function(){
+			document.onmousemove = null;
+			document.onmouseup = null;
+		}
+	}
+</script>
+</html>

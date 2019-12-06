@@ -13,24 +13,38 @@
 			height: 500px;
 			margin: 100px auto;
 		}
+		li{
+			list-style: none;
+			line-height: 40px;
+			border-bottom: 1px dashed #000;
+		}
 	</style>
 </head>
 <body>
 	<div>
 		<textarea  id="txt" cols="30" rows="10"></textarea>
 		<button id="btn">提交</button>
-		<ul id="ul"></ul>
+		<ul id="ul">
+			<li>早发布</li>
+		</ul>
 	</div>
 </body>
+<script src="js/general.js"></script>
 <script>
 	var oTxt = document.getElementById('txt');
 	var oBtn = document.getElementById('btn');
-	var oUl = document.getElementById('ul');
-	oBtn.onclick = function(){
-		var oLi =document.createElement('li');
-		var val = oTxt.value;
-		oli.innerHTML = val;
-		oUl.insertBefore(oLi,oUl.)
+	var oUl = document.getElementById('ul');	//获取元素
+	oBtn.onclick = function(){					
+		if(oTxt.value = ''){
+			var oLi =document.createElement('li');	//生成元素li并定义
+			var val = oTxt.value;					//获取oTox上面的value值
+			oLi.innerHTML = val;					//oLi显示在HTML上的就是oTox上面的value值
+			oLi.style.lineHeight = 0;				//oLi的行高设为0
+			oLi.style.opacity = 0;					//oLi的透明度设为0
+			oUl.insertBefore(oLi,oUl.firstChild)	//把li插入到ul中的第一个
+			animate3(oLi,{lineHeight:40,opacity:100},false);	//调用函数
+			oTxt.value = '';//每次输入完以后value的值为空
+		}			
 	}
 </script>
 </html>

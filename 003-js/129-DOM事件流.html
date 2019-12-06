@@ -20,13 +20,13 @@
 	<div id="box"></div>
 </body>
 <script>
-	var oBox =document.getElementById('box')
+	var oBox =document.getElementById('box')					//完整DOM事件流-事件捕获阶段-处于目标阶段-事件冒泡阶段
 	// oBox.addEventListener('click',function(){
 	// 	console.log('click','oBox')
 	// },false);
-	// window.addEventListener('click',function(){
+	// window.addEventListener('click',function(){	
 	// 	console.log('click','window')
-	// },false);
+	// },false);												//事件捕获：document最先接收到事件,然后沿DOM树依次向下传播到具体的元素
 	// document.addEventListener('click',function(){
 	// 	console.log('click','document')
 	// },false);
@@ -44,7 +44,7 @@
 	},true);
 	document.addEventListener('click',function(){
 		console.log('click','document')
-	},true);
+	},true);													//事件冒泡：事件由具体元素接收,然后逐级向上传播
 	document.body.addEventListener('click',function(){
 		console.log('click','body')
 	},true);

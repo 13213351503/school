@@ -43,12 +43,12 @@
 <script>
 	var oBox = document.getElementsByTagName('div')				//获取元素
 	window.addEventListener('mousemove',function(ev){			//当鼠标在window界面移动的时候执行函数
-	oBox[0].style.top = getScrollTop() + ev.clientY + 'px';																	//下标为0的盒子的top值为页面的垂直滚动距离+鼠标的垂直移动距离+像素单位
-	oBox[0].style.left = getScrollLeft() + ev.clientX + 'px';
-	//下标为0的盒子的left值为页面的水平滚动距离+鼠标的水平移动距离+像素单位
-	for(var i=oBox.length-1;i>0;i--){																						//遍历所有盒子，i的总数为length-1，因为下标为0的盒子已经有了，所以i>0，
-		oBox[i].style.top = oBox[i-1].offsetTop + 30 +'px'; //每一个盒子的top值
-		oBox[i].style.left = oBox[i-1].offsetLeft + 30 +'px';
+	oBox[0].style.top = getScrollTop() + ev.clientY + 'px';		//下标为0的盒子的top值为页面的垂直滚动距离+鼠标的垂直移动距离+像素单位															
+	oBox[0].style.left = getScrollLeft() + ev.clientX + 'px';	//下标为0的盒子的left值为页面的水平滚动距离+鼠标的水平移动距离+像素单位
+	
+	for(var i=oBox.length-1;i>0;i--){	//遍历所有盒子，i的总数为length-1，因为下标为0的盒子已经有了，所以i>0，从大往小开始遍历，所以要i--																					
+		oBox[i].style.top = oBox[i-1].offsetTop + 30 +'px'; 	//每一个盒子的top值都和前一个盒子的当前值比较，然后加上30和像素
+		oBox[i].style.left = oBox[i-1].offsetLeft + 30 +'px';	//每一个盒子的left值都和前一个盒子的当前值比较，然后加上30和像素
 	}
 	},false)
 </script>
