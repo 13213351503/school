@@ -31,9 +31,12 @@
 			
 		},30)
 	}	
+
+	//确定页面的垂直滚动距离
 	function getScrollTop(){
 		return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
 	}
+	//确定页面的水平滚动距离
 	function getScrollLeft(){
 		return window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft;
 	}

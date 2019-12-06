@@ -26,27 +26,28 @@
 	</style>
 </head>
 <body>
-	<div><img src="images/00000.jpg" alt=""></div>
-	<div><img src="images/00000.jpg" alt=""></div>
-	<div><img src="images/00000.jpg" alt=""></div>
-	<div><img src="images/00000.jpg" alt=""></div>
-	<div><img src="images/00000.jpg" alt=""></div>
-	<div><img src="images/00000.jpg" alt=""></div>
-	<div><img src="images/00000.jpg" alt=""></div>
-	<div><img src="images/00000.jpg" alt=""></div>
-	<div><img src="images/00000.jpg" alt=""></div>
-	<div><img src="images/00000.jpg" alt=""></div>
-	<div><img src="images/00000.jpg" alt=""></div>
+	<div>1</div>
+	<div>2</div>
+	<div>3</div>
+	<div>4</div>
+	<div>5</div>
+	<div>6</div>
+	<div>7</div>
+	<div>8</div>
+	<div>9</div>
+	<div>10</div>
+	<div>11</div>
 	
 </body>
 <script src="js/general.js"></script>
 <script>
-	var oBox = document.getElementsByTagName('div')
-	window.addEventListener('mousemove',function(ev){
-	oBox[0].style.top = getScrollTop() + ev.clientY + 'px';
+	var oBox = document.getElementsByTagName('div')				//获取元素
+	window.addEventListener('mousemove',function(ev){			//当鼠标在window界面移动的时候执行函数
+	oBox[0].style.top = getScrollTop() + ev.clientY + 'px';																	//下标为0的盒子的top值为页面的垂直滚动距离+鼠标的垂直移动距离+像素单位
 	oBox[0].style.left = getScrollLeft() + ev.clientX + 'px';
-	for(var i=oBox.length-1;i>0;i--){
-		oBox[i].style.top = oBox[i-1].offsetTop + 30 +'px';
+	//下标为0的盒子的left值为页面的水平滚动距离+鼠标的水平移动距离+像素单位
+	for(var i=oBox.length-1;i>0;i--){																						//遍历所有盒子，i的总数为length-1，因为下标为0的盒子已经有了，所以i>0，
+		oBox[i].style.top = oBox[i-1].offsetTop + 30 +'px'; //每一个盒子的top值
 		oBox[i].style.left = oBox[i-1].offsetLeft + 30 +'px';
 	}
 	},false)
