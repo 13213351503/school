@@ -172,3 +172,15 @@
 	function getScrollLeft(){
 		return window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft;
 	}
+
+	//防止碰撞函数
+	function check(obj,obj1){
+		if(obj.offsetLeft+obj.offsetWidth>obj1.offsetLeft 
+			&& obj.offsetTop+obj.offsetHeight>obj1.offsetTop 
+			&& obj1.offsetTop+obj1.offsetHeight>obj.offsetTop 
+			&& obj1.offsetLeft+obj1.offsetWidth>obj.offsetLeft){
+			return true;
+		}else{
+			return false;
+		}
+	}

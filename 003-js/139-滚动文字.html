@@ -47,7 +47,7 @@
 <body>
 	<div class="box">
 		<div class="content">
-			<div class="tex">
+			<div class="txt">
 				法治兴则国兴，法治强则国强
 
 历史和现实都告诉我们，法治兴则国兴，法治强则国强。从我国古代看，凡属盛世都是法制相对健全的时期。春秋战国时期，法家主张“以法而治”，偏在雍州的秦国践而行之，商鞅“立木建信”，强调“法必明、令必行”，使秦国迅速跻身强国之列，最终促成了秦始皇统一六国。汉高祖刘邦同关中百姓“约法三章”，为其一统天下发挥了重要作用。汉武帝时形成的汉律60篇，两汉沿用近400年。唐太宗以奉法为治国之重，一部《贞观律》成就了“贞观之治”；在《贞观律》基础上修订而成的《唐律疏议》，为大唐盛世奠定了法律基石。
@@ -141,25 +141,35 @@
 	var oFather = document.querySelector('.father');
 	var oSon = document.querySelector('.son');
 	var disY = 0;
+	var t = 0;
+	function move(){
+		if(t<0){
+			t=0
+		}else if(t>oFather.offsetHeight - oSon.offsetHeight){
+			t=oFather.offsetHeight - oSon.offsetHeight
+		}
+		oSon.style.top = t + 'px';
+		var scale = t / (oFather.offsetHeight - oSon.offsetHeight);
+		oTxt.style.top = -(oTxt.offsetHeight - oContent.offsetHeight)* scale + 'px';
+	}
 	oSon.onmousedown = function(ev){				
 		disY = ev.clientY - oSon.offsetTop;		
 		document.onmousemove = function(ev){
-			var t = ev.clientY - disY;
-			if(t<0){
-				t=0
-			}else if(t>oFather.offsetHeight - oSon.offsetHeight){
-				t=oFather.offsetHeight - oSon.offsetHeight
-			}
-			
-			oSon.style.top = t + 'px';
-			var scale = t / (oFather.offsetHeight - oSon.offsetHeight);
-			console.log(scale);
-			oSon.style.height = 600 * scale + 100 +'px';
+			t = ev.clientY - disY;
+			move();
 		}
 		document.onmouseup = function(){
 			document.onmousemove = null;
 			document.onmouseup = null;
 		}
+	}
+	oBox.onmousewheel=function(ev){
+		if(ev.wheelDelta > 0){
+			t -= 10;
+		}else{
+			t += 10;
+		}
+		move();
 	}
 </script>
 </html>
