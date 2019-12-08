@@ -35,7 +35,7 @@
 	var oBtn = document.getElementById('btn');
 	var oUl = document.getElementById('ul');	//获取元素
 	oBtn.onclick = function(){					
-		if(oTxt.value = ''){
+		if(oTxt.value != ''){
 			var oLi =document.createElement('li');	//生成元素li并定义
 			var val = oTxt.value;					//获取oTox上面的value值
 			oLi.innerHTML = val;					//oLi显示在HTML上的就是oTox上面的value值

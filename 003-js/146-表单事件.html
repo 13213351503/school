@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>146-表单事件.html</title>
+</head>
+<body>
+	<form action="http://www.baidu.com" id="form1">
+		<input type="text" id="txt" autocomplete="off">
+		<input type="submit" id="sub">
+		<input type="reset" id="res">
+	</form>
+
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	var oSub = document.getElementById('sub');
+	var oRes = document.getElementById('res');
+	var oForm = document.getElementById('form1');
+	oTxt.onfocus = function(){
+		console.log('aaa');			//onfocus 表单获取焦点触发
+	}
+	oTxt.onblur = function(){
+		console.log('bbb');			//onblur 表单失去焦点触发
+	}
+	oTxt.onchange = function(){
+		console.log('ccc');			//onchange 页面内容有改动,失去焦点执行
+	}
+	oTxt.oninput = function(){
+		console.log('ddd');			//oninput 输入后触发,不包括功能键
+	}
+	oForm.onsubmit = function(){
+		console.log('111')			//onsubmit form表单提交事件
+	}
+	oForm.onreset = function(){
+		console.log('222')			//onreset form表单重置事件
+	}
+</script>
+</html>

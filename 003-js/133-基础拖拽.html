@@ -28,12 +28,12 @@
 		var disY = ev.clientY - oBox.offsetTop;		//点击的时候鼠标距离盒子顶部的距离
 		// console.log(disY,disX)
 		document.onmousemove = function(ev){		//点击的时候鼠标移动带动盒子的移动
-			oBox.style.top = ev.clientY - disY + 'px';	//盒子的topzhi
-			oBox.style.left = ev.clientX - disX+ 'px';
+			oBox.style.top = ev.clientY - disY + 'px';	//盒子的top值=鼠标点击时Y的值-鼠标点击时距离盒子左边框的距离+像素
+			oBox.style.left = ev.clientX - disX+ 'px';	//盒子的left值=鼠标点击时X的值-鼠标点击时距离盒子上边框的距离+像素
 		}
-		document.onmouseup = function(){
-			document.onmousemove = null;
-			document.onmouseup = null;
+		document.onmouseup = function(){				//当鼠标抬起的时候
+			document.onmousemove = null;				//document的onmousemove事件停止
+			document.onmouseup = null;					//document的onmouseup事件也停止
 		}
 	}
 </script>
