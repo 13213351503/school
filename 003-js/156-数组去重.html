@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>156-数组去重.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var arr = [5,4,9,5,1,0,4,2,5];
+	
+	var result = [];
+	var obj = {};
+	for(var i = 0;i<arr.length;i++){
+		obj[arr[i]] ='';
+	}
+	for(attr in obj){
+		result.push(attr);
+
+	}
+	console.log(result)
+</script>
+</html>

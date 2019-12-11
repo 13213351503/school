@@ -25,6 +25,20 @@
 			margin-left: -30px;
 			background: green;
 		}
+		.topline{
+			width: 30px;
+			position: absolute;
+			top: 0px;
+			left: 100%;
+			background: red;
+		}
+		.bottomline{
+			width: 30px;
+			position: absolute;
+			bottom: 0px;
+			left: 100%;
+			background: red;
+		}
 	</style>
 </head>
 <body>
@@ -33,24 +47,86 @@
 	</div>
 </body>
 <script>
-	var oWrap = document.getElementById('wrap');
-	var oBird = document.getElementById('bird');
-	var oBirdTimer = 0;
-	var iSpeed = 0;
-	clearInterval(oBirdTimer);
-	oBirdTimer = setInterval(function(){
-		iSpeed += 1
-		var t = oBird.offsetTop + iSpeed
-		
-		if(t < 0){
-			t = 0
-		}else if(t > oWrap.offsetHeight-2-oBird.offsetHeight){
-			t = oWrap.offsetHeight-2-oBird.offsetHeight;
+	function check(obj,obj1){
+		if(obj.offsetLeft+obj.offsetWidth>obj1.offsetLeft 
+			&& obj.offsetTop+obj.offsetHeight>obj1.offsetTop 
+			&& obj1.offsetTop+obj1.offsetHeight>obj.offsetTop 
+			&& obj1.offsetLeft+obj1.offsetWidth>obj.offsetLeft){
+			return true;
+		}else{
+			return false;
 		}
-		oBird.style.top = t +'px';
+	}																		//防碰撞测试通用函数
+	function getRandom(min,max){
+		return (Math.round(min + (max-min)*Math.random()))	//随机生成柱子的高度函数。返还出去为了方便下面的到
+	}
+
+	var oWrap = document.getElementById('wrap');			//获取大盒子
+	var oBird = document.getElementById('bird');			//获取小鸟
+	var oBirdTimer = 0,addLinetimer = 0, linemovetimer = 0;	//定义三个定时器，分别是小鸟落体定时器，生成柱子定时器，柱子移动定时器
+	var iSpeed = 0;											//定义速度
+	var space = 200;										//定义两个柱子之间的距离
+	//小鸟落体定时器
+	clearInterval(oBirdTimer);								//关闭小鸟落体的定时器
+	oBirdTimer = setInterval(function(){					//启动小鸟落体定时器
+		// console.log('aaa');
+		iSpeed += 0.5										//速度每次加0.5，做一个加速落体
+		var t = oBird.offsetTop + iSpeed					//定义一个变量t，等于盒子与自己父元素上内边框的距离加上落体的速度
+		if(t < 0){											//t如果小于0，
+			t = 0;											//防止盒子超出父元素的高度，直接把盒子的t值等于0
+			die();											//这个时候关闭定时器，防止函数多次运行
+		}else if(t > oWrap.offsetHeight-2-oBird.offsetHeight){		//父元素盒子的高度-两个像素的上下边框-小盒子自身的高度，这个值就是盒子的活动范围
+			t = oWrap.offsetHeight-2-oBird.offsetHeight;			//如果大于这个活动范围，就让t的值等于这个活动范围的值
+			die();													//然后关闭定时器
+		}
+		oBird.style.top = t +'px';							//这个盒子的高度就等于t值的高度
 	},30);
+
+	//生成柱子函数
+	function addLine(){								
+		var oTop = document.createElement('div');			//在父元素的顶部生成一个盒子
+		var oBottom = document.createElement('div');		//在父元素的底部生成一个盒子
+		var h = getRandom(180,300);							//每次刷新会在180-300之间生成一个随机数
+		// console.log(h);
+		oTop.className = 'topline';							//给生成在顶部的柱子添加类名
+		oTop.leftDate = 100;
+		oBottom.className = 'bottomline';					//给生成在顶部的柱子添加类名
+		oTop.style.height = h + 'px';						//顶部柱子的高度就是生成随机数的高度。记得加单位
+		// console.log(oTop.offsetHeigh);
+		oBottom.style.height = oWrap.offsetHeight - h - space - 2 +'px';	//底部的高度就是大盒子的总高度-随机数的高度-前面定义的空白高度-边框高度+单位
+		oWrap.appendChild(oTop);							//在父元素中追加一个顶部柱子
+		oWrap.appendChild(oBottom);							//在父元素中追加一个顶部柱子
+	}
+	//生成柱子定时器
+	clearInterval(addLinetimer);							//先关闭一个生成柱子定时器
+	addLinetimer = setInterval(addLine,500);				//开启生成柱子定时器，调用生成柱子的函数
+
+	//生成柱子移动定时器
+	clearInterval(linemovetimer);
+	linemovetimer = setInterval(function(){
+		var aTopline = document.querySelectorAll('.topline');
+		var aBottomline = document.querySelectorAll('.bottomline');
+		for(var i = 0;i<aTopline.length;i++){
+			if(check(oBird,aTopline[i]) || check(oBird,aBottomline[i])){
+				die();
+			}
+			aTopline[i].style.left = aBottomline[i].style.left = aTopline[i].leftDate - 1 + '%';
+			aTopline[i].leftDate -= 1;
+			if(aTopline[i].leftDate < -10){
+				oWrap.removeChild(aTopline[i]);
+				oWrap.removeChild(aBottomline[i]);
+			
+			}
+		}
+	},30)
+
+	function die(){
+		clearInterval(oBirdTimer);
+		clearInterval(addLinetimer);
+		clearInterval(linemovetimer);
+	}
 	document.onkeydown = function(){
-		iSpeed = -10;
+		iSpeed = -4;					//为了让盒子不会一直降落，在触发按键的时候可以提高盒子
 
 	}
 </script>

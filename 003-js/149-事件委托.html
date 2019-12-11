@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>149-事件委托.html</title>
+</head>
+<body>
+	<button id="btn">添加</button>
+	<ul id="ul1">
+		<li>1 	<a href="javascript:;">删除</a>	</li>
+		<li>2 	<a href="javascript:;">删除</a>	</li>
+		<li>3 	<a href="javascript:;">删除</a>	</li>
+		<li>4 	<a href="javascript:;">删除</a>	</li>
+		<li>5 	<a href="javascript:;">删除</a>	</li>
+		<li>6 	<a href="javascript:;">删除</a>	</li>
+		<li>7 	<a href="javascript:;">删除</a>	</li>
+		<li>8 	<a href="javascript:;">删除</a>	</li>
+		<li>9 	<a href="javascript:;">删除</a>	</li>
+		<li>10 	<a href="javascript:;">删除</a>	</li>
+	</ul>
+</body>
+<script>
+	var oBtn = document.getElementById('btn');
+	var oUl = document.getElementById('ul1');
+	var aA = document.querySelectorAll('a');
+ 	for(var i = 0;i<aA.length;i++){
+ 		aA[i].onclick = function(){
+ 			oUl.removeChild(this.parentNode)
+ 		}
+ 	}
+ 	oUl.onclick = function(ev){
+ 		oUl.removeChild(ev.target.parentNode);
+ 	}
+ 	oBtn.onclick = function(){
+ 		var oLi = document.createElement('li');
+ 		var oA = document.createElement('a');
+ 		oA.href="javascript:;";
+ 		oLi.innerHTML = '添加的';
+ 		oA.innerHTML = '删除';
+ 		oUl.appendChild(oLi)
+ 		oLi.appendChild(oA)
+ 	}
+</script>
+</html>

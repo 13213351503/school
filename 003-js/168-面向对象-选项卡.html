@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>168-面向对象-选项卡.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.btn-list{
+			overflow: hidden;
+		}
+		.btn-item{
+			list-style: none;
+			float: left;
+			width: 100px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+		}
+		.content-list{
+			overflow: hidden;
+			margin-top: 20px;
+		}
+		.content-item{
+			display: none;
+			list-style: none;
+			width:400px;
+			height: 400px;
+			line-height: 400px;
+			text-align: center;
+			border: 1px solid #000;
+			font-size: 30px;
+		}
+		.active{
+			color: #ff6700;
+			border-bottom: 2px solid #ff6700;
+		}
+	</style>
+</head>
+<body>
+	<ul class="btn-list" id="btn-list">
+		<li class="btn-item active">第一个</li>
+		<li class="btn-item">第二个</li>
+		<li class="btn-item">第三个</li>
+		<li class="btn-item">第四个</li>
+	</ul>
+	<ul class="content-list" id="content-list">
+		<li class="content-item" style="display:block">1</li>
+		<li class="content-item">2</li>
+		<li class="content-item">3</li>
+		<li class="content-item">4</li>
+	</ul>
+
+<script>
+	// var aBtn = document.querySelectorAll('.nav .nav-item')
+	// var aBox = document.querySelectorAll('.content .content-item')
+	// console.log(aBtn)
+	// console.log(aBox)
+	// for(var i = 0;i<aBtn.length;i++){
+	// 	// alert('a')
+	// 	console.log(aBtn[i]);
+	// 	aBtn[i].index=i;
+	// 	aBtn[i].onclick=function(){
+	// 		// alert('a');
+	// 		for(var	k =0;k<aBtn.length;k++){
+	// 			aBtn[k].className='nav-item';
+	// 			aBox[k].style.display='none';
+	// 		}
+	// 		this.className='active nav-item';
+	// 		aBox[this.index].style.display='block';
+	// 	}
+	// }	
+	function Tab(aBtnSelector,aContentSelector){
+		this.aBtn = document.querySelectorAll(aBtnSelector);
+		this.aContetn = document.querySelectorAll(aContentSelector);
+		this.bindEvent();
+	}
+	Tab.prototype.bindEvent = function(){
+		var _this = this;
+		for(var i =0;i<this.aBtn.length;i++){
+			this.aBtn[i].index = i;
+			this.aBtn[i].onclick = function(){
+				// console.log(this)
+				_this.fnClick(this);
+			}
+		}
+	}
+	Tab.prototype.fnClick = function(oBtn){
+		for(var j=0;j<this.aBtn.length;j++){
+				this.aBtn[j].className = 'btn-item';
+				this.aContetn[j].style.display = 'none';
+			}
+		oBtn.className = 'active btn-item';
+		this.aContetn[oBtn.index].style.display = 'block';
+	} 
+	new Tab('#btn-list li','#content-list li');
+	new Tab('#btn-list1 li','#content-list1 li');
+	new Tab('#btn-list2 li','#content-list2 li');
+</script>
+</html>

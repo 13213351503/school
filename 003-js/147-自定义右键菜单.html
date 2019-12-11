@@ -26,12 +26,12 @@
 	var oBox = document.getElementById('box');
 	document.oncontextmenu = function(ev){
 		oBox.style.display='block';
-		ev.preventDefault()
+		ev.preventDefault()			//阻止默认行为，阻止电脑右键菜单的出现
 		oBox.style.top = ev.clientY + 'px';
 		oBox.style.left = ev.clientX + 'px';
 	}
 	oBox.onclick = function(ev){
-		ev.stopPropagation();
+		ev.stopPropagation(); 		//阻止事件冒泡，点击盒子的时候防止盒子消失
 	}
 	document.onclick = function(){
 		oBox.style.display='none';

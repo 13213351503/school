@@ -9,8 +9,10 @@
 </body>
 <script>
 	function getRandom(min,max){
-		console.log(Math.round(min + (max-min)*Math.random()))
+		return (Math.round(min + (max-min)*Math.random())) 	//(四舍五入(最小值100+(最大值-最小值)*0-1之间的随机数))
 	}
-	getRandom(100,110)
+	getRandom(100,110)				//调用函数并传值
+	console.log(getRandom(100,110))	//获取100-110之间的整数
+	console.log(Math.random())		//Math.random() 返回0到1之间的伪随机数.包括0但是不包括1
 </script>
 </html>

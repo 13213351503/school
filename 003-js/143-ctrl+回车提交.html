@@ -24,14 +24,26 @@
 		<input type="text" id="txt">
 		<button id="btn">提交</button>
 		<ul id="ul1">
-			<li>123</li>
 		</ul>
 	</div>
 </body>
 <script>
 	var oTxt = document.getElementById('txt');
 	var oBtn = document.getElementById('btn');
-	var oUl = document.getElementById('ul1');
-	
+	var oUl = document.getElementById('ul1');		//获取元素
+	oBtn.onclick = function(){						//当btn点击的时候
+		var val = oTxt.value;						//定义val等于输入框输入的值
+		var aLi = document.createElement('li');		//生成li元素
+		aLi.innerHTML = val;						//li在页面中显示的内容就是输入框输入的值
+		oUl.insertBefore(aLi,oUl.firstChild);		//在ul的最前面插入li元素
+		oTxt.value = '';
+	}
+	oTxt.onkeydown = function(ev){
+		console.log(ev.keyCode);
+		if(ev.keyCode == 13 && ev.ctrlKey){
+			oBtn.onclick();
+		}
+		
+	}
 </script>
 </html>

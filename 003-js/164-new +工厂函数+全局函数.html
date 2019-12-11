@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>164-new +工厂函数+全局函数.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function showName(){					//注意点：将构造函数里面的方法指向全局函数,这样所有的实例都共享这个全局的函数
+		console.log("I am "+this.name);
+	}
+	function showAge(){
+		console.log("I am "+this.age + " years old");	
+	}
+	function CreatePerson(name,age){						//缺点：全局函数有可能会在其他地方调用,这时会有风险
+		this.name = name;										//如果方法太多,就需要创建大量的全局函数	
+		this.age = age;											//违背面向对象的封装特性
+		this.showName = showName;
+		this.showAge = showAge;
+	}							
+	var person1 =new CreatePerson('tom',17);		
+	console.log(person1);
+	person1.showName();
+	person1.showAge();
+
+	var	person2 =new CreatePerson('james',18);
+	console.log(person2);
+	person2.showName();
+	person2.showAge();
+	console.log(person1.showName == person2.showName)		
+</script>
+</html>

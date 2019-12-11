@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>161-用工厂模式的函数创建对象.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function createPerson(name,age){		//不能用new来创建对象
+		var obj = new Object();
+		obj.name = name;
+		obj.age = age;
+		obj.showName = function(){
+			console.log("I am "+this.name);
+		}
+		obj.showAge = function(){
+			console.log("I am "+this.age + " years old");	
+		}
+		return obj;
+	}							
+	var person1 = createPerson('tom',17);
+	console.log(person1);
+	person1.showName();
+	person1.showAge();
+	var	person2 =createPerson('james',18);
+	console.log(person2);
+	person2.showName();
+	person2.showAge();
+	console.log(person1.showName == person2.showName)	//方法不能被实例共享,即每个对象实例都生成一个相同的方法
+</script>
+</html>

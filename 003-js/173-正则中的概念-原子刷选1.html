@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>172-正则中的概念-原子.html</title>
+</head>
+<body>
+	<div>
+		<input type="text" id="txt">
+		<button id="btn">提交</button>
+		<ul id="ul">
+		</ul>
+	</div>
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	var oBtn = document.getElementById('btn');
+	var oUl = document.getElementById('ul');	//获取元素
+	oBtn.onclick = function(){					
+		if(oTxt.value != ''){
+			var oLi =document.createElement('li');	//生成元素li并定义
+			var val = oTxt.value;			//获取oTox上面的value值
+			var reg = /猪|大爷|呵呵/g;
+			oLi.innerHTML = val.replace(reg,'*');					//oLi显示在HTML上的就是oTox上面的value值
+		
+			oUl.insertBefore(oLi,oUl.firstChild)	//把li插入到ul中的第一个
+			oTxt.value = '';//每次输入完以后value的值为空
+		}			
+	}
+</script>
+	
+</html>

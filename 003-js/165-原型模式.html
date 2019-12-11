@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>165-原型模式.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name){
+		this.name = name;							//可以在原型对象prototype添加共用的属性或者方法
+	}
+	Person.prototype.sayHi = function(){			//原型 prototype 是存在于构造函数上的一个对象,所有的实例对象都可以访问原型对象
+		console.log('hi...')						//变化的属性和方法写在构造器中 
+	}
+	console.log(Person.prototype)
+	var person1 = new Person('bob');
+	console.log(person1);
+	person1.sayHi();
+	var person2 = new Person('james');
+	console.log(person2);	
+	person2.sayHi();
+	console.log(person1.sayHi == person2.sayHi)
+</script>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- saved from url=(0104)file:///D:/Sublime/Sublime%20Text%203/k/school/003-js/143-ctrl+%E5%9B%9E%E8%BD%A6%E6%8F%90%E4%BA%A4.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<title>143-ctrl+回车提交.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 500px;
+			margin: 100px auto;
+		}
+		li{
+			line-height: 40px;
+			list-style:none;
+			border-bottom: 1px dashed #000;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<input type="text" id="txt">
+		<button id="btn">提交</button>
+		<ul id="ul1"><li>s</li><li>s</li><li>s</li><li>s</li><li>sadss</li><li>dasda</li><li>afsf</li><li>af</li><li>faf</li><li>fasf</li>
+		</ul>
+	</div>
+
+<script>
+	var oTxt = document.getElementById('txt');
+	var oBtn = document.getElementById('btn');
+	var oUl = document.getElementById('ul1');
+	oBtn.onclick = function(){
+		var val = oTxt.value;
+		var aLi = document.createElement('li');
+		aLi.innerHTML = val;
+		oUl.insertBefore(aLi,oUl.firstChild);
+		oTxt.value = '';
+	}
+	oTxt.onkeydown = function(ev){
+		console.log(ev.keyCode);
+		if(ev.keyCode == 13 && ev.ctrlKey){
+			oBtn.onclick();
+		}
+		
+	}
+</script>
+</body></html>

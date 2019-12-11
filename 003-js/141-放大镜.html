@@ -22,9 +22,14 @@
 			border: 1px solid #000;
 		}
 		#mask{
+			position: absolute;
+			top: 0px;
+			left: 0px;
 			width: 250px;
 			height: 250px;
-			background: rgba();
+			background: rgba(255,255,0,0.5);
+			display: none;
+
 		}
 		#list{
 			position: absolute;
@@ -52,7 +57,7 @@
 			height: 600px;
 			border: 1px solid #000;
 			overflow: hidden;
-			/*display: none;*/
+			display: none;
 		}
 	</style>
 </head>
@@ -81,7 +86,10 @@
 <script>
 	var aImgs = document.querySelectorAll('#list li');
 	var oBimg = document.querySelector('#bigBox img');
+	var oBigBox = document.querySelector('#bigBox');
+	var oMask = document.querySelector('#mask');
 	var oLimg = document.querySelector('#largeBox img');
+	var oLargeBox = document.querySelector('#largeBox');
 	for(var i = 0;i<aImgs.length;i++){
 		aImgs[i].index = i;
 		aImgs[i].onmouseover = function(){
@@ -93,5 +101,14 @@
 			oLimg.src = "images/p_b_000"+(this.index+1)+".jpg"
 		}
 	}
+	oBigBox.onmouseover = function(){
+		oMask.style.display = 'block';
+		oLargeBox.style.display = 'block';
+	}
+	oBigBox.onmouseout = function(){
+		oMask.style.display = 'none';
+		oLargeBox.style.display = 'none';
+	}
+
 </script>
 </html>

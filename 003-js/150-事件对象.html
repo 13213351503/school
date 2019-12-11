@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件对象</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 200px;
+			height: 200px;
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<input type="text" id="txt">
+</body>
+<script>
+	var oBox = document.getElementById('box');
+	var oTxt = document.getElementById('txt');
+	oBox.onclick = function(ev){
+		console.log(ev);
+	}
+	oTxt.onkeydown = function(ev){
+		console.log(ev);
+	}
+</script>
+</html>

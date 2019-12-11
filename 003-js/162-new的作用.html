@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>162-new的作用.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function sayHi(){
+		//var obj = {};
+		this.name = 'tom';
+		
+		//return obj			//在函数的最后会把这个this对象返回出去
+	}
+	console.log(sayHi())		//如果调用空对象，结果就是undefined
+	new sayHi();
+	console.log(new sayHi())	//函数会在一开始创建一个对象，并且这个对象就是this
+</script>
+</html>

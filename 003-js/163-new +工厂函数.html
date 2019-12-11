@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>163-new +工厂函数.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function CreatePerson(name,age){		
+		this.name = name;
+		this.age = age;
+		this.showName = function(){
+			console.log("I am "+this.name);
+		}
+		this.showAge = function(){
+			console.log("I am "+this.age + " years old");		//工厂模式函数中创建对象和返回对象省略,用this代替
+		}
+	}							
+	var person1 =new CreatePerson('tom',17);		//用new后,把工厂模式函数可以看做是类,类名一般首字母大写
+	console.log(person1);
+	person1.showName();
+	person1.showAge();
+
+	var	person2 =new CreatePerson('james',18);
+	console.log(person2);
+	person2.showName();
+	person2.showAge();
+	console.log(person1.showName == person2.showName)		//缺点：方法不能被实例共享
+</script>
+</html>

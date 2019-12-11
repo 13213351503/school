@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>166-构造原型模式.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){						
+		this.name = name;									//变化的属性和方法写在构造器中 
+		this.age = age;											
+	}
+	Person.prototype.showName = function(){
+		console.log("I am "+this.name);
+	}
+	Person.prototype.showAge = function(){					//可以在原型对象prototype添加共用的属性或者方法
+		console.log("I am "+this.age + " years old");		
+	}								
+	var person1 =new Person('tom',17);		
+	console.log(person1);
+	person1.showName();
+	person1.showAge();
+
+	var	person2 =new Person('james',18);
+	console.log(person2);
+	person2.showName();
+	person2.showAge();
+	console.log(person1.showName == person2.showName)		
+</script>
+</html>

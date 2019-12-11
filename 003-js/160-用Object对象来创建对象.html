@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>160-用Object对象来创建对象.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var obj = new Object();
+	var obj2 = new Object();	//Object是所有对象的父类
+	console.log(obj);
+		obj.name = 'Tom';
+		obj.age = 18;
+		obj.sayHi = function(){
+			console.log(this.name + ' say Hello');
+	}
+	console.log(obj);
+		obj2.name = 'Tom';
+		obj2.age = 18;
+		obj2.sayHi = function(){
+			console.log(this.name + ' say Hello');
+	}		
+	obj.sayHi();
+	console.log(obj2);	
+	console.log(obj.sayHi == obj2.sayHi)		//创建的对象方法和属性不能共用	
+</script>
+</html>
