@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>175-原子集合.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var str = 'a1d2d   5a2z_5f4-=!@ safas	-9=-/'
+	var reg = /[0-9]/g;
+	var reg1 = /[\d]/g;
+	var reg2 = /[^\d]/g;
+	var reg3 = /[0-9a-z_]/g;
+	var reg4 = /[\w]/g;
+	var reg5 = /[\W]/g;
+	var reg6 = /[\t\n\f\r]/g;
+	var reg7 = /[\s]/g;
+	var reg8 = /./g;
+	console.log(str.replace(reg,'*'));
+	console.log(str.replace(reg1,'*'));
+	console.log(str.replace(reg2,'*'));
+	console.log(str.replace(reg3,'*'));
+	console.log(str.replace(reg4,'*'));
+	console.log(str.replace(reg5,'*'));
+	console.log(str.replace(reg6,'*'));
+	console.log(str.replace(reg7,'*'));
+	console.log(str.replace(reg8,'*'));
+</script>
+</html>

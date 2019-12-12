@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>179-密码案例.html</title>
+</head>
+<body>
+	<input type="text" id="txt">
+	<button id="btn">检测</button>
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	var oBtn = document.getElementById('btn');
+	oBtn.onclick = function(){
+		var val = oTxt.value;
+		//长度在6~12之间,只能包含字母、数字和下划线)
+		var reg = /^[a-z]\w{5,11}$/;
+		console.log(reg.test(val));
+		if(reg.test(val)){
+			alert('恭喜');
+		}else{
+			alert('再见');
+		}
+	}
+</script>
+</html>

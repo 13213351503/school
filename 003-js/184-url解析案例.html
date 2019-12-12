@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>183-邮箱校验案例.html</title>
+</head>
+<body>
+	<input type="text" id="txt">
+	<button id="btn">检测</button>
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	var oBtn = document.getElementById('btn');
+	oBtn.onclick = function(){
+		var val = oTxt.value;
+		//https://www.baidu.com
+		var reg = /^([a-z]{4,5}:)?(\/\/)?([a-z]{3}\.)?[a-z]+\.[a-z]{2,3}$/i;
+		console.log(reg.test(val));
+		if(reg.test(val)){
+			alert('恭喜');
+		}else{
+			alert('再见');
+		}
+	}
+</script>
+</html>

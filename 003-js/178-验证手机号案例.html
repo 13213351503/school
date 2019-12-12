@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>178-验证手机号案例.html</title>
+</head>
+<body>
+	<input type="text" id="txt">
+	<button id="btn">检测</button>
+</body>
+<script>
+	var oTxt = document.getElementById('txt');
+	var oBtn = document.getElementById('btn');
+	oBtn.onclick = function(){
+		var val = oTxt.value;
+		//验证手机号:13513141325
+		var reg = /^1[3578]\d{9}$/;
+		console.log(reg.test(val));
+		if(reg.test(val)){
+			alert('恭喜');
+		}else{
+			alert('再见');
+		}
+	}
+</script>
+</html>
