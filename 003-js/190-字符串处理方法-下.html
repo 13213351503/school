@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>190-字符串处理方法-下.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var str = '  哈哈jashfn  DSKVDSGB  ';
+	var str1 = 'heihei'
+	console.log(str.charAt(1));  		//根据位置返回字符
+	console.log(str.charCodeAt(6));  		//根据位置返回字符的编码,位置在0和str.length-1之间,如果不在返回空字符,一个汉字是一个字节 
+	console.log(str.charCodeAt(1));  		
+	console.log(str.indexOf('a'));  		//根据字符返回位置,从前向后找,找不到返回-1
+	console.log(str.lastIndexOf('n'));  	//根据字符返回位置,从后向前找,找不到返回-1		
+	console.log(encodeURIComponent('https://www.baidu.com'));  		//URI 编码,编码除了字母、数字、(、)、.、!、~、*、'、-和_之外的所有字符
+	console.log(decodeURIComponent('https%3A%2F%2Fwww.baidu.com'));  //URI 解码		
+	console.log(str.concat(str1));  		//连接字符串
+	console.log(str.slice(1,5));  			//截取字符串,下标可以是负数,负数表示从尾部开始计算,包括起始下标但不包括结束下标
+	console.log(str.substr(1,2)); 			//截取字符串,下标可以是负数,负数表示从尾部开始计算		
+	console.log(str.substring(2,6)); 		//截取字符串,下标不可以是负数	
+	console.log(str.toLowerCase()); 		//把字符串转换为小写
+	console.log(str.toUpperCase()); 		//把字符串转换为大写
+	console.log(str.trim()); 				//去除字符串两边的空白
+</script>
+</html>

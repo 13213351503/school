@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>193-表单元素方法.html</title>
+</head>
+<body>
+	<form action="https://www.kuazhu.com" method="get">
+		<h1>学生采集表</h1>
+		<p>
+			<label for="1">账号：<input type="text" name="zh" value="" id="1"></label>			
+		</p>
+		<p>
+			<label for="2">密码：<input type="password" name="zh" value="" id="2"></label>
+		</p>
+		<p>
+			性别：<input type="radio" name="sex" value="man">男
+				<input type="radio" name="sex" value="women">女
+				<input type="radio" name="sex" value="mm">保密
+		</p>
+		<p>
+			爱好：<input type="checkbox" name="yd" value="basketball">篮球
+				<input type="checkbox" name="yd" value="football">足球
+				<input type="checkbox" name="yd" value="pingpang">乒乓
+		</p>
+		<p>
+			城市：<select name="city" id="">
+					<option value="bj">北京</option>
+					<option value="sh">上海</option>
+					<option value="sz">深圳</option>
+					<option value="hn">河南</option>
+					<option value="js">江苏</option>
+				</select>
+		</p>
+		<p>
+			<input type="submit" value="提交">
+		</p>
+	</form>
+</body>
+<script>
+	var oForm = document.forms[0];
+	console.log(oForm);
+	oForm.zh[1].focus();		//设置焦点 表单元素.focus();
+	oForm.zh[1].blur();			//移除焦点 表单元素.blur();
+</script>
+</html>

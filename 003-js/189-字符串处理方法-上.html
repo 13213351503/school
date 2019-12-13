@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>189-字符串处理方法-上.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// var str = 'asdakjg';
+	// // var reg = /a/;
+	// // var reg1 = /g/;
+	// // var reg2 = /e/;
+	// var reg3 = /a/g;
+	// // console.log(str.search(reg));
+	// // console.log(str.search(reg1));
+	// // console.log(str.search(reg2));
+	// console.log(str.search(reg3));
+	
+
+	// var str = 'a2018-03-27b2018-10-05';
+	// // var reg = /\d{4}-\d{2}-\d{2}/;
+	// var reg1 = /(?<years>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
+	// var reg2 = /(?<years>\d{4})-(?<month>\d{2})-(?<day>\d{2})/g;
+	// // console.log(str.match(reg));
+	// // console.log(reg.exec(str));
+	// console.log(reg1.exec(str));
+	// console.log(str.match(reg1));
+	// console.log(str.match(reg2));
+	
+	
+
+
+	// var str = 'as f g h w';
+	// var str = 'aabbaa'
+	// // var reg = / /;
+	// // var reg1 = / /;
+	// // console.log(str.split(reg));
+	// // console.log(str.split(reg1));
+	// var reg = / /;
+	// console.log(str.split(reg))
+	// console.log(str.split('').reverse())
+	// console.log(str === str.split('').reverse().join(''))
+	// 
+	
+	var str = 'vk1sn2dk5nl8f';
+	var reg = /[0-9]/g;
+	console.log(str.replace(reg,function(match,index,origin){
+		console.log(str);
+	}))
+</script>
+</html>
