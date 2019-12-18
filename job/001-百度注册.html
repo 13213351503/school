@@ -242,6 +242,9 @@
             background-image: url(images/l.png);
             background-repeat: no-repeat;
         }
+        .cancel{
+            
+        }
     </style>
 </head>
 <body>
@@ -308,6 +311,7 @@
     var oUsTiShi = document.querySelector('.username-tishi');
     var oPhTiShi = document.querySelector('.phone-tishi');
     var oPwTiShi = document.querySelector('.pwd-checklist');
+    var oCencel = document.querySelector('.cancel');
     oForm.username.focus();
     oText.onclick = function(ev){
         oUsTiShi.style.display = 'block';
@@ -316,8 +320,16 @@
         ev.stopPropagation()
         var val = oText.value;
         // 中英文均可,最长14个英文或者7个汉字,用户名仅支持中英文、数字和下划线,且不能为纯数字
-        var reg = /^[\u4e00-\u9fa5]{1,7}$|^[\A-Za-z]{1,14}$/
+        // var reg = /^[\u4e00-\u9fa5]{1,7}$|^\w{1,14}[a-zA-Z.]*{1,14}$/
+        var reg =/^(?![0-9]+$)(?![a-zA-Z]+$)\w{1,14}$|^[\u4e00-\u9fa5]{1,7}$/
+        if(reg.test(val)){
+            oCencel.style.display = 'block'
+        }else{
+            alert('cuo')
+        }
     }
+
+    
     document.onclick = function(){
         oUsTiShi.style.display = 'none';
         oPhTiShi.style.display = 'none';
