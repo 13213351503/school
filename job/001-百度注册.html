@@ -284,7 +284,7 @@
                 </div>
                 <div id="verify-box">
                     <label for="verify">验证码</label>
-                    <input type="text" autocomplete="off" name="verify" placeholder="请输入验证码">
+                    <input type="text" autocomplete="off" name="verify" placeholder="请输入验证码" id="verify-text">
                     <span class="cancel"  style="display: none;"></span>
                     <input type="button"  id="smsBtn" value="获取短信验证码">
                     <span class="msg"></span>       
@@ -308,12 +308,13 @@
     var oText = document.getElementById('username-text');
     var oPhText = document.getElementById('phone-text');
     var oPwText = document.getElementById('password-text');
+    var oVeText = document.getElementById('verify-text');
     var oUsTiShi = document.querySelector('.username-tishi');
     var oPhTiShi = document.querySelector('.phone-tishi');
     var oPwTiShi = document.querySelector('.pwd-checklist');
     var oCencel = document.querySelector('.cancel');
     oForm.username.focus();
-    oText.onclick = function(ev){
+    oText.onfocus = function(ev){
         oUsTiShi.style.display = 'block';
         oPhTiShi.style.display = 'none';
         oPwTiShi.style.display = 'none';
@@ -323,31 +324,36 @@
         // var reg = /^[\u4e00-\u9fa5]{1,7}$|^\w{1,14}[a-zA-Z.]*{1,14}$/
         var reg =/^(?![0-9]+$)(?![a-zA-Z]+$)\w{1,14}$|^[\u4e00-\u9fa5]{1,7}$/
         if(reg.test(val)){
+            oCencel.className = 'ok'
             oCencel.style.display = 'block'
         }else{
-            alert('cuo')
+            oCencel.className = 'err'
         }
     }
 
     
-    document.onclick = function(){
+    document.onfocus = function(){
         oUsTiShi.style.display = 'none';
         oPhTiShi.style.display = 'none';
         oPwTiShi.style.display = 'none';
     }
-    oPhText.onclick = function(ev){
+    oPhText.onfocus = function(ev){
         oPhTiShi.style.display = 'block';
         oUsTiShi.style.display = 'none';
         oPwTiShi.style.display = 'none';
         ev.stopPropagation() 
     }
-    oPwText.onclick = function(ev){
+    oPwText.onfocus = function(ev){
         oPwTiShi.style.display = 'block';
         oPhTiShi.style.display = 'none';
         oUsTiShi.style.display = 'none';
         ev.stopPropagation() 
     }
-    
+    oVeText.onfocus = function(){
+        oPwTiShi.style.display = 'none';
+        oPhTiShi.style.display = 'none';
+        oUsTiShi.style.display = 'none';
+    }
 </script>
 </html>
 
