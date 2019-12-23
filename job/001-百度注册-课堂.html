@@ -253,23 +253,21 @@
             <form action="https://www.kuazhu.com">
                 <div id="username-box">
                     <label for="username">用户名</label>
-                    <input type="text"  autocomplete="off" name="username" placeholder="请设置用户名" id="username-text">
-                    <span class="username-tishi">设置后不可更改<br>中英文均可,最长14个英文或者7个汉字</span>
+                    <input type="text"  autocomplete="off" name="username" placeholder="请设置用户名">
                     <span class="cancel" style="display: none;"></span>
                     <span class="msg"></span>
                 </div>
                 <div id="phone-box">
                     <label for="phone">手机号</label>
-                    <input type="text" autocomplete="off" name="phone" placeholder="可用于登录和找回密码" id="phone-text">
-                    <span class="phone-tishi" style="display: none">请输入中国大陆手机号,其他用户不可见</span>
-                    <span class="cancel cancel1" style="display: none;"></span>
-                    <span class="msg msg1"></span>
+                    <input type="text" autocomplete="off" name="phone" placeholder="可用于登录和找回密码">
+                    <span class="cancel" style="display: none;"></span>
+                    <span class="msg"></span>
                 </div>
                 <div id="pwd-box" class="pwd-box">
                     <label for="password">密码</label>
-                    <input type="password" autocomplete="off" name="password" placeholder="请设置登录密码" id="password-text">
-                    <span class="cancel cancel2"  style="display: none;"></span>
-                    <span class="msg msg2"></span>
+                    <input type="password" autocomplete="off" name="password" placeholder="请设置登录密码">
+                    <span class="cancel"  style="display: none;"></span>
+                    <span class="msg"></span>
                     <div id="pwdChecklist" class="pwd-checklist" style="display:none;">
                         <ul>
                             <li class="pwd-checklist-item">长度为8~14个字符</li>
@@ -281,7 +279,7 @@
                 </div>
                 <div id="verify-box">
                     <label for="verify">验证码</label>
-                    <input type="text" autocomplete="off" name="verify" placeholder="请输入验证码" id="verify-text">
+                    <input type="text" autocomplete="off" name="verify" placeholder="请输入验证码">
                     <span class="cancel"  style="display: none;"></span>
                     <input type="button"  id="smsBtn" value="获取短信验证码">
                     <span class="msg"></span>       
@@ -301,148 +299,100 @@
     </div>
 </body>
 <script>
-    var oForm = document.forms[0];
-    var oIsAgree = oForm.isAgree;
-    var oText = document.getElementById('username-text');
-    var oPhText = document.getElementById('phone-text');
-    var oPwText = document.getElementById('password-text');
-    var oVeText = document.getElementById('verify-text');
-    var oBtn = document.getElementById('subBtn');
-    var oAgreeErr = document.getElementById('agreeErr');
-    var oUsTiShi = document.querySelector('.username-tishi');
-    var oPhTiShi = document.querySelector('.phone-tishi');
-    var oPwTiShi = document.querySelector('.pwd-checklist');
-    var oMsg = document.querySelector('.msg');
-    var oMsg1 = document.querySelector('.msg1');
-    var oMsg2 = document.querySelector('.msg2');
-    var oCencel = document.querySelector('.cancel');
-    var oCencel1 = document.querySelector('.cancel1');
-    var oCencel2 = document.querySelector('.cancel2');
-    oForm.username.focus();
-    var val = oText.value;
-    var val = oPhText.value;
-    var val = oPwText.value;
-    oText.onfocus = function(ev){
-        oUsTiShi.style.display = 'block';
-        oPhTiShi.style.display = 'none';
-        oPwTiShi.style.display = 'none';
-        ev.stopPropagation()
-        oMsg.className = '';
-        oMsg.innerHTML = '';
+    //全局函数
+    function getLen(str){
+        return str.replace(/[\u4e00-\u9fa5]/g,'aa').length;
     }
-    oText.onblur = function(){
+    function setError(oInput,oMsg,sMsg){
+        oInput.className = 'input-err'
+        oMsg.className = 'err'
+        oMsg.innerHTML = sMsg
+    }
+    function setOk(oInput,oMsg,sMsg){
+        oInput.className = ''
+        oMsg.className = 'ok'
+        oMsg.innerHTML = sMsg
+    }
+    //1.获取元素
+    var oForm = document.forms[0]
+    var oUsername = oForm.username
+    var aMsg = document.querySelectorAll('.msg')
+
+    //2.初始化
+    handleUsername()
+    init()
+    function init(){
+        //设置默认焦点
+        oUsername.focus()
+        //设置默认提示信息
+        aMsg[0].className = 'tiptext'
+        aMsg[0].innerHTML = '设置后不可更改<br>中英文均可，最长14个英文或7个汉字'
+        aMsg[1].className = 'tiptext'
+        aMsg[1].innerHTML = '请输入中国大陆手机号，其他用户不可见'
         
-        // 中英文均可,最长14个英文或者7个汉字,用户名仅支持中英文、数字和下划线,且不能为纯数字
-        // var reg = /^[\u4e00-\u9fa5]{1,7}$|^\w{1,14}[a-zA-Z.]*{1,14}$/
-        var reg =/^(?![0-9]+$)(?![a-zA-Z]+$)\w{1,14}$|^[\u4e00-\u9fa5]{1,7}$/;
-        if(reg.test(val)){
-            oMsg.className = 'ok';
-            oUsTiShi.style.display = 'none';
-        }else{
-            oMsg.className = 'err';
-            oMsg.innerHTML = '用户名不能超过7个汉字或14个字符';
-            oUsTiShi.style.display = 'none';
+    }
+    //3.监听事件处理需求
+    function handleUsername(){
+        //处理用户名
+        var oCancel = oUsername.nextElementSibling
+        console.log(oCancel)
+        oUsername.oninput = function(){
+            if(oUsername.value.length>0){
+                oCancel.style.display = 'block'
+            }else{
+                oCancel.style.display = 'none'
+            }
         }
-        oUsTiShi.style.display = 'block';
-    }
-    oText.oninput = function(){
-        oCencel.style.display = 'block';
-    }
-    oCencel.onclick = function(){
-        oText.value = '';
-        oUsTiShi.style.display = 'block';
-        oMsg.className = '';
-        oMsg.innerHTML = '';
-    }
-    // oText.oninput = function(){
-    //     if(oText.value == ''){
-    //         oMsg.innerHTML = '用户名不能超过7个汉字或14个字符';
-    //     }
-    // }
- 
-    document.onclick = function(){
-        oUsTiShi.style.display = 'none';
-        oPhTiShi.style.display = 'none';
-        oPwTiShi.style.display = 'none';
-    }
-   
-    oPhText.onfocus = function(ev){
-        oPhTiShi.style.display = 'block';
-        oUsTiShi.style.display = 'none';
-        oPwTiShi.style.display = 'none';
-        ev.stopPropagation();
-        oMsg1.className = ''; 
-        oMsg1.innerHTML = '';
-    }
-    oPhText.onblur = function(){
-        
-        oPhTiShi.style.display = 'block';
-        var reg1 = /^1[3578]\d{9}$/;
-        if(reg1.test(val)){
-            oMsg1.className = 'ok';
-            oCencel1.style.display = 'block';
-            oPhTiShi.style.display = 'none';
-        }else{
-            oMsg1.className = 'err';
-            oMsg1.innerHTML = '手机号码格式不正确';
-            oPhTiShi.style.display = 'none';
+        oCancel.onclick = function(){
+            oUsername.value = ''
+            oUsername.focus()
+            oCancel.style.display = 'none'
         }
-   
-    }
-    oPhText.oninput = function(){
-        oCencel1.style.display = 'block';
-    }
-    oCencel1.onclick = function(){
-        oPhText.value = '';
-        oPhTiShi.style.display = 'block';
-        oMsg1.className = '';
-        oMsg1.innerHTML = '';
-    }
-    oPwText.onfocus = function(ev){
-        oPwTiShi.style.display = 'block';
-        oPhTiShi.style.display = 'none';
-        oUsTiShi.style.display = 'none';
-        ev.stopPropagation();
-        oMsg2.className = ''; 
-        oMsg2.innerHTML = '';
-    }
-    oPwText.onblur = function(){
-        // 长度为8~14个字符,支持数字,大小写字母和标点符号,不允许有空格
-        oPwTiShi.style.display = 'block';
-        // var reg2 = /^\w{8,14}$/;
-        var reg2 = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z_]{8,14}$/;
-        if(reg2.test(val)){
-            oMsg2.className = 'ok';
-            oCencel2.style.display = 'block';
-            oPwTiShi.style.display = 'none';
-        }else{
-            oMsg2.className = 'err';
-            oPwTiShi.style.display = 'none';
+        //验证
+        oUsername.onblur = function(){
+            var sVal = oUsername.value
+            var reg = /^\s+$/
+            var reg1 = /[^a-z\u4e00-\u9fa5_\d]/i
+            var reg2 = /^\d+$/
+            //什么都不输入
+            if(sVal == ''){
+                aMsg[0].className = 'msg'
+                oUsername.className = ''
+            }
+            //输入全部空白符
+            else if(reg.test(sVal)){
+                // oUsername.className = 'input-err'
+                // aMsg[0].className = 'err'
+                // aMsg[0].innerHTML = '用户名不能为空'
+                setError(oUsername,aMsg[0],'用户名不能为空')
+            }
+            //长度验证，用户名不能超过7个汉字或者14个英文字符
+            else if(getLen(sVal)>14){
+                // oUsername.className = 'input-err'
+                // aMsg[0].className = 'err'
+                // aMsg[0].innerHTML = '用户名不能超过7个汉字或者14个英文字符'
+                setError(oUsername,aMsg[0],'用户名不能超过7个汉字或者14个英文字符')
+            }
+            //用户名支持中英文，数字，下划线且不能为纯数字
+            else if(reg1.test(sVal) || reg2.test(sVal)){
+                // oUsername.className = 'input-err'
+                // aMsg[0].className = 'err'
+                // aMsg[0].innerHTML = '用户名支持中英文，数字，下划线且不能为纯数字'
+                setError(oUsername,aMsg[0],'用户名支持中英文，数字，下划线且不能为纯数字')
+            }
+            else{
+                // oUsername.className = ''
+                // aMsg[0].className = 'ok'
+                // aMsg[0].innerHTML = ''
+                setOk(oUsername,aMsg[0],'')
+            }
         }
-    
-    }
-    oPwText.oninput = function(){
-        oCencel2.style.display = 'block';
-    }
-    oCencel2.onclick = function(){
-        oPwText.value = '';
-        oPwTiShi.style.display = 'block';
-        oMsg2.className = ''; 
-        oMsg2.innerHTML = '';
-    }
-    oVeText.onfocus = function(){
-        oPwTiShi.style.display = 'none';
-        oPhTiShi.style.display = 'none';
-        oUsTiShi.style.display = 'none';
-    }
-    oBtn.onclick = function(){
-        oAgreeErr.style.display = 'block';
-        if(oIsAgree.checked){
-            oAgreeErr.style.display = 'none';
+
+        oUsername.onfocus = function(){
+            aMsg[0].className = 'tiptext'
+            aMsg[0].innerHTML = '设置后不可更改<br>中英文均可，最长14个英文或7个汉字'
         }
-        if(oText.value ==''){
-            oMsg.innerHTML = '请您输入用户名';
-        }
+        //获取焦点是的状态变化
     }
 </script>
 </html>
