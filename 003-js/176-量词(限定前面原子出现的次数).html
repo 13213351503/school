@@ -8,10 +8,21 @@
 	
 </body>
 <script>
-	var str = 'kjsd36g68g215640qwr8  54f12czdqw6	51'	;
-	var reg = /\d/g;
-	var reg1 = /\d{2}/g;
+	var str = 'kjsd36g68g2156480qwr8  54f12czdqw6	51'	;
+	var reg = /\d/g;		
+	var reg1 = /\d{2}/g;		//前面原子恰好出现2次
+	var reg2 = /\d{2,}/g;		//{n,} 前面原子最少出现2次
+	var reg3 = /\d{2,4}/g;		//{n,m} 前面原子最少出现2次,最多出现4次
+	var reg4 = /\d+/g;			//+ 前面原子最少出现1次 等价{1,}
+	var reg5 = /\d?/g;			//? 前面原子最少出现0次,最多出现一次 等价{0,1}
+	var reg6 = /\d*/g;			//* 前面原子最少出现0次 {0,}
+	console.log(str);
 	console.log(str.replace(reg,'$'));
 	console.log(str.replace(reg1,'$'));
+	console.log(str.replace(reg2,'$'));
+	console.log(str.replace(reg3,'$'));
+	console.log(str.replace(reg4,'$'));
+	console.log(str.replace(reg5,'$'));
+	console.log(str.replace(reg6,'$'));
 </script>
 </html>

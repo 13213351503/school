@@ -316,10 +316,21 @@
     //1.获取元素
     var oForm = document.forms[0]
     var oUsername = oForm.username
+    var oPhone = oForm.phone
+    var oPwd = oForm.password
+    var oVerify = oForm.verify
     var aMsg = document.querySelectorAll('.msg')
+    var aCancel = document.querySelectorAll('.cancel')
+    var aPwdChecklistItem = document.querySelectorAll('.pwd-checklist-item')
+    var oPwdChecklist = document.getElementById('pwdChecklist')
+    var oSmsBtn = document.getElementById('smsBtn')
+    var bPhone = false  
 
     //2.初始化
     handleUsername()
+    handlePhone()
+    handlePwd()
+    handleVerify()
     init()
     function init(){
         //设置默认焦点
@@ -327,27 +338,53 @@
         //设置默认提示信息
         aMsg[0].className = 'tiptext'
         aMsg[0].innerHTML = '设置后不可更改<br>中英文均可，最长14个英文或7个汉字'
-        aMsg[1].className = 'tiptext'
-        aMsg[1].innerHTML = '请输入中国大陆手机号，其他用户不可见'
         
-    }
-    //3.监听事件处理需求
-    function handleUsername(){
-        //处理用户名
-        var oCancel = oUsername.nextElementSibling
-        console.log(oCancel)
-        oUsername.oninput = function(){
-            if(oUsername.value.length>0){
+        //事件委托
+        oForm.oninput = function(ev){
+            var oInput = ev.target
+            var oCancel = oInput.nextElementSibling
+            if(oInput.value.length>0){
                 oCancel.style.display = 'block'
             }else{
                 oCancel.style.display = 'none'
             }
         }
-        oCancel.onclick = function(){
-            oUsername.value = ''
-            oUsername.focus()
-            oCancel.style.display = 'none'
+        oForm.onclick = function(ev){
+            var oCancel = ev.target
+            var oInput = oCancel.previousElementSibling
+            if(oInput){
+                switch(oInput.name){
+                    case 'username':
+                    case 'phone':
+                    case 'password':
+                    case 'verify':
+                        oInput.value = ''
+                        oInput.focus()
+                        oCancel.style.display = 'none'
+                        break
+                }
+            }
+            
         }
+    }
+    //3.监听事件处理需求
+    function handleUsername(){
+        var oMsg = aMsg[0]
+        //处理用户名
+        // var oCancel = oUsername.nextElementSibling
+        // console.log(oCancel)
+        // oUsername.oninput = function(){
+        //     if(oUsername.value.length>0){
+        //         oCancel.style.display = 'block'
+        //     }else{
+        //         oCancel.style.display = 'none'
+        //     }
+        // }
+        // oCancel.onclick = function(){
+        //     oUsername.value = ''
+        //     oUsername.focus()
+        //     oCancel.style.display = 'none'
+        // }
         //验证
         oUsername.onblur = function(){
             var sVal = oUsername.value
@@ -356,43 +393,138 @@
             var reg2 = /^\d+$/
             //什么都不输入
             if(sVal == ''){
-                aMsg[0].className = 'msg'
+                oMsg.className = 'msg'
                 oUsername.className = ''
             }
             //输入全部空白符
             else if(reg.test(sVal)){
                 // oUsername.className = 'input-err'
-                // aMsg[0].className = 'err'
-                // aMsg[0].innerHTML = '用户名不能为空'
-                setError(oUsername,aMsg[0],'用户名不能为空')
+                // oMsg.className = 'err'
+                // oMsg.innerHTML = '用户名不能为空'
+                setError(oUsername,oMsg,'用户名不能为空')
             }
             //长度验证，用户名不能超过7个汉字或者14个英文字符
             else if(getLen(sVal)>14){
                 // oUsername.className = 'input-err'
-                // aMsg[0].className = 'err'
-                // aMsg[0].innerHTML = '用户名不能超过7个汉字或者14个英文字符'
-                setError(oUsername,aMsg[0],'用户名不能超过7个汉字或者14个英文字符')
+                // oMsg.className = 'err'
+                // oMsg.innerHTML = '用户名不能超过7个汉字或者14个英文字符'
+                setError(oUsername,oMsg,'用户名不能超过7个汉字或者14个英文字符')
             }
             //用户名支持中英文，数字，下划线且不能为纯数字
             else if(reg1.test(sVal) || reg2.test(sVal)){
                 // oUsername.className = 'input-err'
-                // aMsg[0].className = 'err'
-                // aMsg[0].innerHTML = '用户名支持中英文，数字，下划线且不能为纯数字'
-                setError(oUsername,aMsg[0],'用户名支持中英文，数字，下划线且不能为纯数字')
+                // oMsg.className = 'err'
+                // oMsg.innerHTML = '用户名支持中英文，数字，下划线且不能为纯数字'
+                setError(oUsername,oMsg,'用户名支持中英文，数字，下划线且不能为纯数字')
             }
             else{
                 // oUsername.className = ''
-                // aMsg[0].className = 'ok'
-                // aMsg[0].innerHTML = ''
-                setOk(oUsername,aMsg[0],'')
+                // oMsg.className = 'ok'
+                // oMsg.innerHTML = ''
+                setOk(oUsername,oMsg,'')
             }
         }
 
         oUsername.onfocus = function(){
-            aMsg[0].className = 'tiptext'
-            aMsg[0].innerHTML = '设置后不可更改<br>中英文均可，最长14个英文或7个汉字'
+            oMsg.className = 'tiptext'
+            oMsg.innerHTML = '设置后不可更改<br>中英文均可，最长14个英文或7个汉字'
         }
         //获取焦点是的状态变化
+    }
+    function handlePhone(){
+        //验证
+        var oMsg = aMsg[1]
+        oPhone.onblur = function(){
+            var sVal = oPhone.value
+            var reg1 = /^1[3589]\d{9}$/
+            //什么都不输入
+            if(sVal == ''){
+                oMsg.className = 'msg'
+                oPhone.className = ''
+                bPhone = false
+            }
+            //输入全部空白符
+            else if(!reg1.test(sVal)){
+                setError(oPhone,oMsg,'手机号输入错误')
+                bPhone = false
+            }
+           
+            else{
+                setOk(oPhone,oMsg,'')
+                bPhone = true
+            }
+        }
+
+        oPhone.onfocus = function(){
+            oMsg.className = 'tiptext'
+            oMsg.innerHTML = '请输入中国大陆手机号，其他用户不可见'
+        }
+        oPhone.onkeydown = function(ev){
+            var code = ev.keyCode
+            // console.log(code)
+            if((code > 105 || code < 96 || oPhone.value.length > 10)
+                &&code != 8
+                &&code != 37
+                &&code !=39
+                &&code !=9
+                ){
+                return false
+            }
+        }
+        //获取焦点是的状态变化
+    }
+    function handlePwd(){
+        oPwd.onfocus = function(){
+            oPwdChecklist.style.display = 'block'
+        }
+        oPwd.onblur = function(){
+            oPwdChecklist.style.display = 'none'
+        }
+        oPwd.oninput = function(){
+            //长度为8-14的字符
+            var sVal = oPwd.value
+            var oPwdSuccess = 'pwd-checklist-item pwd-checklist-item-success'
+            var oPwdError = 'pwd-checklist-item pwd-checklist-item-error'
+            var reg1 = /^.{8,14}$/
+            //支持数字，大小写字母和标点符号
+            var reg2 = /[^0-9a-z!#$]/i
+            //不允许有空格
+            var reg3 = /\s/
+            if(reg1.test(sVal)){
+                aPwdChecklistItem[0].className = oPwdSuccess
+            }else{
+                aPwdChecklistItem[0].className = oPwdError
+            }
+            if(!reg2.test(sVal)){
+                aPwdChecklistItem[1].className = oPwdSuccess
+            }else{
+                aPwdChecklistItem[1].className = oPwdError
+            }
+            if(!reg3.test(sVal)){
+                aPwdChecklistItem[2].className = oPwdSuccess
+            }else{
+                aPwdChecklistItem[2].className = oPwdError
+            }
+
+        }
+        aCancel[2].onclick = function(){
+            aPwdChecklistItem[0].className = 'pwd-checklist-item'
+            aPwdChecklistItem[1].className = 'pwd-checklist-item'
+            aPwdChecklistItem[2].className = 'pwd-checklist-item'
+        }
+    }
+    function handleVerify(){
+        oSmsBtn.onclick = function(){
+            if(oPhone.value == ''){
+                setError(oPhone,aMsg[1],'请输入手机号')
+            }
+            else if(!bPhone){
+                setError(oPhone,aMsg[1],'请重新输入正确的手机号')
+            }
+            else{
+               setOk(oPhone,aMsg[1] ,'')
+            }
+        }
     }
 </script>
 </html>
