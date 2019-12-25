@@ -319,18 +319,22 @@
     var oPhone = oForm.phone
     var oPwd = oForm.password
     var oVerify = oForm.verify
+    var oAgree = oForm.isAgree
     var aMsg = document.querySelectorAll('.msg')
     var aCancel = document.querySelectorAll('.cancel')
     var aPwdChecklistItem = document.querySelectorAll('.pwd-checklist-item')
     var oPwdChecklist = document.getElementById('pwdChecklist')
     var oSmsBtn = document.getElementById('smsBtn')
-    var bPhone = false  
+    var oSubBtn = document.getElementById('subBtn')
+    var bPhone = false,bUsername = false,bPwd = false,bVerify = false
+    console.log(oSubBtn)  
 
     //2.初始化
     handleUsername()
     handlePhone()
     handlePwd()
     handleVerify()
+    handleSubBtn()
     init()
     function init(){
         //设置默认焦点
@@ -395,6 +399,7 @@
             if(sVal == ''){
                 oMsg.className = 'msg'
                 oUsername.className = ''
+                bUsername = false
             }
             //输入全部空白符
             else if(reg.test(sVal)){
@@ -402,6 +407,7 @@
                 // oMsg.className = 'err'
                 // oMsg.innerHTML = '用户名不能为空'
                 setError(oUsername,oMsg,'用户名不能为空')
+                bUsername = false
             }
             //长度验证，用户名不能超过7个汉字或者14个英文字符
             else if(getLen(sVal)>14){
@@ -409,6 +415,7 @@
                 // oMsg.className = 'err'
                 // oMsg.innerHTML = '用户名不能超过7个汉字或者14个英文字符'
                 setError(oUsername,oMsg,'用户名不能超过7个汉字或者14个英文字符')
+                bUsername = false
             }
             //用户名支持中英文，数字，下划线且不能为纯数字
             else if(reg1.test(sVal) || reg2.test(sVal)){
@@ -416,12 +423,14 @@
                 // oMsg.className = 'err'
                 // oMsg.innerHTML = '用户名支持中英文，数字，下划线且不能为纯数字'
                 setError(oUsername,oMsg,'用户名支持中英文，数字，下划线且不能为纯数字')
+                bUsername = false
             }
             else{
                 // oUsername.className = ''
                 // oMsg.className = 'ok'
                 // oMsg.innerHTML = ''
                 setOk(oUsername,oMsg,'')
+                bUsername = true
             }
         }
 
@@ -443,12 +452,11 @@
                 oPhone.className = ''
                 bPhone = false
             }
-            //输入全部空白符
+            //手机号格式不正确
             else if(!reg1.test(sVal)){
-                setError(oPhone,oMsg,'手机号输入错误')
+                setError(oPhone,oMsg,'手机号格式不正确')
                 bPhone = false
             }
-           
             else{
                 setOk(oPhone,oMsg,'')
                 bPhone = true
@@ -461,12 +469,12 @@
         }
         oPhone.onkeydown = function(ev){
             var code = ev.keyCode
-            // console.log(code)
-            if((code > 105 || code < 96 || oPhone.value.length > 10)
-                &&code != 8
-                &&code != 37
-                &&code !=39
-                &&code !=9
+            console.log(code)
+            if((code > 105 || code < 96 || oPhone.value.length > 10) && (code < 48 || code > 57 || oPhone.value.length > 10)
+                && code != 8
+                && code != 37
+                && code != 39
+                && code != 9
                 ){
                 return false
             }
@@ -474,39 +482,58 @@
         //获取焦点是的状态变化
     }
     function handlePwd(){
+        var bPwd1 = false,bPwd2 = false,bPwd3 = false
+        var oMsg = aMsg[2]
+        //获取焦点是的变化
         oPwd.onfocus = function(){
             oPwdChecklist.style.display = 'block'
+            oMsg.className = 'msg'
         }
+        //失去焦点是的变化
         oPwd.onblur = function(){
-            oPwdChecklist.style.display = 'none'
+            var sVal = oPwd.value
+            //什么都不输入
+            if(sVal == ''){
+                oPwdChecklist.style.display = 'none'
+                bPwd = false
+            }else if(bPwd1 && bPwd2 && bPwd3){
+                setOk(oPwd,aMsg[2],'')
+                oPwdChecklist.style.display = 'none'
+                bPwd = true
+            }
+            
         }
+        //实时验证
         oPwd.oninput = function(){
-            //长度为8-14的字符
             var sVal = oPwd.value
             var oPwdSuccess = 'pwd-checklist-item pwd-checklist-item-success'
             var oPwdError = 'pwd-checklist-item pwd-checklist-item-error'
             var reg1 = /^.{8,14}$/
-            //支持数字，大小写字母和标点符号
-            var reg2 = /[^0-9a-z!#$]/i
-            //不允许有空格
+            var reg2 = /[0-9a-z!#$]/i
             var reg3 = /\s/
             if(reg1.test(sVal)){
                 aPwdChecklistItem[0].className = oPwdSuccess
+                bPwd1 = true
             }else{
                 aPwdChecklistItem[0].className = oPwdError
+                bPwd1 = false
             }
-            if(!reg2.test(sVal)){
+            if(reg2.test(sVal)){
                 aPwdChecklistItem[1].className = oPwdSuccess
+                bPwd2 = true
             }else{
                 aPwdChecklistItem[1].className = oPwdError
+                bPwd2 = false
             }
             if(!reg3.test(sVal)){
                 aPwdChecklistItem[2].className = oPwdSuccess
+                bPwd3 = true
             }else{
                 aPwdChecklistItem[2].className = oPwdError
+                bPwd3 = false
             }
-
         }
+        //取消的特殊处理
         aCancel[2].onclick = function(){
             aPwdChecklistItem[0].className = 'pwd-checklist-item'
             aPwdChecklistItem[1].className = 'pwd-checklist-item'
@@ -514,15 +541,78 @@
         }
     }
     function handleVerify(){
+        var oMsg = aMsg[3]
         oSmsBtn.onclick = function(){
+            //手机号为空
             if(oPhone.value == ''){
                 setError(oPhone,aMsg[1],'请输入手机号')
+                return false
             }
+            //手机号验证没有通过
             else if(!bPhone){
                 setError(oPhone,aMsg[1],'请重新输入正确的手机号')
+                return false
+            }
+        }
+        oVerify.onblur = function(){
+            var sVal = oVerify.value
+            var reg1 = /^\d{6}$/
+            //什么都不输入
+            if(sVal == ''){
+                oMsg.className = 'msg'
+                oVerify.className = ''
+                bVerify = false
+            }
+            //验证码格式不正确
+            else if(!reg1.test(sVal)){
+                setError(oVerify,oMsg,'验证码格式不正确')
+                bVerify = false
             }
             else{
-               setOk(oPhone,aMsg[1] ,'')
+                setOk(oVerify,oMsg,'')
+                bVerify = true
+            }
+        }
+        oVerify.onfocus = function(){
+            oMsg.className = 'msg'
+        }
+        oVerify.onkeydown = function(ev){
+            var code = ev.keyCode
+            console.log(code)
+            if((code > 105 || code < 96 || oVerify.value.length > 5) && (code < 48 || code > 57 || oVerify.value.length > 5)
+                && code != 8
+                && code != 37
+                && code != 39
+                && code != 9
+                ){
+                return false
+            }
+        }
+    }
+    function handleSubBtn(){
+        oSubBtn.onclick = function(){
+            //什么都没输入的时候、
+            
+            if(oUsername.value == ''){
+                setError(oUsername,aMsg[0],'用户名不能为空')
+            }
+            if(oPhone.value == ''){
+                setError(oPhone,aMsg[1],'手机号不能为空')
+            }
+            if(oPwd.value == ''){
+                setError(oPwd,aMsg[2],'密码不能为空')
+            }
+            if(oVerify.value == ''){
+                setError(oVerify,aMsg[3],'验证码不能为空')
+            }
+            if(!oAgree.checked){
+                aMsg[4].style.display = 'inline'
+            }else{
+                aMsg[4].style.display = 'none'
+            }
+            //输入了没通过的时候
+            if(bUsername && bPwd && bPhone && bVerify &&oAgree.checked){
+                oForm.submit()
             }
         }
     }
