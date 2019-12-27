@@ -1,483 +1,342 @@
-var aNavDateList = [
+var aNavListData = [
 	[
 		{
-			url:'https://www.baidu.com',
+			url:'https://www.kuazhu.com',
 			src:'images/p1.jpg',
+			name:'小米MX3',
+			price:'9999',
+		},
+		{
+			url:'https://www.kuazhu.com',
+			src:'images/p2.jpg',
 			name:'小米MX3',
 			price:'3299',
 			tag:'新品'
 		},
 		{
-			url:'https://www.baidu.com',
+			url:'https://www.kuazhu.com',
 			src:'images/p1.jpg',
 			name:'小米MX3',
 			price:'3299',
 			tag:'新品'
-		},
-		{
-			url:'https://www.baidu.com',
-			src:'images/p1.jpg',
-			name:'小米MX3',
-			price:'3299',
-			tag:'新品'
-		}
+		}					
 	],
-
 	[
 		{
-			url:'https://www.baidu.com',
+			url:'https://www.kuazhu.com',
 			src:'images/p1.jpg',
-			name:'小米MX3',
+			name:'小米MX2',
 			price:'3299',
 			tag:'新品'
 		},
 		{
-			url:'https://www.baidu.com',
+			url:'https://www.kuazhu.com',
 			src:'images/p1.jpg',
-			name:'小米MX3',
+			name:'小米MX2',
 			price:'3299',
 			tag:'新品'
 		},
 		{
-			url:'https://www.baidu.com',
+			url:'https://www.kuazhu.com',
 			src:'images/p1.jpg',
-			name:'小米MX3',
+			name:'小米MX2',
 			price:'3299',
 			tag:'新品'
-		}
+		}					
 	],
-
 	[
 		{
-			url:'https://www.baidu.com',
+			url:'https://www.kuazhu.com',
 			src:'images/p1.jpg',
+			name:'小米MX3',
+			price:'3299',
+		},
+		{
+			url:'https://www.kuazhu.com',
+			src:'images/p2.jpg',
 			name:'小米MX3',
 			price:'3299',
 			tag:'新品'
 		},
 		{
-			url:'https://www.baidu.com',
+			url:'https://www.kuazhu.com',
 			src:'images/p1.jpg',
 			name:'小米MX3',
 			price:'3299',
 			tag:'新品'
-		},
-		{
-			url:'https://www.baidu.com',
-			src:'images/p1.jpg',
-			name:'小米MX3',
-			price:'3299',
-			tag:'新品'
-		}
+		}					
 	],
-
 	[
 		{
-			url:'https://www.baidu.com',
+			url:'https://www.kuazhu.com',
 			src:'images/p1.jpg',
-			name:'小米MX3',
+			name:'小米MX2',
 			price:'3299',
 			tag:'新品'
 		},
 		{
-			url:'https://www.baidu.com',
+			url:'https://www.kuazhu.com',
 			src:'images/p1.jpg',
-			name:'小米MX3',
+			name:'小米MX2',
 			price:'3299',
 			tag:'新品'
 		},
 		{
-			url:'https://www.baidu.com',
+			url:'https://www.kuazhu.com',
 			src:'images/p1.jpg',
-			name:'小米MX3',
+			name:'小米MX2',
 			price:'3299',
 			tag:'新品'
-		}
+		}					
 	],
-
 	[
 		{
-			url:'https://www.baidu.com',
+			url:'https://www.kuazhu.com',
 			src:'images/p1.jpg',
+			name:'小米MX3',
+			price:'3299',
+		},
+		{
+			url:'https://www.kuazhu.com',
+			src:'images/p2.jpg',
 			name:'小米MX3',
 			price:'3299',
 			tag:'新品'
 		},
 		{
-			url:'https://www.baidu.com',
+			url:'https://www.kuazhu.com',
 			src:'images/p1.jpg',
+			name:'小米MX3',
+			price:'3299',
+			tag:'新品'
+		}					
+	],
+	[
+		{
+			url:'https://www.kuazhu.com',
+			src:'images/p1.jpg',
+			name:'小米MX2',
+			price:'3299',
+			tag:'新品'
+		},
+		{
+			url:'https://www.kuazhu.com',
+			src:'images/p1.jpg',
+			name:'小米MX2',
+			price:'3299',
+			tag:'新品'
+		},
+		{
+			url:'https://www.kuazhu.com',
+			src:'images/p1.jpg',
+			name:'小米MX2',
+			price:'3299',
+			tag:'新品'
+		}					
+	],
+	[
+		{
+			url:'https://www.kuazhu.com',
+			src:'images/p1.jpg',
+			name:'小米MX3',
+			price:'3299',
+		},
+		{
+			url:'https://www.kuazhu.com',
+			src:'images/p2.jpg',
 			name:'小米MX3',
 			price:'3299',
 			tag:'新品'
 		},
 		{
-			url:'https://www.baidu.com',
+			url:'https://www.kuazhu.com',
 			src:'images/p1.jpg',
 			name:'小米MX3',
 			price:'3299',
 			tag:'新品'
-		}
+		}					
+	],
+	[
+		{
+			url:'https://www.kuazhu.com',
+			src:'images/p1.jpg',
+			name:'小米MX2',
+			price:'3299',
+			tag:'新品'
+		},
+		{
+			url:'https://www.kuazhu.com',
+			src:'images/p1.jpg',
+			name:'小米MX2',
+			price:'3299',
+			tag:'新品'
+		},
+		{
+			url:'https://www.kuazhu.com',
+			src:'images/p1.jpg',
+			name:'小米MX2',
+			price:'3299',
+			tag:'新品'
+		}					
+	]			
+];
+var aCateListData = [
+	[
+		{
+			url:'https://www.kuazhu.com',
+			img:'images/p1.jpg',
+			name:'小米MIX3'
+		},
+		{
+			url:'https://www.kuazhu.com',
+			img:'images/p1.jpg',
+			name:'小米MIX3'
+		},		
+		{
+			url:'https://www.kuazhu.com',
+			img:'images/p1.jpg',
+			name:'小米MIX3'
+		},
+		{
+			url:'https://www.kuazhu.com',
+			img:'images/p1.jpg',
+			name:'小米MIX3'
+		},
+		{
+			url:'https://www.kuazhu.com',
+			img:'images/p1.jpg',
+			name:'小米MIX3'
+		},
+		{
+			url:'https://www.kuazhu.com',
+			img:'images/p1.jpg',
+			name:'小米MIX3'
+		},
+		{
+			url:'https://www.kuazhu.com',
+			img:'images/p1.jpg',
+			name:'小米MIX3'
+		},
+		{
+			url:'https://www.kuazhu.com',
+			img:'images/p1.jpg',
+			name:'小米MIX3'
+		},
+		{
+			url:'https://www.kuazhu.com',
+			img:'images/p1.jpg',
+			name:'小米MIX3'
+		},							
+	],
+	[
+		{
+			url:'https://www.kuazhu.com',
+			img:'images/p2.jpg',
+			name:'小米MIX2'
+		},
+		{
+			url:'https://www.kuazhu.com',
+			img:'images/p2.jpg',
+			name:'小米MIX2'
+		}		
+	],
+	[
+		{
+			url:'https://www.kuazhu.com',
+			img:'images/p1.jpg',
+			name:'小米MIX3'
+		},
+		{
+			url:'https://www.kuazhu.com',
+			img:'images/p1.jpg',
+			name:'小米MIX3'
+		}		
+	],
+	[
+		{
+			url:'https://www.kuazhu.com',
+			img:'images/p2.jpg',
+			name:'小米MIX2'
+		},
+		{
+			url:'https://www.kuazhu.com',
+			img:'images/p2.jpg',
+			name:'小米MIX2'
+		}		
 	],	
-
 	[
 		{
-			url:'https://www.baidu.com',
-			src:'images/p1.jpg',
-			name:'小米MX3',
-			price:'3299',
-			tag:'新品'
+			url:'https://www.kuazhu.com',
+			img:'images/p1.jpg',
+			name:'小米MIX3'
 		},
 		{
-			url:'https://www.baidu.com',
-			src:'images/p1.jpg',
-			name:'小米MX3',
-			price:'3299',
-			tag:'新品'
-		},
-		{
-			url:'https://www.baidu.com',
-			src:'images/p1.jpg',
-			name:'小米MX3',
-			price:'3299',
-			tag:'新品'
-		}
+			url:'https://www.kuazhu.com',
+			img:'images/p1.jpg',
+			name:'小米MIX3'
+		}		
 	],
-
 	[
 		{
-			url:'https://www.baidu.com',
-			src:'images/p1.jpg',
-			name:'小米MX3',
-			price:'3299',
-			tag:'新品'
+			url:'https://www.kuazhu.com',
+			img:'images/p2.jpg',
+			name:'小米MIX2'
 		},
 		{
-			url:'https://www.baidu.com',
-			src:'images/p1.jpg',
-			name:'小米MX3',
-			price:'3299',
-			tag:'新品'
-		},
-		{
-			url:'https://www.baidu.com',
-			src:'images/p1.jpg',
-			name:'小米MX3',
-			price:'3299',
-			tag:'新品'
-		}
-	],
-
+			url:'https://www.kuazhu.com',
+			img:'images/p2.jpg',
+			name:'小米MIX2'
+		}		
+	],	
 	[
 		{
-			url:'https://www.baidu.com',
-			src:'images/p1.jpg',
-			name:'小米MX3',
-			price:'4100',
-			tag:'新品'
+			url:'https://www.kuazhu.com',
+			img:'images/p1.jpg',
+			name:'小米MIX3'
 		},
 		{
-			url:'https://www.baidu.com',
-			src:'images/p1.jpg',
-			name:'小米MX3',
-			price:'3299',
-			tag:'新品'
-		},
-		{
-			url:'https://www.baidu.com',
-			src:'images/p1.jpg',
-			name:'小米MX3',
-			price:'3299',
-			tag:'新品'
-		}
+			url:'https://www.kuazhu.com',
+			img:'images/p1.jpg',
+			name:'小米MIX3'
+		}		
 	],
-]
-
-var aLoadCadeList = [
 	[
 		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米'
+			url:'https://www.kuazhu.com',
+			img:'images/p2.jpg',
+			name:'小米MIX2'
 		},
 		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小1'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米11'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米11'
-		},
-	],
-
+			url:'https://www.kuazhu.com',
+			img:'images/p2.jpg',
+			name:'小米MIX2'
+		}		
+	],	
 	[
 		{
-			url:'https://www.baidu.com',
+			url:'https://www.kuazhu.com',
 			img:'images/p1.jpg',
 			name:'小米MIX3'
 		},
 		{
-			url:'https://www.baidu.com',
+			url:'https://www.kuazhu.com',
 			img:'images/p1.jpg',
 			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
+		}		
 	],
-
 	[
 		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
+			url:'https://www.kuazhu.com',
+			img:'images/p2.jpg',
+			name:'小米MIX2'
 		},
 		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-	],
-
-	[
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-	],
-
-	[
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-	],
-
-	[
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-	],
-
-	[
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-	],
-
-	[
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-	],
-
-	[
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-	],
-
-	[
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-		{
-			url:'https://www.baidu.com',
-			img:'images/p1.jpg',
-			name:'小米MIX3'
-		},
-	],
-]
+			url:'https://www.kuazhu.com',
+			img:'images/p2.jpg',
+			name:'小米MIX2'
+		}		
+	],						
+];
 var aElecListData = [
 	[
 		{

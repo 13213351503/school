@@ -3,6 +3,8 @@ handleNav()
 handleCarousel()
 handleCate()
 handleCountDown()
+handleProduct()
+handleElecProduct()
 function handleCart(){
 	//获取元素
 	var oCart = document.querySelector('.top .cart')
@@ -162,21 +164,33 @@ function handleCate(){
 function handleCountDown(){
 	var aTimerNum = document.querySelectorAll('.timer-num')
 	var timer = 0
-	var endTime = new Date('2020/1/1 12:00:00')
+	var endTime = new Date('2019/12/27 16:40:20')
 	// console.log(aTimerNum)
+	var endTimer = endTime.getTime()
+	function bb(num){
+		if(num<10){
+			return '0'+num
+		}else{
+			return ''+num
+		}
+	}
 	time()
 	function time(){
-		var endTimer = endTime.getTime()
+		
 		var nowTimer = Date.now()
 		var timeOver = endTimer-nowTimer
 		var miao = timeOver/1000
+		if(miao<0){
+			miao = 0
+			clearInterval(time)
+		}
 		var iHour = parseInt(miao/3600)
 		var iMinter = parseInt((miao%3600)/60)
 		var iSecond = parseInt((miao%3600)%60)
 		// console.log(iSecond)
-		aTimerNum[0].innerHTML = iHour
-		aTimerNum[1].innerHTML = iMinter
-		aTimerNum[2].innerHTML = iSecond
+		aTimerNum[0].innerHTML = bb(iHour)
+		aTimerNum[1].innerHTML = bb(iMinter)
+		aTimerNum[2].innerHTML = bb(iSecond)
 	}
 	setInterval(time,1000)
 	// console.log(endTimer)
@@ -184,4 +198,35 @@ function handleCountDown(){
 	// console.log(timeOver)
 	
 
+}
+//闪购切换
+function handleProduct(){
+	var aBtn = document.querySelectorAll('.ctr-btn')
+	var oProductList = document.querySelector('.product-list')
+	aBtn[0].onclick = function(){
+		oProductList.style.marginLeft = '0px'
+	}
+	aBtn[1].onclick = function(){
+		oProductList.style.marginLeft = '-978px'
+	}
+}
+//处理商品家电切换
+function handleElecProduct(){
+	var aTabItem = document.querySelectorAll('.tab-item')
+	for(var i = 0;i<aTabItem.length;i++){
+		aTabItem[i].index = i
+		aTabItem[i].onmouseenter = function(){
+			for(var j = 0;j<aTabItem.length;j++){
+				aTabItem[j].className = 'tab-item'
+			}
+			this.className = 'tab-item tab-item-active'
+			loadCate(this.index)
+		}
+	}
+
+	function loadCate(index){
+		var date = aElecListData[index]
+		console.log(date)
+
+	}
 }
