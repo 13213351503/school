@@ -5,6 +5,7 @@ handleCate()
 handleCountDown()
 handleProduct()
 handleElecProduct()
+//购物车移入事件
 function handleCart(){
 	//获取元素
 	var oCart = document.querySelector('.top .cart')
@@ -38,6 +39,7 @@ function handleCart(){
 		})
 	}
 }
+//处理导航部分
 function handleNav(){
 	//获取元素
 	var aHeaderNav = document.querySelectorAll('.header-nav .header-nav-item')
