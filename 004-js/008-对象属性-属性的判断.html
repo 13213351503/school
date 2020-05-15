@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>008-对象属性-属性的判断.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype.showName = function(){
+		console.log('I am ' + this.name);
+	}
+	Person.prototype.showAge = function(){
+		console.log('I am' + this.age + 'years old');
+	}
+	Person.prototype.LEGS = 2;
+
+
+	var p1 = new Person('Tom',18);
+	
+	//判断对象实例上是否有自己实例上指定的属性,有的话返回值为true，没有的话返回值为false
+	// console.log(p1.hasOwnProperty('name'));
+	// console.log(p1.hasOwnProperty('age'));
+	// console.log(p1.hasOwnProperty('LEGS'));
+
+	//判断对象实例的原型链上是否有指定的属性,判断在person这个原型上有没有这个属性
+	// console.log('name' in p1);
+	// console.log('age' in p1);
+	// console.log('LEGS' in p1);
+
+	//判断属性只在原型上有:return !obj.hasOwnProperty(name) && (name in obj);
+	function isInPrototype(attr,obj){
+		return !obj.hasOwnProperty(attr) && (attr in obj);
+	}
+	console.log(isInPrototype('name',p1));
+	console.log(isInPrototype('age',p1));
+	console.log(isInPrototype('LEGS',p1));
+</script>
+</html>

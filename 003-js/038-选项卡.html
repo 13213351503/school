@@ -8,64 +8,62 @@
 			margin: 0;
 			padding: 0;
 		}
-		.nav{
+		.list{
+			list-style: none;
 			overflow: hidden;
 		}
-		.nav .nav-item{
+		.list-item{
 			float: left;
-			list-style:none;
-			width: 100px;
-			margin-bottom: 20px;
-			text-align: center;
+			margin-left: 20px;
+			margin-top: 20px;
+			padding-bottom: 10px;
 		}
-		.content .content-item{
-			width: 400px;
-			height: 400px;
-			background: green;
-			text-align: center;
+		.content{
+			list-style: none;
+		}
+		.content-list{
+			width: 260px;
+			height: 260px;	
 			border: 1px solid #000;
-			margin-top: 10px;
-			line-height: 400px;
-			font-size: 36px;
+			margin-left: 20px;
+			text-align: center;
+			line-height: 260px;
+			font-size: 40px;
 			display: none;
 		}
 		.active{
-			color: #ff6700;
+			border-bottom: 2px solid #ff6700;
+			margin-bottom: 20px;
 		}
 	</style>
 </head>
 <body>
-	<ul class="nav">
-		<li class="nav-item active">一</li>
-		<li class="nav-item">二</li>
-		<li class="nav-item">三</li>
-		<li class="nav-item">四</li>
+	<ul class="list">
+		<li class="list-item active">第一个</li>
+		<li class="list-item">第二个</li>
+		<li class="list-item">第三个</li>
+		<li class="list-item">第四个</li>
 	</ul>
 	<ul class="content">
-		<li class="content-item" style="display: block;">一</li>
-		<li class="content-item">二</li>
-		<li class="content-item">三</li>
-		<li class="content-item">四</li>
+		<li class="content-list" style="display:block">1</li>
+		<li class="content-list">2</li>
+		<li class="content-list">3</li>
+		<li class="content-list">4</li>
 	</ul>
 </body>
 <script>
-	var aBtn = document.querySelectorAll('.nav .nav-item')
-	var aBox = document.querySelectorAll('.content .content-item')
-	console.log(aBtn)
-	console.log(aBox)
-	for(var i = 0;i<aBtn.length;i++){
-		// alert('a')
-		console.log(aBtn[i]);
-		aBtn[i].index=i;
-		aBtn[i].onclick=function(){
-			// alert('a');
-			for(var	k =0;k<aBtn.length;k++){
-				aBtn[k].className='nav-item';
-				aBox[k].style.display='none';
+	var aBtn = document.querySelectorAll('.list-item');
+	var aContent = document.querySelectorAll('.content-list');
+	for(var i = 0;i<aBtn.length;i++){	//遇见数组先循环，得到每一个list-item
+		// aBtn[i].index = i;				//给aBtn[i]添加一个index属性，让它等于下标
+		aBtn[i].onclick = function(){	//每一个list-item点击的时候执行函数
+			for(var k = 0;k<aBtn.length;k++){		//这个循环相当于清空操作，每次点击之前保留预存的类名
+				aBtn[k].className = 'list-item';	
+				aContent[k].style.display = '';
 			}
-			this.className='active nav-item';
-			aBox[this.index].style.display='block';
+			this.className = 'list-item active';
+			aContent[this.index].style.display = 'block';
 		}
-	}	
+	}
 </script>
 </html>

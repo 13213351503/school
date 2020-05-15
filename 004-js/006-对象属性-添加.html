@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>006-对象属性-添加.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype.showName = function(){
+		console.log('I am ' + this.name);
+	}
+	Person.prototype.showAge = function(){
+		console.log('I am' + this.age + 'years old');
+	}
+	Person.prototype.LEGS = 2;
+
+	var p1 = new Person('Tom',18);
+	console.log(p1);
+	p1.sex = 'male';
+	p1.name = 'Leo';	//在实例上添加一个实例上的同名属性会覆盖原来的
+	p1.showAge();
+	p1.LEGS = 4;//如果在实例对象上添加了一个构造函数原型对象上的同名属性，访问时会找到实例对象上的该属性 
+	console.log(p1.LEGS);
+
+	var p2 = new Person('k',28);
+	console.log(p2);
+	p2.showName();
+	p2.showAge();
+	console.log(p2.LEGS);
+
+</script>
+</html>

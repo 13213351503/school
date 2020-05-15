@@ -33,7 +33,7 @@
 	function animate2(obj,attr,target,isLinear){		//定义一个匀速和减速在一起的函数
 		if(isLinear == undefined){						//调用函数的时候如果不传值默认的会是undefined，当传进来的是undefined时，让它进行匀速动画
 				isLinear=true							//布尔值为true的时候都进行匀速动画
-			}
+		}
 		clearInterval(obj.timer);						//开启定时器之前先关闭定时器
 		obj.timer =setInterval(function(){				//开启定时器
 			var isStop = false;							//当函数进行不下去的时候记得定义一个新的变量
@@ -42,6 +42,7 @@
 			if(attr == 'opacity'){							//当传进来的属性为透明度的时候
 				current = Math.round(current *100);			//方便运算使当前值*100
 			}
+			
 			if(isLinear){									//如果使用匀速动画
 				if(current<target){							//当前值小于目标值
 					iSpeed = 2;								//给他设置速度为正2

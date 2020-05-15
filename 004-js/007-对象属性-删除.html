@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>007-对象属性-删除.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype.showName = function(){
+		console.log('I am ' + this.name);
+	}
+	Person.prototype.showAge = function(){
+		console.log('I am' + this.age + 'years old');
+	}
+	Person.prototype.LEGS = 2;
+	var p1 = new Person('Tom',18);
+	console.log(p1);
+	p1.sex = 'male';
+
+	delete p1.sex;
+	
+	console.log('delete p1.LEGS:::',delete p1.LEGS)//删除实质是判断有没有该属性，如果有删除返回真，若没有，直接返回真
+	console.log('delete p1.sex:::',delete p1.sex);
+	console.log('delete Person.prototype.LEGS:::',delete Person.prototype.LEGS);	//如果删除了原型上的属性，所有实例都访问不到该属性
+	console.log(p1.LEGS);
+
+	var p2 = new Person('k',28);
+	console.log(p2.name);
+	console.log(p2.LEGS);
+</script>
+</html>

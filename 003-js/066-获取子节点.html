@@ -17,9 +17,9 @@
 	var oUl =document.getElementById('ul1')
 	var aNodes=oUl.childNodes;		//.childNodes,返回一个数组,包含父节点中的所有文本节点和元素节点
 	var achild =oUl.children;		//.children,返回一个数组, 包含父节点中的所有元素节点
-	var oLastchild=oUl.lastChild;	//.firstChild和.lastChild分别指向childNodes中的第一个和最后一个
+	var oLastchild=oUl.lastChild;	//.firstChild和.lastChild分别指向childNodes中的第一个和最后一个(包括文本节点)
 	var oFirstchild=oUl.firstChild;	
-									//.firstElementChild和.lastElementChild分别指向children中的第一个和最后一个
+									//.firstElementChild和.lastElementChild分别指向children中的第一个和最后一个(只有元素节点)
 	var ofirstElementChild=oUl.firstElementChild;
 	var olastElementChild=oUl.lastElementChild;
 	// console.log(aNodes);
@@ -28,8 +28,8 @@
 	// console.log(oFirstchild ==aNodes[0]);
 	// console.log(oLastchild);
 	// console.log(oLastchild ==aNodes[aNodes.length-1]);
-	// console.log(ofirstElementChild);
-	// console.log(olastElementChild);
+	console.log(ofirstElementChild);
+	console.log(olastElementChild);
 
 </script>
 </html> 

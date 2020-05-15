@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>004-原型.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype.showName = function(){
+		console.log('I am ' + this.name);
+	}
+	Person.prototype.showAge = function(){
+		console.log('I am' + this.age + 'years old');
+	}
+	Person.prototype.LEGS = 2;
+	console.log('Person.prototype:::',Person.prototype);
+	console.log('Person.prototype.constructor:::',Person.prototype.constructor);
+	console.log('Person.prototype.constructor === Person',Person.prototype.constructor === Person);
+	console.log('Person.prototype.__proto__:::',Person.prototype.__proto__);
+	console.log('Object.prototype:::',Object.prototype);
+	console.log('Person.prototype.__proto__ === Object.prototype:::',Person.prototype.__proto__ === Object.prototype);
+
+	console.log('Object.prototype.constructor === Object:::',Object.prototype.constructor === Object);
+	console.log('Object.prototype.__proto__',Object.prototype.__proto__);
+
+
+	var p1 = new Person('Tom',18);
+	console.log(p1);
+	p1.showName();
+	p1.showAge();
+	console.log('p1.__proto__ === Person.prototype:::',p1.__proto__ === Person.prototype);
+	var p2 = new Person('k',28);
+	console.log(p2);
+	p2.showName();
+	p2.showAge();
+	console.log(p2.LEGS);
+
+
+</script>
+</html>

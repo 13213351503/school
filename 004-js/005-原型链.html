@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-原型链.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+		this.showName = function(){
+			console.log('I am' + this.name + '!!!!!!!!');
+		}
+	}
+	Person.prototype.showName = function(){
+		console.log('I am ' + this.name);
+	}
+	Person.prototype.showAge = function(){
+		console.log('I am' + this.age + 'years old');
+	}
+	// Person.prototype.LEGS = 2;
+
+	var p1 = new Person('Tom',18);
+	console.log(p1);
+	p1.showName();
+	p1.showAge();
+	console.log(p1.LEGS);//当用对象的实例去访问一个属性时,首先去查找对象自身是否有该属性,如果没有去对象的原型链上查找,如果整个原型链上都没有该属性值则该属性是undefined
+	console.log('p1.__proto__ === Person.prototype:::',p1.__proto__ === Person.prototype);
+	var p2 = new Person('k',28);
+	console.log(p2);
+	p2.showName();
+	p2.showAge();
+	console.log(p2.LEGS);
+
+	//原型链顺序
+	p1 - Person - Person.prototype - Object.prototype
+</script>
+</html>
