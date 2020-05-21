@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>006-静态方法和动态方法区别.html</title>
+</head>
+<body>
+	<div>01</div>
+	<div>02</div>
+	<div>03</div>
+	<div>04</div>
+	<div>05</div>
+	<div>06</div>
+	<div>07</div>
+	<div>08</div>
+	<div>09</div>
+	<div>10</div>
+</body>
+	<!-- //由构造函数自身调用的方法————静态方法 -->
+	<!-- //由构造函数生成的实例调用方法————动态方法 -->
+	
+
+
+
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	var date = Date.now();
+	var num = Math.random();
+	var arr = new Array(1,2,3);
+	console.log(arr);
+
+	
+
+	function Person(name){
+		this.name = name;
+	}
+	Person.prototype.showName = function(){
+		console.log('I am' + this.name);
+	}
+	var p1 = new Person('Bom');
+	p1.showName();
+
+	// $(function(){
+	// 	var arr = [3,7,2,4,9,2,3,8,4];
+	// 	arr.forEach(function(value,index){
+	// 		console.log(index,value);
+	// 	});
+
+	// 	var res = $.each()
+	// })
+</script>
+</html>

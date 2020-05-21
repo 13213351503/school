@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-解决冲突问题.html</title>
+</head>
+<body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+
+	(function(w){
+		function $(){
+			console.log('aaa')
+		};
+		w.$ = $;
+	})(window);
+</script>
+
+<script>
+	var k = jQuery.noConflict();	//在使用jQuery前释放jQuery的$使用权的同时自定义自己的符号,用自定义符号来代替$
+	k(function(){
+		console.log('aaa');
+	});
+</script>
+</body>
+</html>

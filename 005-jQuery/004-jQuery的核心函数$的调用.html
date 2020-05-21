@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>004-jQuery的核心函数$的调用.html</title>
+</head>
+<body>
+	<div>1</div>
+	<div class="box">2</div>
+	<div id="box1">3你还好吗</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	var res = $(function(){
+		var oBox = document.getElementById('box1');
+		console.log($('div'));
+		console.log($('.box'));
+		console.log($('#box1'));				//字符串为选择器时,返回一个包含了DOM元素的jQuery对象
+		console.log($('<h2>我是内容</h2>'));		//字符串为HTML代码片段时,返回一个包含了DOM元素的jQuery对象
+		console.log($(oBox));					//返回一个包含了DOM元素的jQuery对象 
+		$(oBox).css('color','green');
+
+		console.log($(''));			//这些布尔值为假的都是空对象
+		console.log($(undefined));
+		console.log($(null));
+		console.log($(0));
+		console.log($(false));
+		console.log($(NaN));
+	});
+	// console.log(res);
+</script>
+</html>

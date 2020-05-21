@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-JQuery对象.html</title>
+</head>
+<body>
+	<div id="box1">01</div>
+	<div id="box2">02</div>
+	<div id="box3">03</div>
+	<div id="box4">04</div>
+	<div id="box5">05</div>
+	<div id="box6">06</div>
+	<div id="box7">07</div>
+	<div id="box8">08</div>
+	<div id="box9">09</div>
+	<div id="box10">10</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		console.log($('div'));
+		console.log($('div')[5]);			//jQuery对象[index],获取对应下标的DOM元素
+		var oBox6 = document.getElementById('box6');
+		$(oBox6).css('background','green');	//DOM对象->jQuery对象
+		// oBox6.css('background','green');	//原生的DOM元素不能使用jQuery的方法,如果需要使用jQuery对象,需要转换
+		console.log($('div').get(5));		//jQuery对象.get(index),获取对应下标的DOM元素
+	})
+</script>
+</html>

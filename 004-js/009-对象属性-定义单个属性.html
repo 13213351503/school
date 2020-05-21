@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>009-对象属性-定义单个属性.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype.showName = function(){
+		console.log('I am ' + this.name);
+	}
+	Person.prototype.showAge = function(){
+		console.log('I am' + this.age + 'years old');
+	}
+	Person.prototype.LEGS = 2;
+
+
+	var p1 = new Person('Tom',18);
+	
+	Object.defineProperty(p1,'sex',{
+		value:'male',
+		enumerable:true,	//判断是否可以被遍历到，默认是false
+		writable:true,		//判断是否可以修改属性值，默认为false，只有true的时候才可以修改
+		configurable:false	//1用来判断属性是否可以被删除	 2用来判断是否可以修改enumerable/writable这两个属性
+	});	
+
+	Object.defineProperty(p1,'sex',{
+		value:'male',
+		enumerable:true,	//判断是否可以被遍历到，默认是false
+		writable:true,		//判断是否可以修改属性值，默认为false，只有true的时候才可以修改
+		configurable:false,	//如果第一次configurable属性为false，第二次则不能修改enumerable/writable
+	});
+	p1.sex = 'famale';
+	delete p1.sex;
+	console.log(p1);
+	for(attr in p1){
+		console.log('attr:::',attr);
+	}
+</script>
+</html>

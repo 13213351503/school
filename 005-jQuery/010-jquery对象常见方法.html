@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>010-jquery对象常见方法.html</title>
+</head>
+<body>
+	<div class="obx1">01</div>
+	<div class="obx2" data-kz='data-kuazhu'>02</div>
+	<div class="obx3">03</div>
+	<div class="obx4">04</div>
+	<div class="obx5">05</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		// var oBox = document.querySelector('.obx3')
+		// // console.log($('div').index());
+		// // console.log($('div').index(document.querySelector('.obx2')));
+		// // console.log($('div').index(oBox));
+		// console.log($('div').index($('.obx5')));		//获取当前jQuery对象的索引
+
+		// $.each($('div'),function(index,value){		//静态方法
+		// 	console.log(index,value);
+		// 	console.log('this:::',this);
+		// });
+		// $('div').each(function(index,value){	//遍历jQuery对象中的DOM元素,注意回调函数中的this是DOM对象
+		// 	console.log('2222',index,value);
+		// 	console.log('2222this:::',this);
+		// })
+
+		// console.log($('.obx2').data());
+		// console.log($('.obx2').data('kz'));	//当参数只有一个key的时候,为读取该jQuery对象对应DOM中存储的key对应的值
+		// console.log($('.obx2').data('kz','kuazhu-haochi'));	//可以设置数据的值
+		// console.log($('.obx2').data('kz'));	//DOM元素添加数据可以用jQuery对象.data()方法,也可以在DOM节点上使用data-*属性添加
+
+		console.log($('div').is('.obx5'));	//检测jQuery对象中是否有匹配元素
+		console.log($('div').is('.obx6'));
+	})
+</script>
+</html>

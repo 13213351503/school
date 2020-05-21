@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>011-查看属性的权限.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype.showName = function(){
+		console.log('I am ' + this.name);
+	}
+	Person.prototype.showAge = function(){
+		console.log('I am' + this.age + 'years old');
+	}
+	Person.prototype.LEGS = 2;
+	var p1 = new Person('Tom',18);
+
+	Object.defineProperties(p1,{
+		EYES:{
+			value:4,
+			enumerable:true,
+			writable:false,
+			configurable:true
+		},
+		HANDS:{
+			value:2,
+			enumerable:true,
+			writable:true,
+			configurable:false
+		}
+	});
+
+	console.log(Object.getOwnPropertyDescriptor(p1,'EYES'));		
+	console.log(Object.getOwnPropertyDescriptor(p1,'HANDS'));		
+	console.log(Object.getOwnPropertyDescriptor(p1,'name'));		
+	console.log(Object.getOwnPropertyDescriptor(p1,'age'));		
+
+</script>
+</html>

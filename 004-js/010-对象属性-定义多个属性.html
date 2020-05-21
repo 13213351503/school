@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>010-对象属性-定义多个属性.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	var p1 = new Person('Tom',18);
+	
+	Object.defineProperties(p1,{
+		LEGS:{
+			value:2,
+			enumerable:true,
+			writable:true,
+			configurable:true
+		},
+		EYES:{
+			value:2,
+			enumerable:true,
+			writable:true,
+			configurable:true
+		},
+		HANDS:{
+			value:2,
+			enumerable:true,
+			writable:true,
+			configurable:true
+		}
+	})
+	console.log(p1);
+	for(attr in p1){
+		console.log(attr);
+	}
+</script>
+</html>

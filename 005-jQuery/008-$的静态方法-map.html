@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>008-$的静态方法-map.html</title>
+</head>
+<body>
+	<div>01</div>
+	<div>02</div>
+	<div>03</div>
+	<div>04</div>
+	<div>05</div>
+	<div>06</div>
+	<div>07</div>
+	<div>08</div>
+	<div>09</div>
+	<div>10</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+
+	$(function(){
+		var arr = [3,7,2,4,9,2,3,8,4];
+		var likeArr = {0:'aa',1:'bb',2:'cc',length:3};
+		
+		// var res = arr.map(function(value,index){
+		// 	console.log(index,value);
+		// 	return value;
+		// });
+		// console.log(res === arr);		//映射数组或者伪数组,返回映射后的数组
+
+		// var res = likeArr.map(function(value,index){		//forEach不能遍历伪数组
+		// 	console.log(index,value);
+		// 	return value;
+		// });
+		// console.log(res);
+
+
+		// var res = $.map(arr,function(value,index){
+		// 	console.log(value,index);	
+		// 	return value;	
+		// });
+		// console.log(res === arr);		//返回映射后的数组
+
+		var res1 = $.map(likeArr,function(value,index){
+			console.log(value,index);	
+			return value;	
+		});
+		console.log(res1 === likeArr);		//返回映射后的数组
+	})
+</script>
+</html>

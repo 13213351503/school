@@ -8,8 +8,18 @@
 	
 </body>
 <!-- <script src="js/jquery-1.12.4.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>	<!-- CDN资源引入 -->
 <script>
-	console.log(jQuery);
+	// jQuery(document).ready(function(){	//不会覆盖的原因是jQuery函数是一个闭包,传递进去的函数都有自己的作用域
+	// 	console.log('123');
+	// })
+
+	$(document).ready(function(){	
+		console.log('123');
+	})
+
+	$(function(){
+		console.log('hellow sister');
+	})
 </script>
 </html>
