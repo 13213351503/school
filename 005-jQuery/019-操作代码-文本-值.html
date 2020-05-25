@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>019-操作代码-文本-值.html</title>
+</head>
+<body>
+	<div>
+		我是div
+		<p>我是p</p>
+	</div>
+	<div>
+		我是box
+	</div>
+	<input type="text" value="132">
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		// console.log($('div').html());	//获取元素中的HTML,相当于innerHTML,只获取第一个div
+		// // console.log($('div').html('<h2>我是好人</h2>'))	//设置页面中所有的div
+		// console.log($('div').html());	//获取带有标签的文本内容
+
+		// console.log($('div').text());	//获取页面中所有div的文本，只有文本，没有标签
+		// console.log($('div').text('<h2>我是好人</h2>'));	//设置页面中所有的div,不会自动解析标签,会把标签当文本内容
+		// console.log($('div').text());	//获取页面中所有div的文本，只有文本，没有标签
+		// console.log($('div')[0].innerHTML);	//需要转化为DOM节点才能获取里面的值
+		// console.log($('div')[0].innerText);
+
+		console.log($('input')[0].value);
+		console.log($('input').val());		//设置或获取元素value属性的值
+		console.log($('input').val('111'));
+	})
+</script>
+</html>

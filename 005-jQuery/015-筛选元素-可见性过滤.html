@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>015-筛选元素-可见性过滤.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+		}
+		div:nth-child(2){
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<input type="text">	
+	<input type="hidden">	
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		
+		console.log($('div:hidden'));		//匹配所有不可见元素
+		console.log($('input:hidden'));
+
+		console.log($('input:visible'));	//匹配所有可见元素
+		console.log($('div:visible'));
+		
+	})
+</script>
+</html>

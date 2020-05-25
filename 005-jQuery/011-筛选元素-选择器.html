@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>011-筛选元素-选择器.html</title>
+</head>
+<body>
+	<div></div>
+	<div class="box"></div>
+	<div id="box1"></div>
+	<div class="box2">
+		<p>我是段落111</p>
+		<p>我是段落222</p>
+		<ul>
+			<li>li1</li>
+			<li>li2</li>
+		</ul>
+	</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		console.log($('div'));			//标签选择器
+		console.log($('.box'));			//类选择器
+		console.log($('#box1'));		//id选择器
+		console.log($('.box2 p'));		//后代选择器
+		console.log($('.box2>ul>li'));	//子选择器
+	})
+</script>
+</html>

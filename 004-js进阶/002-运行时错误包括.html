@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-运行时错误包括.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//ReferenceError 变量引用异常触发的错误,Uncaught ReferenceError: a is not defined
+	// console.log(a)
+	
+
+	//TypeError 类型使用时错误,a is not a function
+	// var a = 123
+	// console.log(typeof(a))
+	// a()
+	
+	//RangeError 递归爆栈时触发,Maximum call stack size exceeded
+	function fn(){
+		fn()
+	}
+	fn()
+</script>
+</html>

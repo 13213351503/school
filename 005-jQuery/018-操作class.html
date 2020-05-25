@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>018-操作class.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box1{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+			margin-bottom: 10px;
+			margin: 10px auto;
+		}
+		.box2{
+			color: yellow;
+		}
+		.box3{
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1">01</div>
+	<div class="box1">02</div>
+	<div class="box1">03</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('div').addClass('box2 box3');				//添加
+		$('div').removeClass('box3');				//删除
+
+		$('div').attr('class','box1 box2 box3');	//添加后会覆盖原来的类
+	})
+</script>
+</html>

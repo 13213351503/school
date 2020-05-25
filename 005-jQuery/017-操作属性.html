@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>017-操作属性.html</title>
+</head>
+<body>
+	<input type="text" name="aaa" value="aaaaaaa111">
+	<input type="text" name="bbb" value="bbbbbbb222">
+	<input type="checkbox" checked="checked">
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		//获取   注意:只能获取第一个元素的值
+		// console.log($('input').attr('name'));
+		// console.log($('input').prop('name'));
+
+		//设置   注意:设置所有元素的值
+		// console.log($('input').eq(1).attr('name','haha'));
+		// console.log($('input').eq(0).prop('name','haha'));
+		// console.log($('input').eq(2).attr('checked',true));
+		// console.log($('input').eq(2).prop('checked',false));
+		// console.log($('input').prop('name',false));
+
+		//删除   注意:删除所有元素的值
+		// console.log($('input').eq(0).removeAttr('name'));	//直接删除属性
+		console.log($('input').eq(1).removeProp('name'));		//删除属性的值，删除后值为undefined
+	})
+</script>
+</html>

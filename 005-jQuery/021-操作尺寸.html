@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>021-操作尺寸.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box1{
+			width: 100px;
+			height: 100px;
+			background: green;
+			padding: 20px;
+			border: 10px solid #000;
+		}
+		.box2{
+			margin-top: 20px;
+			width: 200px;
+			height: 200px;
+			background: red;
+			padding: 20px;
+			border: 10px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1">01</div>
+	<div class="box2">02</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		// console.log($('div').width());
+		// console.log($('div').eq(1).width());
+		// $('div').width(300);
+		// $('div').eq(1).width(300);		//设置盒子的宽，宽只包括盒子内柔的宽度
+
+		// console.log($('div').innerWidth());
+		// console.log($('div').eq(1).innerWidth());
+		// $('div').innerWidth(300);
+		// $('div').eq(1).innerWidth(300);		//设置盒子的宽，宽只包括盒子内容和盒子的外边距
+
+		console.log($('div').outerWidth());
+		console.log($('div').eq(1).outerWidth());
+		$('div').outerWidth(300);
+		$('div').eq(1).outerWidth(300);		//设置盒子的宽，宽只包括盒子内容，盒子的外边距，还有边框的宽
+
+
+	})
+</script>
+
+</html>

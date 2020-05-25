@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>020-操作css.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box1{
+			width: 100px;
+			height: 100px;
+			background: green;
+		}
+		.box2{
+			margin-top: 20px;
+			width: 200px;
+			height: 200px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1">01</div>
+	<div class="box2">02</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		// console.log($('div').css('width'));
+		// console.log($('div').eq(1).css('width'));	//里面的值传获取的什么属性
+
+		// $('div').css('width','300px');		//设置所有div的样式
+		// $('div').css('width','300px').css('height','300px').css('opacity',0.2);
+		$('div').css({
+			width:300,						//三种设置样式的方法
+			height:300,		
+			opacity:0.6
+		})
+
+		console.log($('div').hasClass('box1'));
+		console.log($('div').eq(1).hasClass('box1'));	//判断元素中是否有这个类名
+	})
+</script>
+
+</html>

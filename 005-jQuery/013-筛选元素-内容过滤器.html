@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>013-筛选元素-内容过滤器.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div>03</div>
+	<div>
+		<p>我是段落</p>
+	</div>
+	<div>
+		<span>我是span</span>
+	</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		// console.log($('div:empty'));	//选择的元素中没有文本内容和子元素的
+		// console.log($('div:parent'));	//选择的元素中有文本内容或者子元素的
+		// console.log($('div:contains("我是")'));		//选择的元素中包含有指定内容的
+		console.log($('div:has(p)'));		//选择的元素中有指定的选择器的
+		console.log($('div:has(span)'));
+		console.log($('div:has(ul)'));		//没有的返回一个空对象
+		
+	})
+</script>
+</html>

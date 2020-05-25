@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>016-筛选元素-查找.html</title>
+</head>
+<body>
+	<ul id="list1">
+		<li class="item1">item1</li>
+		<li class="item1">item1</li>
+		<li class="item1">item1</li>
+		<li class="item1">item1</li>
+		<li class="item1">item1</li>
+		<li class="item2">item2</li>
+		<li class="item2">item2</li>
+		<li class="item2">item2</li>
+		<li class="item2">item2</li>
+		<li class="item2">item2</li>
+	</ul>
+	<ul id="list2">
+		<li class="item1">item1</li>
+		<li class="item1">item1</li>
+		<li class="item1">item1</li>
+		<li class="item1">item1</li>
+		<li class="item1">item1</li>
+		<li class="item2">item2</li>
+		<li class="item2">item2</li>
+		<li class="item2">item2</li>
+		<li class="item2">item2</li>
+		<li class="item2">item2</li>
+	</ul>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		console.log($('.item1'));
+		console.log($('#list1').find('.item1'));	//查找jQuery对象中DOM元素的后代中符合选择器规则的元素
+		console.log($('#list2').find('.item2'));
+	})
+</script>
+</html>

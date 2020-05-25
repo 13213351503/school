@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>014-筛选元素-过滤方法.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div id="box3">03</div>
+	<div>
+		<p>我是段落</p>
+	</div>
+	<div>
+		<span>我是span</span>
+	</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		// console.log($('div:eq(1)'));	
+		// console.log($('div').eq(1));	//选择索引对应的DOM元素
+
+		console.log($('#box3').siblings());		//jQuery对象中包含元素之外的兄弟元素
+
+
+		
+	})
+</script>
+</html>
