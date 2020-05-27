@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>025-阻止事件冒泡.html</title>	
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.gf{
+			width: 400px;
+			height: 400px;
+			border: 1px solid #000;
+			margin: 20px auto;
+		}
+		.father{
+			width: 300px;
+			height: 300px;
+			margin: 50px auto;
+			background: orange;
+			overflow: hidden;
+		}
+		.son{
+			width: 100px;
+			height: 100px;
+			margin: 100px auto;
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="gf">
+		<div class="father">
+			<div class="son"></div>
+		</div>
+	</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('.gf').on('click',function(){
+			console.log('gf click...')
+		});
+		$('.father').on('click',function(){		
+			console.log('father click...')
+			return false;						//方法一  return false  不属于ev上面的办法
+		});
+		$('.son').on('click',function(ev){
+			ev.stopPropagation();
+			console.log('son click...')
+			// return false;
+
+		});
+	})
+</script>
+
+</html>

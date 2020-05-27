@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>038-停止动画.html</title>	
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<button>开始动画</button>
+	<button>停止动画</button>
+	<div></div>
+	
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('button').eq(0).on('click',function(){
+			$('div').animate({width:300},2000,function(){	//多个动画按调用的顺序执行
+				console.log('width down');
+			})
+			.animate({height:300},2000,function(){
+				console.log('height down');
+			})
+			.animate({opacity:0.2},2000,function(){
+				console.log('opacity down');
+			});
+		});
+		$('button').eq(1).on('click',function(){
+			// $('div').stop();	//如果不传参数,停止当前正在执行的动画,然后把后续的动画执行完毕
+			// $('div').stop(true,true);	//停止当前动画，把当前动画跳转到目标值，后续的都不执行
+			$('div').stop(true,false);	//停止当前动画，后续的都不执行
+			// $('div').stop(false,false);	//停止当前动画，继续执行后续的动画
+			// $('div').stop(false,true);		//停止当前的动画，并跳转到目标值，后续的继续执行
+		})
+	})
+</script>
+
+</html>

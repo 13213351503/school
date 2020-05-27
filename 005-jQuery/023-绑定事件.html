@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>023-绑定事件.html</title>	
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			border: 2px solid #000;
+			margin: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		// function fn(){
+		// 	console.log('click3')
+		// }
+		// $('div').click(function(){	//方法一部分事件jQuery没有实现,方法二中可以写js中所有的事件
+		// 	console.log('click');
+		// })
+
+		// $('div').on('click',function(){	//绑定一个可以多次执行的事件处理函数
+		// 	console.log('click1');
+		// })
+
+		// $('div').on('click',fn);	//无论是方法一还是方法二,绑定的事件都会不会覆盖  里面还可以传匿名函数
+
+		// $('div').one('click',function(){	//绑定一个一次性的事件处理函数
+		// 	console.log('click4')
+		// })
+
+		$('div').hover(function(){	//jQuery对象.hover(鼠标移入时执行函数,鼠标移出时执行函数)
+			console.log('click');
+		},function(){
+			console.log('click1');
+		})
+
+	})
+</script>
+
+</html>

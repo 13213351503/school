@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>024-移除事件.html</title>	
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			border: 2px solid #000;
+			margin: 20px;
+		}
+	</style>
+</head>
+<body>
+	<button>按钮</button>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		function fn(){
+			console.log('fn click3')
+		}
+		$('div').click(fn);
+		$('div').on('click',function(){
+			console.log('click4')
+		});
+		$('div').mouseover(function(){
+			console.log('mouseover')
+		});
+
+
+		$('button').on('click',function(){
+			// $('div').off();			//移除所有的事件
+			// $('div').off('click');	//移除所有事件名对应的事件	
+			$('div').off('click',fn);	//移除事件名对应的函数名的相关事件	
+		})
+	})
+</script>
+
+</html>

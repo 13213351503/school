@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>037-自定义队列动画.html</title>	
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background: green;
+			opacity: 0.2;
+		}
+	</style>
+</head>
+<body>
+	<button>改变</button>
+	<div></div>
+	
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('button').on('click',function(){
+			// $('div').animate({width:300},2000,function(){	//多个动画链式调用,后面的动画会等待前面的动画执行完毕
+			// 	console.log('width down');
+			// });
+			// $('div').animate({height:300},2000,function(){
+			// 	console.log('height down');
+			// });
+			// $('div').animate({opacity:1},2000,function(){
+			// 	console.log('opacity down');
+			// });
+
+
+			// $('div').animate({width:300},2000,function(){	//在动画方法的回调中再执行动画,回调中的动画会等待前面的动画执行完毕
+			// 	console.log('width down');
+			// 	$('div').animate({height:300},2000,function(){
+			// 		console.log('height down');
+			// 		$('div').animate({opacity:1},2000,function(){
+			// 			console.log('opacity down');
+			// 		});
+			// 	});
+			// });
+			
+			
+			$('div').animate({width:300},2000,function(){	//多个动画按调用的顺序执行
+				console.log('width down');
+			})
+			.animate({height:300},2000,function(){
+				console.log('height down');
+			})
+			.animate({opacity:1},2000,function(){
+				console.log('opacity down');
+			});
+		})
+	})
+</script>
+
+</html>

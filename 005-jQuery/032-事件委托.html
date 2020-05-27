@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>032-事件委托.html</title>	
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<button>新建</button>
+	<ul>
+		<li>01</li>
+		<li>02</li>
+		<li>03</li>
+		<li>04</li>
+		<li>05</li>
+	</ul>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		// $('li').on('click',function(){
+		// 	console.log(this);
+		// })
+
+
+		// $('ul').delegate('li','click',function(){	//第一种方法
+		// 	console.log(this);
+		// })
+
+		$('ul').on('click','li',function(){				//第二种方法 
+			console.log(this);							//回调函数中的this是触发事件的DOM元素,及具体的某个子DOM元素
+		})
+
+		
+		//页面中动态增加的元素需要通过事件委托的方式来添加事件
+		$('button').on('click',function(){
+			var oLi = document.createElement('li');
+			oLi.innerHTML = '我是新建的';
+			$('ul')[0].appendChild(oLi);	//需要把jQuery对象转化为DOM对象才可以在ul上添加事件
+		})
+	})
+</script>
+
+</html>

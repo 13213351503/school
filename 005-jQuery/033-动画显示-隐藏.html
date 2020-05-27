@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>033-动画显示-隐藏.html</title>	
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<button>切换</button>
+	<div></div>
+	
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('button').eq(0).on('click',function(){
+			$('div').show(1000,function(){
+				console.log('div  show');
+			});
+		});
+		$('button').eq(1).on('click',function(){
+			$('div').hide(1000,function(){
+				console.log('div hide');
+			});
+		});
+		$('button').eq(2).on('click',function(){
+			$('div').toggle(1000,function(){
+				console.log('div hide or show');
+			});
+		});
+	})
+</script>
+
+</html>

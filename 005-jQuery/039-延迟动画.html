@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>039-延迟动画.html</title>	
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<button>开始动画</button>
+	<button>停止动画</button>
+	<div></div>
+	
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('button').eq(0).on('click',function(){
+			$('div').animate({width:300},2000,function(){	//多个动画按调用的顺序执行
+				console.log('width down');
+			});
+			// $('div').delay(2000);
+			$('div').delay(2000).animate({height:300},2000,function(){
+				console.log('height down');
+			});
+			$('div').delay(2000).animate({opacity:0.2},2000,function(){
+				console.log('opacity down');
+			});
+		});
+	
+	})
+</script>
+
+</html>

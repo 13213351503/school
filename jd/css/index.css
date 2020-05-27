@@ -1,0 +1,108 @@
+
+
+
+/*<!-- 顶部导航开始 -->*/
+	.top{
+		background: #F4F5F7;
+	}
+	.top .top-left li{
+		height: 44px;
+		line-height: 44px;
+		margin-right: 20px;
+	}
+	.top .top-left li:first-child a{
+		color:#ea7469;
+	}
+	.top .top-right li{
+		height: 44px;
+		line-height: 44px;
+		/*margin-left: 20px;*/
+	}
+	.top .top-right .dropdown{
+		position: relative;
+		/*background: #fff;*/
+		padding: 0 5px;
+	}
+	/*.top .top-right .dropdown:hover{
+		background: #fff;
+	}
+	.top .top-right .dropdown:hover .dropdown-layer{
+		display: block;
+	}
+	.top .top-right .dropdown:hover .fa{
+		transform: rotateZ(180deg);
+	}*/
+
+	.top .top-right .dropdown .dropdown-layer{
+		position: absolute;
+		top: 44px;
+		left: 0px;
+		white-space: nowrap;
+		background: #fff;
+		border: 1px solid #F4F5F7;
+		border-top: none;
+		display: none;
+	}
+	.top .top-right .dropdown .dropdown-layer li{
+		height: 30px;	
+		padding: 0 5px;
+		line-height: 30px;
+	}
+	.top .top-right .dropdown .dropdown-layer li:hover{
+		background: #F4F5F7;
+	}
+	.top .top-right .menu-active .dropdown-toggle{
+		background: #fff;
+	}
+	.top .top-right .menu-active .dropdown-layer{
+		display: block;
+	}
+	.top .top-right .menu-active .fa{
+		transform: rotateZ(180deg);
+	}
+/*<!-- 顶部导航结束 -->*/
+
+
+
+/*<!-- 头部搜索开始 -->*/
+	.header{
+		height: 100px;
+		background: tomato;
+	}
+/*<!-- 头部搜索结束 -->*/
+
+
+
+/*!-- 主导航区域开始 -->*/
+	.nav-main{
+		height: 100px;
+		background: red;
+	}
+/*!-- 主导航区域结束 -->*/
+
+
+
+/*<!-- 焦点区域开始 -->*/
+	.focus{
+		height: 500px;
+		background: purple;
+	}
+/*<!-- 焦点区域结束 -->*/
+
+
+
+/*<!-- 今日热销开始 -->*/
+	.hot{
+		height: 200px;
+		background: orange;
+	}
+/*<!-- 今日热销结束 -->*/
+
+
+
+/*<!-- 楼层一开始 -->*/
+	.floor{
+		height: 400px;
+		background: pink;
+	}
+/*<!-- 楼层一结束 -->*/

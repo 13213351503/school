@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>034-动画显示-卷入和卷出.html</title>	
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<button>切换</button>
+	<div></div>
+	
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('button').eq(0).on('click',function(){
+			$('div').slideDown(1000,function(){
+				console.log('div  slideDown');
+			});
+		});
+		$('button').eq(1).on('click',function(){
+			$('div').slideUp(1000,function(){
+				console.log('div slideUp');
+			});
+		});
+		$('button').eq(2).on('click',function(){
+			$('div').slideToggle(1000,function(){
+				console.log('div slideDown or slideUp');
+			});
+		});
+	})
+</script>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>036-自定义动画.html</title>	
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<button>改变</button>
+	<div></div>
+	
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		// $('button').on('click',function(){
+		// 	$('div').animate(
+		// 	{
+		// 		width:300
+		// 	},
+		// 	2000,
+		// 	function(){
+		// 		console.log('div width');
+		// 	});
+		// });
+
+
+		// $('button').on('click',function(){
+		// 	$('div').animate(
+		// 	{
+		// 		width:300,
+		// 		height:300,
+		// 		opacity:0.2
+		// 	},
+		// 	2000,
+		// 	function(){
+		// 		console.log('div width');
+		// 	});
+		// });
+
+
+		// $('button').on('click',function(){
+		// 	$('div').animate(
+		// 	{
+		// 		width:'+=300',
+		// 		height:'+=300',
+		// 	},
+		// 	2000,
+		// 	function(){
+		// 		console.log('div width');
+		// 	});
+		// });
+
+
+		$('button').on('click',function(){
+			$('div').animate(
+			{
+				width:'-=60',				//多个属性写在一起可以执行同步动画
+				height:'-=60',
+			},
+			2000,
+			function(){
+				console.log('div width');
+			});
+		});
+		
+	})
+</script>
+
+</html>

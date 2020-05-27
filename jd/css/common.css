@@ -1,0 +1,37 @@
+.container{
+	width: 1300px;
+	margin-left: auto;
+	margin-right: auto;
+}
+body{
+	font-size: 16px;
+}
+a{
+	text-decoration: none;
+	font-size: 12px;
+	color: #4D5154;
+}
+.transition{
+	transition: all 0.5s;
+}
+.link:hover{
+	color: #ea7469;
+}
+/*浮动设置开始*/
+.fl{
+	float: left;
+}
+.rl{
+	float: right;
+}
+.clearfix:after{
+	display: block;
+	content: " ";
+	clear: both;
+	height: 0px;
+	visibility: hidden;
+}
+.clerafix{
+	*zoom: 1;
+}
+/*浮动设置结束*/
