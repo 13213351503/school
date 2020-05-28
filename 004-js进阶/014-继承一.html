@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>014-继承一.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		// console.log(this);
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype.showName = function(){
+		console.log('I am ' + this.name);
+	};
+	Person.prototype.showAge = function(){
+		console.log('I am ' + this.age + ' years old');
+	};
+
+	//这种方法的缺点就是在student上添加的方法在person上面也可以调用，不建议使用
+	Student.prototype = Person.prototype;		//继承方法
+	
+
+	function Student(name,age,major){
+		// console.log(this);
+
+		//继承属性
+		// Person(name,age)					//调用的时候this的指向是window，需要this指向student才可以
+		// Person.call(this,name,age);		//三种改变this指向的方法都可以
+		// Person.apply(this,[name,age]);
+		Person.bind(this)(name,age);
+		this.major = major;
+	}
+	// Student.prototype.showName = function(){
+	// 	console.log('I am ' + this.name);
+	// };
+	// Student.prototype.showAge = function(){
+	// 	console.log('I am ' + this.age + ' years old');
+	// };
+	Student.prototype.showMajor = function(){
+		console.log('I am from' + this.age);
+	};
+
+
+	var s1 = new Student('yk',28,'computer');
+	s1.showName();
+	s1.showAge();
+	s1.showMajor();
+</script>
+</html>

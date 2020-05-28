@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>013-改变this指向.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function show(n1,n2){
+		console.log(this,n1,n2);
+	};
+	// show();	//不传参的情况，this指向的是window，n1,n2是undefined
+	// show(1,2); //n1,n2是1,2		show这个方法this始终指向window
+
+	// show.call();	//不传参的情况this指向也是window
+	// show.call(1,2);	//Number{1}, 2, undefined;  他会把第一个参数当做数字类型的对象传入到this中，n1就是传的第二个参数，第三个是undefined
+	// show.call({name:'tom'},1,2);	//call这个方法可以把第一个参数当做要改变的this指向传进函数中	
+	// show.call(null,1,2);	//当第一个参数为null的时候this依然指向window
+
+
+	// show.apply();	//不传参的情况this指向也是window
+	// // show.apply(1,2);//这种情况会报错
+	// show.apply({name:'tom'},[1,2]);	//第一个就是this改变的对象，后面两个需要用数组的形式传进去
+	// show.apply(null,[1,2]);	//当第一个参数为null的时候this依然指向window
+
+	show.bind();//直接调用的话会显示空白，
+	var result = show.bind();	
+	console.log(result);		//show.bind()会有一个返回值，指向调用的函数本身
+	show.bind()();	//第一个括号就相当于第一次调用返回函数本身，第二个括号相当于调用函数，this指向window，后两个为undefined
+	show.bind({name:'tom'})(1,2);	//第一个括号内就是this的指向，后面的括号是参数
+	show.bind(null)(1,2);	//如果第一个参数为null，依然指向window
+</script>
+</html>
