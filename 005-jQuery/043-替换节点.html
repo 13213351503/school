@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>043-替换节点.html</title>	
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<button>替换节点1</button>
+	<button>替换节点2</button>
+	<button>替换节点3</button>
+	<div>
+		我是段落
+		<p>
+
+			我是p
+		</p>
+	</div>
+	<div>
+		我是段落
+		<p>
+			
+			我是p
+		</p>
+	</div>
+	<div>
+		我是段落
+		<p>
+			
+			我是p
+		</p>
+	</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		//jQuery对象1.replaceWith(jQuery对象2|HTML代码),用jQuery对象2中的节点替换jQuery对象1中的节点
+		$('button').eq(0).on('click',function(){	
+			var oH2 = $('<h2>我是标题</h2>');
+			$('p').replaceWith(oH2);
+		});
+
+		$('button').eq(1).on('click',function(){	
+			$('div').replaceWith('<h2>我是标题</h2>');
+		});
+
+		//jQuery对象1.replaceAll('选择器'),用jQuery对象1中节点替换掉所有选中的节点
+		$('button').eq(2).on('click',function(){	
+			var oH2 = $('<h2>我是标题</h2>');
+			oH2.replaceAll($('p'));
+		});
+	})
+</script>
+
+</html>

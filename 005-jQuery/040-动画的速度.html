@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>040-动画的速度.html</title>	
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			margin-top: 10px;
+			width: 100px;
+			height: 100px;
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<button>开始动画</button>
+	<button>停止动画</button>
+	<div></div>
+	<div></div>
+	
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('button').eq(0).on('click',function(){
+			$('div').eq(0).animate({width:600},2000,'swing',function(){	//多个动画按调用的顺序执行
+				console.log('width down');
+			});
+			$('div').eq(1).animate({width:600},2000,'linear',function(){	//多个动画按调用的顺序执行
+				console.log('width2 down');
+			});
+			
+		});
+	
+	})
+</script>
+
+</html>

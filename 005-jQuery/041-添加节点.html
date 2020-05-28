@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>041-添加节点.html</title>	
+	
+</head>
+<body>
+	<button>添加1</button>
+	<button>添加2</button>
+	<button>添加3</button>
+	<button>添加4</button>
+	<button>添加5</button>
+	<button>添加6</button>
+	<ul>
+		<li>01</li>
+		<li>02</li>
+		<li>03</li>
+		<li>04</li>
+		<li>05</li>
+	</ul>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		//将子节点插入到父节点内部后面
+		$('button').eq(0).on('click',function(){
+			var oLi = $('<li>我是新来的111</li>');	//因为子节点需要jQuery对象，所以要用这种方法生成
+			$('ul').append(oLi);					//父节点jQuery对象.append(子节点jQuery对象)
+		});
+
+		$('button').eq(1).on('click',function(){
+			var oLi = $('<li>我是新来的222</li>');	//因为子节点需要jQuery对象，所以要用这种方法生成
+			oLi.appendTo($('ul'));					//子节点jQuery对象.appendTo(父节点jQuery对象)
+		});
+
+
+		//将子节点插入到父节点内部前面
+		$('button').eq(2).on('click',function(){
+			var oLi = $('<li>我是新来的333</li>');	//因为子节点需要jQuery对象，所以要用这种方法生成
+			$('ul').prepend(oLi);					//父节点jQuery对象.prepend(子节点jQuery对象)
+		});
+
+		$('button').eq(3).on('click',function(){
+			var oLi = $('<li>我是新来的444</li>');	//因为子节点需要jQuery对象，所以要用这种方法生成
+			oLi.prependTo($('ul'));					//子节点jQuery对象.prependTo(父节点jQuery对象)
+		});
+
+
+
+		//外部插入
+		$('button').eq(4).on('click',function(){
+			var oLi = $('<li>我是新来的555</li>');	//因为子节点需要jQuery对象，所以要用这种方法生成
+			$('li').eq(2).after(oLi);				//jQuery对象1.after(jQuery对象2) jQuery对象1中的节点后面插入jQuery对象2中的节点
+		});
+
+		$('button').eq(5).on('click',function(){
+			var oLi = $('<li>我是新来的555</li>');	//因为子节点需要jQuery对象，所以要用这种方法生成
+			$('li').eq(2).before(oLi);				//jQuery对象1.before(jQuery对象2) jQuery对象1中的节点前面插入jQuery对象2中的节点
+		});
+	})
+</script>
+
+</html>
