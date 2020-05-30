@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>023-函数节流.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			height: 3000px;
+		}
+	</style>
+</head>
+<body>
+	
+</body>
+<script>
+	//函数节流,只要任务触发的间隔超过指定间隔的时候,任务就会执行。当高频率调用某个函数时，让它按某个特定的频率执行。
+
+	var i = 0;
+	function throttle(fn,wait){			
+		var lastTime = Date.now();				//第一次执行滚动的时间
+		return function(){
+			var current = Date.now();			//第二次执行滚动的时间
+			if(current - lastTime > wait){
+				fn();
+				lastTime = current;					//执行完一次函数之后记得把上一次的时间改变，防止下一次执行函数还是最初的时间
+			};
+		};
+	};
+	window.onscroll = throttle(function(){
+		console.log(i++);
+	},1000);
+
+
+	
+</script>
+</html>

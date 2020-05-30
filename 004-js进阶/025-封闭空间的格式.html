@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>025-封闭空间的格式.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//小括号的语义
+	// if(true){				//和一些语句联合使用以达到某些限定作用,如与if、while后的()
+	// 	console.log(666);
+	// }
+
+	// var num = '1'+(2+5)+'8';	//提高运算的优先级
+	// console.log(num);
+
+	// function show(){			//函数声明时参数表
+	// 	console.log('aaa');
+	// }
+	// show();
+
+	// function show(name){		//函数调用和传参	
+	// 	console.log(name);
+	// }
+	// show('l');
+
+	// (function(){				//强制表达式运算
+	// 	console.log('lll')
+	// })()
+
+	// (function(name){			//(function(参数){//这里相当于块级作用域})(传参值);
+	// 	console.log(name);
+	// })('lll')
+
+
+	//其他常见格式
+	// ;(function(name){			//;(function(参数){})(传参值)
+	// 	console.log(name);
+	// })('lll')
+	// ;(function(){
+	// 	console.log('nihao');
+	// })()
+
+	+(function(name){				//+(function(参数){})(传参值)
+		console.log(name);
+	})('lll')
+	+(function(){
+		console.log('nihao');
+	})()
+
+	-(function(name){				//-(function(参数){})(传参值)
+		console.log(name);
+	})('lll')
+	-(function(){
+		console.log('nihao');
+	})()
+	//上述写法主要是为了和其他的封闭空间隔开
+</script>
+</html>

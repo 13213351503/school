@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>021-闭包.html</title>
+</head>
+<body>
+	
+</body>
+<script>	
+	//闭包:有权访问另一个函数作用域中变量的函数,即子函数有权访问父函数中的变量
+
+	function fn1(){
+		var a = 1;
+		function fn2(){
+			console.log(a);
+		};
+		fn2();	
+	};
+	fn1();
+</script>
+</html>
