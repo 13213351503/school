@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>018-继承四.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		this.name = name;								
+		this.age = age;
+	}
+	Person.prototype.showName = function(){
+		console.log('I am ' + this.name);
+	};
+	Person.prototype.showAge = function(){
+		console.log('I am ' + this.age + ' years old');
+	};
+	
+
+	Object.defineProperties(Person.prototype,{
+		showName:{
+			enumerable:false,
+		}
+	});
+	var obj1 = Object.create(Person.prototype);	//生成一个空对象，让它的__proto__指向Person.prototype
+	console.log('1:::',obj1);
+	Student.prototype = obj1;
+	console.log(Student.prototype);
+	
+	
+
+	function Student(name,age,major){
+		Person.bind(this)(name,age);
+		this.major = major;
+	}
+	Student.prototype.showMajor = function(){
+		console.log('I am from' + this.age);
+	};
+	
+
+	var s1 = new Student('yk',28,'computer');
+	s1.showName();
+	s1.showAge();
+	s1.showMajor();
+</script>
+</html>

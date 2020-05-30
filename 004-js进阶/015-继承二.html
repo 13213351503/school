@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>015-继承二.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	Person.prototype.showName = function(){
+		console.log('I am ' + this.name);
+	};
+	Person.prototype.showAge = function(){
+		console.log('I am ' + this.age + ' years old');
+	};
+	var p1 = new Person('Tom',18);
+
+	Object.defineProperties(Person.prototype,{
+		showName:{
+			enumerable:false,
+		}
+	});
+
+	//通过遍历person.prototype上面的属性，把属性添加给student原型上面，如果person上面属性设置不可枚举，那这个方法将会失效
+	for(attr in Person.prototype){	
+		Student.prototype[attr] = Person.prototype[attr];
+		console.log(Student.prototype);
+	}
+	
+
+	function Student(name,age,major){
+		Person.bind(this)(name,age);
+		this.major = major;
+	}
+	Student.prototype.showMajor = function(){
+		console.log('I am from' + this.age);
+	};
+	
+
+	var s1 = new Student('yk',28,'computer');
+	s1.showName();
+	s1.showAge();
+	s1.showMajor();
+</script>
+</html>

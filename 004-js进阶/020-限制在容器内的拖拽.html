@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>020-限制在容器内的拖拽.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+	
+</body>
+<script>
+	function Drag(options){
+		this.oBox = null;
+		this.width = options.width;
+		this.height = options.height;
+		this.background = options.background;
+		this.disX = 0;
+		this.disY = 0;
+
+		this.init();
+		this.bindEvent();
+	};
+
+
+	Drag.prototype.init = function(){
+		this.oBox = document.createElement('div');
+		this.oBox.style.width = this.width + 'px';
+		this.oBox.style.height = this.height + 'px';
+		this.oBox.style.background = this.background;
+		this.oBox.style.position = 'absolute';
+		this.oBox.style.top = 0;
+		this.oBox.style.left = 0;
+		document.body.appendChild(this.oBox);
+	};
+
+	Drag.prototype.bindEvent = function(){
+		this.oBox.onmousedown = function(ev){
+			this.disX = ev.clientX - this.oBox.offsetLeft;
+			this.disY = ev.clientY - this.oBox.offsetTop;
+			// console.log(this.disX,this.disY)
+			document.onmousemove = function(ev){
+				this.oBox.style.left = ev.clientX - this.disX + 'px';
+				this.oBox.style.top = ev.clientY - this.disY + 'px';
+			}.bind(this);
+			document.onmouseup = function(){
+				document.onmousemove = null;
+				document.onmouseup = null;
+			};
+		}.bind(this);
+	};
+
+	function LimitDrog(options){		//继承属性和方法
+		Drag.bind(this)(options);
+	}
+	LimitDrog.prototype = Object.create(Drag.prototype);	
+	LimitDrog.prototype.constructor = LimitDrog;	//添加constructor属性
+	LimitDrog.prototype.bindEvent = function(){
+		this.oBox.onmousedown = function(ev){
+			this.disX = ev.clientX - this.oBox.offsetLeft;
+			this.disY = ev.clientY - this.oBox.offsetTop;
+			// console.log(this.disX,this.disY)
+			document.onmousemove = function(ev){
+				var l = ev.clientX - this.disX;
+				var t = ev.clientY - this.disY;
+				if(l<0){
+					l = 0;
+				}else if(l > window.innerWidth - this.oBox.offsetWidth){
+					l = window.innerWidth - this.oBox.offsetWidth;
+				};
+				if(t<0){
+					t = 0;
+				}else if(t > window.innerHeight - this.oBox.offsetHeight){
+					t = window.innerHeight - this.oBox.offsetHeight;
+				}
+				this.oBox.style.left = l + 'px';
+				this.oBox.style.top = t + 'px';
+			}.bind(this);
+			document.onmouseup = function(){
+				document.onmousemove = null;
+				document.onmouseup = null;
+			};
+		}.bind(this);
+	};
+
+
+	new Drag({
+		width:100,
+		height:100,
+		background:'green'
+	})
+
+	new LimitDrog({
+		width:200,
+		height:200,
+		background:'purple'
+	})
+</script>
+</html>

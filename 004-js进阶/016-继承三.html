@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>016-继承三.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		console.log('haha')								//缺点：调用两次父类的构造函数
+		this.name = name;								//		在子类的原型上产生了不必要的父类的属性
+		this.age = age;
+	}
+	Person.prototype.showName = function(){
+		console.log('I am ' + this.name);
+	};
+	Person.prototype.showAge = function(){
+		console.log('I am ' + this.age + ' years old');
+	};
+	
+
+	Object.defineProperties(Person.prototype,{
+		showName:{
+			enumerable:false,
+		}
+	});
+	var p1 = new Person();
+
+	//使student.prototype等于生成实例对象上的__proto__, __proto__又等于Person.prototype，从原型链上得到showName
+	Student.prototype = p1;	
+	console.log(Student.prototype);
+	
+	
+
+	function Student(name,age,major){
+		Person.bind(this)(name,age);
+		this.major = major;
+	}
+	Student.prototype.showMajor = function(){
+		console.log('I am from' + this.age);
+	};
+	
+
+	var s1 = new Student('yk',28,'computer');
+	s1.showName();
+	s1.showAge();
+	s1.showMajor();
+</script>
+</html>
