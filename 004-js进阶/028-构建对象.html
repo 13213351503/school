@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>028-构建对象.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	(function(w){
+		function Person(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		Person.prototype.showName = function(){
+			console.log('I am ' + this.name);
+		};
+		Person.prototype.showAge = function(){
+			console.log('I am ' + this.age + ' years old');
+		};
+		// window.Person = Person;			//在封闭空间中可以直接给window添加属性，方便在封闭空间外部调用
+			w.Person = Person;				
+	})(window);
+	
+	var p1 = new Person('Tom',18);
+	console.log(p1);
+
+	(function(w){
+		function Student(name,age,major){
+		this.name = name;
+		this.age = age;
+		this.major = major;
+		}
+		Student.prototype.showName = function(){
+			console.log('I am ' + this.name);
+		};
+		Student.prototype.showAge = function(){
+			console.log('I am ' + this.age + ' years old');
+		};
+		Student.prototype.showMajor = function(){
+			console.log('I am from' + this.age);
+		};
+		// window.Student = Student;			//在封闭空间中可以直接给window添加属性，方便在封闭空间外部调用
+			w.Student = Student;
+	})(window)
+	
+	var s1 = new Student('yk',28,'computer');
+	console.log(s1);
+</script>
+</html>

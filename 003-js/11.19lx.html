@@ -17,7 +17,31 @@
 	</style>
 </head>
 <body>
-	<div id="box">haha</div>
-	<button onclick="document.getElementById('box').className='box'">div按钮</button>
+	<div id="box">dianwo</div>
 </body>
+<script>
+	// var a = {
+	// 	name:'tom',
+	// 	age:'18'
+	// };
+	// var b = a;
+	// b.sex = 'male';
+	// console.log(a.sex);
+	// console.log(b.sex);
+	// var a = '123';
+	// if(typeof a == Number){
+	// 	console.log(1);
+	// }else if(a == 123){
+	// 	console.log(2);
+	// }else{
+	// 	console.log(3);
+	// }
+	// 
+	var oBox = document.getElementById('box');
+	for(var i=0;i<4;i++){
+		oBox.onclick = function(){
+			console.log(i);
+		}
+	}
+</script>
 </html>

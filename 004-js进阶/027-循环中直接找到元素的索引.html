@@ -42,15 +42,15 @@
 	var lastIndex = 0;
 	for(var i = 0;i<aLi.length;i++){
 		// aLi[i].index = i;
-		// aLi[i].onmouseenter = function(){
-		// 	// for(var k = 0;k<aLi.length;k++){
-		// 	// 	aLi[k].className = '';
-		// 	// };
-		// 	aLi[lastIndex].className = '';	
-		// 	this.className = 'active';
-		// 	lastIndex = this.index;
+		// aLi[i].onmouseenter = function(){	//缺点是每次循环都需要把每个li清空
+		// 	 for(var k = 0;k<aLi.length;k++){
+		// 	 	aLi[k].className = '';
+		// 	 };
+		// 	aLi[lastIndex].className = '';		上一个li的className清空
+		// 	this.className = 'active';			当前li的className
+		// 	lastIndex = this.index;				每次使用后的li的下标等于当前的i值
 		// }
-		(function(i){
+		(function(i){							//每次传入都相当于创建了一个新的封闭空间
 			aLi[i].onmouseenter = function(){
 				aLi[lastIndex].className = '';	
 				this.className = 'active';

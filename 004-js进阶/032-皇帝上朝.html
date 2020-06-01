@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>032-皇帝上朝.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	(function(w){
+		var k = null;				//定义一个变量，意思就是皇帝的名字
+		function King(name){
+			if(!k){					//如果没有皇帝的名字的时候
+				this.name = name;
+				this.id = Math.random();
+				k = this;			//记住皇帝的名字和id，然后返回出去，确保循环四次调用的时候都只有同一个名字id
+			};
+			return k;
+			
+		};
+		King.prototype = {
+			talk:function(){
+				console.log(this.name + this.id + '：有本早奏，无本退朝')
+			}
+		};
+		w.King = King;
+	})(window)
+
+	for(var i = 1;i<5;i++){
+		new King('溥仪').talk();
+	}
+</script>
+</html>
