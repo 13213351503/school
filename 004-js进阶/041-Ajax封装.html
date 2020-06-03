@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>041-Ajax封装.html</title>
+</head>
+<body>
+	<button id="btn">请求</button>
+</body>
+<script>
+	var oBtn = document.getElementById('btn');
+
+	function ajax(method,url,data){
+		//1.生成Ajax对象
+		var oAjax = new XMLHttpRequest();
+		console.log(oAjax);
+
+		//2.建立连接	(建立连接的方法，访问的对象，是否异步)
+		oAjax.open(method,url,true);
+
+		//3.发送请求
+		oAjax.send(data);
+
+		//4.等待服务器返回数据 
+		oAjax.onreadystatechange = function(){
+			// console.log(oAjax.readyState);
+			if(oAjax.readyState == 4){
+				if(oAjax.status == 200){
+					var obj = oAjax.responseText;
+					var JsonToObj = JSON.parse(obj);
+					console.log(JsonToObj);
+				}else{
+					console.log('status Code 404');
+				};
+			};
+		};
+	};
+
+	oBtn.onclick = function(){
+		ajax(
+			'POST',
+			'http://127.0.0.1:3000',
+			'{"name":"k","age":28}',
+			);
+	}
+</script>
+</html>

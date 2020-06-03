@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>034-数组高级.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var arr = [6,8,66,11,5,20,10];
+	// for(var i=0;i<arr.length;i++){
+	// 	console.log(i,arr[i]);
+	// }
+	// var result = arr.forEach(function(value,index){		//遍历：遍历不会生成新的数组,没有返回值
+	// 	console.log(value)
+	// })
+	// console.log(result);
+	 
+	
+	// var result = arr.map(function(value,index){
+	// 	console.log(value);									//映射：遍历数组,把函数的每一次返回值映射成新的数组并返回
+	// 	return value;			
+	// })
+	// console.log(result);		//没有return的情况下返回值是undefined
+	 
+	// var result = arr.filter(function(value,index){
+	// 	return value < 10;									//过滤：遍历数组,把函数的每一次返回值为真的原数组中的值组成新的数组并返回
+	// }) 
+	// console.log(result);	
+	 
+	// var result = arr.every(function(value,index){		//全真判断：遍历数组,所有值为真的情况下返回真,否则返回假
+	// 	// return value > 10;
+	// 	return value > 4;
+	// })
+	// console.log(result);
+
+	var result = arr.some(function(value,index){			//有真判断：遍历数组,有一个值为真的情况下返回真,否则返回假
+		return value > 100;									
+	})
+	console.log(result);
+</script>
+</html>

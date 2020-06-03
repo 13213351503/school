@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>035-http请求方法</title>
+</head>
+<body>
+
+	
+	<!-- <form action="http://www.kuazhu.com" method="get">	
+		<input type="text" name="username">					 method中get的提交方法
+		<input type="text" name="password">					用于获取数据，请求是参数的大小有限制(400k)
+		<input type="submit" value="提交">					参数以及参数的值会显示在地址栏中，安全性极低 
+	</form>	
+ -->
+ 
+ 	<form action="http://www.kuazhu.com" method="post">	
+		<input type="text" name="username">					<!-- method中post的提交方法 -->
+		<input type="text" name="password">					<!-- 用于提交数据(表单的提交)，请求是参数的大小基本没有限制 -->
+		<input type="submit" value="提交">					<!-- 参数不会显示在地址栏中，相对安全 -->
+	</form>	
+
+</body>
+</html>

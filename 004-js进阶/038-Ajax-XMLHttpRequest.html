@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>038-Ajax-XMLHttpRequest.html</title>
+</head>
+<body>
+	<button id="btn">请求</button>
+</body>
+<script>
+	var oBtn = document.getElementById('btn');
+	oBtn.onclick = function(){
+		//1.生成Ajax对象
+		var oAjax = new XMLHttpRequest();
+		console.log(oAjax);
+
+		//2.建立连接	(建立连接的方法，访问的对象，是否异步)
+		oAjax.open('GET','http://127.0.0.1:3000/038-data.json',true);
+
+		//3.发送请求
+		oAjax.send();
+
+		//4.等待服务器返回数据 
+		oAjax.onreadystatechange = function(){
+			// console.log(oAjax.readyState);
+			if(oAjax.readyState == 4){				//数据完全返回
+				if(oAjax.status == 200){			
+					var obj = oAjax.responseText;	//JSON对象不是js对象
+					var JsonToObj = JSON.parse(obj);//转换为js对象		
+					console.log(JsonToObj);
+				}else{
+					console.log('status Code 404');
+				}
+			}
+		}
+	}
+</script>
+</html>
