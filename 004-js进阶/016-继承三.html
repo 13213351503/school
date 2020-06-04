@@ -37,6 +37,7 @@
 	function Student(name,age,major){
 		Person.bind(this)(name,age);
 		this.major = major;
+		// console.log(this);
 	}
 	Student.prototype.showMajor = function(){
 		console.log('I am from' + this.age);

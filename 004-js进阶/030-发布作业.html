@@ -18,7 +18,7 @@
 				for(var i = 0;i<this.Students.length;i++){	
 					this.Students[i].listen(val);	//val就是指的发布的作业
 				};
-			};
+			}
 		};
 		w.Teacher = Teacher;
 	})(window);
@@ -29,9 +29,9 @@
 
 		};
 		Student.prototype = {
-			listen:function(msg){			//msg就是学生接受老师发送的作业
-				console.log(this.name + ' got msg ' + msg);
-			};
+			listen:function(val){			//msg就是学生接受老师发送的作业
+				console.log(this.name + ' got msg ' + val);
+			}
 		};
 		w.Student = Student;
 	})(window);
@@ -39,7 +39,7 @@
 	var t1 = new Teacher('陈老师');
 	var s1 = new Student('金莲',t1);
 	var s2 = new Student('大郎',t1);
-	var s3 = new Student('大郎',t1);
+	var s3 = new Student('阿松',t1);
 	// console.log(t1);
 	// console.log(s1);
 	// console.log(s2);

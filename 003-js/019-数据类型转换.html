@@ -12,25 +12,33 @@
 	<input type="text" id="text1">+
 	<input type="text" id="text2">=
 	<input type="button" value="相加" id="btn">
-	<script>
-		var t1 = document.getElementById('text1')
-		var	t2 = document.getElementById('text2')
-		var h1 = document.getElementById('btn')
-		h1.onclick = function(){
-			var val1 = parseInt(t1.value);
-			var val2 = parseInt(t2.value);
-			console.log(isNaN(val1))
-			console.log(typeof val1)
-			if (isNaN(val1)){
-				alert('第一行错误')
-			}
-			else if(isNaN(val2)){
-				alert('第二行错误')
-			}
-			else{
-				alert(val1+val2);
-			}
-		}
-	</script>
+	
 </body>
+<script>
+	// var t1 = document.getElementById('text1')
+	// var	t2 = document.getElementById('text2')
+	// var h1 = document.getElementById('btn')
+	// h1.onclick = function(){
+	// 	var val1 = parseInt(t1.value);
+	// 	var val2 = parseInt(t2.value);
+	// 	console.log(isNaN(val1))
+	// 	console.log(typeof val1)
+	// 	if (isNaN(val1)){
+	// 		alert('第一行错误')
+	// 	}
+	// 	else if(isNaN(val2)){
+	// 		alert('第二行错误')
+	// 	}
+	// 	else{
+	// 		alert(val1+val2);
+	// 	}
+	// }
+	var test ='123';
+	// console.log(parseInt(test));
+	// console.log(Number(test));
+	var test1 = parseInt(test);
+	var test2 = Number(test);
+	console.log(typeof test1);
+	console.log(typeof test2);
+</script>
 </html>

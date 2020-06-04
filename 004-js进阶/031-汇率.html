@@ -15,7 +15,6 @@
 			this.init();
 			this.bindEvent();
 		}
-
 		Local.prototype = {
 			init:function(){								//初始化
 				var oDiv = document.createElement('div');
@@ -30,14 +29,15 @@
 				}
 			},
 			bindEvent:function(){
-				this.oInput.oninput = function(){
+				this.oInput.oninput = function(){			//oninput输入后触发
 					this.publish(this.oInput.value);		//获取input的value值
 				}.bind(this);
 			}
-
 		}
 		w.Local = Local;
 	})(window);
+
+
 
 	(function(w){
 		function Foreign(name,local,rate){
@@ -56,14 +56,12 @@
 				document.body.appendChild(oP);
 			},
 			listen:function(val){								//计算汇率
-				// console.log(val);
+				console.log(val);
 				// console.log(this.oSpan);
 				this.oSpan.innerHTML = this.rate * val;
 			}
 		};
-
 		w.Foreign = Foreign;
-
 	})(window);
 
 	var rmb = new Local('人民币RMB');
@@ -71,6 +69,6 @@
 	var eur = new Foreign('欧元EUR',rmb,0.1261);
 	var hkd = new Foreign('港元HKD',rmb,1.0889);
 	var jpy = new Foreign('日元JPY',rmb,15.1081);
-	console.log(rmb);
+	// console.log(rmb);
 </script>
 </html>

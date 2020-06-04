@@ -35,7 +35,7 @@
 
 	//判断属性只在原型上有:return !obj.hasOwnProperty(name) && (name in obj);
 	function isInPrototype(attr,obj){
-		return !obj.hasOwnProperty(attr) && (attr in obj);
+		return obj.hasOwnProperty(attr) && (attr in obj);
 	}
 	console.log(isInPrototype('name',p1));
 	console.log(isInPrototype('age',p1));
