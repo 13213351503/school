@@ -17,6 +17,9 @@
 		//2.建立连接	(建立连接的方法，访问的对象，是否异步)
 		oAjax.open('POST','http://127.0.0.1:3000',true);
 
+		//设置请求头信息
+		oAjax.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+
 		//3.发送请求
 		oAjax.send('{"name":"k","age":28}');
 

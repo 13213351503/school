@@ -2,24 +2,23 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>041-Ajax封装.html</title>
+	<title>042-Ajax-tycl.html</title>
 </head>
 <body>
 	<button id="btn">请求</button>
 </body>
 <script>
 	var oBtn = document.getElementById('btn');
-
-	function ajax(method,url,data){
+	oBtn.onclick = function(){
 		//1.生成Ajax对象
 		var oAjax = new XMLHttpRequest();
 		console.log(oAjax);
 
 		//2.建立连接	(建立连接的方法，访问的对象，是否异步)
-		oAjax.open(method,url,true);
+		oAjax.open('GET','http://127.0.0.1:3001/038-data.json',true);
 
 		//3.发送请求
-		oAjax.send(data);
+		oAjax.send();
 
 		//4.等待服务器返回数据 
 		oAjax.onreadystatechange = function(){
@@ -27,21 +26,13 @@
 			if(oAjax.readyState == 4){
 				if(oAjax.status == 200){
 					var obj = oAjax.responseText;
-					var objToJSON = JSON.parse(obj);
+					var JsonToObj = JSON.parse(obj)
 					console.log(JsonToObj);
 				}else{
 					console.log('status Code 404');
-				};
-			};
-		};
-	};
-
-	oBtn.onclick = function(){
-		ajax(
-			'POST',
-			'http://127.0.0.1:3000',
-			'{"name":"k","age":28}',
-			);
+				}
+			}
+		}
 	}
 
 </script>
