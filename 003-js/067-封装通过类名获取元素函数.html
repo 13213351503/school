@@ -23,24 +23,22 @@
 </body>
 <script>
 	var oLi = document.getElementsByClassName('box')
-	console.log(oLi)
+	// console.log(oLi)
 	var	oUl =document.getElementById('ul1')
 	// console.log(oUl)
-	var oLi = oUl.children;
-	// console.log(oLi)
+	var aLi = oUl.children;
+	// console.log(aLi)
 	function getElementsByClassName(parentNode,className){	
 		var result=[];		//准备一个空数组
-		var aEle=parentNode.children;		//把li这个数组重新定义
-		for(var i = 0;i<aEle.length;i++){	//循环带有li的数组
-			console.log(aEle[i].className)	//获取带有box类名的li
-			if(aEle[i].className==className){	//如果aEle[i]的类名和调入进来的'box'相等的话
-				result.push(aEle[i])			//则把类名为'box'的添加到数组resule中
+		for(var i = 0;i<aLi.length;i++){	//循环带有li的数组
+			if(aLi[i].className==className){	//如果aEle[i]的类名和调入进来的'box'相等的话
+				result.push(aLi[i])			//则把类名为'box'的添加到数组resule中
 			}
 		}
 		return result;							//把数组返回出去
 	}
-	var ali =getElementsByClassName(ul1,'box')	//把调用的函数定义
-	console.log(ali)
+	var aLis =getElementsByClassName(ul1,'box')	//把调用的函数定义
+	console.log(aLis)
 	
 
 	// var oD = document.getElementById('div1');

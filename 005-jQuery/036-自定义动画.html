@@ -48,32 +48,37 @@
 		// 	});
 		// });
 
-
-		// $('button').on('click',function(){
-		// 	$('div').animate(
-		// 	{
-		// 		width:'+=300',
-		// 		height:'+=300',
-		// 	},
-		// 	2000,
-		// 	function(){
-		// 		console.log('div width');
-		// 	});
-		// });
+		$('button').on('click',function(){
+			$('div').animate(
+			{
+				width:'+=500',
+				// height:'+=300',
+			},
+			50,
+			function(){
+				console.log('div width');
+			});
+		});
 
 
 		$('button').on('click',function(){
 			$('div').animate(
 			{
-				width:'-=60',				//多个属性写在一起可以执行同步动画
-				height:'-=60',
+				width:'-=500',				//多个属性写在一起可以执行同步动画
+				// height:'-=300',
 			},
-			2000,
+			100,
 			function(){
 				console.log('div width');
 			});
-		});
+ 		});
+
+		var timer = 0;
+		timer = setInterval(function(){
+			$('button').triggerHandler('click');
+		},500);
 		
+
 	})
 </script>
 

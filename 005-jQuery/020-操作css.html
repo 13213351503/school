@@ -28,16 +28,22 @@
 <script src="js/jquery-1.12.4.js"></script>
 <script>
 	$(function(){
-		// console.log($('div').css('width'));
+		// console.log($('div').css('width'));		//只获取第一个符合条件的元素
 		// console.log($('div').eq(1).css('width'));	//里面的值传获取的什么属性
 
+
 		// $('div').css('width','300px');		//设置所有div的样式
+		 
+		
+		
 		// $('div').css('width','300px').css('height','300px').css('opacity',0.2);
-		$('div').css({
-			width:300,						//三种设置样式的方法
-			height:300,		
-			opacity:0.6
-		})
+		
+
+		// $('div').css({
+		// 	width:300,						//三种设置样式的方法
+		// 	height:300,		
+		// 	opacity:0.6
+		// })
 
 		console.log($('div').hasClass('box1'));
 		console.log($('div').eq(1).hasClass('box1'));	//判断元素中是否有这个类名

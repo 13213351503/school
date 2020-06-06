@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>030-事件自动触发-关于a标签.html</title>	
+	<title>030-事件自动触发-关于a标签.html</title>
+	<style>
+		a{
+			text-decoration: none;
+		}
+	</style>	
 	
 </head>
 <body>
@@ -10,7 +15,9 @@
 		我是段落
 		<a href="http://www.baidu.com">
 			跳转百度
-			<span>我是span</span>
+
+
+			&nbsp; <span>我是span</span>
 		</a>
 	</p>
 	
@@ -18,21 +25,21 @@
 <script src="js/jquery-1.12.4.js"></script>
 <script>
 	$(function(){
-		// $('a').on('click',function(){		
-		// 	return false;
-		// });
+		$('a').on('click',function(){		
+			return false;
+		});
 		$('p').on('click',function(){
 			console.log('p click.....')
 		})
 		$('a').on('click',function(){		//注意a标签用trigger不阻止事件冒泡,但是会阻止默认行为,
 			console.log('a click');
 		})
-		// $('span').on('click',function(){
-		// 	console.log('span click.....')
-		// })
+		$('span').on('click',function(){
+			console.log('span click.....')
+		})
 		$('span').trigger('click');			//如果需要发生默认行为需要触发a标签的子元素
 
-		// $('a').trigger('cilck');
+		$('a').trigger('cilck');
 	})
 </script>
 

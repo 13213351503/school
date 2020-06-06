@@ -15,21 +15,23 @@
 </body>
 <script>
 	var oUl =document.getElementById('ul1')
-	var aNodes=oUl.childNodes;		//.childNodes,返回一个数组,包含父节点中的所有文本节点和元素节点
-	var achild =oUl.children;		//.children,返回一个数组, 包含父节点中的所有元素节点
+	var aNodes=oUl.childNodes;		
+	var achild =oUl.children;		
 	var oLastchild=oUl.lastChild;	//.firstChild和.lastChild分别指向childNodes中的第一个和最后一个(包括文本节点)
 	var oFirstchild=oUl.firstChild;	
 									//.firstElementChild和.lastElementChild分别指向children中的第一个和最后一个(只有元素节点)
 	var ofirstElementChild=oUl.firstElementChild;
 	var olastElementChild=oUl.lastElementChild;
-	// console.log(aNodes);
-	// console.log(achild);
-	// console.log(oFirstchild);
-	// console.log(oFirstchild ==aNodes[0]);
-	// console.log(oLastchild);
-	// console.log(oLastchild ==aNodes[aNodes.length-1]);
-	console.log(ofirstElementChild);
-	console.log(olastElementChild);
+	// console.log(aNodes);			//返回一个数组,包含父节点中的所有文本节点和元素节点
+	// console.log(achild);			//返回一个数组, 包含父节点中的所有元素节点
+	// console.log(aNodes[10] == oLastchild);		//指向父节点中的最后一个文本节点
+	// console.log(aNodes[0] == oFirstchild);		//指向父节点中的第一个文本节点
+
+
+
+	
+	console.log(ofirstElementChild);		//指向父节点中的第一个dom节点
+	// console.log(olastElementChild);		//指向父节点中的最后一个dom节点
 
 </script>
 </html> 

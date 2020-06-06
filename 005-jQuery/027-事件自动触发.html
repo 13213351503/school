@@ -8,27 +8,49 @@
 			margin: 0;
 			padding: 0;
 		}
-		div{
+		.gf{
+			width: 400px;
+			height: 400px;
+			border: 1px solid #000;
+			margin: 20px auto;
+		}
+		.father{
+			width: 300px;
+			height: 300px;
+			margin: 50px auto;
+			background: orange;
+			overflow: hidden;
+		}
+		.son{
 			width: 100px;
 			height: 100px;
-			border: 1px solid #000;
+			margin: 100px auto;
+			background: green;
 		}
 	</style>
 </head>
 <body>
-	<div></div>
+	<div class="gf">
+		<div class="father">
+			<div class="son"></div>
+		</div>
+	</div>
 </body>
 <script src="js/jquery-1.12.4.js"></script>
 <script>
 	$(function(){
-		$('div').on('click',function(){
-			console.log('div click');
+		$('.gf').on('mouseover',function(){
+			console.log('gf mouseover');
 		})
-		$('div').on('mouseover',function(){
-			console.log('div mouseover');
+		$('.father').on('mouseover',function(){
+			console.log('father mouseover');
 		})
-		// $('div').trigger('mouseover');
-		$('div').triggerHandler('mouseover');
+		$('.son').on('mouseover',function(){
+			console.log('son mouseover');
+		})
+
+		$('.son').trigger('mouseover');				//不阻止事件冒泡和默认行为的事件触发
+		// $('.son').triggerHandler('mouseover');	//阻止事件冒泡和默认行为的事件触发
 	})
 </script>
 

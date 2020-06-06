@@ -44,13 +44,12 @@
 		});
 		$('.father').on('click',function(){		
 			console.log('father click...')
-			return false;						//方法一  return false  不属于ev上面的办法
+			// return false;						//方法一  return false  不属于ev上面的办法
 		});
 		$('.son').on('click',function(ev){
 			ev.stopPropagation();
 			console.log('son click...')
 			// return false;
-
 		});
 	})
 </script>

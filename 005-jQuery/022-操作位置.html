@@ -14,15 +14,15 @@
 			height: 600px;
 			border: 1px solid #000;
 			margin: 20px auto;
-			overflow: auto;
+			/*overflow: auto;*/
 		}
 		.box2{
 			position: absolute;
 			top: 0px;
 			left: 0px;
-			width: 3000px;
-			height: 3000px;
-			background: red;
+			width: 300px;
+			height: 300px;
+			background: green;
 		}
 	</style>
 </head>
@@ -37,16 +37,16 @@
 <script>
 	$(function(){
 		// console.log($('.box2').offset());
-		// console.log($('.box2').offset({top:100,left:100}));		//设置或获取元素相对于body的偏移位
+		console.log($('.box2').offset({top:100,left:100}));		//设置或获取元素相对于body的偏移位
 
 		// console.log($('.box2').position());						//position只能获取，不能设置
 		// // console.log($('.box2').position({top:100,left:100}));
 		// console.log($('.box2').css({top:100,left:100}));
 		// console.log($('.box2').position());	
-		$('button').on('click',function(){			//设置或获取元素垂直/水平滚动距离
-			console.log($('.box1').scrollTop());
-			console.log($('.box1').scrollLeft());
-		})
+		// $('button').on('click',function(){			//设置或获取元素垂直/水平滚动距离
+		// 	console.log($('.box1').scrollTop());
+		// 	console.log($('.box1').scrollLeft());
+		// })
 
 	})
 </script>
