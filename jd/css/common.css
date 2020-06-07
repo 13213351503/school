@@ -35,3 +35,14 @@ a{
 	*zoom: 1;
 }
 /*浮动设置结束*/
+
+/*下拉菜单共通样式开始*/
+.dropdown{
+	position: relative;
+}
+.dropdown-layer{
+	position: absolute;
+	z-index: 99;
+	display: none;
+}
+/*下拉菜单共通样式结束*/

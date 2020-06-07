@@ -21,11 +21,7 @@
 	.top .top-right .fl .fa{
 		vertical-align: middle;
 	}
-	.top .top-right .dropdown{
-		position: relative;
-		/*background: #fff;*/
-		/*padding: 0 5px;*/
-	}
+	
 	
 	/*.top .top-right .dropdown:hover{
 		background: #fff;
@@ -38,14 +34,12 @@
 	}*/
 
 	.top .top-right .dropdown .dropdown-layer{
-		position: absolute;
 		top: 44px;
 		left: 0px;
 		white-space: nowrap;
 		background: #fff;
 		border: 1px solid #F4F5F7;
 		border-top: none;
-		display: none;
 	}
 	.top .top-right .dropdown .dropdown-layer li{
 		height: 30px;	
