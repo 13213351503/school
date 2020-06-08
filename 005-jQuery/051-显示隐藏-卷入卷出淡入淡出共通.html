@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>051-显示隐藏-卷入卷出淡入淡出共通.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		button{
+			width: 100px;
+			height: 30px;
+		}
+		.box{
+			width: 100px;
+			height: 100px;
+			background: green;
+			border: 1px solid #000;
+			margin-top: 10px;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<div class="box"></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	function init(elem){
+			elem.removeClass('.transition');
+			// console.log(elem.is(':hidden'));
+			if(elem.is(':hidden')){
+				elem.data('status','hide');
+			}else{
+				elem.data('status','shown');
+			}
+	};
+	function show(elem,callback){
+		if(elem.data('status') == 'shown') return;	//如果盒子状态是show，就不用执行下面代码
+		if(elem.data('status') == 'show') return;	//如果盒子状态在执行中，也不重复执行下列代码
+		elem.trigger('show').data('status','show');
+		callback()
+	};
+	function hide(elem,callback){
+		if(elem.data('status') == 'hide') return;
+		if(elem.data('status') == 'hidden') return;
+		elem.trigger('hide').data('status', 'hidden');
+		callback();
+	}
+
+
+	var slient = {
+		init:function(elem){
+			init(elem);
+		},
+		show:function(elem){	
+			show(elem,function(){
+				elem.show();
+				elem.trigger('shown').data('status','shown');
+			})
+			
+		},
+		hide:function(elem){
+			hide(elem,function(){
+				elem.hide();
+				elem.trigger('hidden').data('status','hidden');
+			})
+		}
+	};
+	
+
+	var js = {
+		fade:{
+			init:function(elem){
+				js._init(elem);
+			},
+			show:function(elem){
+				js._show(elem,'fadeIn');
+			},
+			hide:function(elem){
+				js._hide(elem,'fadeOut');
+			}
+		},
+		slide:{
+			init:function(elem){
+				js._init(elem);
+			},
+			show:function(elem){
+				js._show(elem,'slideDown');
+			},
+			hide:function(elem){
+				js._hide(elem,'slideUp');
+			}
+		}
+	};
+
+	js._init = function(elem){
+		init(elem);
+	};
+	js._show = function(elem,mode){
+		show(elem,function(){
+			elem
+			.stop()		//是否清空未执行完的列队动画,是否跳到正在执行动画的最后状态
+			[mode](function(){
+				elem.trigger('shown').data('status','shown');
+			});
+		});
+	};
+	js._hide = function(elem,mode){
+		hide(elem,function(){
+			elem
+			.stop()			//是否清空未执行完的列队动画,是否跳到正在执行动画的最后状态
+			[mode](function(){
+				elem.trigger('hidden').data('status','hide');
+			});
+		});
+	};
+
+
+
+
+
+	$('div').on('show shown hide hidden',function(ev){
+		// console.log(ev.type);
+		if(ev.type == 'show'){
+			console.log('show');
+		}else if(ev.type == 'shown'){
+			console.log('shown');
+		}else if(ev.type == 'hide'){
+			console.log('hide');
+		}else if(ev.type == 'hidden'){
+			console.log('hidden');
+		}
+	});
+
+	// js.slide.init($('.box'));
+
+	// $('button').eq(0).on('click',function(){
+	// 	js.slide.show($('.box'));
+	// });
+	// $('button').eq(1).on('click',function(){
+	// 	js.slide.hide($('.box'));
+	// });
+
+
+	js.fade.init($('.box'));
+
+	$('button').eq(0).on('click',function(){
+		js.fade.show($('.box'));
+	});
+	$('button').eq(1).on('click',function(){
+		js.fade.hide($('.box'));
+	});
+</script>
+</html>
