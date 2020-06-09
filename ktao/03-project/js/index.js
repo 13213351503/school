@@ -10,17 +10,15 @@
 		console.log(ev.type);
 		if(ev.type == 'dropdown-show'){
 			var $this = $(this);
-			var $dropdownLayer = $this.find('dropdown-layer');
+			var $dropdownLayer = $this.find('.dropdown-layer');
 			var url = $this.data('load');
 			$.getJSON(url,function(data){
-				var html = '';
+				var html = '';   
 				for(var i=0;i<data.length;i++){
-					html += '<li><a href="'+data[i].url+'">'+data[i]+'</a></li>'
+					html += '<li><a href="'+data[i].url+'"class="menu-item">'+data[i].name+'</a></li>';
 				}
 			})
 		}
 	})
-
-
 /*顶部导航逻辑------结束*/
 })(jQuery);

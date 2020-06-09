@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>055-扩展自己的插件一.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+	<button>测试</button>
+	<div></div>
+	<div></div>
+</body>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script>
+	$.prototype.setColor = function(options){			//生成实例上的setColor方法
+		// console.log(this)
+		var DEFAULT = {background:'orange'};			//默认颜色是
+		// console.log(DEFAULT);
+		options = $.extend({},DEFAULT,options);			//合并，后面传入的覆盖前面的
+		return this.each(function(index,elem){			//返回出去函数，使他有返回值
+			// console.log(index,elem);
+			// console.log(this);
+			elem.style.background = options.background;
+		})
+	}
+</script>
+<script>
+	$(function(){
+	   $('button').on('click',function(){
+	   		$('div').setColor({background:'green'}).animate({width:200});
+	   		// $('div').setColor();
+	   })
+	});
+</script>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-显示隐藏-自定义事件.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			border: 10px solid #000;
+			background-color: red;
+			display: none;
+		}
+		button{
+			width: 80px;
+			height: 40px;
+			line-height: 40px;
+		}
+	</style>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<div></div>
+	<!-- <div></div> -->
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		var slient = {
+			show:function($elem){
+				$elem.trigger('show');
+				$elem.show();
+				$elem.trigger('shown');
+			},
+			hide:function($elem){
+				$elem.trigger('hide');
+				$elem.hide();
+				$elem.trigger('hidden');
+			}
+		}
+
+		/*
+		$('div').on('show',function(){
+			console.log('show...');
+		})
+		$('div').on('shown',function(){
+			console.log('shown...');
+		})
+		$('div').on('hide',function(){
+			console.log('hide...');
+		})
+		$('div').on('hidden',function(){
+			console.log('hidden');
+		})
+		*/
+		
+		// 监听自定义事件
+		$('div').on('show shown hide hidden',function(ev){
+			// console.log(ev.type);
+			if(ev.type == 'show'){
+				console.log('show...');
+			}else if(ev.type == 'shown'){
+				console.log('shown...');
+			}else if(ev.type == 'hide'){
+				console.log('hide...');
+			}else if(ev.type == 'hidden'){
+				console.log('hidden...');
+			}
+		})
+
+		$('button:eq(0)').on('click',function(){
+			slient.show($('div'));
+		})
+		$('button:eq(1)').on('click',function(){
+			slient.hide($('div'));
+		})
+
+	})
+</script>
+</html>

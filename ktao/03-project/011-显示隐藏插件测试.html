@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>011-显示隐藏插件测试.html</title>
+	<link rel="stylesheet" href="css/common.css">
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			margin-top: 10px;
+			padding: 50px;
+			border: 50px solid #000;
+			display: none;
+		}
+		button{
+			width: 80px;
+			height: 40px;
+			line-height: 40px;
+		}
+	</style>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<div class="transition"></div>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script src="js/showhide.js"></script>
+<script>
+	
+	var $box = $('div');
+	//监听自定义时间
+	$box.on('show shown hide hidden',function(ev){
+		console.log(ev.type);
+	});
+
+	//第一次调用是初始化显示隐藏插件
+	$box.showHide({
+		js:true,
+		mode:'fade'
+	})
+
+	//第二次调用则是调用显示隐藏方法
+	$('button').eq(0).on('click',function(){
+		$box.showHide('show').css('width',400);
+	});
+	$('button').eq(1).on('click',function(){
+		$box.showHide('hide');
+	});
+
+	
+</script>
+</html>

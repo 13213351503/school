@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>001-显示隐藏-基本实现.html</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			border: 10px solid #000;
+			background-color: red;
+			display: none;
+		}
+		button{
+			width: 80px;
+			height: 40px;
+			line-height: 40px;
+		}
+	</style>
+</head>
+<body>
+	<button>显示</button>
+	<button>隐藏</button>
+	<div></div>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		var slient = {
+			show:function($elem,callBack,callBack1){
+				callBack1();
+				$elem.show();
+				callBack();
+			},
+			hide:function($elem,callBack){
+				$elem.hide();
+				callBack();
+			}
+		}
+		$('button:eq(0)').on('click',function(){
+			slient.show($('div'),function(){
+				console.log('show');
+			},function(){
+				console.log('show22')
+			});
+		})
+		$('button:eq(1)').on('click',function(){
+			slient.hide($('div'),function(){
+				console.log('hide');
+			});
+		})
+	})
+</script>
+</html>

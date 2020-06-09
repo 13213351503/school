@@ -63,7 +63,53 @@
 /*头部搜索开始*/
 	.header{
 		height: 100px;
-		background-color: green;
+		/*background-color: green;*/
+	}
+	.header h1 a{
+		width: 248px;
+		height: 70px;
+		background-image: url(../images/header-logo.png);
+		display: block;
+		margin-top: 15px;
+	}
+	.header .search{
+		position: relative;
+		margin-left: 200px;
+		margin-top: 30px;
+	}
+	.header .search-input{
+		width: 500px;
+		height: 40px;
+		box-sizing: border-box;
+		outline: none;
+		padding: 5px;
+	}
+	.header .search-btn{
+		width: 70px;
+		height: 40px;
+		box-sizing: border-box;
+		outline: none;
+		background: #000;
+		color: #fff;
+		font-size: 18px;
+		
+	}
+	.header .search-layer{
+		width: 570px;
+		border: 1px solid #4f4f4f;
+		border-top: none;
+		box-sizing: border-box;
+		padding: 5px;
+		font-size: 16px;
+		position: absolute;
+		top: 40px;
+		left: 0px;
+	}
+	.header .search-layer li{
+		line-height: 30px;
+	}
+	.header .search-layer li:hover{
+		background: #f4f5f7;
 	}
 /*头部搜索结束*/
 

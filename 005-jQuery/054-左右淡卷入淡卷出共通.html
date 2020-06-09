@@ -32,7 +32,6 @@
 <script>
 	function init(elem,slideLeftRightCallback){
 			elem.removeClass('.transition');
-			// console.log(elem.is(':hidden'));
 			if(elem.is(':hidden')){
 				elem.data('status','hide');
 			}else{
@@ -99,102 +98,49 @@
 		},
 		slideLeftRight:{
 			init:function(elem){
-				var style = {
-					borderLeftWidth:elem.css('borderLeftWidth'),
-					borderRightWidth:elem.css('borderRightWidth'),
-					paddingLeft:elem.css('paddingLeft'),
-					paddingRight:elem.css('paddingRight'),
-					width:elem.css('width'),
-				};
-				elem.data('style',style);
-				console.log(style)
-				init(elem,function(){
-					elem.css({
-						borderLeftWidth:0,
-						borderRightWidth:0,
-						paddingLeft:0,
-						paddingRight:0,
-						width:0,
-					})
-				});
-			},
-			show:function(elem){
-				show(elem,function(){
-					var style = elem.data('style');
-					elem.show();	//
-					elem
-					.stop()
-					.animate(style,function(){
-						elem.trigger('shown').data('status','shown');
-					})
+				js._customInit(elem,{
+					borderLeftWidth:0,
+					borderRightWidth:0,
+					paddingLeft:0,
+					paddingRight:0,
+					width:0,
 				})
 			},
+			show:function(elem){
+				js._customShow(elem);
+			},
 			hide:function(elem){
-				hide(elem,function(){
-					elem
-					.stop()
-					.animate({
-						borderLeftWidth:0,
-						borderRightWidth:0,
-						paddingLeft:0,
-						paddingRight:0,
-						width:0,
-					},function(){
-						elem.hide();
-						elem.trigger('hidden').data('status','hidden');
-					})
+				js._customHide(elem,{
+					borderLeftWidth:0,
+					borderRightWidth:0,
+					paddingLeft:0,
+					paddingRight:0,
+					width:0,
 				})
 			}
 		},
 		fadeSlideLeftRight:{
 			init:function(elem){
-				var style = {
-					borderLeftWidth:elem.css('borderLeftWidth'),
-					borderRightWidth:elem.css('borderRightWidth'),
-					paddingLeft:elem.css('paddingLeft'),
-					paddingRight:elem.css('paddingRight'),
-					width:elem.css('width'),
-					opacity:elem.css('opacity')
-				};
-				elem.data('style',style);
-				console.log(style)
-				init(elem,function(){
-					elem.css({
-						borderLeftWidth:0,
-						borderRightWidth:0,
-						paddingLeft:0,
-						paddingRight:0,
-						width:0,
-						opacity:0
-					})
-				});
-			},
-			show:function(elem){
-				show(elem,function(){
-					var style = elem.data('style');
-					elem.show();	//
-					elem
-					.stop()
-					.animate(style,function(){
-						elem.trigger('shown').data('status','shown');
-					})
+				js._customInit(elem,{
+					borderLeftWidth:0,
+					borderRightWidth:0,
+					paddingLeft:0,
+					paddingRight:0,
+					width:0,
+					opacity:0
 				})
 			},
+			show:function(elem){
+				js._customShow(elem);
+			},
 			hide:function(elem){
-				hide(elem,function(){
-					elem
-					.stop()
-					.animate({
-						borderLeftWidth:0,
-						borderRightWidth:0,
-						paddingLeft:0,
-						paddingRight:0,
-						width:0,
-						opacity:0
-					},function(){
-						elem.hide();
-						elem.trigger('hidden').data('status','hidden');
-					})
+				js._customHide(elem,{
+					borderLeftWidth:0,
+					borderRightWidth:0,
+					paddingLeft:0,
+					paddingRight:0,
+					width:0,
+					opacity:0
 				})
 			}
 		}
@@ -222,12 +168,40 @@
 		});
 	};
 
-
-
+	js._customInit = function(elem,options){
+		var style = {};
+		for(key in options){
+			style[key] = elem.css(key);
+		}
+		elem.data('style',style);
+		init(elem,function(){
+			elem.css(options)
+		});
+	}
+	js._customShow = function(elem){
+		show(elem,function(){
+			var style = elem.data('style');
+			elem.show();	//为了让display的显示状态改为block
+			elem
+			.stop()
+			.animate(style,function(){
+				elem.trigger('shown').data('status','shown');
+			})
+		})
+	}
+	js._customHide = function(elem,options){
+		hide(elem,function(){
+			elem
+			.stop()
+			.animate(options,function(){
+				elem.hide();
+				elem.trigger('hidden').data('status','hidden');
+			})
+		})
+	}
 
 
 	$('div').on('show shown hide hidden',function(ev){
-		// console.log(ev.type);
 		if(ev.type == 'show'){
 			console.log('show');
 		}else if(ev.type == 'shown'){
@@ -267,5 +241,14 @@
 	$('button').eq(1).on('click',function(){
 		js.fadeSlideLeftRight.hide($('.box'));
 	});
+
+	// js.slideLeftRight.init($('.box'));
+
+	// $('button').eq(0).on('click',function(){
+	// 	js.slideLeftRight.show($('.box'));
+	// });
+	// $('button').eq(1).on('click',function(){
+	// 	js.slideLeftRight.hide($('.box'));
+	// });
 </script>
 </html>
