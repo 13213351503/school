@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-CCookie.html</title>
+</head>
+<body>
+	aaa
+</body>
+<script>
+	//创建cookie
+	// document.cookie = 'username=kk';
+	// document.cookie = 'age=18';
+	// console.log(document.cookie)
+
+	//Cookie有效期的设置
+	// var oDate = new Date();
+	// //十天
+	// // oDate.setDate(oDate.getDate() + 10);
+	// // document.cookie = 'name = kk;expires = '+oDate;
+	// //十分钟
+	// document.cookie = 'name = kk;max-age=10'
+
+
+	// 封装cookie相关的函数。 创建cookie
+	function setCookie(key,val,iDate){
+		var oDate = new Date();
+		oDate.setDate(oDate.getDate() + iDate);
+		document.cookie = key+'='+ val+'; expires='+oDate;
+	}
+	setCookie('name','kk',10)
+
+
+	//获取Cookie
+	function getCookie(name){
+		var str = document.cookie;
+		// console.log(str);
+		var arr1 = str.split(';');
+		var result = '';
+		for(var i=0;i<arr1.length;i++){
+                var arr2 = arr1[i].split("=");
+                if(arr2[0].trim() == name.trim()){
+                    result = arr2[1];
+                    break;
+                }
+            }
+            return result;
+	}
+	console.log(getCookie('name'));
+
+
+
+	//删除Cookie
+	function removeCookie(name){
+        setCookie(name,false,-1);
+    }
+
+</script>
+</html>

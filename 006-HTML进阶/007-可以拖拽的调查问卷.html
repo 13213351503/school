@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>007-可以拖拽的调查问卷.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		.container{
+			width: 300px;
+			height: 500px;
+			float: left;
+			font-size: 40px;
+			margin-top: 50px;
+			margin-left: 400px;
+			text-align: center;
+		}
+		.drag-list{
+			border-left: 1px solid #000;
+			padding: 10px;
+			width: 300px;
+			height: 500px;
+			margin-right: 500px;
+			margin-top: 100px;
+			float: right;
+		}
+		.box{
+			width: 100%;
+			border: 1px dashed #000;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="page">
+		<div class="container">
+			调查问卷
+		</div>
+		<div class="drag-list">
+			<div class="box">
+				<label for="">姓名：</label>
+				<input type="text" name='username'>
+			</div>
+			<div class="box">
+				<label for="">年龄：</label>
+				<input type="text" name='age'>
+			</div>
+			<div class="box">
+				<label for="">爱好：</label>
+				篮球<input type="checkbox">
+				足球<input type="checkbox">
+				羽毛球<input type="checkbox">
+			</div>
+			<div class="box"></div>
+		</div>
+	</div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('#target')
+		.on('dragstart',function(ev){
+			console.log(ev.target.id)
+			//注意点:dataTransfer对象存在在原生的event对象上,如果用jQuery的event对象,需要使用jQuery的event对象的originalEvent
+			ev.originalEvent.dataTransfer.setData('targetId',ev.target.id)	//设置数据 dataTransfer.setData(key,val)
+		})	
+
+		$('#container')
+		.on('drop',function(ev){
+			var targetId = ev.originalEvent.dataTransfer.getData('targetId')	//获取数据 dataTransfer.getData(key)
+			// console.log(targetId)
+			$('#container').append($('#'+targetId));
+		})
+		.on('dragover',function(ev){
+			ev.preventDefault();
+		})
+	});
+</script>
+</html>

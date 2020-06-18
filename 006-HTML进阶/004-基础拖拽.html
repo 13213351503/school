@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>004-基础拖拽.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box1{
+			width: 400px;
+			height: 400px;
+			background: purple;
+		}
+		.box2{
+			width: 100px;
+			height: 100px;
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1"></div>
+	<div class="box2" draggable=true></div>
+</body>
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+	   $('.box1').on('dragenter',function(){
+	   		console.log('aa')
+	   		$('.box1').append($('.box2'))
+	   })
+	   $('.box2').on('drag',function(){
+	   		console.log('222')
+	   })
+
+	});
+</script>
+</html>

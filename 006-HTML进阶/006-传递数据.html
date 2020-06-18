@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>006-传递数据.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#container{
+			width: 400px;
+			height: 400px;
+			background-color: gray;
+		}
+		#target{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="container"></div>
+	<div id="target" draggable=true></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$(function(){
+		$('#target')
+		.on('dragstart',function(ev){
+			console.log(ev.target.id)
+			//注意点:dataTransfer对象存在在原生的event对象上,如果用jQuery的event对象,需要使用jQuery的event对象的originalEvent
+			ev.originalEvent.dataTransfer.setData('targetId',ev.target.id)	//设置数据 dataTransfer.setData(key,val)
+		})	
+
+		$('#container')
+		.on('drop',function(ev){
+			var targetId = ev.originalEvent.dataTransfer.getData('targetId')	//获取数据 dataTransfer.getData(key)
+			// console.log(targetId)
+			$('#container').append($('#'+targetId));
+		})
+		.on('dragover',function(ev){
+			ev.preventDefault();
+		})
+	});
+</script>
+</html>
