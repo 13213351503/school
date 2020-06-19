@@ -1,0 +1,104 @@
+/*我是注释1*/
+/*变量*/
+/*混合(Mixin)*/
+.box1 {
+  width: 100px;
+  height: 100px;
+  background: #008000;
+  margin-bottom: 10px;
+}
+/*基本混合,直接把选择器写在另外一个选择中*/
+.box2 {
+  width: 100px;
+  height: 100px;
+  background: #008000;
+  margin-bottom: 10px;
+}
+.bd {
+  -webkit-border-radius: 10px ;
+  -moz-border-radius: 10px ;
+  -ms-border-radius: 10px ;
+  -o-border-radius: 10px ;
+}
+.box3 {
+  width: 100px;
+  height: 100px;
+  background: #008000;
+  margin-bottom: 10px;
+  -webkit-border-radius: 10px ;
+  -moz-border-radius: 10px ;
+  -ms-border-radius: 10px ;
+  -o-border-radius: 10px ;
+}
+/*带参数*/
+.box4 {
+  width: 100px;
+  height: 100px;
+  background: #008000;
+  margin-bottom: 10px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+}
+/*带参数有默认值 */
+.box5 {
+  width: 100px;
+  height: 100px;
+  background: #008000;
+  margin-bottom: 10px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+/*匹配模式,选择符合条件的混合模式,根据传入的参数来决定使用哪个混合*/
+.box6 {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 100px;
+  border-color: transparent #ffa500 transparent transparent;
+}
+/*在选择器中嵌套选择器*/
+.ul {
+  width: 500px;
+  border: 1px solid #000;
+  list-style: none;
+}
+.ul li {
+  height: 50px;
+}
+.ul li a {
+  width: 200px;
+  line-height: 50px;
+  float: left;
+  text-decoration: none;
+}
+.ul li span {
+  line-height: 50px;
+  width: 200px;
+  float: right;
+}
+.ul li:hover {
+  background-color: red;
+}
+/*算法*/
+.box7 {
+  color: #f00;
+  font-size: 30px;
+}
+/*避免编译*/
+.box8 {
+  /*~'calc'不会计算括号内的内容*/
+  font-size: calc(50px+50px);
+}
+/*在混合模式后添加!important关键字,会为混合模式中的所有样式添加!important*/
+.box9 {
+  color: #f00 !important;
+  font-size: 30px !important;
+}
+/*混合参数做为属性和设置计算后的属性值*/
+.box10 {
+  font-size: 200px;
+}
