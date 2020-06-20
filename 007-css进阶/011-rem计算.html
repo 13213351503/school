@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>023-rem计算.html</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<style>
+		/*
+			开发网页适配流程
+			1.制定好设计稿,以iphone6为例
+			2.设计稿中给定的单位都是以像素为单位width=150px font-size=24px
+			3.根据计算出的根元素字体大小把像素换算成rem
+			1rem = 37.5px
+			4rem = 150px
+			0.64rem = 24px
+			1rem = 32px 
+			4.6875rem = 150px
+			0.75rem = 24px
+		*/
+		html{
+			font-size: 37.5px;
+		}
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		img{
+			float: left;
+			width: 4.6875rem;
+		}
+		p{
+			font-size: 0.75rem;
+		}
+	</style>
+</head>
+<body>
+	<img src="../002/img/p2.jpg" alt="">
+	<p>我是内容</p>
+</body>
+<script src="js/rem.js"></script>
+</html>

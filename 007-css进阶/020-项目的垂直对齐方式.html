@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>020-项目的垂直对齐方式.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			/*指定了弹性布局的元素称为Flex容器(flex container),它的所有子元素自动成为容器成员,称为 Flex项目(flex item)*/
+			display: flex;
+			flex-wrap: wrap;
+
+			/*align-items换行后会根据父容器的高度填充整个行*/
+
+			/*stretch(默认值):换行后,如果容器项目未设置高度或设为auto,将占满整个容器的高度*/
+			/*align-items:stretch;*/
+
+			/*flex-start：起点对齐*/
+			/*align-items:flex-start;*/
+
+			/*flex-end：终点对齐*/
+			/*align-items:flex-end;*/
+
+			/*center：中点对齐*/
+			/*align-items:center;*/
+
+			/*baseline: 项目的第一行文字的基线对齐*/
+			/*align-items:baseline;*/
+
+			/*align-content换行后按项目的的高度来填充行,align-content对于单个垂直对齐线不起作用,只对多个垂直对齐线起作用*/
+			/*align-content:stretch;*/
+
+			/*align-content:flex-start;*/
+
+			/*align-content:flex-end;*/
+
+			/*align-content:center;*/
+			
+			align-content:baseline;
+			
+
+
+
+			
+
+
+			width: 1000px;
+			height: 500px;
+			border: 1px solid #000;
+			margin: 100px auto;
+			text-align: center;
+			font-size: 30px;
+			line-height: 50px;
+		}
+		.son1{
+			width: 200px;
+			height: 50px;
+			background: red;
+		}
+		.son2{
+			width: 300px;
+			height: 50px;
+			background-color: green;
+		}
+		.son3{
+			width: 600px;
+			height: 50px;
+			background: purple;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son1">1</div>
+		<div class="son2">2</div>
+		<div class="son3">3</div>
+	</div>
+</body>
+</html>

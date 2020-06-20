@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>024-项目属性-flex-basis.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			/*指定了弹性布局的元素称为Flex容器(flex container),它的所有子元素自动成为容器成员,称为 Flex项目(flex item)*/
+			display: flex;
+			width: 1000px;
+			border: 1px solid #000;
+			margin: 100px auto;
+			text-align: center;
+			font-size: 30px;
+			line-height: 50px;
+		}
+		.son1{
+			width: 200px;
+			height: 50px;
+			background: red;
+
+			/*flex-basis 定义了在分配多余空间之前,项目占据的大小,浏览器根据这个属性,计算是否有多余空间,它的默认值为auto,即项目的本来大小*/
+			/*flex-basis:300px;	*/
+
+
+			/*flex 是flex-grow,flex-shrink,flex-basis的简写,默认值为0 1 auto,后两个属性可选*/
+			/*flex: 1 1 auto;*/
+			/*flex: 0 1 300px;*/
+		}
+		.son2{
+			width: 300px;
+			height: 50px;
+			background-color: green;
+		}
+		.son3{
+			width: 400px;
+			height: 50px;
+			background: purple;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son1">1</div>
+		<div class="son2">2</div>
+		<div class="son3">3</div>
+	</div>
+</body>
+</html>

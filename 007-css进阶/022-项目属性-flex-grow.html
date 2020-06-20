@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>022-项目属性-flex-grow.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			/*指定了弹性布局的元素称为Flex容器(flex container),它的所有子元素自动成为容器成员,称为 Flex项目(flex item)*/
+			display: flex;
+			width: 1000px;
+			border: 1px solid #000;
+			margin: 100px auto;
+			text-align: center;
+			font-size: 30px;
+			line-height: 50px;
+		}
+		.son1{
+			/*如果所有项目的flex-grow属性都为1,则它们将等分剩余空间(如果有的话)
+			如果一个项目的flex-grow属性为2,其他项目都为1,则前者占据的剩余空间将比其他项多一倍 */
+			
+			flex-grow:1 ;	/*flex-grow 项目的放大比例,默认为0,即如果存在剩余空间,也不放大*/
+			width: 200px;
+			height: 50px;
+			background: red;
+		}
+		.son2{
+			flex-grow: 0;
+			width: 300px;
+			height: 50px;
+			background-color: green;
+		}
+		.son3{
+			flex-grow: 0;
+			width: 400px;
+			height: 50px;
+			background: purple;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son1">1</div>
+		<div class="son2">2</div>
+		<div class="son3">3</div>
+	</div>
+</body>
+</html>

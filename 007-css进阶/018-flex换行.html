@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>018-flex换行.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father{
+			/*指定了弹性布局的元素称为Flex容器(flex container),它的所有子元素自动成为容器成员,称为 Flex项目(flex item)*/
+			display: flex;
+			/*nowrap(默认值):不换行,元素的宽度按照指定宽的的比例从新计算*/
+			/*flex-wrap:nowrap;*/
+
+
+			/*wrap:换行,第一行在上方*/
+			/*flex-wrap:wrap;*/
+
+			/*wrap-reverse:换行,第一行在下方*/
+			/*flex-wrap:wrap-reverse;*/
+
+			/*flex-direction属性和flex-wrap属性的简写形式,默认值为row nowrap*/
+			flex-flow:row wrap;
+			
+			width: 1000px;
+			border: 1px solid #000;
+			margin: 100px auto;
+			text-align: center;
+			font-size: 30px;
+			line-height: 50px;
+		}
+		.son1{
+			width: 200px;
+			height: 50px;
+			background: red;
+		}
+		.son2{
+			width: 300px;
+			height: 50px;
+			background-color: green;
+		}
+		.son3{
+			width: 600px;
+			height: 50px;
+			background: purple;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son1">1</div>
+		<div class="son2">2</div>
+		<div class="son3">3</div>
+	</div>
+</body>
+</html>

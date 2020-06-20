@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>027-媒体查询.html</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		/*width, 浏览器窗口的宽度,可以有min/max前缀*/
+		@media screen and (width:500px){
+			body{
+				background-color: red;
+			}
+		}
+		/*(min-width:980px) 浏览器窗口的宽度最小是980px样式生效,换句话说是大于等于980px时样式生效*/
+		@media screen and (min-width:980px){
+			body{
+				background-color: yellow;
+			}
+		}
+		/*移动设备窗口的方向,portrait(纵向),landscape(横向)*/
+		@media screen and (orientation:landscape){
+			body{
+				background-color: green;
+			}
+		}
+	</style>
+</head>
+<body>
+	<p>我是内容</p>
+</body>
+</html>
