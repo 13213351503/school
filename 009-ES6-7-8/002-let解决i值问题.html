@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-let解决i值问题.html</title>
+</head>
+<body>
+	<button>按钮01</button>
+	<button>按钮02</button>
+	<button>按钮03</button>
+	<button>按钮04</button>
+	<button>按钮05</button>
+</body>
+<script>
+	var aBtn = document.getElementsByTagName('button')
+	// for(var i = 0;i<aBtn.length;i++){
+	// 	aBtn[i].index = i;
+	// 	aBtn[i].onclick = function(){	//异步任务，拿不到循环中的i，拿到的是退出循环时的i
+	// 		console.log(this.index);	
+	// 	}
+	// }
+	
+
+	// for(var i = 0;i<aBtn.length;i++){
+	// 	;(function(i){						//闭包的原理，每次进来都会生成新的闭包
+	// 		aBtn[i].onclick = function(){
+	// 			console.log(i);
+	// 		}
+	// 	})(i)
+	// }
+
+	//for循环用let后，i变成块级域,也就是花括号中的块，每进入一次花括号就生成了一个块级域
+	for(let i = 0;i<aBtn.length;i++){
+		aBtn[i].onclick = function(){
+			console.log(i);
+		}
+	}
+</script>
+</html>

@@ -3,30 +3,25 @@
 <head>
 	<meta charset="UTF-8">
 	<title>001-BootStrap基本使用.html</title>
-	<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="bootstrap-3.3.7/dist/css/bootstrap.min.css">
 </head>
 <body>
-<!-- Large modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+  Popover on 左侧
+</button>
 
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      ...
-    </div>
-  </div>
-</div>
+<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+  Popover on 顶部
+</button>
 
-<!-- Small modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
+<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+sagittis lacus vel augue laoreet rutrum faucibus.">
+  Popover on 底部
+</button>
 
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-  <div class="modal-dialog modal-sm" role="document">
-    <div class="modal-content">
-      ...
-    </div>
-  </div>
-</div>
+<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+  Popover on 右侧
+</button>
 <script src="bootstrap-3.3.7-dist/js/jquery-1.12.4.js"></script>
-<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
 </html>

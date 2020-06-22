@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>005-对象的结构解析.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let obj = {
+		name:'Tom',
+		age:18,
+		sex:'falme'
+	}
+	// let name1 = obj.name;
+	// let age1 = obj.age;
+	// console.log(name1);
+	// console.log(age1);
+
+
+	//按照对应属性名,把等号右边对象中的属性的值赋给等号左边对象中的同名属性
+	// let {name:name1,age:age1} = obj;
+	// let{name:name,age:age} = obj;
+	// let{name,age} = obj;				//等号左边对象中的属性的值是真正被赋值的变量名,如果属性的值省略,属性的值和属性的名称相同
+	// let{name,age,sex} = obj			//未被定义的都是undefined
+	
+	
+	//可以在等号左边设置默认值,当等号右边对象中找不到对应的属性名时默认值生效
+	// let{name,age,sex='male'} = obj	//如果对象中没有定义sex属性，则相当于给对象添加属性
+	let{name,age,sex='male'} = obj		//如果对象中定义的有sex属性，则按照对象中定义的属性获取
+	console.log(name);
+	console.log(age);
+	console.log(sex);
+</script>
+</html>

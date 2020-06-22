@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>006-模版字符.html</title>
+</head>
+<body>
+	<button id="btn">按钮</button>
+	<ul id="list"></ul>
+</body>
+<script>
+	let names = ['Tom','Leo','James','Tiedan','Erya'];
+	let oBtn = document.getElementById('btn');
+	// console.log(oBtn);
+	let oList = document.getElementById('list');
+	oBtn.onclick = function(){
+		let html = '';
+		for(let i = 0;i<names.length;i++){
+			html += '<li>'+names[i]+'</li>';
+		}
+		oList.innerHTML = html;
+	}
+
+	// oBtn.onclick = function(){
+	// 	let html = '';
+	// 	for(let i = 0;i<names.length;i++){
+	// 		html += `<li>${names[i]}</li>`;		//语法:`字符 ${javascript表达式}`
+	// 	}
+	// 	oList.innerHTML = html;
+	// }
+
+
+
+</script>
+</html>

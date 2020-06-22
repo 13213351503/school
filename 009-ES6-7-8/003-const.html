@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>003-const.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// const PI = 3.1415926;		//定义常量的时候必须赋初值	,常量不可以再次赋值
+	// PI = 3.1415926;	//对于简单数据来说值就保存在变量指向的那个内存地址,因此不可以再赋值
+	// console.log(PI);
+	
+	// const A = {
+	// 	name:'k',
+	// 	age:20
+	// }
+
+	// // A = {				//const定义的常量保证的是常量的地址不可以改变
+	// // 	name:'aa',
+	// // 	age:22
+	// // }
+	
+	// A.name = 'aaa'; 		//对于复杂数据来说常量指向数据保存的地址,const保证的是这个地址不变,但地址指向的数据是可以修改的
+	
+	// console.log(A);
+	 
+	// if(true){
+	// 	const A = 10;		//const定义的常量在const命令所在的代码块内有效
+	// }
+	// console.log(A);
+
+
+
+	console.log(A)			//const定义的常量不会声明提升
+	const A = 20;
+</script>
+</html>
