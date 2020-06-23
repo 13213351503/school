@@ -17,5 +17,44 @@
 		pets:['cat','dog']
 			
 	}
+	function getDataType(data){
+		if(data instanceof Array){
+			return 'array';
+		}else if(data instanceof Object){
+			return 'object';
+		}
+	}
+
+
+	function deepCopy(data){
+		let result;
+		//1.判断数据类型
+		let type = getDataType(data);
+		if(type == 'array'){
+			result = [];
+		}else if(type == 'object'){
+			result = {};
+		}else{
+			return data;
+		}
+		//2.循环遍历数组或者对象
+		for(let key in data){
+			if(getDataType(data[key]) == 'array' || getDataType(data[key]) == 'object'){
+				result[key] = deepCopy(data[key]);
+			}else{
+				result[key] = data[key];
+			}
+		}
+		return result
+	}
+
+
+
+	let obj2 = deepCopy(obj1);
+	obj1.age = 20;
+	obj1.friends.name = 'dachui';
+	obj1.pets.push('pander');
+	console.log(obj1);
+	console.log(obj2)
 </script>
 </html>
