@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>008-数组的扩展运算.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// let arr = [87,2,86,95,66,32];
+	// for(let i = 0;i<arr.length;i++){
+	// 	console.log(arr[i]);
+	// }
+	// console.log(...arr)				//数组的扩展运算就是将一个数组转为用逗号分隔的参数序列
+	
+
+
+	// function sum(n1,n2){				//函数调用时使用把数组转换为参数列表
+	// 	return n1+n2
+	// }
+	// // console.log(sum(7,56));
+	// let arr = [32,54]
+	// console.log(sum(...arr))
+
+
+	// function sum(...arr){			//函数定义时使用把参数列表转换为数组
+	// 	let result = 0;
+	// 	for(let i = 0;i<arr.length;i++){
+	// 		result += arr[i]
+	// 	}
+	// 	return result
+	// }
+	// console.log(sum(7,8,89,75,21))
+
+
+	let arr = [99,72,81,66,2,5,36];			//求数组的最大数
+	// console.log(Math.max(99,72,81,66,2,5,36));
+	// console.log(Math.max.apply(null,arr));
+	console.log(Math.max(...arr))	
+</script>
+</html>

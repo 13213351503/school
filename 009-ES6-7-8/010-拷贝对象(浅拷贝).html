@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>010-拷贝对象(浅拷贝).html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// let obj1 = {
+	// 	name:'tom',
+	// 	age:18,
+	// 	friends:{
+	// 		name:'yadan',
+	// 		age:22
+	// 	},
+	// 	pets:['cat','dog']
+			
+	// }
+	// let obj2 = obj1;
+	// console.log(obj1);
+	// console.log(obj2);
+
+
+	let obj1 = {
+		name:'tom',
+		age:18,
+		friends:{
+			name:'yadan',
+			age:22
+		},
+		pets:['cat','dog']
+			
+	}
+	let obj2 = {...obj1}			//如果被拷贝对象中有复杂数据,实际拷贝的是引用
+	obj1.age = 20;
+	obj1.friends.name = 'dachui';
+	obj1.pets.push('pander');
+	console.log(obj1);
+	console.log(obj2)
+</script>
+</html>

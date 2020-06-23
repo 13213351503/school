@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>009-深拷贝数组.html</title>
+</head>
+<body>
+	<ul>
+		<li>01</li>
+		<li>02</li>
+		<li>03</li>
+		<li>04</li>
+		<li>05</li>
+		<li>06</li>
+		<li>07</li>
+		<li>08</li>
+		<li>09</li>
+		<li>10</li>
+	</ul>
+</body>
+<script>
+	let arr1 = [5,4,2,6,4,9,2,0,5];
+	// let arr2 = [];
+	// for(let i = 0;i<arr1.length;i++){
+	// 	arr2.push(arr1[i]);
+	// }
+	// console.log(arr1 === arr2);
+	// console.log(arr2);
+
+
+	// let arr1 = [5,4,2,6,4,9,2,0,5];		
+	// let arr2 = arr1.concat();		//连接数组，生成一个新数组
+	// console.log(arr1 === arr2);
+	// console.log(arr2);
+
+
+	// let arr1 = [5,4,2,6,4,9,2,0,5];
+	// let arr2 = arr1.slice();			//截取数组，生成一个新数组
+	// console.log(arr1 === arr2);
+	// console.log(arr2);
+
+	// let arr1 = [5,4,2,6,4,9,2,0,5];		
+	// let arr2 = [...arr1];	
+	// console.log(arr1 === arr2);
+	// console.log(arr2);
+	
+
+	let aList = document.getElementsByTagName('li');
+	let arr2 = [...aList];
+	console.log([...aList]);
+
+
+</script>
+</html>

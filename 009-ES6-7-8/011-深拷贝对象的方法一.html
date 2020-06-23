@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>011-深拷贝对象的方法一.html</title>
+</head>
+<body>
+	
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	let obj1 = {
+		name:'tom',
+		age:18,
+		friends:{
+			name:'yadan',
+			age:22
+		},
+		pets:['cat','dog']
+			
+	}
+	// let obj2 = JSON.parse(JSON.stringify(obj1));
+	// // let obj2 = {...obj1}			//如果被拷贝对象中有复杂数据,实际拷贝的是引用
+	// obj1.age = 20;
+	// obj1.friends.name = 'dachui';
+	// obj1.pets.push('pander');
+	// console.log(obj1);
+	// console.log(obj2)
+	
+	let obj2 = $.extend(true,{},obj1);	//第一个参数表示你使用深copy还是浅copy，true表示深copy，false表示浅copy
+	obj1.age = 20;
+	obj1.friends.name = 'dachui';
+	obj1.pets.push('pander');
+	console.log(obj1);
+	console.log(obj2)
+
+</script>
+</html>

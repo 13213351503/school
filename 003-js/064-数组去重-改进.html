@@ -9,9 +9,9 @@
 		function uniqueArray(arr){
 			var result =[];
 			for(var i = 0;i<arr.length;i++){
-				if(result.indexOf(arr[i]) == -1){
+				if(result.indexOf(arr[i]) == -1){		//如果要检索的字符串值没有出现，则该方法返回 -1。
 					result.push(arr[i]);
-					console.log(result);
+					// console.log(result);
 				}
 			}
 			return result

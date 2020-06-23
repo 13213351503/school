@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>015-利用Set值唯一去除数组重复值.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let arr = [3,7,2,4,9,2,3,8,4];
+	// var result = [];
+	// for(let i = 0;i<arr.length;i++){
+	// 	if(result.indexOf(arr[i]) == -1){
+	// 		result.push(arr[i]);
+	// 	};
+	// }
+	// console.log(result);
+
+
+	function sum1(arr){
+		let result = [];
+		for(let i = 0;i<arr.length;i++){
+			let isDurp = false;
+			for(let k = 0;k<result.length;k++){
+				if(result[k] == arr[i]){
+					isDurp = true;
+					break
+				}
+			}
+			if(!isDurp){
+				result.push(arr[i]);
+			}
+		}
+		return result
+	}
+	console.log(sum1(arr));
+
+
+	// function sum(arr){
+	// 	let result = [];
+	// 	let obj = {};
+	// 	for(let i = 0;i<arr.length;i++){
+	// 		obj[arr[i]] = arr[i];
+	// 	}
+	// 	for(key in obj){
+	// 		result.push(key*1);
+	// 	}
+	// 	return result;
+	// }
+	// console.log(sum(arr))
+</script>
+</html>
