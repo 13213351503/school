@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>016-Map对象的操作方法.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let obj1 = {id:'kkkkk'};
+	let obj2 = {id:'lllll'};
+	let m = new Map();
+	//set(key,value):设置键名key对应的键值为value，然后返回整个 Map 结构,如果key已经有值，则键值会被更新，否则就新生成该键。
+	console.log(m.set('name','Tom'));
+	m.set(obj1,'hellow');
+	m.set(obj2,'nihao');
+
+	//get(key):读取key对应的键值，如果找不到key，返回undefined。
+	console.log(m.get('name'));
+	console.log(m.get('age'));
+
+	// delete(key):delete方法删除某个键，返回true。如果删除失败，返回false。
+	console.log(m.delete(obj1));
+
+	// has(key):has方法返回一个布尔值，表示某个键是否在当前 Map 对象之中。
+	console.log(m.has('name'));
+
+	// clear():清除所有键值,没有返回值
+	console.log(m.clear())
+
+
+
+
+
+	console.log(m);
+</script>
+</html>

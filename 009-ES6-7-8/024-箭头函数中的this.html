@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>024-箭头函数中的this.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var id = 66;
+	// function timer(){
+	// 	this.id = 20;
+	// 	setTimeout(function(){
+	// 		console.log(this.id)
+	// 	})
+	// }
+	// var Time = new timer();
+
+	//箭头函数中的this是在定义时确定的(定义时属于谁),而不是在运行时确定(谁调用)的
+	// function timer(){
+	// 	this.id = 33;
+	// 	setTimeout(()=>{
+	// 		console.log(this.id)
+	// 	})
+	// }
+	
+	
+	//在箭头函数中调用this实际上就是在调用定义在上一层作用域的this指向
+	function aa(){
+		this.id = 12;
+		function cc(){
+			this.id = 44;
+			let bb = ()=>{
+				console.log(this.id)
+			}
+			bb()
+		}
+		cc()
+	}
+	// var Time = new timer();
+	var Time = new aa();
+</script>
+</html>

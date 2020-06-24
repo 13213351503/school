@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>021-函数的定义.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+
+
+	// show();
+	// function show(){			//函数声明提升
+	// 	console.log('aa')		
+	// }
+	// var show = function(){		//var的声明提升，并不赋值，函数在调用的时候这里并没有解析到，所以打印aa
+	// 	console.log('bb');
+	// }
+	
+
+
+
+	// function show(){			//函数声明提升
+	// 	console.log('aa')
+	// }
+	// var show = function(){		//var的声明提升，并不赋值，等解析到这里的时候取赋值，所以调用的时候时bb
+	// 	console.log('bb');
+	// }
+	// show();
+
+
+
+
+	show();
+	var show = function(){		//var的声明提升，并不赋值，调用的时候还没有进行赋值，报错
+		console.log('bb');
+	}
+	
+
+
+</script>
+</html>

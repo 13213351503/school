@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>025-箭头函数和普通函数的区别.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+	// //箭头函数没有原型对象,所以不能用箭头函数来定义构造函数
+	// let Person = (name,age)=>{
+	// 	this.name = name;
+	// 	this.age = age;
+	// }
+	console.log(Person.prototype);
+
+
+
+
+	// // function sum(n1,n2,n3){
+	// // 	console.log(arguments);
+	// // }
+	// //箭头函数中没有arguments
+	// let sum = (n1,n2,n3)=>{
+	// 	console.log(arguments)
+	// }
+	// sum(1,2,3)
+	
+
+
+	// 如果定义有名称的箭头函数,需要把箭头函数赋值给变量,所以箭头函数不存在声明的提升
+	let aa = ()=>{
+		console.log('haha')
+	}
+	aa()
+	
+</script>
+</html>

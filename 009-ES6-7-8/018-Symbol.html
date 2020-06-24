@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>018-Symbol.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let obj = {
+		name:'Tom'
+	};
+	let s = Symbol('kk');
+	let s1 = Symbol('kk');
+
+
+
+	// console.log(s1);
+	// console.log(s);
+	// console.log(s1 === s);		//Symbol是一种新的数据类型,表示独一无二的值
+
+	// obj.s = 'aaa';					//Symbol值作为对象属性名时,不能用点运算符,在对象的内部也不可以
+	// obj.s1 = 'bbb';
+	 
+	obj[s] = 'aaa';
+	obj[s1] = 'bbb';
+	//Symbol值作为对象属性时是不可枚举的,可以利用Reflect.ownKeys(obj)获取对象上的所有key来遍历
+	// for(let key in obj){
+	// 	console.log(key);
+	// }
+
+	let ak = Reflect.ownKeys(obj)
+	for(let key in ak){
+		console.log(ak[key]);	
+		console.log(obj[ak[key]]);
+	}
+	console.log(ak);
+</script>
+</html>

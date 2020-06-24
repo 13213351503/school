@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>017-Map对象的遍历方法.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let obj1 = {id:'kkkkk'};		
+	let obj2 = {id:'lllll'};
+	let m = new Map();			//Map的遍历顺序就是插入顺序
+	m.set('name','Tom');
+	m.set(obj1,'hellow');
+	m.set(obj2,'nihao');
+	//keys():返回键名的遍历器
+	// for(let key of m.keys()){
+	// 	console.log(key);
+	// }
+
+	//values():返回键值的遍历器
+	// for(let value of m.values()){
+	// 	console.log(value);
+	// }
+
+	//entries():返回键值对的遍历器
+	// for(let entry of m.entries()){
+	// 	console.log(entry);
+	// }
+
+
+	//forEach(function(value,key){}):使用回调函数遍历
+	m.forEach(function(value,key){
+		console.log(key,value);
+	})
+
+	console.log(m);
+</script>
+</html>

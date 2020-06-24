@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>019-函数参数.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//直接在参数定义的时候赋值来为为函数的参数设置默认值
+	// function show(name='Tom',age=18){
+	// 	console.log(name,age)
+	// }
+	// show()
+
+
+	//参数默认值不是传值的,而是每次都重新计算默认值表达式的值
+	// let i = 1;
+	// function num(a= ++i){
+	// 	console.log(a);
+	// }
+	// num();
+	// i = 6;
+	// num();
+
+	
+	// function ajax(url,mathood,data){
+	// 	console.log(url);
+	// 	console.log(mathood);
+	// 	console.log(data);
+	// }
+	
+	// function ajax(url,{mathood='get',data={name:'Tom'}}={}){	//结构解析和默认参数结合
+	// 	console.log(url);
+	// 	console.log(mathood);
+	// 	console.log(data);
+	// }
+	// ajax('http:127.0.0.1:3000');
+
+
+	//rest参数就是在函数定义时使用扩展运算(...变量名)把参数列表转换为数组
+	function sum(...arr){
+		console.log(arr);
+	}
+	sum(1,2,3,4,5,6)
+</script>
+</html>

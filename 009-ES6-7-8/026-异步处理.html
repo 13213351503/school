@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>026-异步处理.html</title>
+</head>
+<body>
+	
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	$.get('https://api.github.com/users/13213351503',function(data){
+		console.log(data)
+		$.get(data.followers_url,function(data){
+			console.log(data);
+			$.get(data[0].followers_url,function(data){
+				console.log(data)
+			})
+		})
+	})
+	console.log('data.....')
+
+
+	var img = new Image();
+	img.onload = function(){
+		console.log('success')
+	}
+	img.onerror = function(){
+		console.log('error')
+	}
+	img.src = './img/ad1.jpg';
+	console.log('img......')
+
+
+	setTimeout(function(){
+		console.log('timer')
+	},1000);
+	console.log('time......')
+</script>
+</html>

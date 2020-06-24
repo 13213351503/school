@@ -18,23 +18,23 @@
 	// console.log(result);
 
 
-	function sum1(arr){
-		let result = [];
-		for(let i = 0;i<arr.length;i++){
-			let isDurp = false;
-			for(let k = 0;k<result.length;k++){
-				if(result[k] == arr[i]){
-					isDurp = true;
-					break
-				}
-			}
-			if(!isDurp){
-				result.push(arr[i]);
-			}
-		}
-		return result
-	}
-	console.log(sum1(arr));
+	// function sum1(arr){
+	// 	let result = [];
+	// 	for(let i = 0;i<arr.length;i++){
+	// 		let isDurp = false;
+	// 		for(let k = 0;k<result.length;k++){
+	// 			if(result[k] == arr[i]){
+	// 				isDurp = true;
+	// 				break
+	// 			}
+	// 		}
+	// 		if(!isDurp){
+	// 			result.push(arr[i]);
+	// 		}
+	// 	}
+	// 	return result
+	// }
+	// console.log(sum1(arr));
 
 
 	// function sum(arr){
@@ -49,5 +49,8 @@
 	// 	return result;
 	// }
 	// console.log(sum(arr))
+	
+	let s = new Set(arr);
+	console.log(...s);
 </script>
 </html>
