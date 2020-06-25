@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>028-promise中的then方法.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let promise = new Promise((resolve,reject)=>{
+		setTimeout(function(){
+			resolve('get success');
+		},200)
+	});
+
+	//then(resolved状态的回调,rejected状态的回调),then方法返回的是一个新的Promise实例
+	// let p1 = promise.then(data=>{
+	// 	console.log(data);
+	// 	return 'get p1 success';
+	// });
+	// console.log(p1);		//p1是promise生成的一个实例对象
+	// console.log(p1 == promise)	
+
+	// //新的promise对象的then方法中参数的数据是上一个promise对象调用then方法返回的数据,如果不return返回值是undefined
+	// p1.then(data=>{
+	// 	console.log(data);
+	// })
+
+
+	//如果promise调用then方法主动返回一个新的promise（p2），那么这个promise（p2）中的resolve方法中的参数会作为新生成的promise（p1）的调用then方法的成功的回调函数中的值
+	let p2;
+	let p1 = promise.then(data=>{
+		p2 = new Promise((resolve,reject)=>{
+			setTimeout(function(){
+				// resolve('get p2 success');
+				reject('get p2 err')
+			},200)
+		});
+		return p2;
+	})
+	p1.then(data=>{
+		console.log(data)
+		console.log('p1...',p1);
+		console.log('p1...',p2);
+		console.log(p1 == p2);
+	},err=>{
+		console.log(err)
+	})
+</script>
+</html>

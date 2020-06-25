@@ -11,19 +11,21 @@
 	let promise = new Promise((resolve,reject)=>{
 		// console.log('aaa');		//Promise 新建后就会立即执行
 		setTimeout(function(){
-			// resolve('get success');
-			reject('get error')
+			resolve('get success');
+			// reject('get error');
 		},1000)
 	})
 
-	//then(resolved状态的回调,rejected状态的回调),then方法返回的是一个新的Promise实例
 	//Promise实例生成以后,可以用then方法分别指定resolved状态和rejected状态的回调函数,rejected状态的回调函数可以省略
 	promise.then(data=>{
-		// console.log(promise)
-		console.log(promise);
+		console.log(data);
+		console.log(promise)
 	},err=>{
-		console.log(promise);
-		console.log(data)
+		// console.log(promise);
+		// console.log(err)
 	})
+
+	//promise实例有一个then方法
+	//接收两个回调函数一个是成功的回调函数一个是失败的回调函数
 </script>
 </html>
