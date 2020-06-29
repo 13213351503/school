@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>029-promise中的catch和finally.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let promise = new Promise((resolve,reject)=>{
+		setTimeout(function(){
+			resolve('get data ok');
+			// reject('get data err');
+		},1000)
+	})
+
+	promise
+	.then((data)=>{
+		console.log(data);
+	})
+	.catch((err)=>{	//如果异步操作抛出错误,状态就会变为rejected,当then中没有指定rejected状态的回调时就会调用catch方法指定的回调函数
+		console.log(err)
+	})
+	.finally(()=>{	//不管Promise对象最后状态如何,都会执行的操作,finally方法的回调函数不接受任何参数 
+		console.log('always get data')
+	})
+</script>
+</html>

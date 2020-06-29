@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>035-Promise的静态方法-race.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function getTimerPromise(deley){
+		return new Promise((resolve,reject)=>{
+			setTimeout(()=>{
+				resolve('get timer' +  deley)
+			},deley)
+		});
+	};
+
+	const p1 = getTimerPromise(1000);
+	const p2 = getTimerPromise(600);
+	const p3 = getTimerPromise(200);
+	const p4 = new Promise((resolve,reject)=>{
+				setTimeout(()=>{
+					reject('get time err')
+				},0)
+			});
+	//接受一个Promise实例数组作为参数,返回执行最快的那个promise对象 
+	const promise = Promise.race([p1,p2,p3,p4]);	//不管成功还是失败状态，race只接收最快的那个
+	console.log(promise);
+	promise
+	.then((data)=>{
+		console.log(data);
+	})
+	.catch((err)=>{
+		console.log(err);
+	})
+</script>
+</html>

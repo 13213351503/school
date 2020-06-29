@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>036-Generator函数的使用.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//Generator 函数形式上就像是一个普通函数,function关键字与函数名之间有一个星号
+	function * gen(){
+		console.log('get gen1');
+		yield 'data1 end';
+		console.log('get gen2');
+		yield 'data2 end';
+		console.log('get gen3');
+		return 'data3 end'
+	};
+	// gen();
+	const p1 = gen();
+
+	//调用 Generator 函数后，该函数并不执行,返回一个遍历器对象
+	// console.log(p1);
+	
+
+	//调用遍历器对象的next方法,next方法的作用是分阶段执行Generator函数。
+	//每次调用next方法，会返回一个对象，表示当前阶段的信息（value属性和done属性）
+	// p1.next();	//遇到yield表达式，就暂停执行后面的操作，并将紧跟在yield后面的那个表达式的值，作为返回的对象的value属性值
+	
+
+	//value属性是yield语句后面表达式的值，表示当前阶段的值；  done属性是一个布尔值，表示Generator函数是否执行完毕，即是否还有下一个阶段
+	console.log(p1.next());		//{value:'data1 end',done:false}
+
+
+	//如果没有再遇到新的yield表达式，就一直运行到函数结束，直到return语句为止，并将return语句后面的表达式的值，作为返回的对象的value属性值
+	console.log(p1.next());		//{value:'data2 end',done:false}
+
+
+	//如果该函数没有return语句，则返回的对象的value属性值为undefined
+	console.log(p1.next());		//{value:'data3 end',done:true}
+</script>
+</html>

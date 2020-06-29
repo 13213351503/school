@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>038-for-of遍历遍历器.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function * gen(){
+		yield 5;
+		yield 6;
+		yield 7;
+		yield 8;
+		yield 9;
+	}
+	const g = gen();
+	// console.log(g.next().value);
+	// console.log(g.next().value);
+	// console.log(g.next().value);
+	// console.log(g.next().value);
+	// console.log(g.next().value);
+	for(val of g){
+		console.log(val);
+	}
+</script>
+</html>

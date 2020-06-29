@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>037-Generator函数中next方法的参数.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function * gen(x){
+		console.log(x);
+		const y = yield(x + 10);
+
+		console.log(y);
+		const z = yield(y+20);
+
+		return (x+y+z);
+	}
+
+	//next方法可以带一个参数，该参数就会被当作上一个yield表达式的返回值。
+	//由于next方法的参数表示上一个yield表达式的返回值，所以在第一次使用next方法时，传递参数是无效的。
+
+	const p1 = gen(10);
+	console.log(p1.next()); 	//{value:20,done:false};
+	console.log(p1.next(15)); 	//{value:35,done:false};
+	console.log(p1.next(20)); 	//{value:45,done:true};
+</script>
+</html>
