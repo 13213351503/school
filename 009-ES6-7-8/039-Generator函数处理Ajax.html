@@ -26,22 +26,24 @@
 	function * gen(url){
 		const data1 = yield getDataPromise(url);
 		const data2 = yield getDataPromise(data1);
-		const data3 = yield getDataPromise(data2);
+		return data3 = yield getDataPromise(data2);
 	}
 	const g = gen('https://api.github.com/users/13213351503');
 	// console.log(g.next());
-	g.next().value
+	g.next().value	//第一次调用g.next返回值的value是函数getDataPromise(url);
+	//要想拿到promise上成功的数据，就需要调用g.next上的value方法
 	.then(data=>{
 		// console.log(data);
-		// console.log(g.next(data.followers_url).value)
-		return g.next(data.followers_url).value;
-	})
-	.then(data=>{
-		// console.log(data);
-		return g.next(data[0].followers_url);
+		// console.log(g.next(data.followers_url).value)	//返回值是一个promise对象
+		return g.next(data.followers_url).value;	//主动返回一个promise对象可以连续调用then方法
 	})
 	.then(data=>{
 		console.log(data);
+		return g.next(data[0].followers_url).value;
+	})
+	.then(data=>{
+		console.log(data);			//得到最后的获取结果
+		console.log(g.next(data));	//检查最后的返回值
 	})
 </script>
 </html>
