@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>041-异步函数async await.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//await只能放到async函数体中
+	//await表示后面的处理需要等待,通常await后面是一个 Promise 对象，返回该对象的结果。如果不是 Promise 对象，就直接返回对应的值。
+	// async function fn(){
+	// 	const data1 = await 'get data1';
+	// 	console.log(data1);
+	// 	const data2 = await 'get data2';
+	// 	console.log(data2);
+	// 	return data2;
+	// }
+	// // fn();
+	// const promise = fn();
+	// promise
+	// .then(data=>{
+	// 	console.log(data);
+	// })
+
+
+	//遇见await，通常等执行完await后面的代码后再继续向下执行
+	const a1 = new Promise((resolve,reject)=>{
+		setTimeout(()=>{
+			// resolve('okk');
+			reject('err');
+		},300)
+	})
+
+	async function fn1(){
+		try{		//防止出错的方法，是await语句放在try...catch代码块之中。
+			const data1 = await a1;
+			// console.log(data1);
+			return data1;
+		}catch(err){
+			console.log(err);
+		}
+	}
+	// fn1();
+	const promise = fn1();
+	promise
+	.then(data=>{
+		console.log(data)
+	})
+	// .catch(err=>{	//await命令后面的 Promise 对象如果变为reject状态，程序中止,reject的参数会被catch方法的回调函数接收到。
+	// 	console.log(err);
+	// })
+</script>
+</html>

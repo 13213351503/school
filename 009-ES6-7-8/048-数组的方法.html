@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>048-数组的方法.html</title>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+<script>
+	const obj = {
+		0:'11',
+		1:'22',
+		2:'33',
+		length:3
+	}
+	const aDiv = document.getElementsByTagName('div');
+
+	console.log([...aDiv]);
+
+	//作用:将伪数组转为真数组
+	console.log(Array.from(obj));
+	console.log(Array.from(aDiv));
+
+
+
+	const arr = [1,5,1234,8,42,15,751,8,3521]
+	//作用:用于找出第一个符合条件的数组成员。Array.prototype.find()
+	//参数是一个回调函数，所有数组成员依次执行该回调函数，直到找出第一个返回值为true的成员，然后返回该成员。如果没有符合条件的成员，则返回undefined。
+	const result = arr.find((n)=>{
+		return n>100;
+	})
+	console.log(result);
+
+	//用法与find方法非常类似，返回第一个符合条件的数组成员的下标，如果所有成员都不符合条件，则返回-1。Array.prototype.findIndex()
+	const results = arr.findIndex((n)=>{
+		return n > 50;
+	})
+	console.log(results);
+
+	//ES7语法,Array.prototype.includes(搜索的值,[搜索的开始索引]),作用:返回一个布尔值，表示某个数组是否包含给定的值
+	console.log(arr.includes(8));
+	console.log(arr.includes(8,4));
+
+</script>
+</html>

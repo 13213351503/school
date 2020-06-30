@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>046-子面量对象简洁语法.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	const name = 'leo';
+	const age = 18
+
+	// const obj = {
+	// 	name:name,
+	// 	age:age
+	// }
+
+
+	// const obj = {
+	// 	name,
+	// 	age,
+	// }
+	
+	// const obj = {
+	// 	name,
+	// 	age,
+	// 	showName:function(){
+	// 		console.log('I am Tom');
+	// 	},
+	// 	showAge:function(){
+	// 		console.log('I am 18 years old')
+	// 	},
+	// }
+
+	// const obj = {
+	// 	name,
+	// 	age,
+	// 	showName(){
+	// 		console.log('I am Tom');
+	// 	},
+	// 	showAge(){
+	// 		console.log('I am 18 years old')
+	// 	},
+	// }
+
+	const obj = {
+		name,
+		age,
+		showName:()=>{
+			//箭头函数中的this是在定义时确定的(定义时属于谁),而不是在运行时确定(谁调用)的，这里的this是window
+			console.log(this);		
+			console.log('I am Tom');
+		},
+		showAge:()=>{
+			console.log('I am 18 years old')
+		},
+	}
+	console.log(obj);
+	obj.showName();
+	obj.showAge();
+</script>
+</html>
