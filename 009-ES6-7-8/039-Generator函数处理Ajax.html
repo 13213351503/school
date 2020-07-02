@@ -31,7 +31,7 @@
 	const g = gen('https://api.github.com/users/13213351503');
 	// console.log(g.next());
 	g.next().value	//第一次调用g.next返回值的value是函数getDataPromise(url);
-	//要想拿到promise上成功的数据，就需要调用g.next上的value方法
+	//要想拿到promise上成功的数据，就需要调用g.next上的value方法。
 	.then(data=>{
 		// console.log(data);
 		// console.log(g.next(data.followers_url).value)	//返回值是一个promise对象
