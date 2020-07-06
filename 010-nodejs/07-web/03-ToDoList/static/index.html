@@ -11,7 +11,7 @@
 		<input type="text" class="todo-input">
 		<ul class="todo-list">
 			{% for item in data %}
-			<li class="todo-item">{{item.task}}</li>
+			<li class="todo-item" data-id="{{item.id}}">{{item.task}}</li>
 			{% endfor %}
 		</ul>
 	</div>

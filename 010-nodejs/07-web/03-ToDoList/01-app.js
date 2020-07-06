@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const mime = require('./mime.json')
 const url = require('url');
-const { get } = require('./model/item.js');
+const { get,add,del } = require('./model/item.js');
 const swig = require('swig');
 const querystring = require('querystring');
 
@@ -42,11 +42,40 @@ const server = http.createServer((req,res)=>{
 		});
 		req.on('end',()=>{
 			const query = querystring.parse(body);
-			console.log(query);
+			// console.log(query);
+			add(query.task)
+			.then(data=>{
+				res.end(JSON.stringify({
+					code:0,
+					message:'添加数据成功',
+					data:data
+				}))
+			})
+			.catch(err=>{
+				res.end(JSON.stringify({
+					code:1,
+					message:'添加数据失败',
+				}))
+			})
 		});
 		// res.end('ok')
-	}else if(parseName == '/delete'){	//3.删除数据处理
-
+	}else if(parseName == '/del'){	//3.删除数据处理
+		//1.获取参数信息
+		const id = parse.query.id;
+		//2.根据参数信息中的ID删除文件中对应的数据
+		del(id)
+		.then(data=>{
+			res.end(JSON.stringify({
+				code:0,
+				message:'删除数据成功',
+			}));
+		})
+		.catch(err=>{
+			res.end(JSON.stringify({
+				code:1,
+				message:'删除数据失败',
+			}));
+		})
 	}else{	//4.静态页面处理
 		const fileName = path.normalize(__dirname + '/static/' + filePath);
 		// console.log(fileName);
