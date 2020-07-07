@@ -34,9 +34,10 @@
 	// console.log(sum(7,8,89,75,21))
 
 
-	let arr = [99,72,81,66,2,5,36];			//求数组的最大数
+	let arr = [99,72,81,66];			//求数组的最大数
 	// console.log(Math.max(99,72,81,66,2,5,36));
-	console.log(Math.max.apply(null,arr));
+	// console.log(Math.max.apply(null,arr));
 	// console.log(Math.max(...arr))	
+	console.log(Math.max.call(Math,arr[0],arr[1],arr[2],arr[3]));	
 </script>
 </html>

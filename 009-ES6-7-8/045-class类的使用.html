@@ -9,7 +9,7 @@
 </body>
 <script>
 	class Person{					//用class定义的类也是函数
-		constructor(name,age){
+		constructor(name,age ){
 			this.name = name;
 			this.age = age;
 		}
@@ -29,24 +29,24 @@
 	Person.sayHellow();
 
 
-	class Student extends Person{		//通过extends关键字实现继承
-		constructor(name,age,major){
-			super(name,age);			//子类必须在constructor方法中调用super方法,该super方法实际上是调用父类的constructor
-			this.major = major;			//在子类的构造函数中,只有调用super之后,才可以使用this关键字
-		}
-		showMajor(){
-			console.log('I am from ' + this.major)
-		}
-		static sayHi(){
-			console.log('good afternoon');
-		}
-	};
-	const s1 = new Student('Petter',80,'computer');
-	console.log(s1);
-	s1.showName();
-	s1.showAge();
-	s1.showMajor();
-	Student.sayHi();
-	Student.sayHellow();		//父类的静态方法,可以被子类继承
+	// class Student extends Person{		//通过extends关键字实现继承
+	// 	constructor(name,age,major){
+	// 		super(name,age);			//子类必须在constructor方法中调用super方法,该super方法实际上是调用父类的constructor
+	// 		this.major = major;			//在子类的构造函数中,只有调用super之后,才可以使用this关键字
+	// 	}
+	// 	showMajor(){
+	// 		console.log('I am from ' + this.major)
+	// 	}
+	// 	static sayHi(){
+	// 		console.log('good afternoon');
+	// 	}
+	// };
+	// const s1 = new Student('Petter',80,'computer');
+	// console.log(s1);
+	// s1.showName();
+	// s1.showAge();
+	// s1.showMajor();
+	// Student.sayHi();
+	// Student.sayHellow();		//父类的静态方法,可以被子类继承
 </script>
 </html>
