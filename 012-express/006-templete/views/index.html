@@ -1,25 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>{{ title }}</title>
-</head>
-<body>
-	<!-- {% if name == 'James' %}
-		hello James
-	{% endif %}
+{% extends './layout.html' %}
 
-	{%  if name == 'Tom' %}
-		hello Tom
-	{%  elseif name == 'James' %}
-		hellow James
-	{%  endif %}	 -->
+{%  block title %}
+	首页
+{% endblock %}
 
 
-	{% for key, val in friends %}
-  		<p>{{ key }} -- {{ val }}</p>
-	{% endfor %}
-</body>
-<script src="./jquery-1.12.4.min.js"></script>
+{%  block head %}
+	<link rel="stylesheet" href="css/index.css">
+{% endblock%}
 
-</html>
+
+{% block content %}
+	今天暴雨
+{% endblock %}
+
+
+{%  block footer %}
+	<script src="js/index.js"></script>
+{% endblock%}

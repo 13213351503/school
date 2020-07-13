@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{%  block title %}{% endblock %}</title>
+	<link rel="stylesheet" href="css/common.css">
+	{%  block head %}{% endblock%}
+</head>
+<body>
+	<header>顶部内容</header>
+	<div>{% block content %}{% endblock %}</div>
+	<footer>底部内容</footer>
+</body>
+<script src="js/jquery.js"></script>
+<script src="js/common.js"></script>
+{%  block footer %}{% endblock%}
+</html>

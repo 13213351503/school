@@ -23,11 +23,22 @@ app.use(express.static('public'));
 	//		第一个参数必须是view engine
 	//		第二个参数是模板名称,也就是app.engine的第一个参数
 	//渲染模板
-	app.get('/',(req,res)=>{
+	// app.get('/',(req,res)=>{
+	//     //4.渲染模板
+	//     //第一个参数是相对于模板目录的文件
+	//     //第二个参数是传递给模板的数据
+ //    	res.render('index',{
+ //    		title:'首页',
+ //    		name:'James',
+ //    		friends:['Kobe','Wade','Bosh','Bird','Cuury']
+ //    	})
+	// })
+
+	app.get('/list',(req,res)=>{
 	    //4.渲染模板
 	    //第一个参数是相对于模板目录的文件
 	    //第二个参数是传递给模板的数据
-    	res.render('base',{
+    	res.render('list',{
     		title:'首页',
     		name:'James',
     		friends:['Kobe','Wade','Bosh','Bird','Cuury']
