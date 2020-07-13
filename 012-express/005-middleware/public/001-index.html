@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index.html</title>
+</head>
+<body>
+	<h1>哈哈哈</h1>
+	<button class="get">user get</button>
+	<button class="post">user post</button>
+	<button class="put">user put</button>
+	<button class="delete">user delete</button>
+</body>
+<script src="jquery-1.12.4.min.js"></script>
+<script>
+	$('.get').on('click',function(){
+		$.ajax({
+			url:'/user',
+			type:'get',
+			success:function(data){
+				console.log(data);
+			},
+			err:function(err){
+				console.log(err);
+			}
+		})
+	})
+	$('.post').on('click',function(){
+		$.ajax({
+			url:'/user',
+			type:'post',
+			success:function(data){
+				console.log(data);
+			},
+			err:function(err){
+				console.log(err);
+			}
+		})
+	})
+	$('.put').on('click',function(){
+		$.ajax({
+			url:'/user',
+			type:'put',
+			success:function(data){
+				console.log(data);
+			},
+			err:function(err){
+				console.log(err);
+			}
+		})
+	})
+	$('.delete').on('click',function(){
+		$.ajax({
+			url:'/user',
+			type:'delete',
+			success:function(data){
+				console.log(data);
+			},
+			err:function(err){
+				console.log(err);
+			}
+		})
+	})
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-index.html</title>
+</head>
+<body>
+	<h1>哈哈哈</h1>
+	<button class="get">get</button>
+	<button class="get2">get222</button>
+</body>
+<script src="jquery-1.12.4.min.js"></script>
+<script>
+	$('.get').on('click',function(){
+		$.ajax({
+			url:'/',
+			type:'get',
+			data:{
+				name:'Tom',
+				age:20
+			},
+			success:function(data){
+				console.log(data);
+			},
+			err:function(err){
+				console.log(err);
+			}
+		})
+	})
+	$('.get2').on('click',function(){
+		$.ajax({
+			url:'/user/12/da/456',
+			type:'get',
+			success:function(data){
+				console.log(data);
+			},
+			err:function(err){
+				console.log(err);
+			}
+		})
+	})
+</script>
+</html>

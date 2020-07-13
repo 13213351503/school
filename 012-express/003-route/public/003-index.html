@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>002-index.html</title>
+</head>
+<body>
+	<h1>哈哈哈</h1>
+	<button class="get">get</button>
+</body>
+<script src="jquery-1.12.4.min.js"></script>
+<script>
+	$('.get').on('click',function(){
+		$.ajax({
+			url:'/',
+			type:'get',
+			success:function(data){
+				console.log(data);
+			},
+			err:function(err){
+				console.log(err);
+			}
+		})
+	})
+</script>
+</html>
