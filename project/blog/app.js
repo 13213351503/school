@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const swig = require('swig')
+const bodyParser = require('body-parser')
 
 //链接数据库
 // mongoose.connect('mongodb://localhost/kuazhu', {useNewUrlParser: true})
@@ -20,7 +21,15 @@ db.once('open', function(){
 
 app.use(express.static('public'));
 
+//中间件配置开始
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
+// 配置中间件信息后post的参数会被存在req.body
+
+//中间件配置结束
 
 
 
@@ -41,6 +50,7 @@ app.set('views', './views')
 app.set('view engine', 'html')
 
 app.use('/',require('./routers/index.js'))
+app.use('/user',require('./routers/user.js'))
 
 
 
