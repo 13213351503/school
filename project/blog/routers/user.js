@@ -54,7 +54,8 @@ route.post('/login', (req, res) => {
 	.then(data=>{
 		if(data){	//登陆成功
 			//用户登陆时生成cookies信息
-			req.cookies.set('userInfo',JSON.stringify(data),{maxAge:1000*60*60*24});
+			// req.cookies.set('userInfo',JSON.stringify(data),{maxAge:1000*60*60*24});
+			req.session.userInfo = data;
 			res.json({
 				code:0,
 				massage:'登陆成功',
@@ -78,7 +79,11 @@ route.post('/login', (req, res) => {
 
 //用户退出
 route.get('/logout', (req, res) => {
-	req.cookies.set('userInfo',null);
+	//cookies状态下的用户退出
+	// req.cookies.set('userInfo',null);
+
+	//session状态下的用户退出
+	req.session.destroy()
 	res.json({
 		code:0,
 		massage:'成功退出'

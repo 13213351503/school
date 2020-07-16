@@ -4,6 +4,8 @@ const mongoose = require('mongoose')
 const swig = require('swig')
 const bodyParser = require('body-parser')
 const Cookies = require('cookies')
+const session = require('express-session');
+const MongoStore = require("connect-mongo")(session);
 
 //链接数据库
 // mongoose.connect('mongodb://localhost/kuazhu', {useNewUrlParser: true})
@@ -32,25 +34,46 @@ app.use(bodyParser.json())
 
 
 
-//利用cookie保存用户状态开始
-//1.生成cookises实例并保存在req上面，这杨所有的路由都可以通过req来操作cookies
+// //利用cookie保存用户状态开始
+// //1.生成cookises实例并保存在req上面，这杨所有的路由都可以通过req来操作cookies
+// app.use('/',(req,res,next)=>{
+// 	req.cookies = new Cookies(req,res);
+// 	//把cookie信息保存在req.userInfo上，后面所有的路由都可以通过req.userInfo拿到用户状态
+// 	let userInfo = {};
+// 	if(req.cookies.get('userInfo')){
+// 		userInfo = JSON.parse(req.cookies.get('userInfo'))
+// 	};
+// 	req.userInfo = userInfo;
+
+// 	next();
+// })
+// //利用cookie保存用户状态结束
+
+
+
+
+
+app.use(session({
+    //设置cookie名称
+    name:'kzid',
+    //用它来对session cookie签名，防止篡改
+    secret:'abc',
+    //强制保存session即使它并没有变化
+    resave: true,
+    //强制将未初始化的session存储
+    saveUninitialized: true, 
+    //如果为true,则每次请求都更新cookie的过期时间
+    rolling:true,
+    //cookie过期时间 1天
+    cookie:{maxAge:1000*60*60*24},
+    // //设置session存储在数据库中
+    store:new MongoStore({ mongooseConnection: mongoose.connection })   
+}))
 app.use('/',(req,res,next)=>{
-	req.cookies = new Cookies(req,res);
-	//把cookie信息保存在req.userInfo上，后面所有的路由都可以通过req.userInfo拿到用户状态
-	let userInfo = {};
-	if(req.cookies.get('userInfo')){
-		userInfo = JSON.parse(req.cookies.get('userInfo'))
-	};
-	req.userInfo = userInfo;
+	req.userInfo = req.session.userInfo || {};
 
 	next();
 })
-
-
-
-
-//利用cookie保存用户状态结束
-
 
 
 //中间件配置结束
