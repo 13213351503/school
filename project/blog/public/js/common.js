@@ -5,7 +5,7 @@
 	var registerInput = $('#username')		//用户名输入框
 	var passwordInput = $('#password')		//密码输入框
 	var repasswordInput = $('#repassword')	//确认密码输入框
-	var loginUsername = $('#login-username');
+	var loginUsername = $('#login-username');	//登陆界面输入框
 	var loginPassword = $('#login-password');
 
 
@@ -76,8 +76,8 @@
 
 	})
 
-	//登录信息
-	$('#login').on('click',function(){
+	//登陆信息
+	$('#sub-login').on('click',function(){
 		//获取注册信息
 		var loginUser = loginUsername.val();		//用户名输入框值
 		var loginPassName = loginPassword.val();		//密码输入框值
@@ -110,12 +110,35 @@
 				}
 			})
 			.done(function(data){
-				console.log(data);
+				if(data.code == 0){		//表示登陆成功
+					// login.hide();
+					// userInfo.show();
+					// userInfo.find('span').html(data.data.username);
+					window.location.reload();
+				}else{
+					errs.html(data.massage)
+				}
 			})
 			.fail(function(err){
 				errs.html('请求失败，请稍后再试')
 			})
 		}
-		
+	})
+
+
+	//用户退出
+	$('#logout').on('click',function(){
+		$.ajax({
+			url:'/user/logout',
+			type:'get',
+		})
+		.done(function(data){
+			if(data.code == 0){
+				window.location.href = '/';
+			}
+		})
+		.fail(function(err){
+			userInfo.find('.err').html('请求失败，请稍后再试')
+		})
 	})
 })(jQuery)

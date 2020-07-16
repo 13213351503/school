@@ -3,6 +3,7 @@ const app = express()
 const mongoose = require('mongoose')
 const swig = require('swig')
 const bodyParser = require('body-parser')
+const Cookies = require('cookies')
 
 //链接数据库
 // mongoose.connect('mongodb://localhost/kuazhu', {useNewUrlParser: true})
@@ -29,8 +30,30 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 // 配置中间件信息后post的参数会被存在req.body
 
-//中间件配置结束
 
+
+//利用cookie保存用户状态开始
+//1.生成cookises实例并保存在req上面，这杨所有的路由都可以通过req来操作cookies
+app.use('/',(req,res,next)=>{
+	req.cookies = new Cookies(req,res);
+	//把cookie信息保存在req.userInfo上，后面所有的路由都可以通过req.userInfo拿到用户状态
+	let userInfo = {};
+	if(req.cookies.get('userInfo')){
+		userInfo = JSON.parse(req.cookies.get('userInfo'))
+	};
+	req.userInfo = userInfo;
+
+	next();
+})
+
+
+
+
+//利用cookie保存用户状态结束
+
+
+
+//中间件配置结束
 
 
 //设置缓存

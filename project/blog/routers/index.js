@@ -2,7 +2,10 @@ const express = require('express')
 const route = express.Router()  
 
 route.get('/', (req, res) => {
-	res.render('main/index')
+	//获取cooike信息
+	res.render('main/index',{
+		userInfo:req.userInfo
+	})
 })
 
 
