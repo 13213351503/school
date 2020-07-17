@@ -23,9 +23,9 @@
 	})
 
 	//首位必须字母，最少3-10位
-	var userReg = /^[a-z][0-9]{2,9}$/i;
+	var userReg = /^[a-z]\w{2,9}$/i;
 	//首位必须字母，剩下最少6-12位
-	var passwordReg = /^[a-z]\w{5,11}$/i;
+	var passwordReg = /^[a-z]\w{4,11}$/i;
 	//注册信息
 	$('#sub-register').on('click',function(){
 		//获取注册信息
@@ -127,18 +127,18 @@
 
 
 	//用户退出
-	$('#logout').on('click',function(){
-		$.ajax({
-			url:'/user/logout',
-			type:'get',
-		})
-		.done(function(data){
-			if(data.code == 0){
-				window.location.href = '/';
-			}
-		})
-		.fail(function(err){
-			userInfo.find('.err').html('请求失败，请稍后再试')
-		})
-	})
+	// $('#logout').on('click',function(){
+	// 	$.ajax({
+	// 		url:'/user/logout',
+	// 		type:'get',
+	// 	})
+	// 	.done(function(data){
+	// 		if(data.code == 0){
+	// 			window.location.href = '/';
+	// 		}
+	// 	})
+	// 	.fail(function(err){
+	// 		userInfo.find('.err').html('请求失败，请稍后再试')
+	// 	})
+	// })
 })(jQuery)

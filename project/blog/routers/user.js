@@ -15,10 +15,12 @@ route.post('/register', (req, res) => {
 				code:10,
 				massage:'该用户已被注册，请重新注册'
 			})
-		}else{
+		}else{ 	//没有同名用户可以注册
+			//验证通过插入数据
 			userModel.insertMany({
 				username:username,
-				password:hmac(password)
+				password:hmac(password),
+				// isAdmin:true
 			})
 			.then(result=>{
 				res.json({

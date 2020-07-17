@@ -97,6 +97,7 @@ app.set('view engine', 'html')
 
 app.use('/',require('./routers/index.js'))
 app.use('/user',require('./routers/user.js'))
+app.use('/admin',require('./routers/admin.js'))
 
 
 

@@ -1,0 +1,39 @@
+{% extends './layout.html' %}
+
+
+{% block title %}
+管理中心首页
+{% endblock %}
+
+
+{% block header %}
+欢迎来到用户管理中心
+{% endblock %}
+
+
+{% block content %}
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>用户名</th>
+        <th>是否时管理员</th>
+      </tr>
+    </thead>
+    <tbody>
+    	{% for user in data %}
+	      <tr>
+	        <td>{{ user._id.toString() }}</td>
+	        <td>{{ user.username }}</td>
+	        {% if user.isAdmin %}
+	        <td>是</td>
+	        {% else %}
+	        <td>否</td>
+	        {% endif %}
+	      </tr>
+      	{% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

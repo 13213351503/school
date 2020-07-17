@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="bootstrap-3.3.7/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="/bootstrap-3.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/common.css">
     {% block head %}{% endblock %}
 </head>
 <body>
@@ -46,7 +46,11 @@
           {% if userInfo._id %}
           <div class="user-panel" id='user-info'>
             欢迎<span>{{userInfo.username}}</span>
+            {% if userInfo.isAdmin %}
+            <a class="link" href="/admin">进入管理中心</a>
+            {% else %}
             <a class="link" href="/home">进入个人中心</a>
+            {% endif %}
             <a class="link" href="javascript:;" id='logout'>退出</a>
             <div class="form-group">
               <div class="col-sm-12">
@@ -177,9 +181,10 @@
   </footer>
 
 
-<script src="bootstrap-3.3.7/dist/js/jquery-1.12.4.js"></script>
-<script src="js/common.js"></script>
-<script src="bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+<script src="/bootstrap-3.3.7/dist/js/jquery-1.12.4.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/logout.js"></script>
+<script src="/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
 <!-- <script src="js/index.js"></script> -->
 {% block footer %}{% endblock %}
 </body>
