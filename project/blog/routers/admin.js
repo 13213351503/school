@@ -36,24 +36,48 @@ route.get('/users',(req,res)=>{
 	 	page = 1;
 	 }
 	 let limit = 3;
-	 //跳过数据的条数
-	 let skip = (page-1)*limit;
+	 //上一页边界控制
+	 if(page <= 0){
+	 	page = 1;
+	 }
+	 
 
+	 userModel.countDocuments((err,count)=>{
+	 	//count是页面总条数
+	 	// console.log(count);
+	 	let pages = Math.ceil(count/limit);
+	 	// console.log(pages)
+	 	let list = [];
+	 	for(let i = 1;i<=pages;i++){
+	 		list.push(i);
+	 	}
+	 	if(page>=pages){
+	 		page = pages;
+	 	}
 
-	//查询数据库用户信息
-	userModel.find({},'-password -__v')
-	.skip(skip)
-	.limit(limit)
-	.then(data=>{
-		// console.log(data);
-		res.render('admin/user-list',{
-			userInfo:req.userInfo,
-			data:data
+	 	//跳过数据的条数
+	 	let skip = (page-1)*limit;
+	 	//查询数据库用户信息
+		userModel.find({},'-password -__v')
+		.sort({_id:1})
+		.skip(skip)
+		.limit(limit)
+		.then(data=>{
+			// console.log(data);
+			res.render('admin/user-list',{
+				userInfo:req.userInfo,
+				data:data,
+				page:page,
+				list:list,
+				pages:pages
+			})
 		})
-	})
-	.catch(err=>{
-		console.log(err);
-	})
+		.catch(err=>{
+			console.log(err);
+		})
+	 })
+
+	
 	
 })
 

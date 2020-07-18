@@ -79,17 +79,17 @@ route.post('/login', (req, res) => {
 	})
 })
 
-//用户退出
-// route.get('/logout', (req, res) => {
-// 	//cookies状态下的用户退出
-// 	// req.cookies.set('userInfo',null);
+// 用户退出
+route.get('/logout', (req, res) => {
+	//cookies状态下的用户退出
+	// req.cookies.set('userInfo',null);
 
-// 	//session状态下的用户退出
-// 	req.session.destroy()
-// 	res.json({
-// 		code:0,
-// 		massage:'成功退出'
-// 	})
-// })
+	//session状态下的用户退出
+	req.session.destroy()
+	res.json({
+		code:0,
+		massage:'成功退出'
+	})
+})
 
 module.exports = route;

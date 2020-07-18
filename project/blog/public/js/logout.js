@@ -11,4 +11,4 @@ $('#logout').on('click',function(){
 	.fail(function(err){
 		alert('请求失败，请稍后再试')
 	})
-})
+})	

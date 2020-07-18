@@ -1,0 +1,43 @@
+{% extends './layout.html' %}
+
+
+{% block title %}
+分类管理
+{% endblock %}
+
+
+{% block header %}
+欢迎来到分类列表中心
+{% endblock %}
+
+
+{% block content %}
+<a href="/category/add" class="btn btn-primary">新增分类</a>
+<div class="table-responsive content">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>名称</th>
+        <th>排序</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+    	{% for category in data %}
+	      <tr>
+	        <td>{{ category._id.toString() }}</td>
+          <td>{{ category.name }}</td>
+          <td>{{ category.order }}</td>
+	        <td>
+              <a href="#">编辑</a> 
+              <a href="#">删除</a> 
+          </td>
+	        
+	      </tr>
+      	{% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
