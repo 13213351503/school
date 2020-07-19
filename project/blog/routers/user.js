@@ -13,7 +13,7 @@ route.post('/register', (req, res) => {
 		if(data){	//如果有同名用户
 			res.json({
 				code:10,
-				massage:'该用户已被注册，请重新注册'
+				message:'该用户已被注册，请重新注册'
 			})
 		}else{ 	//没有同名用户可以注册
 			//验证通过插入数据
@@ -25,13 +25,13 @@ route.post('/register', (req, res) => {
 			.then(result=>{
 				res.json({
 					code:0,
-					massage:'注册成功'
+					message:'注册成功'
 				})
 			})
 			.catch(err=>{
 				res.json({
 					code:10,
-					massage:'数据库操作失败，请稍后再试'
+					message:'数据库操作失败，请稍后再试'
 				})
 			})
 		}
@@ -40,7 +40,7 @@ route.post('/register', (req, res) => {
 		console.log(err)
 		res.json({
 			code:10,
-			massage:'数据库操作失败，请稍后再试'
+			message:'数据库操作失败，请稍后再试'
 		})
 	})
 
@@ -60,13 +60,13 @@ route.post('/login', (req, res) => {
 			req.session.userInfo = data;
 			res.json({
 				code:0,
-				massage:'登陆成功',
+				message:'登陆成功',
 				data:data
 			})
 		}else{	//登陆失败
 			res.json({
 				code:10,
-				massage:'请输入正确的用户名或密码'
+				message:'请输入正确的用户名或密码'
 			})
 		}
 	})
@@ -74,7 +74,7 @@ route.post('/login', (req, res) => {
 		console.log(err)
 		res.json({
 			code:10,
-			massage:'数据库操作失败，请稍后再试'
+			message:'数据库操作失败，请稍后再试'
 		})
 	})
 })
@@ -88,7 +88,7 @@ route.get('/logout', (req, res) => {
 	req.session.destroy()
 	res.json({
 		code:0,
-		massage:'成功退出'
+		message:'成功退出'
 	})
 })
 

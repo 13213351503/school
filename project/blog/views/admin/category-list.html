@@ -24,13 +24,13 @@
       </tr>
     </thead>
     <tbody>
-    	{% for category in data %}
+    	{% for category in categories %}
 	      <tr>
 	        <td>{{ category._id.toString() }}</td>
           <td>{{ category.name }}</td>
           <td>{{ category.order }}</td>
 	        <td>
-              <a href="#">编辑</a> 
+              <a href="/category/edit{{ category._id.toString() }}">编辑</a> 
               <a href="#">删除</a> 
           </td>
 	        
@@ -40,4 +40,42 @@
   </table>
 </div>
 
+
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+    {% if page == 1 %}
+    <li class="disabled">
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {% else %}
+  <li>
+      <a href="/category?page={{ page-1 }}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {% endif %}
+    {% for i in list %}
+      {% if i == page %}
+        <li class="active"><a href="/category?page={{ i }}">{{i}}</a></li>
+      {% else %}
+      <li><a href="/category?page={{ i }}">{{i}}</a></li>
+    {% endif %} 
+    {% endfor %}
+    {% if page == pages %}
+    <li class="disabled">
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    {% else %}
+    <li>
+      <a href="/category?page={{ page+1 }}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
 {% endblock %}
