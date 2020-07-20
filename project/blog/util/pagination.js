@@ -25,13 +25,16 @@ async function pagination(options){
 	 	page = 1;
 	 }
 	 let limit = 3;
+
+	 if(page == 0){
+	 	page = 1;
+	 }
+
 	 //上一页边界控制
 	 if(page <= 0){
 	 	page = 1;
 	 }
-	 if(page == 0){
-	 	page = 1;
-	 }
+	 
 
 	const counts = await model.countDocuments(query)
 	 	//count是页面总条数
@@ -42,8 +45,12 @@ async function pagination(options){
 	for(let i = 1;i<=pages;i++){
 		list.push(i);
 	}
-	if(page>=pages){
+
+	if(page>pages){
 		page = pages;
+	}
+	if(page == 0){
+		page = 1
 	}
 
 	//跳过数据的条数

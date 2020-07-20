@@ -2,17 +2,29 @@
 
 
 {% block title %}
-新增分类
+  {% if category %}
+    编辑分类
+  {% else %}
+    新增分类
+  {% endif %}
 {% endblock %}
 
 
 {% block header %}
-分类编辑
+  {% if category %}
+    编辑分类
+  {% else %}
+    新增分类
+  {% endif %}
 {% endblock %}
 
 
 {% block content %}
-<form class="form-horizontal" action="/category/edit" method="POST">
+  {% if category %}
+    <form class="form-horizontal" action="/category/edit" method="POST">
+  {% else %}
+    <form class="form-horizontal" action="/category/add" method="POST">
+  {% endif %}
   <div class="form-group">
     <label for="name" class="col-sm-2 control-label">分类名称</label>
     <div class="col-sm-4">

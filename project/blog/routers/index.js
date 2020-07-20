@@ -8,6 +8,20 @@ route.get('/', (req, res) => {
 	})
 })
 
+route.get('/list', (req, res) => {
+	//获取cooike信息
+	res.render('main/list',{
+		userInfo:req.userInfo
+	})
+})
+
+route.get('/detail', (req, res) => {
+	//获取cooike信息
+	res.render('main/detail',{
+		userInfo:req.userInfo
+	})
+})
+
 
 
 module.exports = route;

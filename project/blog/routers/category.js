@@ -38,7 +38,7 @@ route.get('/',(req,res)=>{
 })
 //显示新增分类页面
 route.get('/add',(req,res)=>{
-	res.render('admin/category-add',{
+	res.render('admin/category-add-edit',{
 		userInfo:req.userInfo,
 	})
 })
@@ -52,7 +52,6 @@ route.post('/add',(req,res)=>{
 	//2.查询集合进行同名验证
 	CategoryModel.findOne({name:name})
 	.then(category=>{
-		
 		if(category){	//如果数据库有该该分类不能插入
 			res.render('admin/err',{
 				userInfo:req.userInfo,
@@ -92,10 +91,9 @@ route.post('/add',(req,res)=>{
 route.get('/edit:id',(req,res)=>{
 	//获取当前点击记录的ID
 	const id = req.params.id;
-	CategoryModel.findById()
+	CategoryModel.findById(id)
 	.then(category=>{
-		// console.log(category)
-		res.render('admin/category-edit',{
+		res.render('admin/category-add-edit',{
 			userInfo:req.userInfo,
 			category
 		})
@@ -104,6 +102,85 @@ route.get('/edit:id',(req,res)=>{
 		res.render('admin/err',{
 			userInfo:req.userInfo,
 			message:'数据库请求失败，请稍后再试'
+		})
+	})
+	
+})
+
+//处理编辑分类逻辑
+route.post('/edit',(req,res)=>{
+	// 1.获取参数
+	let { name,order,id } = req.body;
+	if(!order){
+		order = 0;
+	}
+	//2.查询集合获取该记录
+	CategoryModel.findOne({_id:id})
+	.then(category=>{
+		if(category.name == name && category.order == order){	//数据没有更改
+			res.render('admin/err',{
+				userInfo:req.userInfo,
+				message:'数据没有更新，请更新后在提交'
+			})
+		}else{	//数据有更新
+			CategoryModel.findOne({name:name,_id:{$ne:id}})
+			.then(result=>{		//数据库有同名分类，不能更新数据
+				if(result){
+					res.render('admin/err',{
+						userInfo:req.userInfo,
+						message:'数据库有该分类，请更换名称'
+					})
+				}else{
+					CategoryModel.updateOne({_id:id},{name,order})
+					.then(data=>{
+						res.render('admin/ok',{
+							userInfo:req.userInfo,
+							message:'数据更新成功',
+							url:'/category'
+						})
+					})
+					.catch(err=>{
+						res.render('admin/err',{
+							userInfo:req.userInfo,
+							message:'数据库请求失败，请稍后再试'
+						})
+					})
+				}
+			})
+			.catch(err=>{
+				res.render('admin/err',{
+					userInfo:req.userInfo,
+					message:'数据库请求失败，请稍后再试'
+				})
+			})
+		}
+	})
+	.catch(err=>{
+		res.render('admin/err',{
+			userInfo:req.userInfo,
+			message:'数据库请求失败，请稍后再试'
+		})
+	})
+})
+
+
+//处理删除界面
+route.get('/delete:id',(req,res)=>{
+	//获取当前点击记录的ID
+	const id = req.params.id;
+	CategoryModel.deleteOne({_id:id})
+	.then(category=>{
+		res.render('admin/ok',{
+			userInfo:req.userInfo,
+			message:'删除分类成功',
+			url:'/category'
+		})
+	})
+	.catch(err=>{
+		res.render('admin/err',{
+			userInfo:req.userInfo,
+			message:'数据库请求失败，请稍后再试',
+			url:'/category'
 		})
 	})
 	

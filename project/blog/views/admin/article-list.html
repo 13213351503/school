@@ -2,36 +2,41 @@
 
 
 {% block title %}
-分类管理
+文章管理
 {% endblock %}
 
 
 {% block header %}
-欢迎来到分类列表中心
+欢迎来到文章列表中心
 {% endblock %}
 
 
 {% block content %}
-<a href="/category/add" class="btn btn-primary">新增分类</a>
+<a href="/article/add" class="btn btn-primary">文章分类</a>
 <div class="table-responsive content">
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>名称</th>
-        <th>排序</th>
+        <th>标题</th>
+        <th>作者</th>
+        <th>分类</th>
+        <th>创作时间</th>
+        <th>点击量</th>
         <th>操作</th>
       </tr>
     </thead>
     <tbody>
-    	{% for category in categories %}
+    	{% for article in articles %}
 	      <tr>
-	        <td>{{ category._id.toString() }}</td>
-          <td>{{ category.name }}</td>
-          <td>{{ category.order }}</td>
+	        <td>{{ article.title }}</td>
+          <td>{{ article.user }}</td>
+          <td>{{ article.category }}</td>
+          <td>{{ article.createAt }}</td>
+          <td>{{ article.click }}</td>
 	        <td>
-              <a href="/category/edit{{ category._id.toString() }}">编辑</a> 
-              <a href="/category/delete{{ category._id.toString() }}" class="del">删除</a> 
+              <a href="/detail{{ article._id.toString() }}">查看详情</a> 
+              <a href="/article/edit{{ article._id.toString() }}">编辑</a> 
+              <a href="/article/delete{{ article._id.toString() }}" class="del">删除</a> 
           </td>
 	        
 	      </tr>
@@ -51,16 +56,16 @@
     </li>
     {% else %}
   <li>
-      <a href="/category?page={{ page-1 }}" aria-label="Previous">
+      <a href="/article?page={{ page-1 }}" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
     {% endif %}
     {% for i in list %}
       {% if i == page %}
-        <li class="active"><a href="/category?page={{ i }}">{{i}}</a></li>
+        <li class="active"><a href="/article?page={{ i }}">{{i}}</a></li>
       {% else %}
-      <li><a href="/category?page={{ i }}">{{i}}</a></li>
+      <li><a href="/article?page={{ i }}">{{i}}</a></li>
     {% endif %} 
     {% endfor %}
     {% if page == pages %}
@@ -71,7 +76,7 @@
     </li>
     {% else %}
     <li>
-      <a href="/category?page={{ page+1 }}" aria-label="Next">
+      <a href="/article?page={{ page+1 }}" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
