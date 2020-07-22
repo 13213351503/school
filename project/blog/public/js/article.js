@@ -3,6 +3,9 @@
 	ClassicEditor
 	.create(document.querySelector('#content'),{
 		language:'zh-cn',
+		ckfinder:{
+			uploadUrl:'/article/uploadImg'
+		}
 	})
 	.then(editor=>{
 		window.editor = editor

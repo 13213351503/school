@@ -25,11 +25,10 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="index.html">首页<span class="sr-only">(current)</span></a></li>
-          <li><a href="list.html">HTML/CSS</a></li>
-          <li><a href="list.html">JavaScript</a></li>
-          <li><a href="list.html">学无止境</a></li>
-          <li><a href="list.html">我的足迹</a></li>
+          <li class="active"><a href="/">首页<span class="sr-only">(current)</span></a></li>
+          {% for category in categoriesData %}
+          <li><a href="/list{{ category._id.toString() }}">{{ category.name}}</a></li>
+          {% endfor %}
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->
@@ -153,14 +152,10 @@
             </div>
             <div class="panel-body">
               <ul class="list-group">
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>                                                 
+                {% for article in topArticles %}
+                <li class="list-group-item"><a href="/detail{{ article._id.toString() }}" class="link text-ellipsis" target="_blank">[{{ article.click }}]{{ article.title }}</a></li>
+                {% endfor %}
+                                                                 
               </ul>     
             </div>
           </div>

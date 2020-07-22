@@ -29,9 +29,9 @@
     	{% for article in articles %}
 	      <tr>
 	        <td>{{ article.title }}</td>
-          <td>{{ article.user }}</td>
-          <td>{{ article.category }}</td>
-          <td>{{ article.createAt }}</td>
+          <td>{{ article.user.username }}</td>
+          <td>{{ article.category.name }}</td>
+          <td>{{ article.createdTime }}</td>
           <td>{{ article.click }}</td>
 	        <td>
               <a href="/detail{{ article._id.toString() }}">查看详情</a> 
