@@ -12,7 +12,7 @@ class App extends Component{
 	render(){
 		return (
 				<div className="app">
-					<input className="input" onChange={this.handelChange} />
+					<input className="input" onChange={this.handelChange.bind(this)} />
 					<button className="btn" onClick={this.handelClick.bind(this)}>提交</button>
 					<ul className="list">
 						<li>烧烤</li>
