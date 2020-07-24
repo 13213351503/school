@@ -42,6 +42,26 @@ route.get('/', (req, res) => {
 	
 })
 
+//处理首页分页ajax请求
+route.get('/articles', (req, res) => {
+	ArticleModel.getPagination(req)
+	.then(data=>{
+		res.json({
+			code:0,
+			message:'获取分页文章成功',
+			data:data
+		})
+	})
+	.catch(err=>{
+		res.json({
+			code:10,
+			message:'获取分页文章失败',
+		})
+	})
+})
+
+
+//显示列表页
 route.get('/list', (req, res) => {
 	//获取cooike信息
 	res.render('main/list',{

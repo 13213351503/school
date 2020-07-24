@@ -67,7 +67,7 @@
 
 
   {% if pages > 1 %}
-  <nav aria-label="Page navigation">
+  <nav aria-label="Page navigation" id="article-page">
     <ul class="pagination">
       {% if page == 1 %}
       <li class="disabled">
@@ -77,16 +77,16 @@
       </li>
       {% else %}
     <li>
-        <a href="{{ url }}?page={{ page-1 }}" aria-label="Previous">
+        <a href="#" aria-label="Previous">
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
       {% endif %}
       {% for i in list %}
         {% if i == page %}
-          <li class="active"><a href="{{ url }}?page={{ i }}">{{i}}</a></li>
+          <li class="active"><a href="#">{{i}}</a></li>
         {% else %}
-        <li><a href="{{ url }}?page={{ i }}">{{i}}</a></li>
+        <li><a href="#">{{i}}</a></li>
       {% endif %} 
       {% endfor %}
       {% if page == pages %}
@@ -97,7 +97,7 @@
       </li>
       {% else %}
       <li>
-        <a href="{{ url }}?page={{ page+1 }}" aria-label="Next">
+        <a href="#" aria-label="Next">
           <span aria-hidden="true">&raquo;</span>
         </a>
       </li>
