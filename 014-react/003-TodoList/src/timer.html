@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>timer.html</title>
+</head>
+<body>
+	<div id="time">
+		<h1>许昌时间</h1>
+		<p></p>
+	</div>
+</body>
+<script>
+	var oTime = document.getElementById('time')
+	function timer(){
+		oTime.innerHTML = `<h1>许昌时间</h1>
+						<p>${ new Date().toLocaleString() }</p>`
+	}
+	setInterval(timer,1000)
+</script>
+</html>

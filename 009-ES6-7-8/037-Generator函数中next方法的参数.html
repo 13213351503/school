@@ -22,8 +22,8 @@
 	//由于next方法的参数表示上一个yield表达式的返回值，所以在第一次使用next方法时，传递参数是无效的。
 
 	const p1 = gen(10);
-	console.log(p1.next()); 	//{value:20,done:false};
-	console.log(p1.next(15)); 	//{value:35,done:false};
+	// console.log(p1.next()); 	//{value:20,done:false};
+	// console.log(p1.next(15)); 	//{value:35,done:false};
 	console.log(p1.next(20)); 	//{value:45,done:true};
 </script>
 </html>
