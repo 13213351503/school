@@ -146,7 +146,40 @@
 
 	//首页分页器逻辑
 	var articlePage = $('#article-page');
-
+	function buildArticleHtml(articles){
+		var html = ''
+			articles.forEach(function(article){
+				var createdTime = moment(article.createdAt).format('YYYY - MM - DD HH:mm:ss')
+				html += `
+					<div class="panel panel-default content-item">
+				        <div class="panel-heading">
+				          <h3 class="panel-title">
+				            <a href="/detail/${article._id.toString()}" class="link" target="_blank">${article.title}</a>
+				          </h3>
+				        </div>
+				        <div class="panel-body">
+				          ${article.intro}
+				        </div>
+				        <div class="panel-footer">
+				          <span class="glyphicon glyphicon-user"></span>
+				          <span class="panel-footer-text text-muted">${article.user.username}</span>
+				          <span class="glyphicon glyphicon-th-list"></span>
+				          <span class="panel-footer-text text-muted">${article.category.name}</span>
+				          <span class="glyphicon glyphicon-time"></span>
+				          <span class="panel-footer-text text-muted">${createdTime}</span>
+				          <span class="glyphicon glyphicon-eye-open"></span>
+				          <span class="panel-footer-text text-muted"><em>${article.click}</em>已阅读</span>
+				        </div>
+				    </div>`
+			})
+		return html
+	}
+	//监听事件构建分页数据HTML结构
+	articlePage.on('get-data',function(ev,data){
+		//构建首页文章列表结构
+		//构建文章列表
+		$('#article-wrap').html(buildArticleHtml(data.docs))
+	})
 	articlePage.pagination({
 		url:'/articles'
 	})
