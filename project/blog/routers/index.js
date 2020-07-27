@@ -17,29 +17,32 @@ async function getCommonData(){
 
 //显示首页
 route.get('/', (req, res) => {
-	//获取cooike信息
+	//获取cookie信息并返回给模板
+	// console.log(req.cookies.get('userInfo'))
+	/*
+	let userInfo = {}
+	if(req.cookies.get('userInfo')){
+		userInfo = JSON.parse(req.cookies.get('userInfo'))
+	}
+	*/
 	ArticleModel.getPagination(req)
-	.then(data=>{
+	.then(result=>{
 		getCommonData()
-		.then(result=>{
-			const { categoriesData,topArticles } = result;
+		.then(data=>{
+			const { categoriesData,topArticles } = data
 			res.render('main/index',{
 				userInfo:req.userInfo,
 				categoriesData,
 				topArticles,
-				articles:data.docs,
-				page:data.page,
-				list:data.list,
-				pages:data.pages,
+				//返回分页数据
+				articles:result.docs,
+				page:result.page,
+				list:result.list,
+				pages:result.pages,
 				url:'/'
 			})
 		})
-		.catch(err=>{
-			console.log(err)
-		})
 	})
-
-	
 })
 
 //处理首页分页ajax请求

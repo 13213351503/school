@@ -5,9 +5,11 @@ const defaultState = {
 
 
 export default (state=defaultState,action)=>{
-	console.log(state)
+	// console.log(state)
 	console.log(action)
-
+	if(action.type == 'change'){
+		state.task = action.payload;
+	}
 
 	return state
 }

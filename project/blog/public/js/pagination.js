@@ -23,7 +23,6 @@
 					dataType:'json'
 				})
 				.done(function(result){
-					console.log(result)
 					if(result.code == 0){
 						$elem.trigger('get-data',result.data);
 					}

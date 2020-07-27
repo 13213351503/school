@@ -15,6 +15,10 @@ class App extends Component{
 		this.handelChange = this.handelChange.bind(this)
 		this.handelAdd = this.handelAdd.bind(this)
 		console.log(store)
+		store.subscribe(()=>{
+			this.setState(store.getState())
+		})
+
 	};
 	//多用于如果props有变化,需要更新state的场景,该方法返回state的更新
 	static getDerivedStateFromProps(props, state){
@@ -67,24 +71,13 @@ class App extends Component{
 		// console.log(ev.target.value);
 		// console.log(this.input);
 		let val = ev.target.value;
-		this.setState({
-			task:val
-		})
+		let action = {
+			type:'change',
+			payload:val
+		}
+		store.dispatch(action)
 	};
-	getItem(){
-		return this.state.list.map((item,index)=>{
-			return(
-				// <li key={index} onClick={this.handelDle.bind(this,index)}>{item}</li>;
-				<Item 
-					key={index}
-					item={item}
-					list= { this.state.list } 
-					index={index}
-					handleDelete={this.handelDle.bind(this,index)}
-				/>
-			)
-		})
-	};
+	
 	//当组件的state或者props发生改变时render函数会重新执行
 	render(){
 		return (
