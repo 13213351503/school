@@ -7,6 +7,12 @@ import { Input,Button,Row,Col,List  } from 'antd';
 // 
 import store from './store/index.js'
 
+import {
+	getChangeItemAction,
+	getAddItemAction,
+	getDelItemAction
+} from './store/actioncreateor.js'
+
 class App extends Component{
 	//this.state 存放组件内部数据,this.props存放组件的外部数据,render负责渲染页面
 	constructor(props){
@@ -51,31 +57,34 @@ class App extends Component{
 	};
 	
 	handelAdd(){
-		let list = [...this.state.list];
-		list.push(this.state.task);
-		this.setState({
-			list:list,
-			task:''
-		})
+		// let list = [...this.state.list];
+		// list.push(this.state.task);
+		
+		// let action = {
+		// 	type:ADD_ITME,
+		// }
+		store.dispatch(getAddItemAction())
 	};
 	handelDle(index){
-		let list = [...this.state.list];
-		list.splice(index,1);
-		this.setState({
-			list:list,
-			task:''
-		})
+		// let list = [...this.state.list];
+		// list.splice(index,1);
+		
+		// let action = {
+		// 	type:DEL_ITME,
+		// 	payload:index
+		// }
+		store.dispatch(getDelItemAction(index))
 
 	};
 	handelChange(ev){
 		// console.log(ev.target.value);
 		// console.log(this.input);
 		let val = ev.target.value;
-		let action = {
-			type:'change',
-			payload:val
-		}
-		store.dispatch(action)
+		// let action = {
+		// 	type:CHANGE_ITME,
+		// 	payload:val
+		// }
+		store.dispatch(getChangeItemAction(val))
 	};
 	
 	//当组件的state或者props发生改变时render函数会重新执行
@@ -86,8 +95,6 @@ class App extends Component{
 			      <Col span={21}><Input onChange={this.handelChange} value={this.state.task} /></Col>
 			      <Col span={3}><Button type="primary" onClick={this.handelAdd}>提交</Button></Col>
 			    </Row>
-				
-				
 				 <List
 				  style={{marginTop:'20px'}}
 			      bordered

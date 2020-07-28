@@ -31,6 +31,7 @@ route.get('/',(req,res)=>{
 	// pagination(options)
 	ArticleModel.getPagination(req)
 	.then(result=>{
+		// console.log(result.docs);
 		res.render('admin/article-list',{
 			userInfo:req.userInfo,
 			articles:result.docs,
