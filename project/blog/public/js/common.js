@@ -223,9 +223,42 @@
 		}
 		
 	})
-
-	
 	articlePage.pagination({
 		url:'/articles'
+	})
+
+
+	//6.详情页评论分页逻辑
+	var $commentPage = $('#comment-page')
+	function buildCommentHtml(comments){
+		var html = ''
+		comments.forEach(function(comment){
+			var createdTime = moment(comment.createdAt).format('YYYY - MM - DD HH:mm:ss')
+			html += `<div class="panel panel-default">
+			          <div class="panel-heading">
+			            <h3 class="panel-title">${comment.user.username} 发布于 ${createdTime}</h3>
+			          </div>
+			          <div class="panel-body">
+			            ${comment.content}
+			          </div>
+			        </div>`
+		})
+		return html
+	}
+	$commentPage.on('get-data',function(ev,data){
+		// console.log(data)
+		//获取评论分页数据
+		//构建评论结构
+		$('#comment-wrap').html(buildCommentHtml(data.docs))
+		//构建分页器结构
+		var $pagination = $commentPage.find('.pagination')
+		if(data.pages > 1){
+			$pagination.html(buildPaginationHtml(data.page,data.pages,data.list))
+		}else{
+			$pagination.html('')
+		}
+	})
+	$commentPage.pagination({
+		url:'/comment/list'
 	})
 })(jQuery)

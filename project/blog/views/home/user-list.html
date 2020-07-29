@@ -1,0 +1,77 @@
+{% extends './layout.html' %}
+
+
+{% block title %}
+管理中心首页
+{% endblock %}
+
+
+{% block header %}
+欢迎来到用户管理中心
+{% endblock %}
+
+
+{% block content %}
+<div class="table-responsive content">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>用户名</th>
+        <th>是否时管理员</th>
+      </tr>
+    </thead>
+    <tbody>
+    	{% for user in data %}
+	      <tr>
+	        <td>{{ user._id.toString() }}</td>
+	        <td>{{ user.username }}</td>
+	        {% if user.isAdmin %}
+	        <td>是</td>
+	        {% else %}
+	        <td>否</td>
+	        {% endif %}
+	      </tr>
+      	{% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+  	{% if page == 1 %}
+    <li class="disabled">
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {% else %}
+	<li>
+      <a href="/admin/users?page={{ page-1 }}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {% endif %}
+    {% for i in list %}
+    	{% if i == page %}
+    		<li class="active"><a href="/admin/users?page={{ i }}">{{i}}</a></li>
+    	{% else %}
+			<li><a href="/admin/users?page={{ i }}">{{i}}</a></li>
+		{% endif %}	
+    {% endfor %}
+    {% if page == pages %}
+    <li class="disabled">
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    {% else %}
+    <li>
+      <a href="/admin/users?page={{ page+1 }}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+{% endblock %}

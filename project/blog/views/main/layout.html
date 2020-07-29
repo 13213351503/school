@@ -25,9 +25,18 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="/">首页<span class="sr-only">(current)</span></a></li>
+          {% if currentCategoryId %}
+            <li><a href="/">首页<span class="sr-only">(current)</span></a></li>
+          {% else %}
+            <li class="active"><a href="/">首页<span class="sr-only">(current)</span></a></li>
+          {% endif %}
+          
           {% for category in categoriesData %}
-          <li><a href="/list{{ category._id.toString() }}">{{ category.name}}</a></li>
+            {% if category._id.toString() == currentCategoryId %}
+            <li class="active"><a href="/list/{{ category._id.toString() }}">{{ category.name}}</a></li>
+            {% else %}
+            <li><a href="/list/{{ category._id.toString() }}">{{ category.name}}</a></li>
+            {% endif %}
           {% endfor %}
         </ul>
       </div><!-- /.navbar-collapse -->
@@ -120,12 +129,12 @@
 
           <div class="ad">
             <a href="#" class="thumbnail">
-              <img src="images/111.jpg" alt="广告1">
+              <img src="/images/111.jpg" alt="广告1">
             </a>
           </div>
           <div class="ad">
             <a href="#" class="thumbnail">
-              <img src="images/u=2658436487,3213221829&fm=193.jpg" alt="广告2">
+              <img src="/images/u=2658436487,3213221829&fm=193.jpg" alt="广告2">
             </a>
           </div>
           <div class="panel panel-default custom-panel">
@@ -136,7 +145,7 @@
               <div class="media">
                 <div class="media-left">
                   <a href="#">
-                    <img class="media-object img-me img-circle" src="images/timg (1).jpg" alt="博主帅照">
+                    <img class="media-object img-me img-circle" src="/images/timg (1).jpg" alt="博主帅照">
                   </a>
                 </div>
                 <div class="media-body">
@@ -153,7 +162,7 @@
             <div class="panel-body">
               <ul class="list-group">
                 {% for article in topArticles %}
-                <li class="list-group-item"><a href="/detail{{ article._id.toString() }}" class="link text-ellipsis" target="_blank">[{{ article.click }}]{{ article.title }}</a></li>
+                <li class="list-group-item"><a href="/detail/{{ article._id.toString() }}" class="link text-ellipsis" target="_blank">[{{ article.click }}]{{ article.title }}</a></li>
                 {% endfor %}
                                                                  
               </ul>     
@@ -164,7 +173,7 @@
               <h3 class="panel-title">关注我</h3>
             </div>
             <div class="panel-body">
-              <img src="images/erweima.jpg" class="img-responsive" alt="">
+              <img src="/images/erweima.jpg" class="img-responsive" alt="">
             </div>
           </div>                                         
         </div>

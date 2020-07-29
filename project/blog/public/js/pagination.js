@@ -17,8 +17,15 @@
 					page = $this.html()*1;
 				}
 				//发送ajax请求
+				//由于列表页只显示对应分类下文章
+				//需要获取当前分类id
+				var id = $elem.data('id');
+				var url = options.url+'?page='+page;
+				if(id){
+					url = url + '&id=' + id;
+				}
 				$.ajax({
-					url:options.url+'?page='+page,
+					url:url,
 					type:'GET',
 					dataType:'json'
 				})

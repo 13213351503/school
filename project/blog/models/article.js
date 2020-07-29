@@ -36,7 +36,7 @@ const pagination = require('../util/pagination.js')
 	ArticleSchema.virtual('createdTime').get(function(){
 		return moment(this.createrAt).format('YYY - MM -DD HH:mm:ss');
 	})
-	//定义获取文章分页数据静态方法
+	// 定义获取文章分页数据静态方法
 	ArticleSchema.statics.getPagination = function(req,query={}){
 		const options = {
 			page:req.query.page*1,
@@ -49,6 +49,19 @@ const pagination = require('../util/pagination.js')
 		return pagination(options)
 	}
 
+	// ArticleSchema.statics.getPaginationData = function(req,query={}){
+	// 	const options = {
+	// 		page:req.query.page * 1,
+	// 		model:ArticleModel,
+	// 		query:query,
+	// 		projection:'-__v',
+	// 		sort:{_id:1},
+	// 		populates:[{ path: 'user', select: 'username'},{ path: 'category', select: 'name'}]
+	// 	}
+	// 	return pagination(options)
+		
+	// }
+
 //2.根据文档模型生成对应模型(集合)
 //2.1第一个参数就是需要生成的集合名称,mongoose子自动将集合名称转化为复数
 //2.2第二个参数就是前面定义的文档模型
@@ -56,3 +69,8 @@ const ArticleModel = mongoose.model('article', ArticleSchema)
 
 
 module.exports = ArticleModel
+
+
+
+
+

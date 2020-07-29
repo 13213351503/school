@@ -11,6 +11,7 @@ const MongoStore = require("connect-mongo")(session);
 // mongoose.connect('mongodb://localhost/kuazhu', {useNewUrlParser: true})
 mongoose.connect('mongodb://localhost/blog', { useUnifiedTopology: true,useNewUrlParser: true });
 
+mongoose.set('useFindAndModify', false)
 const db = mongoose.connection;
 
 db.on('error',(err)=>{
@@ -100,8 +101,10 @@ app.set('view engine', 'html')
 app.use('/',require('./routers/index.js'))
 app.use('/user',require('./routers/user.js'))
 app.use('/admin',require('./routers/admin.js'))
+app.use('/home',require('./routers/home.js'))
 app.use('/category',require('./routers/category.js'))
 app.use('/article',require('./routers/article.js'))
+app.use('/comment',require('./routers/comment.js'))
 
 
 

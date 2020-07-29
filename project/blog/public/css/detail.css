@@ -11,3 +11,6 @@
 .detail-panel .panel-body{
 	background: #fff;
 }
+.detail-panel .panel-body img{
+	width: 100%;
+}
