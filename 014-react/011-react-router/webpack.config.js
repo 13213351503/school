@@ -4,10 +4,9 @@
 * @Last Modified by:   Chen
 * @Last Modified time: 2019-12-06 15:18:41
 */
-const path = require('path');
-const htmlWebpackPlugin = require('html-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path')
+const htmlWebpackPlugin = require('html-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 
 module.exports = {
 	//指定开发环境
@@ -22,14 +21,6 @@ module.exports = {
 	entry:{
 		index:'./src/index.js',
 	},
-	devtool: 'inline-source-map',
-	//配置别名
-    resolve:{
-        alias:{
-            pages:path.resolve(__dirname,'./src/pages'),
-            util:path.resolve(__dirname,'./src/util'),
-        }
-    },
 	//输出
 	output: {// webpack 如何输出结果的相关选项
 		// 所有输出文件的目标路径
@@ -44,24 +35,13 @@ module.exports = {
 	module: {
 	    rules: [
 	    	//处理CSS
-	      // {
-	      //   test: /\.css$/,
-	      //   use: [
-	      //     'style-loader',
-	      //     'css-loader'
-	      //   ]
-	      // },
-	       	{
-	            test: /\.css$/,
-	            use: [
-	              {
-	                loader: MiniCssExtractPlugin.loader,
-	                options: {
-	                }
-	              },
-	              "css-loader"
-	            ]
-          	},
+	      {
+	        test: /\.css$/,
+	        use: [
+	          'style-loader',
+	          'css-loader'
+	        ]
+	      },
 	      //处理图片资源
 	      {
 			test: /\.(png|jpg|gif)$/i,
@@ -83,31 +63,9 @@ module.exports = {
 			        options: {
 			            // presets: ['env', 'react'],
 			            presets: ['env','es2015','react','stage-3'],
-			            plugins: [["import", { "libraryName": "antd", "libraryDirectory": "es", "style": true }]]
+			            plugins: [["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }]]
 			        }
 			    }               
-			},
-			//自定义主题
-			{
-			    test: /\.less$/,
-			    use: [{
-			      loader: 'style-loader',
-			    }, {
-			      loader: 'css-loader', // translates CSS into CommonJS
-			    }, {
-			      loader: 'less-loader', // compiles Less to CSS
-			     options: {
-			       lessOptions: { // If you are using less-loader@5 please spread the lessOptions to options directly
-			         modifyVars: {
-			           'primary-color': 'rgb(117,70,201)',
-			           'link-color': 'rgb(117,70,201)',
-			           'border-radius-base': '2px',
-			         },
-			         javascriptEnabled: true,
-			       },
-			     },
-			    }],
-			    // ...other rules
 			}
 	    ]
 	 },
@@ -121,13 +79,11 @@ module.exports = {
 	        chunks:['index','common']
 	    }),
 	    //自动清理多余文件
-	    new CleanWebpackPlugin(),
-	    //单独打包css资源
-	    new MiniCssExtractPlugin({})
+	    new CleanWebpackPlugin()
 	],
 	devServer:{
 	    contentBase: './dist',//内容的目录
-	    port:3001,//服务运行的端口,
+	    port:8090,//服务运行的端口,
 	   	historyApiFallback:true,//h5路由刷新页面不向后台请求数据
 	}
 }

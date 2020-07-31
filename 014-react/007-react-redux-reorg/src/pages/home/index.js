@@ -5,14 +5,14 @@ import { connect } from 'react-redux'
 import axios from 'axios';
 import { actionCreateor } from './store/index.js';
 
-class home extends Component{
+class TodoList extends Component{
 	componentDidMount(){
 		this.props.handelInit()
 	};
 	render(){
 		const { task,list,handelChange,handelAdd,handelDle } = this.props;
 		return (
-			<div className="home">
+			<div className="TodoList">
 				<Row>
 			      <Col span={21}><Input onChange={handelChange} value={task} /></Col>
 			      <Col span={3}><Button onClick={handelAdd} type="primary">提交</Button></Col>
@@ -35,8 +35,8 @@ class home extends Component{
 //将属性从store映射到组件
 const mapStateToProps = (state)=>{
 	return {
-		task:state.home.task,
-		list:state.home.list
+		task:state.TodoList.task,
+		list:state.TodoList.list
 	}
 }
 const mapDispatchToProps = (dispatch)=>{
@@ -57,4 +57,4 @@ const mapDispatchToProps = (dispatch)=>{
 	}
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(home)
+export default connect(mapStateToProps,mapDispatchToProps)(TodoList)

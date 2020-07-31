@@ -34,6 +34,7 @@ class TodoList extends Component{
 }
 //将属性从store映射到组件
 const mapStateToProps = (state)=>{
+	console.log(state);
 	return {
 		task:state.TodoList.task,
 		list:state.TodoList.list
