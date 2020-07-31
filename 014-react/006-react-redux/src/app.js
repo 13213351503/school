@@ -18,19 +18,20 @@ class App extends Component{
 		this.props.handelInit()
 	};
 	render(){
+		const { task,list,handelChange,handelAdd,handelDle } = this.props;
 		return (
 			<div className="app">
 				<Row>
-			      <Col span={21}><Input onChange={this.props.handelChange} value={this.props.task} /></Col>
-			      <Col span={3}><Button onClick={this.props.handelAdd} type="primary">提交</Button></Col>
+			      <Col span={21}><Input onChange={handelChange} value={task} /></Col>
+			      <Col span={3}><Button onClick={handelAdd} type="primary">提交</Button></Col>
 			    </Row>
 				 <List
 				  style={{marginTop:'20px'}}
 			      bordered
-			      dataSource={this.props.list}
+			      dataSource={list}
 			      renderItem={(item,index) => (
 			        <List.Item
-			        	onClick={ ()=>{this.props.handelDle(index)}}> 
+			        	onClick={ ()=>{handelDle(index)}}> 
 			           	{item}
 			        </List.Item>
 			      )}
