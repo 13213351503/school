@@ -1,11 +1,7 @@
-/*
-* @Author: Chen
-* @Date:   2019-12-02 16:52:50
-* @Last Modified by:   Chen
-* @Last Modified time: 2019-12-03 17:45:26
-*/
 import axios from 'axios'
-import * as types from './actionTypes.js'
+import * as types from './actionTypes.js';
+import { message } from 'antd'
+
 
 export const getChangeItemAction = (val)=>({
 	type:types.CHANGE_ITEM,
@@ -27,15 +23,26 @@ const getLoadInitAction = (data) =>({
 	payload:data
 })
 
-export const getRequestLoadDataAction = ()=>{
+export const getLoginAction = (data)=>{
 	return (dispatch,getState)=>{
-		axios.get('http://127.0.0.1:3000')
+		data.role = 'admin';
+		axios({
+			method: 'post',
+			url: 'http://127.0.0.1:3000/sessions/users',
+			data:data
+		})
 		.then(result=>{
-			//派发action
-			dispatch(getLoadInitAction(result.data))
+			// console.log(result);
+			const data = result.data;
+			if(data.code == 0){
+				//返回管理员首页
+				window.location.href = '/';
+			}else{
+				message.error(data.message);
+			}
 		})
 		.catch(err=>{
-			console.log(err)
+			console.log(err);
 		})
 	}
 }
