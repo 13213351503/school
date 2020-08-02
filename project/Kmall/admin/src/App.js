@@ -10,21 +10,45 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
+import { getUsername } from 'util'
 
-import TodoList from 'pages/todolist/index.js'
+import AdminHome from 'pages/home/index.js'
 import Login from 'pages/login/index.js'
+import Err from 'common/err/index.js'
 
 
 
 class App extends Component{
 	render(){
+		const HomeRoute = ({ component:Component,...rest}) =>(
+				<Route 
+					{...rest}
+					render={(props)=>{
+						return getUsername() ? <Component /> : <Redirect to='/login' />
+					}}
+
+				/>
+			)
+		const LoginRoute = ({ component:Component,...rest}) =>(
+				<Route 
+					{...rest}
+					render={(props)=>{
+						return getUsername() ? <Redirect to='/' /> : <Component />
+					}}
+
+				/>
+			)
 		return(
 			<Router>
 				<div className='App'>
-					<Route exact path='/' component={TodoList} />
-					<Route path='/login' component={Login} />
+					<Switch>
+						<HomeRoute exact path='/' component={AdminHome} />
+						<LoginRoute path='/login' component={Login} />
+						<Route component={Err} />
+					</Switch>
 				</div>
 			</Router>
 		)

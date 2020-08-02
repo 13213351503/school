@@ -30,6 +30,7 @@ class NormalLoginForm extends React.Component {
 
 	render() {
 		const { getFieldDecorator } = this.props.form;
+		const { isFetching } = this.props;
 		return (
 			<div className="Login">
 			  <Form className="login-form">
@@ -55,7 +56,7 @@ class NormalLoginForm extends React.Component {
 			      )}
 			    </Form.Item>
 			    <Form.Item>
-			      <Button type="primary" className="login-form-button btn-sub-login" onClick={this.handleSubmit}>
+			      <Button type="primary" className="login-form-button btn-sub-login" onClick={this.handleSubmit} loading={isFetching}>
 			        登录
 			      </Button>
 			    </Form.Item>
@@ -74,7 +75,7 @@ const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(NormalLogin
 const mapStateToProps = (state)=>{
 	console.log(state)
 	return {
-
+			isFetching:state.get('login').get('isFetching')
 		}
 }
 
