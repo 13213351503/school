@@ -15,7 +15,8 @@ import {
 } from "react-router-dom";
 import { getUsername } from 'util'
 
-import AdminHome from 'pages/home/index.js'
+import Home from 'pages/home/index.js'
+import User from 'pages/user/index.js'
 import Login from 'pages/login/index.js'
 import Err from 'common/err/index.js'
 
@@ -45,7 +46,8 @@ class App extends Component{
 			<Router>
 				<div className='App'>
 					<Switch>
-						<HomeRoute exact path='/' component={AdminHome} />
+						<HomeRoute exact path='/' component={Home} />
+						<HomeRoute path='/user' component={User} />
 						<LoginRoute path='/login' component={Login} />
 						<Route component={Err} />
 					</Switch>
