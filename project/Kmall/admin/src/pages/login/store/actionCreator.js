@@ -29,7 +29,9 @@ export const getLoginAction = (data)=>{
 		axios({
 			method: 'post',
 			url: 'http://127.0.0.1:3000/sessions/users',
-			data:data
+			data:data,
+			//发送请求的时候携带cookie
+			withCredentials:true
 		})
 		.then(result=>{
 			// console.log(result);
