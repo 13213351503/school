@@ -29,6 +29,7 @@ module.exports = {
             pages:path.resolve(__dirname,'./src/pages'),
             util:path.resolve(__dirname,'./src/util'),
             common:path.resolve(__dirname,'./src/common'),
+            api:path.resolve(__dirname,'./src/api'),
         }
     },
 	//输出

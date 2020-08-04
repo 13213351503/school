@@ -39,6 +39,7 @@ router.post("/users",(req,res)=>{
 			 	username:username,
 			 	isAdmin:isAdmin
 			 }
+			 console.log('3::',req.session);
 			 res.json({
 			 	code:0,
 			 	data:{

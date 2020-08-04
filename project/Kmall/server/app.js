@@ -69,6 +69,7 @@ app.use(session({
 
 app.use((req,res,next)=>{
 	req.userInfo  = req.session.userInfo || {};
+    // console.log('2::',req.userInfo);
 	next();	
 });
 

@@ -13,16 +13,19 @@ const ProductModel = require('../models/product.js');
 const router = Router();
 
 //权限控制
+/*
 router.use((req,res,next)=>{
+    console.log('1::',req.session.userInfo)
     if(req.userInfo.isAdmin){
         next()
     }else{
+
         res.send({
             code:10
         });
     }
 })
-
+*/
 async function getCounts(){
     try{
         //不存在继发关系,同时触发

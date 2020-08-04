@@ -1,12 +1,12 @@
 
 import axios from 'axios'
-import * as types from './actionTypes.js'
 import { message } from 'antd'
 
 
 import {
 	SET_COUNTS,
 } from './actionTypes.js'
+import api from 'api'
 
 export const setCountsAction = (data)=>({
 	type:SET_COUNTS,
@@ -24,6 +24,7 @@ export const getCountsAction = ()=>{
 		})
 		.then(result=>{
 			console.log(result);
+			
 			const data = result.data;
 			if(data.code == 0){//登录成功
 				//1.派发action将数据存到store中
@@ -31,10 +32,25 @@ export const getCountsAction = ()=>{
 			}else{//登录失败
 				message.error(data.message);
 			}
+			
 		})
 		.catch(err=>{
 			console.log(err);
 			message.error('请求失败，请稍后再试');
 		})
+		/*
+		api.getCounts()
+		.then(result=>{
+			// console.log(result)
+			const data = result.data
+			if(data.code == 0){
+				//派发action将获取的后台数据存到store
+				dispatch(getSetCountAction(data.data))
+			}
+		})
+		.catch(err=>{
+			console.log(err)
+		})
+		*/
 	}
 }

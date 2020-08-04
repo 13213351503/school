@@ -1,9 +1,4 @@
-/*
-* @Author: Chen
-* @Date:   2019-12-01 17:07:24
-* @Last Modified by:   Chen
-* @Last Modified time: 2019-12-03 16:05:28
-*/
+
 import { createStore,applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { createLogger } from 'redux-logger'

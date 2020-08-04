@@ -5,6 +5,7 @@ import {
 	LOGIN_START_ACTION,
 	LOGIN_DONE_ACTION
 } from './actionTypes.js'
+import api from 'api'
 
 export const getLoginStartAction = ()=>({
 	type:LOGIN_START_ACTION,

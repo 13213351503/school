@@ -1,9 +1,4 @@
-/*
-* @Author: Chen
-* @Date:   2019-11-28 19:10:50
-* @Last Modified by:   Chen
-* @Last Modified time: 2019-12-06 15:23:43
-*/
+
 import React,{Component} from 'react'
 import './App.css'
 import {
@@ -19,11 +14,13 @@ import Home from 'pages/home/index.js'
 import User from 'pages/user/index.js'
 import Login from 'pages/login/index.js'
 import Err from 'common/err/index.js'
+import apiObj from 'api/index.js'
 
 
 
 class App extends Component{
 	render(){
+		console.log(apiObj);
 		const HomeRoute = ({ component:Component,...rest}) =>(
 				<Route 
 					{...rest}
