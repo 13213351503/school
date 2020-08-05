@@ -37,8 +37,8 @@ router.get('/init',(req,res)=>{
 		users.push({
 			username:'test'+i,
 			password:hmac('test'+i),
-			email:'test'+i+"@kuazhu.com",
-			phone:13212345+i
+			email:'test'+i+"@welcome.com",
+			phone:662+i
 		})
 	}
 	UserModel.insertMany(users)
@@ -51,7 +51,6 @@ router.get('/init',(req,res)=>{
 	})
 })
 */
-
 //检查用户名是否存在
 router.get("/checkUsername",(req,res)=>{
 	const username = req.query.username;

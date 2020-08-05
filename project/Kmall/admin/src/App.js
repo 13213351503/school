@@ -20,7 +20,7 @@ import apiObj from 'api/index.js'
 
 class App extends Component{
 	render(){
-		console.log(apiObj);
+		// console.log(apiObj);
 		const HomeRoute = ({ component:Component,...rest}) =>(
 				<Route 
 					{...rest}

@@ -1,0 +1,9 @@
+.AdminHeader .logo{
+	font-size: 20px;
+	font-weight: 600;
+	color: #ff6700;
+	float: left;
+}
+.AdminHeader .logout{
+	float: right;
+}

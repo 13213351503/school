@@ -73,7 +73,7 @@ const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(NormalLogin
 
 //将属性映射到组件中
 const mapStateToProps = (state)=>{
-	console.log(state)
+	// console.log(state)
 	return {
 			isFetching:state.get('login').get('isFetching')
 		}
