@@ -1,0 +1,11 @@
+.AdminHeader{
+	color: rgb(117,70,201);
+	font-size: 20px;
+	font-weight: 600;
+}
+.AdminHeader .logo{
+	float: left;
+}
+.AdminHeader .dropdown{
+	float: right;
+}
