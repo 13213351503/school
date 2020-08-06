@@ -107,6 +107,7 @@ router.post("/",(req,res)=>{
 
 })
 //登录权限控制
+/*
 router.use((req,res,next)=>{
 	if(req.userInfo._id){
 		next()
@@ -116,6 +117,8 @@ router.use((req,res,next)=>{
 		})
 	}
 })
+*/
+
 router.put("/",(req,res)=>{
 	UserModel.update({_id:req.userInfo._id},{password:hmac(req.body.password)})
 	.then(raw=>{

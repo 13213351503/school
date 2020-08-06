@@ -33,7 +33,7 @@ let pagination = (options)=>{
 		}
 
 		//每页显示条数
-		let limit = options.pageSize || 2;
+		let limit = options.pageSize || 6;
 
 		/*
 		分页:

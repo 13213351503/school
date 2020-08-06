@@ -25,8 +25,16 @@ const request = (url,method,data)=>{
 		const options = {
 			method:method,
 			url:url,
-			data:data,
 			withCredentials:true
+		}
+		//根据亲求方式携带参数
+		switch(method.toUpperCase()){
+			case 'GET' :
+			case 'DELETE' :
+				options.params = data;
+				break
+			default :
+				options.data = data;
 		}
 		axios(options)
 		.then(result=>{

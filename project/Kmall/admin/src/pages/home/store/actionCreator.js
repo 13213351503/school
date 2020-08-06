@@ -7,7 +7,7 @@ import apiObj from 'api/index.js';
 import * as types from './actionTypes.js';
 
 export const setCountsAction = (data)=>({
-	type:SET_COUNTS,
+	type:types.SET_COUNTS,
 	payload:data
 })
 
@@ -16,7 +16,7 @@ export const getCountsAction = ()=>{
 	return (dispatch,getState)=>{
 		apiObj.getCounts()
 		.then(result=>{
-			// console.log(result);
+			console.log(result);
 			const data = result.data;
 			if(data.code == 0){//登录成功
 				//1.派发action将数据存到store中

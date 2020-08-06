@@ -15,7 +15,6 @@ class User extends Component{
 		this.props.handlePage(1)
 	}
 	render(){
-		const { list } = this.props;
 		const columns = [
 		  {
 		    title: '用户名',
@@ -41,21 +40,21 @@ class User extends Component{
 		  },
 		   {
 		    title: '创建时间',
-		    key: 'createrAt',
-		    dataIndex: 'createrAt',
+		    key: 'createdAt',
+		    dataIndex: 'createdAt',
 		  },
 		];
-
+		const { list,total,pageSize,current,handlePage,isFetching } = this.props;
 		const dataSource = list.map((item)=>{
 			return {
-				key: item.get('_id'),
-			    username: item.get('username'),
-			    isAdmin: item.get('isAdmin'),
-			    email: item.get('email'),
-			    phone: item.get('phone'),
-			    createdAt:moment(item.get('createdAt')).format('YYYY-MM-DD HH:mm:ss')
-			}
-		}).toJS()
+					key: item.get('_id'),
+				    username: item.get('username'),
+				    isAdmin: item.get('isAdmin'),
+				    email: item.get('email'),
+				    phone: item.get('phone'),
+				    createdAt:moment(item.get('createdAt')).format('YYYY-MM-DD HH:mm:ss'),
+				}
+			}).toJS()
 		return(
 			<div className='AdminUser'>
 			  <AdminLayout>
@@ -64,7 +63,20 @@ class User extends Component{
 		          <Breadcrumb.Item>用户列表</Breadcrumb.Item>
 			    </Breadcrumb>
 			  	<div>
-			  		<Table columns={columns} dataSource={dataSource} />
+			  		<Table 
+			  			columns={columns} 
+			  			dataSource={dataSource} 
+			  			loading={isFetching}
+			  			pagination={{
+			  				total:total,
+			  				pageSize:pageSize,
+			  				current:current
+			  			}}
+			  			onChange={(page)=>{
+			  				//page.current当前页
+			  				handlePage(page.current);
+			  			}}
+			  		/>
 			  	</div>
 			  </AdminLayout>
 			</div>	
@@ -79,7 +91,11 @@ class User extends Component{
 const mapStateToProps = (state)=>{
 	// console.log(state)
 	return {
-		list:state.get('user').get('list')
+		list:state.get('user').get('list'),
+		total:state.get('user').get('total'),
+		pageSize:state.get('user').get('pageSize'),
+		current:state.get('user').get('current'),
+		isFetching:state.get('user').get('isFetching'),
 	}
 }
 //将方法映射到组件

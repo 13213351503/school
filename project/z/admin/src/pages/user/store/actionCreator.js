@@ -13,11 +13,6 @@ const setPageAction = (data) =>({
 	type:types.GET_PAGE,
 	payload:data
 })
-// 配置分页器数据
-const setCountsAction = (data) =>({
-	type:types.SET_COUNTS,
-	payload:data
-})
 
 export const getPageAction = (page)=>{
 	return (dispatch,getState)=>{
@@ -26,12 +21,11 @@ export const getPageAction = (page)=>{
 		.then(result=>{
 			// console.log(result);
 			const data = result.data;
+			console.log(data);
 			if(data.code == 0){// 验证成功
 				// 1.派发action,将数据存到store
 				// 获取用户数据
-				dispatch(setPageAction(data.data));
-				// 配置分页器
-				dispatch(setCountsAction(data.data));
+				// dispatch(setPageAction(data.data));
 			}else{// 验证失败
 				message.error(data.message);
 			}

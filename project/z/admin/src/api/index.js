@@ -31,11 +31,12 @@ const request = (url,method,data)=>{
 		.then(result=>{
 			//为了解决后台session过期获取通过某种方式主动清除后台session
 			//需要重新登录前台用户状态要和后台保持统一
+			console.log(result.data);
 			if(result.data.code == 10){
 				//1.清除前台用户状态
-				removeLocalStorage()
+				// removeLocalStorage()
 				//2.返回登录页面
-				window.location.href = '/login';
+				// window.location.href = '/login';
 				reject('获取数据失败,没有权限')
 			}
 			resolve(result)

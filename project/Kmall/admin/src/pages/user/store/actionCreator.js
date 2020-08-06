@@ -13,10 +13,17 @@ const getLoadInitAction = (data) =>({
 	type:types.LOAD_DATA,
 	payload:data
 })
+export const getCountsStartAction = ()=>({
+	type:types.COUNTS_START_ACTION,
+})
+export const getCountsDoneAction = ()=>({
+	type:types.COUNTS_DONE_ACTION,
+})
 
 export const getPageAction = (page)=>{
 	return (dispatch,getState)=>{
-		//发送请求之前显示loading状态
+		//发送请求之前显示登录loading状态
+		dispatch(getCountsStartAction())
 		apiObj.getUserList({
 			page:page
 		})
@@ -32,6 +39,10 @@ export const getPageAction = (page)=>{
 		.catch(err=>{
 			console.log(err);
 			message.error('请求失败,请稍后再试!!')
+		})
+		.finally(()=>{
+			//无论请求成功或者失败取消loading状态
+			dispatch(getCountsDoneAction())
 		})
 		
 	}

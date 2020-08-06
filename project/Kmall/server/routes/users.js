@@ -106,6 +106,7 @@ router.post("/",(req,res)=>{
 	})
 
 })
+/*
 //登录权限控制
 router.use((req,res,next)=>{
 	if(req.userInfo._id){
@@ -116,6 +117,7 @@ router.use((req,res,next)=>{
 		})
 	}
 })
+*/
 router.put("/",(req,res)=>{
 	UserModel.update({_id:req.userInfo._id},{password:hmac(req.body.password)})
 	.then(raw=>{
@@ -131,6 +133,7 @@ router.put("/",(req,res)=>{
 		})
 	})
 })
+/*
 //管理员权限控制
 router.use((req,res,next)=>{
 	if(req.userInfo.isAdmin){
@@ -141,7 +144,7 @@ router.use((req,res,next)=>{
 		});
 	}
 })
-
+*/
 //获取用户列表
 router.get('/list',(req,res)=>{
 	let options = {

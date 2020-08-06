@@ -11,5 +11,7 @@
 .App li{
 	font-size: 24px;
 }
-
+.ant-table-body{
+	height: 480px;
+}
 
