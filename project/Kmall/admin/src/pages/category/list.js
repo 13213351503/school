@@ -2,7 +2,7 @@ import React,{Component} from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import './index.css'
-import {  Breadcrumb, Table, Divider, Tag,Button,Input } from 'antd';
+import { Switch, Icon,InputNumber, Breadcrumb, Table, Divider, Tag,Button,Input } from 'antd';
 import moment from 'moment';
 
 import { actionCreator } from './store/index.js'
@@ -29,7 +29,9 @@ class CategoryList extends Component{
 		    			style={{width:'40%'}}
 		    			defaultValue={name}
 		    			onBlur={(ev)=>{
-		    				handeleUpdateCategories(record._id,ev.target.value)
+		    				if(name !=ev.target.value){
+		    					handeleUpdateCategories(record._id,ev.target.value)
+		    				}
 		    			}}
 		    		/>
 		    	)
@@ -39,11 +41,16 @@ class CategoryList extends Component{
 		    title: '手机分类',
 		    dataIndex: 'mobileName',
 		    key: 'mobileName',
-		    render: (name) =>{
+		    render: (mobileName,record) =>{
 		    	return (
 		    		<Input
 		    			style={{width:'40%'}}
-		    			defaultValue={name}
+		    			defaultValue={mobileName}
+		    			onBlur={(ev)=>{
+		    				if(mobileName !=ev.target.value){
+		    					handeleUpdateMobileName(record._id,ev.target.value)
+		    				}
+		    			}}
 		    		/>
 		    	)
 		    } 
@@ -52,15 +59,50 @@ class CategoryList extends Component{
 		    title: '是否显示',
 		    dataIndex: 'isShow',
 		    key: 'isShow',
+		    render:(isShow,record)=>{
+		    	return(
+		    		<Switch 
+		    		checkedChildren="显示" 
+		    		unCheckedChildren="隐藏" 
+		    		defaultChecked ={isShow == '0' ? false : true}
+		    		onChange={(checked)=>{
+		    			const isShow = checked ? '1' : '0'
+		    			handeleUpdateIsShow(record._id,isShow)
+		    		}}
+		    		/>
+		    	)
+		    }
 		  },
 		  {
 		    title: '排序',
 		    key: 'order',
 		    dataIndex: 'order',
+		    render: (order,record) =>{
+		    	return (
+		    		<InputNumber
+		    			defaultValue={order}
+		    			onBlur={(ev)=>{
+		    				if(order !=ev.target.value){
+		    					handeleUpdateOrder(record._id,ev.target.value)
+		    				}
+		    			}}
+		    		/>
+		    	)
+		    } 
 		  },
 		  
 		];
-		const { list,total,pageSize,current,handlePage,isFetching,handeleUpdateCategories } = this.props;
+		const { list,
+				total,
+				pageSize,
+				current,
+				handlePage,
+				isFetching,
+				handeleUpdateCategories,
+				handeleUpdateMobileName,
+				handeleUpdateOrder,
+				handeleUpdateIsShow,
+			 } = this.props;
 		const dataSource = list.toJS()
 		return(
 			<div className='CategoryList'>
@@ -117,6 +159,15 @@ const mapDispatchToProps = (dispatch)=>{
 		},
 		handeleUpdateCategories:(id,newName)=>{
 			dispatch(actionCreator.getUpdateCategories(id,newName))
+		},
+		handeleUpdateMobileName:(id,newMobileName)=>{
+			dispatch(actionCreator.getUpdateMobileName(id,newMobileName))
+		},
+		handeleUpdateOrder:(id,newOrder)=>{
+			dispatch(actionCreator.getUpdateOrder(id,newOrder))
+		},
+		handeleUpdateIsShow:(id,newIsShow)=>{
+			dispatch(actionCreator.getUpdateIsShow(id,newIsShow))
 		}
 	}
 }

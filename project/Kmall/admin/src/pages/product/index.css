@@ -1,0 +1,7 @@
+.ProductList .btn{
+	height: 36px;
+}
+
+.ProductList .btn-add{
+	float: right;
+}

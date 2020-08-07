@@ -131,3 +131,101 @@ export const getUpdateCategories = (id,newName)=>{
 		
 	}
 }
+
+//处理更新手机分类
+export const getUpdateMobileName = (id,newMobileName)=>{
+	return (dispatch,getState)=>{
+		//发送请求之前显示登录loading状态
+		const page = getState().get('category').get('current');
+		dispatch(getCategoriesStartAction())
+		apiObj.updateMobileName({
+			id:id,
+			mobileName:newMobileName,
+			page:page
+		})
+		.then(result=>{
+			// console.log(result)
+			const data = result.data;
+			if(data.code == 0){//登录成功
+				message.success('更新手机分类名称成功')
+				dispatch(setPageAction(data.data))
+			}else{//登录失败
+				message.error(data.message)
+			}
+		})
+		.catch(err=>{
+			console.log(err);
+			message.error('请求失败,请稍后再试!!')
+		})
+		.finally(()=>{
+			//无论请求成功或者失败取消loading状态
+			dispatch(getCategoriesDoneAction())
+		})
+		
+	}
+}
+//处理更新排序
+export const getUpdateOrder = (id,newOrder)=>{
+	return (dispatch,getState)=>{
+		//发送请求之前显示登录loading状态
+		const page = getState().get('category').get('current');
+		dispatch(getCategoriesStartAction())
+		apiObj.updateOrderName({
+			id:id,
+			order:newOrder,
+			page:page
+		})
+		.then(result=>{
+			// console.log(result)
+			const data = result.data;
+			if(data.code == 0){//登录成功
+				message.success('更新排序成功')
+				dispatch(setPageAction(data.data))
+			}else{//登录失败
+				message.error(data.message)
+			}
+		})
+		.catch(err=>{
+			console.log(err);
+			message.error('请求失败,请稍后再试!!')
+		})
+		.finally(()=>{
+			//无论请求成功或者失败取消loading状态
+			dispatch(getCategoriesDoneAction())
+		})
+		
+	}
+}
+
+//处理更新显示隐藏
+export const getUpdateIsShow = (id,newIsShow)=>{
+	return (dispatch,getState)=>{
+		//发送请求之前显示登录loading状态
+		const page = getState().get('category').get('current');
+		dispatch(getCategoriesStartAction())
+		apiObj.updateIsShow({
+			id:id,
+			isShow:newIsShow,
+			page:page
+		})
+		.then(result=>{
+			// console.log(result)
+			const data = result.data;
+			if(data.code == 0){//登录成功
+				message.success('更新显示隐藏成功')
+				dispatch(setPageAction(data.data))
+			}else{//登录失败
+				message.error(data.message)
+			}
+		})
+		.catch(err=>{
+			console.log(err);
+			message.error('请求失败,请稍后再试!!')
+		})
+		.finally(()=>{
+			//无论请求成功或者失败取消loading状态
+			dispatch(getCategoriesDoneAction())
+		})
+		
+	}
+}

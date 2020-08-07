@@ -13,7 +13,6 @@ const pagination = require('../util/pagination.js');
 const hmac = require('../util/hmac.js')
 
 const router = Router();
-/*
 //管理员注册
 router.get('/init',(req,res)=>{
 	UserModel.insertMany({
@@ -29,7 +28,6 @@ router.get('/init',(req,res)=>{
 		res.send('err')
 	})
 })
-*/
 /*
 router.get('/init',(req,res)=>{
 	const users = []
