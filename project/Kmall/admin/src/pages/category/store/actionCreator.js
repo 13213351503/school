@@ -79,9 +79,42 @@ export const getPageAction = (page)=>{
 			page:page
 		})
 		.then(result=>{
-			console.log(result)
+			// console.log(result)
 			const data = result.data;
 			if(data.code == 0){//登录成功
+				dispatch(setPageAction(data.data))
+			}else{//登录失败
+				message.error(data.message)
+			}
+		})
+		.catch(err=>{
+			console.log(err);
+			message.error('请求失败,请稍后再试!!')
+		})
+		.finally(()=>{
+			//无论请求成功或者失败取消loading状态
+			dispatch(getCategoriesDoneAction())
+		})
+		
+	}
+}
+
+//处理更新分类名称
+export const getUpdateCategories = (id,newName)=>{
+	return (dispatch,getState)=>{
+		//发送请求之前显示登录loading状态
+		const page = getState().get('category').get('current');
+		dispatch(getCategoriesStartAction())
+		apiObj.updateCategoriesName({
+			id:id,
+			name:newName,
+			page:page
+		})
+		.then(result=>{
+			// console.log(result)
+			const data = result.data;
+			if(data.code == 0){//登录成功
+				message.success('更新分类名称成功')
 				dispatch(setPageAction(data.data))
 			}else{//登录失败
 				message.error(data.message)

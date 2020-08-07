@@ -8,4 +8,5 @@ export const API_CONFIG = {
 	addCategories: 				['/categories','post'],
 	getLevelCategories: 		['/categories/levelCategories','get'],
 	getCategoriesList: 			['/categories/list','get'],
+	updateCategoriesName: 		['/categories/name','put'],
 }

@@ -2,7 +2,7 @@ import React,{Component} from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import './index.css'
-import {  Breadcrumb, Table, Divider, Tag,Button } from 'antd';
+import {  Breadcrumb, Table, Divider, Tag,Button,Input } from 'antd';
 import moment from 'moment';
 
 import { actionCreator } from './store/index.js'
@@ -22,12 +22,31 @@ class CategoryList extends Component{
 		    title: '分类名称',
 		    dataIndex: 'name',
 		    key: 'name',
-		    render: name => <a>{name}</a>,
+		    render: (name,record) =>{
+		    	//record记录当前数据中的信息
+		    	return (
+		    		<Input
+		    			style={{width:'40%'}}
+		    			defaultValue={name}
+		    			onBlur={(ev)=>{
+		    				handeleUpdateCategories(record._id,ev.target.value)
+		    			}}
+		    		/>
+		    	)
+		    } 
 		  },
 		  {
 		    title: '手机分类',
 		    dataIndex: 'mobileName',
 		    key: 'mobileName',
+		    render: (name) =>{
+		    	return (
+		    		<Input
+		    			style={{width:'40%'}}
+		    			defaultValue={name}
+		    		/>
+		    	)
+		    } 
 		  },
 		  {
 		    title: '是否显示',
@@ -41,7 +60,7 @@ class CategoryList extends Component{
 		  },
 		  
 		];
-		const { list,total,pageSize,current,handlePage,isFetching } = this.props;
+		const { list,total,pageSize,current,handlePage,isFetching,handeleUpdateCategories } = this.props;
 		const dataSource = list.toJS()
 		return(
 			<div className='CategoryList'>
@@ -95,6 +114,9 @@ const mapDispatchToProps = (dispatch)=>{
 	return {
 		handlePage:(page)=>{
 			dispatch(actionCreator.getPageAction(page))
+		},
+		handeleUpdateCategories:(id,newName)=>{
+			dispatch(actionCreator.getUpdateCategories(id,newName))
 		}
 	}
 }
