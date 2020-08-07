@@ -1,4 +1,3 @@
-
 import React,{Component} from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
@@ -109,7 +108,7 @@ const mapStateToProps = (state)=>{
 const mapDispatchToProps = (dispatch)=>{
 	return {
 		handlePage:(page)=>{
-			dispatch(actionCreator.getPageAction(page))
+			// dispatch(actionCreator.getPageAction(page))
 		}
 	}
 }

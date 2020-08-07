@@ -5,4 +5,6 @@ export const API_CONFIG = {
 	logout: 					['/sessions/users','delete'],
 	getCounts: 					['/counts','get'],
 	getUserList: 				['/users/list','get'],
+	addCategories: 				['/categories','post'],
+	getLevelCategories: 		['/categories/levelCategories','get']
 }

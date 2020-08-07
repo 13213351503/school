@@ -1,4 +1,3 @@
-
 import React,{Component} from 'react'
 import { connect } from 'react-redux'
 import './index.css'
@@ -16,18 +15,21 @@ class CategoryAdd extends Component{
 		this.handleSubmit = this.handleSubmit.bind(this); 	
 	}
 	componentDidMount(){
-		// this.props.handlePage(1)
+		// 加载最新父级分类
+		this.props.handleLevelCategories();
 	}
 	handleSubmit(e){
 	    e.preventDefault();
 	    this.props.form.validateFields((err, values) => {
 	      if (!err) {
-	        console.log('Received values of form: ', values);
+	        // console.log('Received values of form: ', values);
+	        this.props.handleAddCategiries(values)
 	      }
 	    });
 	};
 	render(){
 		const { getFieldDecorator } = this.props.form;
+		const {categories} = this.props;
 		return(
 			<div className='CategoryAdd'>
 			  <AdminLayout>
@@ -46,6 +48,11 @@ class CategoryAdd extends Component{
 				              placeholder="父级分类!!"
 				            >
 				              <Option value="0">根分类</Option>
+				              {
+				              	categories.map((category)=>{
+				              		return <Option key={category.get('_id')} value={category.get('_id')}>{category.get('name')}</Option>
+				              	})
+				              }
 				            </Select>,
 				          )}
 				        </Form.Item>
@@ -79,18 +86,17 @@ const WrappedCategoryAdd = Form.create({ name: 'coordinated' })(CategoryAdd);
 const mapStateToProps = (state)=>{
 	// console.log(state)
 	return {
-		list:state.get('user').get('list'),
-		total:state.get('user').get('total'),
-		pageSize:state.get('user').get('pageSize'),
-		current:state.get('user').get('current'),
-		isFetching:state.get('user').get('isFetching'),
+		categories:state.get('category').get('categories')
 	}
 }
 //将方法映射到组件
 const mapDispatchToProps = (dispatch)=>{
 	return {
-		handlePage:(page)=>{
-			dispatch(actionCreator.getPageAction(page))
+		handleAddCategiries:(values)=>{
+			dispatch(actionCreator.getAddCategoriesAction(values))
+		},
+		handleLevelCategories:()=>{
+			dispatch(actionCreator.getLevelCategoriesAction())
 		}
 	}
 }

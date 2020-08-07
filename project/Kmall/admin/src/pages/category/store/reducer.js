@@ -1,15 +1,16 @@
-
 import { fromJS } from 'immutable'
 const defaultState = fromJS({
 	list:[],
 	total:50,
 	pageSize:10,
 	current:1,
-	isFetching:false
+	isFetching:false,
+	categories:[]
 })
 import * as types from './actionTypes.js'
 
 export default (state=defaultState,action)=>{
+	//处理分类列表
 	if(action.type == types.SET_PAGE){
 		return state.merge({
 			list:fromJS(action.payload.list),
@@ -25,6 +26,12 @@ export default (state=defaultState,action)=>{
 	else if(action.type == types.COUNTS_DONE_ACTION){
 		
 		return state.set('isFetching',false)
+	}
+
+	//处理设置分类数据
+	else if(action.type == types.SET_LEVEL_CATEGORIES){
+		
+		return state.set('categories', fromJS(action.payload))
 	}
 	return state
 }
