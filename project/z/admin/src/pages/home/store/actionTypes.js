@@ -1,1 +1,0 @@
-export const GET_COUNTS = 'home@get_counts';
