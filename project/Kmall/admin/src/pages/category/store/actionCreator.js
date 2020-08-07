@@ -52,3 +52,49 @@ export const getLevelCategoriesAction = ()=>{
 		})
 	}
 }
+
+
+//处理分类列表分页数据
+export const setPageAction = (val)=>({
+	type:types.SET_PAGE,
+	payload:val
+})
+
+const getLoadInitAction = (data) =>({
+	type:types.LOAD_DATA,
+	payload:data
+})
+export const getCategoriesStartAction = ()=>({
+	type:types.REQUEST_START_ACTION,
+})
+export const getCategoriesDoneAction = ()=>({
+	type:types.REQUEST_DONE_ACTION,
+})
+
+export const getPageAction = (page)=>{
+	return (dispatch,getState)=>{
+		//发送请求之前显示登录loading状态
+		dispatch(getCategoriesStartAction())
+		apiObj.getCategoriesList({
+			page:page
+		})
+		.then(result=>{
+			console.log(result)
+			const data = result.data;
+			if(data.code == 0){//登录成功
+				dispatch(setPageAction(data.data))
+			}else{//登录失败
+				message.error(data.message)
+			}
+		})
+		.catch(err=>{
+			console.log(err);
+			message.error('请求失败,请稍后再试!!')
+		})
+		.finally(()=>{
+			//无论请求成功或者失败取消loading状态
+			dispatch(getCategoriesDoneAction())
+		})
+		
+	}
+}

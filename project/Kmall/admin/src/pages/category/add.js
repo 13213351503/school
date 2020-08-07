@@ -101,5 +101,4 @@ const mapDispatchToProps = (dispatch)=>{
 	}
 }
 
-//console.log(sss)
 export default connect(mapStateToProps,mapDispatchToProps)(WrappedCategoryAdd)

@@ -1,7 +1,7 @@
 
 export const SET_PAGE = 'category@set_page';
-export const COUNTS_START_ACTION = 'category@counts_start_action';
-export const COUNTS_DONE_ACTION = 'category@counts_done_action';
+export const REQUEST_START_ACTION = 'category@request_start_action';
+export const REQUEST_DONE_ACTION = 'category@Request_done_action';
 
 
 

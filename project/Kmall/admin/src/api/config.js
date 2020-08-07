@@ -6,5 +6,6 @@ export const API_CONFIG = {
 	getCounts: 					['/counts','get'],
 	getUserList: 				['/users/list','get'],
 	addCategories: 				['/categories','post'],
-	getLevelCategories: 		['/categories/levelCategories','get']
+	getLevelCategories: 		['/categories/levelCategories','get'],
+	getCategoriesList: 			['/categories/list','get'],
 }

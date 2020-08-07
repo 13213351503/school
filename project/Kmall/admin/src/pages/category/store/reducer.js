@@ -19,11 +19,11 @@ export default (state=defaultState,action)=>{
 			current:action.payload.current
 		})
 	}
-	if(action.type == types.COUNTS_START_ACTION){
+	if(action.type == types.REQUEST_START_ACTION){
 		
 		return state.set('isFetching',true)
 	}
-	else if(action.type == types.COUNTS_DONE_ACTION){
+	else if(action.type == types.REQUEST_DONE_ACTION){
 		
 		return state.set('isFetching',false)
 	}

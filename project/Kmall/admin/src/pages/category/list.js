@@ -19,44 +19,30 @@ class CategoryList extends Component{
 	render(){
 		const columns = [
 		  {
-		    title: '用户名',
-		    dataIndex: 'username',
-		    key: 'username',
-		    render: username => <a>{username}</a>,
+		    title: '分类名称',
+		    dataIndex: 'name',
+		    key: 'name',
+		    render: name => <a>{name}</a>,
 		  },
 		  {
-		    title: '是否是管理员',
-		    dataIndex: 'isAdmin',
-		    key: 'isAdmin',
-		    render: isAdmin => (isAdmin ? '是' : '否')
+		    title: '手机分类',
+		    dataIndex: 'mobileName',
+		    key: 'mobileName',
 		  },
 		  {
-		    title: '邮箱',
-		    dataIndex: 'email',
-		    key: 'email',
+		    title: '是否显示',
+		    dataIndex: 'isShow',
+		    key: 'isShow',
 		  },
 		  {
-		    title: '电话',
-		    key: 'phone',
-		    dataIndex: 'phone',
+		    title: '排序',
+		    key: 'order',
+		    dataIndex: 'order',
 		  },
-		   {
-		    title: '创建时间',
-		    key: 'createdAt',
-		    dataIndex: 'createdAt',
-		  },
+		  
 		];
 		const { list,total,pageSize,current,handlePage,isFetching } = this.props;
-		const dataSource = list.map((item)=>{
-			return {
-					key: item.get('_id'),
-				    username: item.get('username'),
-				    isAdmin: item.get('isAdmin'),
-				    email: item.get('email'),
-				    phone: item.get('phone'),
-				    createdAt:moment(item.get('createdAt')).format('YYYY-MM-DD HH:mm:ss'),
-				}
-			}).toJS()
+		const dataSource = list.toJS()
 		return(
 			<div className='CategoryList'>
 			  <AdminLayout>
@@ -71,7 +57,7 @@ class CategoryList extends Component{
 			  	<div>
 			  		<Table 
 			  			columns={columns} 
-			  			dataSource={[]} 
+			  			dataSource={dataSource} 
 			  			loading={isFetching}
 			  			pagination={{
 			  				total:total,
@@ -97,21 +83,23 @@ class CategoryList extends Component{
 const mapStateToProps = (state)=>{
 	// console.log(state)
 	return {
-		list:state.get('user').get('list'),
-		total:state.get('user').get('total'),
-		pageSize:state.get('user').get('pageSize'),
-		current:state.get('user').get('current'),
-		isFetching:state.get('user').get('isFetching'),
+		list:state.get('category').get('list'),
+		total:state.get('category').get('total'),
+		pageSize:state.get('category').get('pageSize'),
+		current:state.get('category').get('current'),
+		isFetching:state.get('category').get('isFetching'),
 	}
 }
 //将方法映射到组件
 const mapDispatchToProps = (dispatch)=>{
 	return {
 		handlePage:(page)=>{
-			// dispatch(actionCreator.getPageAction(page))
+			dispatch(actionCreator.getPageAction(page))
 		}
 	}
 }
+
+
 
 
 export default connect(mapStateToProps,mapDispatchToProps)(CategoryList)
