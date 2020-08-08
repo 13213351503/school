@@ -2,6 +2,9 @@ import React,{Component} from 'react'
 import { connect } from 'react-redux'
 import './index.css'
 import {  Breadcrumb, Form, Select, Input, Button, InputNumber } from 'antd';
+import UploadImages from 'common/upload-images/index.js';
+import {UPLOAD_IMAGES,UPLOAD_DETAIL_IMAGES} from 'api/config.js';
+import RichEditor from 'common/rich-editor/index.js'
 
 import { actionCreator } from './store/index.js'
 import  AdminLayout  from 'common/layout/index.js'
@@ -76,13 +79,27 @@ class ProductSave extends Component{
 				          })(<InputNumber />)}
 				        </Form.Item>
 				        <Form.Item label="封面图片">
-				        	商品封面图片
+				        	<UploadImages 
+				        		action={UPLOAD_IMAGES}
+				        		max={1}
+				        		getFileList ={(fileList)=>{
+				        			console.log(fileList);
+				        		}}
+				        	/>
 				        </Form.Item>
 				        <Form.Item label="商品图片">
-				          	商品图片
+				          	<UploadImages 
+				        		action={UPLOAD_IMAGES}
+				        		max={9}
+				        		getFileList ={(fileList)=>{
+				        			console.log(fileList);
+				        		}}
+				        	/>
 				        </Form.Item>
 				        <Form.Item label="商品详情">
-				          	商品详情
+				          	<RichEditor 
+				          		url={UPLOAD_DETAIL_IMAGES}
+				          	/>
 				        </Form.Item>
 				        <Form.Item wrapperCol={{ span: 12, offset: 5 }}>
 				          <Button type="primary" onClick={this.handleSubmit}>

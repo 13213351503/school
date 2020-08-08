@@ -14,4 +14,10 @@
 .ant-table-body{
 	height: 480px;
 }
+.simditor-body{
+    overflow: hidden;
 
+}
+.simditor-body img{
+    width: 100%;
+}

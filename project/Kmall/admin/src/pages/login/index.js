@@ -1,9 +1,3 @@
-/*
-* @Author: Chen
-* @Date:   2019-12-03 17:36:42
-* @Last Modified by:   Chen
-* @Last Modified time: 2019-12-06 15:11:45
-*/
 import React,{Component} from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'

@@ -13,6 +13,7 @@ import {
 
 //容器组件
 class CategoryList extends Component{
+	
 	componentDidMount(){
 		this.props.handlePage(1)
 	}
@@ -103,7 +104,10 @@ class CategoryList extends Component{
 				handeleUpdateOrder,
 				handeleUpdateIsShow,
 			 } = this.props;
+		// console.log(list);
 		const dataSource = list.toJS()
+		// console.log(dataSource);
+
 		return(
 			<div className='CategoryList'>
 			  <AdminLayout>

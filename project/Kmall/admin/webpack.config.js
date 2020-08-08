@@ -30,6 +30,7 @@ module.exports = {
             util:path.resolve(__dirname,'./src/util'),
             common:path.resolve(__dirname,'./src/common'),
             api:path.resolve(__dirname,'./src/api'),
+            node_modules:path.resolve(__dirname,'./node_modules'),
         }
     },
 	//输出
