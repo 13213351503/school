@@ -14,7 +14,7 @@ class Category extends Component{
 		return(
 			<div className='Category'>
 				<Switch>
-			  		<Route path='/product/save' component={ProductSave} />
+			  		<Route path='/product/save/:productId?' component={ProductSave} />
 			  		<Route path='/product' component={ProductList} />
 			  	</Switch>
 			</div>	

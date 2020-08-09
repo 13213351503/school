@@ -2,7 +2,7 @@ import React,{Component} from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import './index.css'
-import { Switch, Icon,InputNumber, Breadcrumb, Table, Divider, Tag,Button,Input } from 'antd';
+import { Divider,Switch, Icon,InputNumber, Breadcrumb, Table,  Tag,Button,Input } from 'antd';
 import moment from 'moment';
 
 import { actionCreator } from './store/index.js'
@@ -13,61 +13,68 @@ import {
 
 //容器组件
 class ProductList extends Component{
+	constructor(props){
+		super(props)
+	}
 	componentDidMount(){
 		this.props.handlePage(1)
 	}
 	render(){
 		const columns = [
 		  {
-		    title: '分类名称',
+		    title: '商品名称',
 		    dataIndex: 'name',
 		    key: 'name',
-		    render: (name,record) =>{
-		    	//record记录当前数据中的信息
-		    	return (
-		    		<Input
-		    			style={{width:'40%'}}
-		    			defaultValue={name}
-		    			onBlur={(ev)=>{
-		    				if(name !=ev.target.value){
-		    					handeleUpdateCategories(record._id,ev.target.value)
-		    				}
-		    			}}
-		    		/>
-		    	)
-		    } 
 		  },
 		  {
-		    title: '手机分类',
-		    dataIndex: 'mobileName',
-		    key: 'mobileName',
-		    render: (mobileName,record) =>{
-		    	return (
-		    		<Input
-		    			style={{width:'40%'}}
-		    			defaultValue={mobileName}
-		    			onBlur={(ev)=>{
-		    				if(mobileName !=ev.target.value){
-		    					handeleUpdateMobileName(record._id,ev.target.value)
-		    				}
-		    			}}
-		    		/>
-		    	)
-		    } 
-		  },
-		  {
-		    title: '是否显示',
+		    title: '是否首页显示',
 		    dataIndex: 'isShow',
 		    key: 'isShow',
 		    render:(isShow,record)=>{
 		    	return(
 		    		<Switch 
-		    		checkedChildren="显示" 
-		    		unCheckedChildren="隐藏" 
+		    		checkedChildren="是" 
+		    		unCheckedChildren="否" 
 		    		defaultChecked ={isShow == '0' ? false : true}
 		    		onChange={(checked)=>{
 		    			const isShow = checked ? '1' : '0'
 		    			handeleUpdateIsShow(record._id,isShow)
+		    		}}
+		    		/>
+		    	)
+		    }
+		  },
+		  {
+		    title: '上架/下架',
+		    dataIndex: 'status',
+		    key: 'status',
+		    render:(status,record)=>{
+		    	return(
+		    		<Switch 
+		    		checkedChildren="上架" 
+		    		unCheckedChildren="下架" 
+		    		defaultChecked ={status == '0' ? false : true}
+		    		onChange={(checked)=>{
+		    			const status = checked ? '1' : '0'
+		    			handeleUpdateStatus(record._id,status)
+		    		}}
+		    		/>
+		    	)
+		    }
+		  },
+		  {
+		    title: '是否热卖',
+		    dataIndex: 'isHot',
+		    key: 'isHot',
+		    render:(isHot,record)=>{
+		    	return(
+		    		<Switch 
+		    		checkedChildren="是" 
+		    		unCheckedChildren="否" 
+		    		defaultChecked ={isHot == '0' ? false : true}
+		    		onChange={(checked)=>{
+		    			const isHot = checked ? '1' : '0'
+		    			handeleUpdateIsHot(record._id,isHot)
 		    		}}
 		    		/>
 		    	)
@@ -90,6 +97,18 @@ class ProductList extends Component{
 		    	)
 		    } 
 		  },
+		  {
+		  	title:'操作',
+		  	render:(name,record)=>{
+		  		return(
+		  			<span>
+		  				<Link to={'/product/save/'+record._id}>编辑</Link>
+		  				<Divider type='vertical' />
+		  				<Link to={'/product/detail/'+record._id}>详情</Link>
+		  			</span>
+		  		)
+		  	}
+		  }
 		  
 		];
 		const { list,
@@ -98,10 +117,10 @@ class ProductList extends Component{
 				current,
 				handlePage,
 				isFetching,
-				handeleUpdateCategories,
-				handeleUpdateMobileName,
-				handeleUpdateOrder,
 				handeleUpdateIsShow,
+				handeleUpdateStatus,
+				handeleUpdateIsHot,
+				handeleUpdateOrder,
 			 } = this.props;
 		const dataSource = list.toJS()
 		return(
@@ -119,6 +138,7 @@ class ProductList extends Component{
 			  		<Table 
 			  			columns={columns} 
 			  			dataSource={dataSource} 
+			  			rowKey='_id'
 			  			loading={isFetching}
 			  			pagination={{
 			  				total:total,
@@ -144,11 +164,11 @@ class ProductList extends Component{
 const mapStateToProps = (state)=>{
 	// console.log(state)
 	return {
-		list:state.get('category').get('list'),
-		total:state.get('category').get('total'),
-		pageSize:state.get('category').get('pageSize'),
-		current:state.get('category').get('current'),
-		isFetching:state.get('category').get('isFetching'),
+		list:state.get('product').get('list'),
+		total:state.get('product').get('total'),
+		pageSize:state.get('product').get('pageSize'),
+		current:state.get('product').get('current'),
+		isFetching:state.get('product').get('isFetching'),
 	}
 }
 //将方法映射到组件
@@ -157,17 +177,18 @@ const mapDispatchToProps = (dispatch)=>{
 		handlePage:(page)=>{
 			dispatch(actionCreator.getPageAction(page))
 		},
-		handeleUpdateCategories:(id,newName)=>{
-			dispatch(actionCreator.getUpdateCategories(id,newName))
+		
+		handeleUpdateIsShow:(id,newIsShow)=>{
+			dispatch(actionCreator.getUpdateIsShow(id,newIsShow))
 		},
-		handeleUpdateMobileName:(id,newMobileName)=>{
-			dispatch(actionCreator.getUpdateMobileName(id,newMobileName))
+		handeleUpdateStatus:(id,newStatus)=>{
+			dispatch(actionCreator.getUpdateStatus(id,newStatus))
+		},
+		handeleUpdateIsHot:(id,newIsHot)=>{
+			dispatch(actionCreator.getUpdateIsHot(id,newIsHot))
 		},
 		handeleUpdateOrder:(id,newOrder)=>{
 			dispatch(actionCreator.getUpdateOrder(id,newOrder))
-		},
-		handeleUpdateIsShow:(id,newIsShow)=>{
-			dispatch(actionCreator.getUpdateIsShow(id,newIsShow))
 		}
 	}
 }

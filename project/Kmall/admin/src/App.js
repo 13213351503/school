@@ -42,7 +42,7 @@ class App extends Component{
 				/>
 			)
 		return(
-			<Router>
+			<Router forceRefresh={true}>
 				<div className='App'>
 					<Switch>
 						<HomeRoute exact path='/' component={Home} />
