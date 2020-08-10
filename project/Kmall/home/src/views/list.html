@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Kmall 列表页</title>
+    <%= require('html-loader!./common/meta.html') %>
+    <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
-    <p>列表页</p>
+    <%= require('html-loader!./common/nav.html') %>
 </body>
+<%= require('html-loader!./common/footer.html') %>
 </html>

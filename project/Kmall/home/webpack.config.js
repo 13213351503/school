@@ -10,9 +10,10 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 
-const getHtmlConfig = (name)=>({
+const getHtmlConfig = (name,title)=>({
 	        template:'./src/views/'+name+'.html',//模板文件
 	        filename:name+'.html',//输出的文件名
+	       	title:title,
 	       	// inject:'head',//脚本写在那个标签里,默认是true(在body结束后)
 	        hash:true,//给生成的js/css文件添加一个唯一的hash
 	        chunks:[name,'common']
@@ -75,7 +76,7 @@ module.exports = {
           	},
 	      //处理图片资源
 	      {
-			test: /\.(png|jpg|gif)$/i,
+			test: /\.(png|jpg|gif|ttf|woff2|woff|eot|svg)\??.*$/i,
 				use: [
 			  		{
 			    		loader: 'url-loader',
@@ -103,8 +104,8 @@ module.exports = {
 	 },
 	plugins:[
 		//自动生成HTML
-	    new htmlWebpackPlugin(getHtmlConfig('index')),
-	    new htmlWebpackPlugin(getHtmlConfig('list')),
+	    new htmlWebpackPlugin(getHtmlConfig('index','首页')),
+	    new htmlWebpackPlugin(getHtmlConfig('list','列表页')),
 	    //自动清理多余文件
 	    new CleanWebpackPlugin(),
 	    //单独打包css资源
