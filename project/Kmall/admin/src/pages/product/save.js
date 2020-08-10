@@ -32,6 +32,7 @@ class ProductSave extends Component{
 	    e.preventDefault();
 	    this.props.form.validateFields((err, values) => {
 	        // console.log('Received values of form: ', values);
+	        values.id = this.state.productId;
 	        this.props.handleSave(err,values)
 	    });
 	};
@@ -69,7 +70,10 @@ class ProductSave extends Component{
 				uid:'0',
 				name:'image.png',
 				status:'done',
-				url:mainImage
+				url:mainImage,
+				response:{
+					url:mainImage
+				}
 			})
 		}
 		//处理商品图片回传
@@ -80,7 +84,10 @@ class ProductSave extends Component{
 					uid:index,
 					name:'image.png',
 					status:'done',
-					url:url
+					url:url,
+					response:{
+						url:url
+					}
 				}
 			})
 		}

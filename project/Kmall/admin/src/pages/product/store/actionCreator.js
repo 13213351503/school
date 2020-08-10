@@ -3,7 +3,7 @@ import * as types from './actionTypes.js'
 import { message } from 'antd'
 import apiObj from 'api'
 
-
+//处理新增或者编辑商品
 const setMainImageErrAction = ()=>({
 	type:types.SET_MAIN_IMAGE_ERR,
 });
@@ -36,7 +36,12 @@ export const getSaveProductAction = (err,values)=>{
 		}
 		console.log(values);
 		//验证通过，发送请求
-		apiObj.addProducts({
+		//根据参数是否传递id，判断是新增商品还是编辑商品
+		let request = apiObj.addProducts;
+		if(values.id){
+			request = apiObj.updatedProducts
+		}
+		request({
 			...values,
 			mainImage,
 			images,
@@ -72,7 +77,7 @@ export const getLevelCategoriesAction = ()=>{
 		})
 		.then(result=>{
 			const data = result.data;
-			console.log(result)
+			// console.log(result)
 
 			if(data.code == 0){//登录成功
 				dispatch(setLevelCategories(data.data))
@@ -104,13 +109,17 @@ export const getProductsStartAction = ()=>({
 export const getProductsDoneAction = ()=>({
 	type:types.REQUEST_DONE_ACTION,
 })
-export const getPageAction = (page)=>{
+export const getPageAction = (page,keyword)=>{
 	return (dispatch,getState)=>{
 		//发送请求之前显示登录loading状态
 		dispatch(getProductsStartAction())
-		apiObj.getProductsList({
+		const options = {
 			page:page
-		})
+		}
+		if(keyword){
+			options.keyword = keyword
+		}
+		apiObj.getProductsList(options)
 		.then(result=>{
 			// console.log(result)
 			const data = result.data;

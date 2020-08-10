@@ -10,6 +10,7 @@ import  AdminLayout  from 'common/layout/index.js'
 import {
   Link,
 } from "react-router-dom";
+const { Search } = Input;
 
 //容器组件
 class ProductList extends Component{
@@ -25,6 +26,15 @@ class ProductList extends Component{
 		    title: '商品名称',
 		    dataIndex: 'name',
 		    key: 'name',
+		    render:(name)=>{
+		    	if(keyword){
+		    		let reg = new RegExp(keyword,'ig');
+		    		let newName = name.replace(reg,'<b style="color:green">'+keyword+'</b>');
+		    		return <div dangerouslySetInnerHTML={{__html:newName}}></div>
+		    	}else{
+		    		return name
+		    	}
+		    }
 		  },
 		  {
 		    title: '是否首页显示',
@@ -117,6 +127,8 @@ class ProductList extends Component{
 				current,
 				handlePage,
 				isFetching,
+				keyword,
+
 				handeleUpdateIsShow,
 				handeleUpdateStatus,
 				handeleUpdateIsHot,
@@ -131,6 +143,16 @@ class ProductList extends Component{
 		          <Breadcrumb.Item>商品管理</Breadcrumb.Item>
 		          <Breadcrumb.Item>商品列表</Breadcrumb.Item>
 		          <div className='btn'>
+		          	<Search
+		          		style={{width:400}} 
+			          	placeholder="请输入关键词" 
+			          	onSearch={
+			          		(value) => {
+			          			handlePage(1,value)
+			          		}
+			          	} 
+			          	enterButton 
+		          	/>
 		          	<Link to='/product/save'><Button type="primary" className='btn-add'>新增商品</Button></Link>
 		          </div>
 			    </Breadcrumb>
@@ -147,7 +169,11 @@ class ProductList extends Component{
 			  			}}
 			  			onChange={(page)=>{
 			  				//page.current当前页
-			  				handlePage(page.current);
+			  				if(keyword){
+			  					handlePage(page.current,keyword);
+			  				}else{
+			  					handlePage(page.current);
+			  				}
 			  			}}
 			  		/>
 			  	</div>
@@ -168,14 +194,15 @@ const mapStateToProps = (state)=>{
 		total:state.get('product').get('total'),
 		pageSize:state.get('product').get('pageSize'),
 		current:state.get('product').get('current'),
+		keyword:state.get('product').get('keyword'),
 		isFetching:state.get('product').get('isFetching'),
 	}
 }
 //将方法映射到组件
 const mapDispatchToProps = (dispatch)=>{
 	return {
-		handlePage:(page)=>{
-			dispatch(actionCreator.getPageAction(page))
+		handlePage:(page,keyword)=>{
+			dispatch(actionCreator.getPageAction(page,keyword))
 		},
 		
 		handeleUpdateIsShow:(id,newIsShow)=>{

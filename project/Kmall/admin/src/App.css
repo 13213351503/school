@@ -19,5 +19,8 @@
 
 }
 .simditor-body img{
-    width: 100%;
+    max-width: 100%;
+}
+.ant-upload-list-item{
+    overflow: hidden;
 }

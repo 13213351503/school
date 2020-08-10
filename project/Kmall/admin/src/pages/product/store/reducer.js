@@ -17,10 +17,13 @@ const defaultState = fromJS({
 	imagesHelp:'',
 
 	category:'',
+	categoryName:'',
 	name:'',
 	description:'',
 	price:'',
-	stock:''
+	stock:'',
+
+	keyword:'',
 
 })
 import * as types from './actionTypes.js'
@@ -32,7 +35,8 @@ export default (state=defaultState,action)=>{
 			list:fromJS(action.payload.list),
 			total:action.payload.total,
 			pageSize:action.payload.pageSize,
-			current:action.payload.current
+			current:action.payload.current,
+			keyword:action.payload.keyword,
 		})
 	}
 	if(action.type == types.REQUEST_START_ACTION){
@@ -93,6 +97,7 @@ export default (state=defaultState,action)=>{
 		
 		return state.merge({
 			category:action.payload.category._id,
+			categoryName:action.payload.category.name,
 			name:action.payload.name,
 			description:action.payload.description,
 			price:action.payload.price,
