@@ -30,9 +30,10 @@ module.exports = {
 	// entry: "./src/index.js",
 	//多入口
 	entry:{
-		index:'./src/pages/index/index.js',
-		common:'./src/pages/common/index.js',
-		list:'./src/pages/list/index.js',
+		'index': 			'./src/pages/index/index.js',
+		'common': 			'./src/pages/common/index.js',
+		'list': 			'./src/pages/list/index.js',
+		'user-login':		'./src/pages/user-login/index.js',
 	},
 	devtool: 'inline-source-map',
 	//配置别名
@@ -40,6 +41,7 @@ module.exports = {
         alias:{
             pages:path.resolve(__dirname,'./src/pages'),
             node_modules:path.resolve(__dirname,'./node_modules'),
+            util:path.resolve(__dirname,'./src/util'),
         }
     },
 	//输出
@@ -106,6 +108,7 @@ module.exports = {
 		//自动生成HTML
 	    new htmlWebpackPlugin(getHtmlConfig('index','首页')),
 	    new htmlWebpackPlugin(getHtmlConfig('list','列表页')),
+	    new htmlWebpackPlugin(getHtmlConfig('user-login','登陆页')),
 	    //自动清理多余文件
 	    new CleanWebpackPlugin(),
 	    //单独打包css资源
