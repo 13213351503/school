@@ -1,0 +1,48 @@
+//目标，导出一个对象：对象的属性名就是方法名，值就是方法
+
+import { API_CONFIG } from './config.js';
+
+
+const getApiConfig = (API_CONFIG)=>{
+	const apiObj = {};
+	for(let key in API_CONFIG){
+		apiObj[key] = (options)=>{
+			let url = API_CONFIG[key][0] || '/';
+			let method = API_CONFIG[key][1] || 'get';
+			//发送请求到后台
+			return request({
+				url:url,
+				method:method,
+				data:options.data,
+				success:options.success,
+				error:options.error,
+			})
+		}
+	}
+
+	return apiObj;
+}
+
+
+const request = (options)=>{
+	return $.ajax({
+		url:options.url,
+		method:options.method,
+		dataType:'json',
+		data:options.data,
+		success:function(data){
+			if(data.code == 0){//成功
+				options.success && options.success(data.data);
+			}else if(data.code == 1){//失败
+				options.error && options.error(data.message);
+			}else if(data.code == 10){//未登录
+				window.location.href = '/user-login.html';
+			}
+		},
+		error:function(err){
+			options.error && options.error('网络错误,请稍后再试');
+		},
+	})
+}
+
+module.exports = getApiConfig(API_CONFIG);

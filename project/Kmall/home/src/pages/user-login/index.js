@@ -4,7 +4,25 @@ require('pages/common/logo/index.js')
 require('pages/common/footer/index.js');
 require('./index.css');
 
-var _util = require('util/index.js')
+var _util = require('util/index.js');
+var api = require('api/index.js');
+
+
+var formDataMsg = {
+    show:function(msg){
+         $('.error-item')
+        .show()
+        .find('.error-msg')
+        .text(msg)
+    },
+    hide:function(){
+        $('.error-item')
+        .hide()
+        .find('.error-msg')
+        .text('')
+    }
+}
+
 
 var page = {
     init:function(){
@@ -29,8 +47,38 @@ var page = {
         var validateFormData = this.vaildate(formData);
         //3.验证通过发送请求
         if(validateFormData.status){//验证通过
-
-        };
+            formDataMsg.hide();
+            //发送ajax请求
+            api.login({
+                data:formData,
+                success:function(data){
+                    window.location.href = '/'
+                },
+                error:function(msg){
+                    formDataMsg.show(msg);
+                }
+            })
+            /*
+            $.ajax({
+                url:'/sessions/users',
+                method:'post',
+                dataType:'json',
+                data:formData,
+                success:function(data){
+                    if(data.code == 0){
+                        window.location.href = '/'
+                    }else{
+                        formDataMsg.show(data.message);
+                    }
+                },
+                error:function(err){
+                    formDataMsg.show('网络错误,请稍后再试');
+                }
+            })
+            */
+        }else{
+            formDataMsg.show(validateFormData.msg);
+        }
             
     },
     vaildate:function(formData){

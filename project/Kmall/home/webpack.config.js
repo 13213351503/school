@@ -34,6 +34,8 @@ module.exports = {
 		'common': 			'./src/pages/common/index.js',
 		'list': 			'./src/pages/list/index.js',
 		'user-login':		'./src/pages/user-login/index.js',
+		'user-register':	'./src/pages/user-register/index.js',
+		'result':			'./src/pages/result/index.js',
 	},
 	devtool: 'inline-source-map',
 	//配置别名
@@ -42,6 +44,7 @@ module.exports = {
             pages:path.resolve(__dirname,'./src/pages'),
             node_modules:path.resolve(__dirname,'./node_modules'),
             util:path.resolve(__dirname,'./src/util'),
+            api:path.resolve(__dirname,'./src/api'),
         }
     },
 	//输出
@@ -109,6 +112,8 @@ module.exports = {
 	    new htmlWebpackPlugin(getHtmlConfig('index','首页')),
 	    new htmlWebpackPlugin(getHtmlConfig('list','列表页')),
 	    new htmlWebpackPlugin(getHtmlConfig('user-login','登陆页')),
+	    new htmlWebpackPlugin(getHtmlConfig('user-register','注册页面')),
+	    new htmlWebpackPlugin(getHtmlConfig('result','提示页面')),
 	    //自动清理多余文件
 	    new CleanWebpackPlugin(),
 	    //单独打包css资源
@@ -120,6 +125,10 @@ module.exports = {
 	devServer:{
 	    contentBase: './dist',//内容的目录
 	    port:3002,//服务运行的端口,
-	   	historyApiFallback:true,//h5路由刷新页面不向后台请求数据
+	   	proxy:[{
+	   		//请求地址是以context内部值开头的路由全部代理到target提供的地址下面
+	   		context:['/sessions','/users'],
+	   		target:'http://127.0.0.1:3000'
+	   	}]
 	}
 }
