@@ -16,7 +16,7 @@ var page = {
             window.location.href = '/list.html?keyword=' + val;
         });
          //监听键盘事件提交表单
-        $('input').on('keyup',function(ev){
+        $('.search input').on('keyup',function(ev){
             if(ev.keyCode == 13){
                 $('#btn-search').trigger('click');
             }

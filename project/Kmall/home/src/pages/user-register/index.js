@@ -82,7 +82,8 @@ var page = {
                 data:formData,
                 success:function(data){
                     //注册成功回到成功提示页
-                    window.location.href = '/result.html'
+                    // window.location.href = '/result.html?type=register'
+                    _util.goResult('register');
                 },
                 error:function(msg){
                     formDataMsg.show(msg);

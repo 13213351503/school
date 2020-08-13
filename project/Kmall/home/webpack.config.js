@@ -30,13 +30,14 @@ module.exports = {
 	// entry: "./src/index.js",
 	//多入口
 	entry:{
-		'index': 			'./src/pages/index/index.js',
-		'common': 			'./src/pages/common/index.js',
-		'list': 			'./src/pages/list/index.js',
-		'user-login':		'./src/pages/user-login/index.js',
-		'user-register':	'./src/pages/user-register/index.js',
-		'result':			'./src/pages/result/index.js',
-		'user-center':		'./src/pages/user-center/index.js',
+		'index': 					'./src/pages/index/index.js',
+		'common': 					'./src/pages/common/index.js',
+		'list': 					'./src/pages/list/index.js',
+		'user-login':				'./src/pages/user-login/index.js',
+		'user-register':			'./src/pages/user-register/index.js',
+		'result':					'./src/pages/result/index.js',
+		'user-center':				'./src/pages/user-center/index.js',
+		'user-update-password':		'./src/pages/user-update-password/index.js',
 	},
 	devtool: 'inline-source-map',
 	//配置别名
@@ -123,6 +124,7 @@ module.exports = {
 	    new htmlWebpackPlugin(getHtmlConfig('user-register','注册页面')),
 	    new htmlWebpackPlugin(getHtmlConfig('result','提示页面')),
 	    new htmlWebpackPlugin(getHtmlConfig('user-center','个人中心')),
+	    new htmlWebpackPlugin(getHtmlConfig('user-update-password','修改密码')),
 	    //自动清理多余文件
 	    new CleanWebpackPlugin(),
 	    //单独打包css资源

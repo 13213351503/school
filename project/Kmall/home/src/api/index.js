@@ -1,6 +1,7 @@
 //目标，导出一个对象：对象的属性名就是方法名，值就是方法
 
 import { API_CONFIG } from './config.js';
+var _util = require('util/index.js')
 
 
 const getApiConfig = (API_CONFIG)=>{
@@ -36,7 +37,8 @@ const request = (options)=>{
 			}else if(data.code == 1){//失败
 				options.error && options.error(data.message);
 			}else if(data.code == 10){//未登录
-				window.location.href = '/user-login.html';
+				// window.location.href = '/user-login.html';
+				_util.goLogin();
 			}
 		},
 		error:function(err){

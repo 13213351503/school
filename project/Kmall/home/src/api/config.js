@@ -6,4 +6,5 @@ export const API_CONFIG = {
 	register: 					['/users','post'],
     checkUsername:              ['/users/checkUsername','get'],
 	getUserInfo: 				['/sessions/users','get'],
+	updatePassword: 			['/users','put'],
 }

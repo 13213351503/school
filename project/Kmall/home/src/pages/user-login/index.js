@@ -26,6 +26,10 @@ var formDataMsg = {
 
 var page = {
     init:function(){
+        this.bindEvent();
+        
+    },
+    bindEvent:function(){
         var _this = this;
         $('#btn-submit').on('click',function(){
             _this.submit();
@@ -52,7 +56,7 @@ var page = {
             api.login({
                 data:formData,
                 success:function(data){
-                    window.location.href = '/'
+                    window.location.href = _util.getParamsFromUrl('redirect') || '/';
                 },
                 error:function(msg){
                     formDataMsg.show(msg);

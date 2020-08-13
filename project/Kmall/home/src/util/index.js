@@ -47,5 +47,11 @@ module.exports = {
         var template = Hogan.compile(tpl);
         var html = template.render(data);
         return html;
+    },
+    goLogin:function(){
+        window.location.href = '/user-login.html?redirect='+window.location.href;
+    },
+    goResult:function(type){
+        window.location.href = '/result.html?type='+type;
     }
 }

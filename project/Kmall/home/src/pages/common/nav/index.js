@@ -16,6 +16,7 @@ var page = {
             api.logout({
                 success:function(result){
                   window.location.reload();
+                  // window.location.href = '/';
                 },
                 error:function(msg){
                     _util.showErrMsg(msg);
