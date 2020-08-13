@@ -36,6 +36,7 @@ module.exports = {
 		'user-login':		'./src/pages/user-login/index.js',
 		'user-register':	'./src/pages/user-register/index.js',
 		'result':			'./src/pages/result/index.js',
+		'user-center':		'./src/pages/user-center/index.js',
 	},
 	devtool: 'inline-source-map',
 	//配置别名
@@ -105,6 +106,13 @@ module.exports = {
 			        }
 			    }               
 			},
+			//配置tpl
+			{
+			    test:/\.tpl$/,
+			    use: {
+			        	loader: 'html-loader',
+			        }
+			},
 	    ]
 	 },
 	plugins:[
@@ -114,6 +122,7 @@ module.exports = {
 	    new htmlWebpackPlugin(getHtmlConfig('user-login','登陆页')),
 	    new htmlWebpackPlugin(getHtmlConfig('user-register','注册页面')),
 	    new htmlWebpackPlugin(getHtmlConfig('result','提示页面')),
+	    new htmlWebpackPlugin(getHtmlConfig('user-center','个人中心')),
 	    //自动清理多余文件
 	    new CleanWebpackPlugin(),
 	    //单独打包css资源

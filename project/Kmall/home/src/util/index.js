@@ -1,4 +1,5 @@
 
+    import Hogan from 'hogan.js'
 
 module.exports = {
     validate:function(value,type){
@@ -29,5 +30,22 @@ module.exports = {
     },
     showErrmMsg:function(msg){
     	alert(msg)
+    },
+    getParamsFromUrl:function(keyword){
+        var query = window.location.search.substr(1);
+        //type=register
+        //type=register&name=tom
+        //name=tom&type=register
+        //name=tom&type=register&age=18
+        var reg = new RegExp('(^|&)'+keyword+'='+'([^&]*)($|&)');
+        var result = query.match(reg);
+        // console.log(result);
+        // decodeURIComponeent地址栏加密解码
+        return result ? decodeURIComponent(result[2]) : null
+    },
+    render:function(tpl,data){
+        var template = Hogan.compile(tpl);
+        var html = template.render(data);
+        return html;
     }
 }
