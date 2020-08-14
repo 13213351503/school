@@ -13,6 +13,7 @@
     "moment": "^2.27.0",
     "simditor": "^2.3.28",
     "style-loader": "^1.0.0",
+    "swiper": "^5.4.5",
     "url-loader": "^2.3.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"

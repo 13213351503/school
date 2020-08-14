@@ -14,6 +14,7 @@ import Home from 'pages/home/index.js'
 import User from 'pages/user/index.js'
 import Category from 'pages/category/index.js'
 import Product from 'pages/product/index.js'
+import Ad from 'pages/ad'
 import Login from 'pages/login/index.js'
 import Err from 'common/err/index.js'
 import apiObj from 'api/index.js'
@@ -49,6 +50,7 @@ class App extends Component{
 						<HomeRoute path='/user' component={User} />
 						<HomeRoute path='/category' component={Category} />
 						<HomeRoute path='/product' component={Product} />
+						<HomeRoute path='/ad' component={Ad} />
 						<LoginRoute path='/login' component={Login} />
 						<Route component={Err} />
 					</Switch>

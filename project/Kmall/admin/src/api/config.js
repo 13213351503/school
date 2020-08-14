@@ -2,6 +2,7 @@
 export const SERVER = 'http://127.0.0.1:3000';
 export const UPLOAD_IMAGES = SERVER + '/products/images';
 export const UPLOAD_DETAIL_IMAGES = SERVER + '/products/detailImages';
+export const UPLOAD_AD_IMAGE = SERVER + '/ads/image';
 export const API_CONFIG = {
 	login: 						['/sessions/users','post'],
 	logout: 					['/sessions/users','delete'],
@@ -25,4 +26,11 @@ export const API_CONFIG = {
 	updateProductStatus: 		['/products/status','put'],
 	getProductDetail: 			['/products/detail','get'],
 	updatedProducts: 			['/products','put'],
+	//广告api
+	getAdsList:                  	["/ads/list","get"],
+    getAdsDetail:                	["/ads/detail","get"],
+    addAds:                      	["/ads","post"],
+    updateAds:                  	["/ads","put"],
+    updateAdsOrder:              	["/ads/order","put"],
+    updateAdsIsShow:             	["/ads/isShow","put"],
 }
