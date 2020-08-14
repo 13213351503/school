@@ -19,7 +19,7 @@ import {
 } from 'api/config.js'
 
 import Layout from 'common/layout'
-import UploadImage from  'common/upload-image'
+import UploadImage from  'common/upload-images'
 
 
 class ProductSave extends Component {

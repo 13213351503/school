@@ -13,4 +13,7 @@ export const API_CONFIG = {
     getHomeCategories:          ['/categories/homeCategories','get'],
     getHomeAds:                 ['/ads/positionAds','get'],
     getHomeFloors:              ['/floors','get'],
+    //列表页
+    getProductList:              ['/products/list','get'],
+
 }

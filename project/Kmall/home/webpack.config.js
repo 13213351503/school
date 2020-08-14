@@ -138,7 +138,7 @@ module.exports = {
 	    port:3002,//服务运行的端口,
 	   	proxy:[{
 	   		//请求地址是以context内部值开头的路由全部代理到target提供的地址下面
-	   		context:['/sessions','/users','/categories','/ads','/floors'],
+	   		context:['/sessions','/users','/categories','/ads','/floors','/products'],
 	   		target:'http://127.0.0.1:3000'
 	   	}]
 	}
