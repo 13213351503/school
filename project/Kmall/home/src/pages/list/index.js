@@ -7,7 +7,8 @@ require('./index.css');
 
 var _util = require('util/index.js');
 var api = require('api/index.js');
-var tpl = require('./index.tpl')
+var tpl = require('./index.tpl');
+var pagination = require('util/pagination/index.js');
 
 
 
@@ -19,10 +20,23 @@ var page = {
     orderBy:_util.getParamsFromUrl('orderBy') || 'default',
   },
     init:function(){
+      this.paginationBox = $('.pagination-box')
       //1.加载列表页商品数据
       this.loadProductsList();
       //2.绑定事件
       this.bindEvent();
+      //3.初始化分页器
+      this.initPagination();
+    },
+    initPagination:function(){
+      var _this = this;
+      this.paginationBox.pagination();
+      this.paginationBox.on('page-change',function(ev,page){
+          // console.log(page);
+          _this.productsListParams.page = page;
+          _this.loadProductsList();
+      });
+
     },
     bindEvent:function(){
       var _this = this;
@@ -81,7 +95,12 @@ var page = {
               }else{
                 $('.product-list-box').html('<p class="empty-message">您查看的商品约会去了</p>')
               }
-              
+              //构建分页器结构
+              _this.paginationBox.pagination('render',{
+                current:products.current,
+                pageSize:products.pageSize,
+                total:products.total,
+              });
           }
       })
     }

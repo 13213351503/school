@@ -38,6 +38,7 @@ module.exports = {
 		'result':					'./src/pages/result/index.js',
 		'user-center':				'./src/pages/user-center/index.js',
 		'user-update-password':		'./src/pages/user-update-password/index.js',
+		'detail':					'./src/pages/detail/index.js',
 	},
 	devtool: 'inline-source-map',
 	//配置别名
@@ -125,6 +126,7 @@ module.exports = {
 	    new htmlWebpackPlugin(getHtmlConfig('result','提示页面')),
 	    new htmlWebpackPlugin(getHtmlConfig('user-center','个人中心')),
 	    new htmlWebpackPlugin(getHtmlConfig('user-update-password','修改密码')),
+	    new htmlWebpackPlugin(getHtmlConfig('detail','商品详情')),
 	    //自动清理多余文件
 	    new CleanWebpackPlugin(),
 	    //单独打包css资源

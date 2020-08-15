@@ -14,6 +14,8 @@ export const API_CONFIG = {
     getHomeAds:                 ['/ads/positionAds','get'],
     getHomeFloors:              ['/floors','get'],
     //列表页
-    getProductList:              ['/products/list','get'],
+    getProductList:             ['/products/list','get'],
+    //详情页
+    getProductDetail:           ['/products/detail','get'],
 
 }
