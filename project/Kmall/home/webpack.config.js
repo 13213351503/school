@@ -39,6 +39,7 @@ module.exports = {
 		'user-center':				'./src/pages/user-center/index.js',
 		'user-update-password':		'./src/pages/user-update-password/index.js',
 		'detail':					'./src/pages/detail/index.js',
+		'cart':						'./src/pages/cart/index.js',
 	},
 	devtool: 'inline-source-map',
 	//配置别名
@@ -127,6 +128,7 @@ module.exports = {
 	    new htmlWebpackPlugin(getHtmlConfig('user-center','个人中心')),
 	    new htmlWebpackPlugin(getHtmlConfig('user-update-password','修改密码')),
 	    new htmlWebpackPlugin(getHtmlConfig('detail','商品详情')),
+	    new htmlWebpackPlugin(getHtmlConfig('cart','购物车')),
 	    //自动清理多余文件
 	    new CleanWebpackPlugin(),
 	    //单独打包css资源
@@ -140,7 +142,15 @@ module.exports = {
 	    port:3002,//服务运行的端口,
 	   	proxy:[{
 	   		//请求地址是以context内部值开头的路由全部代理到target提供的地址下面
-	   		context:['/sessions','/users','/categories','/ads','/floors','/products'],
+	   		context:[
+	   			'/sessions',
+	   			'/users',
+	   			'/categories',
+	   			'/ads',
+	   			'/floors',
+	   			'/products',
+	   			'/carts',
+	   		],
 	   		target:'http://127.0.0.1:3000'
 	   	}]
 	}

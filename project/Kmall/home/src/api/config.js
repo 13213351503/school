@@ -17,5 +17,8 @@ export const API_CONFIG = {
     getProductList:             ['/products/list','get'],
     //详情页
     getProductDetail:           ['/products/detail','get'],
+    //购物车 
+    addCarts:                   ['/carts','post'],
+    getCartsCount:              ['/carts/count','get'],
 
 }

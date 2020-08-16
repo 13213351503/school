@@ -10,7 +10,21 @@ var page = {
 		this.loadUsername();
         //绑定事件
         this.bindEvent();
+        //加载购物车数量
+        this.loadCarts();
 	},
+    loadCarts:function(){
+        var $cartNum = $('.cart-num')
+        api.getCartsCount({
+                success:function(count){
+                    $cartNum.text(count || 0)
+
+                },
+                error:function(){
+                    $cartNum.text(0);
+                }
+            })
+    },
     bindEvent:function(){
         $('#logout').on('click',function(){
             api.logout({
