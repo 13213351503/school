@@ -70,3 +70,5 @@ var page = {
 $(function(){
 	page.init();
 })
+
+module.exports = page;

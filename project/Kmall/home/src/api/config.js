@@ -20,5 +20,10 @@ export const API_CONFIG = {
     //购物车 
     addCarts:                   ['/carts','post'],
     getCartsCount:              ['/carts/count','get'],
+    getCarts:                   ['/carts','get'],
+    updateCartsChoice:          ['/carts/choices','put'],
+    deleteCarts:                ['/carts','delete'],
+    updateCartsCount:           ['/carts/counts','put'],
+
 
 }

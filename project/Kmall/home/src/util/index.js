@@ -31,6 +31,9 @@ module.exports = {
     showErrmMsg:function(msg){
     	alert(msg)
     },
+    showConfirmMsg:function(msg){
+        return window.confirm(msg)
+    },
     getParamsFromUrl:function(keyword){
         var query = window.location.search.substr(1);
         //type=register

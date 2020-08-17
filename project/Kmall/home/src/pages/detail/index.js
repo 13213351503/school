@@ -56,7 +56,7 @@ var page = {
         var count = $('.count-input').val();
         api.addCarts({
             data:{
-                product:_this.productsDetailParams.id,
+                productId:_this.productsDetailParams.id,
                 count:count
             },
             success:function(result){
