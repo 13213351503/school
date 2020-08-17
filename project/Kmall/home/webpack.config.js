@@ -40,6 +40,7 @@ module.exports = {
 		'user-update-password':		'./src/pages/user-update-password/index.js',
 		'detail':					'./src/pages/detail/index.js',
 		'cart':						'./src/pages/cart/index.js',
+		'order-confirm':			'./src/pages/order-confirm/index.js',
 	},
 	devtool: 'inline-source-map',
 	//配置别名
@@ -129,6 +130,7 @@ module.exports = {
 	    new htmlWebpackPlugin(getHtmlConfig('user-update-password','修改密码')),
 	    new htmlWebpackPlugin(getHtmlConfig('detail','商品详情')),
 	    new htmlWebpackPlugin(getHtmlConfig('cart','购物车')),
+	    new htmlWebpackPlugin(getHtmlConfig('order-confirm','订单确认')),
 	    //自动清理多余文件
 	    new CleanWebpackPlugin(),
 	    //单独打包css资源
