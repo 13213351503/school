@@ -24,6 +24,8 @@ export const API_CONFIG = {
     updateCartsChoice:          ['/carts/choices','put'],
     deleteCarts:                ['/carts','delete'],
     updateCartsCount:           ['/carts/counts','put'],
-
+    //订单确认页面
+    getOrderList:               ['/orders/products','get'],
+    addShippings:               ['/shippings','post']
 
 }

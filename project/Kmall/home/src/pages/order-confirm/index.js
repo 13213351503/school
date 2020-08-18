@@ -6,6 +6,7 @@ require('pages/common/footer/index.js');
 require('./index.css');
 
 var _util = require('util/index.js');
+var _modal = require('./modal.js');
 var api = require('api/index.js');
 var shippingTpl = require('./shipping.tpl');
 var productTpl = require('./product.tpl');
@@ -30,11 +31,26 @@ var page = {
         this.shippingBox.html(html);
     },
     loadProductList:function(){
-        var html = _util.render(productTpl);
-        this.productBox.html(html);
+        var _this = this
+        api.getOrderList({
+          success:function(data){
+            // console.log(data)
+            if(data.cartList.length>0){
+              var html = _util.render(productTpl,data)
+              _this.productBox.html(html)
+            }else{
+              _this.productBox.html('<p class="empty-message">您还没有选择任何商品</p>')
+            }
+          },
+          error:function(){
+            _this.productBox.html('<p class="empty-message">获取商品列表失败,请稍后再试!</p>')
+          }
+        })
     },
     bindEvent:function(){
-
+      this.shippingBox.on('click','.shipping-add',function(){
+          _modal.show();
+      })
     }
    
 }
