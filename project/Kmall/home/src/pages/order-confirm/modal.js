@@ -23,8 +23,11 @@ var formDataMsg = {
 
 
 module.exports = {
-    show:function(){
-        this.modalBox = $('.modal-box')
+    show:function(shippings){
+        //缓存编辑地址回传的数据
+        this.shippings = shippings;
+        this.modalBox = $('.modal-box');
+        this.shippingBox = $('.shipping-box');
         //加载地址弹出层
         this.loadModal();
         //绑定事件
@@ -40,6 +43,12 @@ module.exports = {
         var provincesSelectOptions = this.getSelectOptions(provinces);
         var provincesSelect = this.modalBox.find('.province-select');
         provincesSelect.html(provincesSelectOptions);
+    
+        //处理编辑地址
+        if(this.shippings){
+            provincesSelect.val(this.shippings.province);
+            this.loadCities(this.shippings.province)
+        }
     },
     loadCities:function(province){
         var cities = _city.getCities(province);
@@ -47,6 +56,11 @@ module.exports = {
         var citiesSelectOptions = this.getSelectOptions(cities);
         var citiesSelect = this.modalBox.find('.city-select');
         citiesSelect.html(citiesSelectOptions);
+    
+        //处理编辑地址
+        if(this.shippings){
+            citiesSelect.val(this.shippings.city);
+        }
     },
     getSelectOptions:function(arr){
         var html = '<option value="">请选择</option>';
@@ -56,7 +70,7 @@ module.exports = {
         return html
     },
     loadModal:function(){
-        var html = _util.render(modalTpl);
+        var html = _util.render(modalTpl,this.shippings);
         this.modalBox.html(html);
     },
     bindEvent:function(){
@@ -89,6 +103,7 @@ module.exports = {
     },
     //表单提交验证
     submit:function(){
+        var _this = this;
         //1.获取数据
         var formData = {
             name:$.trim($('[name="name"]').val()),
@@ -106,10 +121,25 @@ module.exports = {
             //隐藏错误提示
             formDataMsg.hide();
             //发送ajax请求
-            api.addShippings({
+            var request = api.addShippings;
+            var action = '新增'
+            //处理编辑地址
+            if(_this.shippings){
+                request = api.upadteShippingsDetail;
+                formData.id = _this.shippings._id;
+                action = '编辑'
+            }    
+
+            request({
                 data:formData,
                 success:function(data){
-                    console.log(data);
+                    // console.log(data);
+                    //1.关闭弹出层
+                    _this.hideModal();
+                    //2.重新渲染地址列表
+                    _this.shippingBox.trigger('get-shippings',[data])
+                    //3.成功提示信息
+                    _util.showSuccessMsg(action+'地址成功');
                 },
                 error:function(msg){
                     formDataMsg.show('新增地址失败,请稍后再试');
