@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+</head>
+<body>
+	<div id="box">
+		<p id="box">{{message}}</p>
+		<p id="box">{{message}}</p>
+		<input v-model="message" type="text">
+	</div>
+</body>
+<script src="./vue/vue.js"></script>
+<script>
+	var vm = new Vue({
+		el:'#box',
+		data:{
+			message:'你今天吃了吗?',
+			naem:'haden',
+			vh:'<h1>你饿了吗</h1>'
+		},
+	})
+	
+	// v-model 	在表单控件或者组件上创建双向绑定
+</script>
+</html>

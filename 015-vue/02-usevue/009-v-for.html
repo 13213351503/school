@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+</head>
+<body>
+	<table id="tb">
+		<tr>
+			<td>姓名:</td>
+			<td>年龄:</td>
+			<td>成绩:</td>
+			<td>是否及格:</td>
+		</tr>
+		<tr v-for="student in students">
+			<td>{{student.name}}</td>
+			<td>{{student.age}}</td>
+			<td>{{student.score}}</td>
+			<td v-if="student.score > 80">你真牛掰</td>
+			<td v-else>你要锻炼了</td>
+		</tr>
+	</table>
+</body>
+<script src="./vue/vue.js"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#tb',
+		data:{
+			students:[
+				{name:'James',age:36,score:99},
+				{name:'Wade',age:38,score:30},
+				{name:'Kobe',age:20,score:98},
+				{name:'Haden',age:18,score:88},
+			]
+		}
+	})
+</script>
+</html>

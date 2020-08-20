@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+</head>
+<body>
+	<div id="box">
+		{{message}} {{naem}}
+		<p ref="aaa"></p>
+	</div>
+</body>
+<script src="./vue/vue.js"></script>
+<script>
+	var vm = new Vue({
+		el:'#box',
+		data:{
+			message:'你今天吃了吗?',
+			naem:'haden'
+		},
+		//初始化之前
+		beforeCreate:function(){
+			console.log('beforeCreate::')
+			console.log('beforeCreate::',this.$data)	//undefined
+			console.log('beforeCreate::',this.$el)		//undefined
+			console.log('beforeCreate::',this.$refs)	//{}
+		},
+		//初始化之后
+		created:function(){
+			console.log('created::')
+			console.log('created::',this.$data)			//{data}
+			console.log('created::',this.$el)			//undefined
+			console.log('created::',this.$refs)			//{}
+		},
+		//挂载前
+		beforeMount:function(){
+			console.log('beforeMount::')
+			console.log('beforeMount::',this.$data)		//{data}
+			console.log('beforeMount::',this.$el)		//obj
+			console.log('beforeMount::',this.$refs)		//{}
+		},
+		//挂载后
+		mounted:function(){
+			console.log('mounted::')
+			console.log('mounted::',this.$data)			//{data}
+			console.log('mounted::',this.$el)			//obj
+			console.log('mounted::',this.$refs)			//obj
+		},
+		//更新前
+		beforeUpdate:function(){
+			console.log('beforeUpdate::')
+			console.log('beforeUpdate::',this.$data)
+			console.log('beforeUpdate::',this.$el)
+			console.log('beforeUpdate::',this.$refs)
+		},
+		//更新后
+		updated:function(){
+			console.log('updated::')
+			console.log('updated::',this.$data)
+			console.log('updated::',this.$el)
+			console.log('updated::',this.$refs)
+		},
+		//卸载前
+		beforeDestroy:function(){
+			console.log('beforeDestroy::')
+			console.log('beforeDestroy::',this.$data)
+			console.log('beforeDestroy::',this.$el)
+			console.log('beforeDestroy::',this.$refs)
+		},
+		//卸载后
+		destroyed:function(){
+			console.log('destroyed::')
+			console.log('destroyed::',this.$data)
+			console.log('destroyed::',this.$el)
+			console.log('destroyed::',this.$refs)
+		},
+		
+	})
+	vm.$destroy()
+	
+</script>
+</html>

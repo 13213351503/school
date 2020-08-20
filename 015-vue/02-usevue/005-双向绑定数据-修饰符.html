@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+</head>
+<body>
+	<div id="box">
+		<p id="box">{{message}}</p>
+		<input v-model="message" type="text">
+		<!-- 在“change”时而非“input”时更新,当失去焦点的时候可以更新 -->
+		<input v-model.lazy="message" type="text">
+		<!-- 将用户的输入值转为数值类型,如果最开始输入的是字母,后面无法进行数值转换 -->
+		<input v-model.number="message" type="text">
+		<!-- 自动过滤用户输入的首尾空白字符 -->
+		<input v-model.trim="message" type="text">
+	</div>
+</body>
+<script src="./vue/vue.js"></script>
+<script>
+	var vm = new Vue({
+		el:'#box',
+		data:{
+			message:'你今天吃了吗?',
+			naem:'haden',
+			vh:'<h1>你饿了吗</h1>'
+		},
+	})
+	
+	
+</script>
+</html>

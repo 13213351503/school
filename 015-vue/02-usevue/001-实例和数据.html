@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+</head>
+<body>
+	<div id="box">
+		{{message}} {{naem}}
+		<p ref="aaa"></p>
+	</div>
+</body>
+<script src="./vue/vue.js"></script>
+<script>
+	var vm = new Vue({
+		el:'#box',
+		data:{
+			message:'你今天吃了吗?',
+			naem:'haden'
+		},
+	})
+	console.log(vm.$data)	//Vue 实例观察的数据对象。Vue 实例代理了对其 data 对象属性的访问。
+	console.log(vm.$el)		//Vue 实例使用的根 DOM 元素。
+	console.log(vm.$refs)	//一个对象，持有注册过 ref 特性 的所有 DOM 元素和组件实例。
+	vm.$watch('message',function(){		//观察 Vue 实例变化的一个表达式或计算属性函数
+		console.log('message')
+	})
+	vm.$destroy()		//完全销毁一个实例。清理它与其它实例的连接，解绑它的全部指令及事件监听器。
+</script>
+</html>

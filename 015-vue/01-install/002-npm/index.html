@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        {{messgae}}
+        <p ref="aaa"></p>
+    </div>
+</body>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#box',
+        data:{
+            messgae:'hello 哈哈'
+        }
+    })
+    console.log(vm.$data);
+    console.log(vm.$el);
+</script>
+</html>
