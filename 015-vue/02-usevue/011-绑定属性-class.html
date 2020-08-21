@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		p{
+			margin-top: 10px;
+		}
+		.active{
+			background-color: green;
+		}
+		.error{
+			font-size: 26px;	
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="tb">
+		<p :class="{active:true,error:true}">今天休息</p>
+		<p :class="{active:isActive,error:isError}">今天休息</p>
+		<p :class="['active','error']">今天休息</p>
+	</div>
+	
+</body>
+<script src="./vue/vue.js"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#tb',
+		data:{
+			isActive:true,
+			isError:true,
+		}
+	})
+</script>
+</html>

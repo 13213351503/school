@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		
+	</style>
+</head>
+<body>
+	<div id="tb">
+		<button-counter></button-counter>
+		<button-counter></button-counter>
+	</div>
+	<!-- <template> 需要定义在 Vue 所属的 DOM 元素外。
+	<script> 元素中，并为其带上 text/x-template 的类型，并且添加一个 id,在组件注册时通过id选择器引用 -->
+	<script type="text/x-template" id="button-counter">
+		<button v-on:click="count++">你点我 {{ count }} 啊.</button>
+	</script>
+</body>
+<script src="./vue/vue.js"></script>
+<script type="text/javascript">
+	//定义一个名字为button-counter的组件
+	//全局注册的行为必须在根 Vue 实例 (通过 new Vue) 创建之前发生
+	// Vue.component 来创建组件
+	Vue.component('button-counter',{
+		// data必须是一个函数
+		data:function(){
+			return {
+				count:0
+			}
+		},
+		template: '#button-counter'
+	})
+	
+	
+	var vm = new Vue({
+		el:'#tb',
+		data:{
+			
+		},
+		
+	})
+	
+</script>
+</html>

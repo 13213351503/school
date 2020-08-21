@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		
+	</style>
+</head>
+<body>
+	<div id="tb">
+		<input type="text" v-model="fullName">
+		<p>{{full()}}</p>
+		<!-- fullName属于属性,直接使用 -->
+		<p>{{fullName}}</p>
+		
+	</div>
+	
+</body>
+<script src="./vue/vue.js"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#tb',
+		data:{
+			firstName:'y',
+			lastName:'k'
+		},
+		methods:{
+			full:function(){
+				return this.firstName + ' ' + this.lastName
+			}
+		},
+		computed:{
+			fullName:{
+				//获取值
+				get:function(){
+					return this.firstName+ ' ' +this.lastName
+				},
+				//修改值
+				set:function(newSet){
+					var names = newSet.split(' ');
+					// console.log(names)
+					this.firstName = names[0];
+					this.lastName = names[names.length - 1] ;
+				},
+			}
+		},
+		watch:{
+			fullName:function(){
+				console.log('fullName changed')
+			}
+		},
+	})
+	vm.$watch('fullName',function(){
+		console.log('$watch fullName changed')
+	})
+</script>
+</html>

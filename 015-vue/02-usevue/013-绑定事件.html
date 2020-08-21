@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	
+</head>
+<body>
+	<div id="tb">
+		<button v-on:click='count++'>点击了{{count}}次</button>
+		<button @click='count++'>点击了{{count}}次</button>
+		<button @click='link'>点击了{{count}}次</button>
+		<button @click="cart('james')">点击了{{count}}次</button>
+		
+	</div>
+	
+</body>
+<script src="./vue/vue.js"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#tb',
+		data:{
+			count:0
+		},
+		methods:{
+			link:function(){
+				this.count++
+			},
+			cart:function(name){
+				console.log('this is'+ name)
+			}
+		}
+	})
+</script>
+</html>
