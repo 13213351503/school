@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		
+	</style>
+</head>
+<body>
+	<div id="tb">
+		<!-- 给每个组件添加自定义事件total-count -->
+		<button-counter @total-counts='totalCounts()'></button-counter>
+		<button-counter @total-counts='totalCounts()'></button-counter>
+		<button-counter @total-counts='totalCounts()'></button-counter>
+		<!-- 在自定义组件中绑定count在组件外拿不到，需要在vm上定义一个新的counts -->
+		<p>你总共吃了 {{ counts }} 顿</p>
+	</div>
+	<!-- <template> 需要定义在 Vue 所属的 DOM 元素外。 -->
+	<template id="button-counter">
+		<button v-on:click="addCount()">你点我 {{ count }} 啊.</button>
+	</template>
+</body>
+<script src="./vue/vue.js"></script>
+<script type="text/javascript">
+	// Vue.component 来创建组件
+	Vue.component('button-counter',{
+		// data必须是一个函数
+		data:function(){
+			return {
+				count:0
+			}
+		},
+		methods:{
+			addCount:function(){
+				this.count++
+				this.$emit('total-counts')	//每次点击的时候触发自定义事件，需要通过$emit触发
+			}
+		},
+		template: '#button-counter'
+	})
+	var vm = new Vue({
+		el:'#tb',
+		data:{
+			counts:0
+		},
+		methods:{
+			totalCounts:function(){
+				this.counts++
+			}
+		}
+		
+	})
+	
+</script>
+</html>

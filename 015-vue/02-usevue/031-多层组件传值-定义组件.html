@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		
+	</style>
+</head>
+<body>
+	<div id="tb">
+		<todo-item
+			v-for='(task,index) in items'
+			:task='task.task'
+			:dateline='task.dateline'
+			:key='task.index'
+		>
+		</todo-item>
+	</div>
+	<!-- <template> 需要定义在 Vue 所属的 DOM 元素外。 -->
+    <template id="todo-item">
+		<div>
+			<task :task='task'></task>
+			<dateline :dateline='dateline'></dateline>
+		</div>
+    </template>
+	<template id="task">
+		<span>任务: {{ task }}</span>
+	</template>
+	<template id="dateline">
+		<span>几顿: {{ dateline }}</span>
+	</template>
+</body>
+<script src="./vue/vue.js"></script>
+<script type="text/javascript">
+    //1.定义组件
+	var Task = Vue.extend({
+		data:function(){
+			return {
+	
+			}
+		},
+	    template: '#task',
+		props:{
+			task:String,
+		}
+	})
+	var DateLine = Vue.extend({
+		data:function(){
+			return {
+	
+			}
+		},
+	    template: '#dateline',
+		props:{
+			dateline:String,
+		},
+		
+	})
+	var TodoItem = Vue.extend({
+		data:function(){
+			return {
+
+			}
+		},
+        template: '#todo-item',
+		props:{
+			task:String,
+			dateline:String,
+		},
+		components:{
+			'task':Task,
+			'dateline':DateLine,
+		}
+	})
+	
+	//2.生成组件
+	Vue.component('todo-item',TodoItem)
+	// Vue.component('task',Task)
+	// Vue.component('dateline',DateLine)
+	
+	
+	var vm = new Vue({
+		el:'#tb',
+		data:{
+			items:[
+				{
+					task:'火锅',
+					dateline:'十顿',
+				},
+				{
+					task:'烧烤',
+					dateline:'二十顿',
+				}
+			]
+		},
+	})
+	
+</script>
+</html>

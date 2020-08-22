@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		
+	</style>
+</head>
+<body>
+	<div id="tb">
+		<button @click='currentTabComponent="home"'>home</button>
+		<button @click='currentTabComponent="active"'>active</button>
+		<button @click='currentTabComponent="list"'>list</button>
+		
+		<component :is="currentTabComponent"></component>
+	</div>
+	<!-- <template> 需要定义在 Vue 所属的 DOM 元素外。 -->
+    <template id="home">
+		<span>home</span>
+    </template>
+	<template id="active">
+		<span>active</span>
+	</template>
+	<template id="list">
+		<span>list</span>
+	</template>
+</body>
+<script src="./vue/vue.js"></script>
+<script type="text/javascript">
+    //1.定义组件
+	var Home = Vue.extend({
+		data:function(){
+			return {
+	
+			}
+		},
+	    template: '#home',
+		
+	})
+	var Active = Vue.extend({
+		data:function(){
+			return {
+	
+			}
+		},
+	    template: '#active',
+		
+	})
+	var List = Vue.extend({
+		data:function(){
+			return {
+
+			}
+		},
+        template: '#list',
+		
+	})
+	
+	//2.生成组件
+	Vue.component('home',Home)
+	Vue.component('active',Active)
+	Vue.component('list',List)
+	
+	
+	var vm = new Vue({
+		el:'#tb',
+		data:{
+			currentTabComponent:'home',
+		},
+	})
+	
+</script>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		
+	</style>
+</head>
+<body>
+	<div id="tb">
+		<todo-item 
+			v-for='(task,index) in tasks'
+			:task='task.name'
+			:key='task.id'
+			:index='task.id'
+		>
+		</todo-item>
+	</div>
+	<!-- <template> 需要定义在 Vue 所属的 DOM 元素外。 -->
+    <script type="text/x-template" id="todo-item">
+        <div>{{index}}   {{task}}</div>
+	</script>
+</body>
+<script src="./vue/vue.js"></script>
+<script type="text/javascript">
+    //1.定义组件
+	var TodoItem = Vue.extend({
+		data:function(){
+			return {
+
+			}
+		},
+        template: '#todo-item',
+        props:{
+            task:String,
+			index:Number,
+        }
+	})
+	//2.生成组件
+	Vue.component('todo-item',TodoItem)
+	
+	
+	var vm = new Vue({
+		el:'#tb',
+		data:{
+			tasks:[
+				{
+					id:0,
+					name:'吃饭',
+				},
+				{
+					id:1,
+					name:'睡觉',
+				},
+				{
+					id:2,
+					name:'豆豆',
+				},
+			]
+		},
+		
+	})
+	
+</script>
+</html>

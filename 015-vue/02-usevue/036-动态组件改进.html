@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		button{
+			width: 80px;
+			height: 30px;
+			margin-left: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="tb">
+		<button 
+			v-for="(item,index) in items"
+			@click="cruuentTable = item"
+		>
+			{{item}}
+		</button>
+		<!-- <button @click='currentTabComponent="Tab-home"'>home</button>
+		<button @click='currentTabComponent="Tab-active"'>Tab-active</button>
+		<button @click='currentTabComponent="Tab-list"'>Tab-list</button> -->
+		
+		<component :is="currentTabComponent"></component>
+	</div>
+	<!-- <template> 需要定义在 Vue 所属的 DOM 元素外。 -->
+    <template id="Tab-home">
+		<span>Tab-home</span>
+    </template>
+	<template id="Tab-active">
+		<span>Tab-active</span>
+	</template>
+	<template id="Tab-list">
+		<span>Tab-list</span>
+	</template>
+</body>
+<script src="./vue/vue.js"></script>
+<script type="text/javascript">
+    //1.定义组件
+	var Home = Vue.extend({
+		data:function(){
+			return {
+	
+			}
+		},
+	    template: '#Tab-home',
+		
+	})
+	var Active = Vue.extend({
+		data:function(){
+			return {
+	
+			}
+		},
+	    template: '#Tab-active',
+		
+	})
+	var List = Vue.extend({
+		data:function(){
+			return {
+
+			}
+		},
+        template: '#Tab-list',
+		
+	})
+	
+	//2.生成组件
+	Vue.component('Tab-home',Home)
+	Vue.component('Tab-active',Active)
+	Vue.component('Tab-list',List)
+	
+	
+	var vm = new Vue({
+		el:'#tb',
+		data:{
+			cruuentTable:'Tab-home',
+			items:['home','active','list']
+		},
+		computed:{
+			currentTabComponent:{
+				get:function(){
+					return 'Tab-' + this.cruuentTable
+				},
+			}
+		}
+	})
+	
+</script>
+</html>
