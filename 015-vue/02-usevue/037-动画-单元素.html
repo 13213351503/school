@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		button{
+			width: 80px;
+			height: 30px;
+			margin-left: 10px;
+		}
+		.slide-fade-enter-active {
+		  transition: all .3s ease;
+		}
+		.slide-fade-leave-active {
+		  transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+		}
+		.slide-fade-enter, .slide-fade-leave-to
+		/* .slide-fade-leave-active for below version 2.1.8 */ {
+		  transform: translateX(10px);
+		  opacity: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="tb">
+		<button type="button" @click="show = !show">切换</button>
+		<transition name="slide-fade">
+			<p v-if="show">晚上吃点好的吧?</p>
+		</transition>
+	</div>
+
+</body>
+<script src="./vue/vue.js"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#tb',
+		data:{
+			show:true,
+		},
+		
+	})
+	
+</script>
+</html>
