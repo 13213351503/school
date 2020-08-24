@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		button{
+			width: 80px;
+			height: 30px;
+			margin-left: 10px;
+		}
+		#box{
+			width: 500px;
+			height: 500px;
+			margin: 100px auto;
+		}
+	</style>
+	<link
+	    rel="stylesheet"
+	    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+	/>
+</head>
+<body>
+	<div id="tb">
+		<div id="box">
+			<button type="button" @click="show = !show">切换</button>
+			<transition 
+				enter-active-class="animate__animated animate__zoomInRight"
+				leave-active-class="animate__animated animate__hinge"
+				appear
+			>
+				<h1 v-if="show">晚上吃点好的吧?</h1>
+			</transition>
+		</div>
+	</div>
+
+</body>
+<script src="./vue/vue.js"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#tb',
+		data:{
+			show:true,
+		},
+		
+	})
+	
+</script>
+</html>

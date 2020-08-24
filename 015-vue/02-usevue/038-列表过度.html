@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#todoList{
+			width: 500px;
+			height: 600px;
+			margin: 100px auto;
+		}
+		input{
+			width: 80%;
+			height: 30px;
+			outline: none;	
+			box-sizing: border-box;	
+		}
+		button{
+			width: 19%;
+			height: 30px;
+		}
+		li{
+			height: 30px;
+			line-height: 30px;
+			border: 1px dashed #000000;
+			margin-top: 10px;
+			list-style: none;
+		}
+		.list-item {
+		  display: inline-block;
+		  margin-right: 10px;
+		}
+		.list-enter-active, .list-leave-active {
+		  transition: all 1s;
+		}
+		.list-enter, .list-leave-to
+		/* .list-leave-active for below version 2.1.8 */ {
+		  opacity: 0;
+		  transform: translateY(30px);
+		}
+	</style>
+</head>
+<body>
+	<div id="tb">
+		<div id="todoList">
+			<input type="text" v-model="task"><button type="button"
+				@click="handleAdd()"
+			>添加</button>
+			<transition-group name="list" tag="ul" appear>
+				<li
+					v-for="(item,index) in tasks"
+					:key="''+index"
+					@click='handleDel(index)'
+				>
+					{{item}}
+				</li>
+			</transition-group>
+		</div>
+	</div>
+
+</body>
+<script src="./vue/vue.js"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#tb',
+		data:{
+			task:'',
+			tasks:['吃饭','睡觉','豆豆'],
+		},
+		methods:{
+			handleAdd:function(){
+				this.tasks.push(this.task)
+				this.task = ''
+			},
+			handleDel:function(index){
+				this.tasks.splice(index,1)
+			}
+		}
+		
+	})
+	
+</script>
+</html>

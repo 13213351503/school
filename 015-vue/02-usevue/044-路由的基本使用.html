@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		
+	</style>
+</head>
+<body>
+	<div id="tb">
+		<div>
+			<!-- 使用 router-link 组件来导航. -->
+			<!-- 通过传入 `to` 属性指定链接. -->
+			<!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+			<router-link to="/home">Home</router-link>
+			<router-link to="/article">Article</router-link>
+			<router-link to="/list">List</router-link>
+		</div>
+		<!-- 路由出口 -->
+	    <!-- 路由匹配到的组件将渲染在这里 -->
+	    <router-view></router-view>
+	</div>
+	<!-- <template> 需要定义在 Vue 所属的 DOM 元素外。 -->
+    <template id="home">
+		<span>home</span>
+    </template>
+	<template id="article">
+		<span>active</span>
+	</template>
+	<template id="list">
+		<span>list</span>
+	</template>
+</body>
+<script src="./vue/vue.js"></script>
+<script src="./vue/vue-router.js"></script>
+<script type="text/javascript">
+    // 1. 定义 (路由) 组件。
+	var Home = Vue.extend({
+		data:function(){
+			return {
+	
+			}
+		},
+	    template: '#home',
+		
+	})
+	var Article = Vue.extend({
+		data:function(){
+			return {
+	
+			}
+		},
+	    template: '#article',
+		
+	})
+	var List = Vue.extend({
+		data:function(){
+			return {
+
+			}
+		},
+        template: '#list',
+		
+	})
+	// 2. 定义路由
+	// 每个路由应该映射一个组件。 其中"component" 可以是
+	// 通过 Vue.extend() 创建的组件构造器，
+	// 或者，只是一个组件配置对象。
+	const routes = [
+	  { path: '/home', component: Home },
+	  { path: '/article', component: Article },
+	  { path: '/list', component: List },
+	]
+	// 3. 创建 router 实例，然后传 `routes` 配置
+	const router = new VueRouter({
+	  routes // (缩写) 相当于 routes: routes
+	})
+	
+	
+	var vm = new Vue({
+		el:'#tb',
+		router,
+		data:{
+			
+		},
+	})
+	
+</script>
+</html>
