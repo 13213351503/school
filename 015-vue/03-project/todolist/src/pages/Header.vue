@@ -21,6 +21,10 @@
 			handleAdd:function(){
 				//1.验证输入框
 				var task = this.task.trim()	
+				if(!task){
+					window.confirm('请输入任务!!')
+					return
+				}
 				//2.生成任务对象
 				var todo = {
 					task,

@@ -1,8 +1,8 @@
 <template>
 	<div id="App">
 		<Header :addTodo='addTodo'/>
-		<List :tasks='tasks'/>
-		<Footer />
+		<List :tasks='tasks' :delTodo='delTodo'/>
+		<Footer :tasks='tasks' :selectCheck='selectCheck' :selectDelCheck='selectDelCheck'/>
 	</div>
   
 </template>
@@ -30,6 +30,19 @@
 		methods:{
 			addTodo:function(todo){
 				this.tasks.unshift(todo)	//将新增添加到第一位
+			},
+			delTodo:function(index){
+				this.tasks.splice(index,1)
+			},
+			selectCheck:function(value){	
+				this.tasks.forEach((item)=>{
+					item.check = value
+				})
+			},
+			selectDelCheck:function(){
+				this.tasks = this.tasks.filter((item)=>{
+					item.check != true
+				})
 			}
 		},
 		components: {

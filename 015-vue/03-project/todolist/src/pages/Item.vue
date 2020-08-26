@@ -7,7 +7,7 @@
 		>
 			<input type="checkbox" v-model="todo.check">
 			<span>{{todo.task}}</span>
-			<button v-if="isShow">删除</button>
+			<button v-if="isShow" @click='handleDel()'>删除</button>
 		</li>
 	</ul>
 	
@@ -27,9 +27,17 @@
 				this.bgColor = show ? '#bdccff' : '#fff'
 				this.isShow = show
 			},
+			handleDel:function(index){
+				if(window.confirm('您确定要删除该条任务吗?')){
+					this.delTodo(index)
+				}
+				// console.log('aaa')
+			}
 		},
 		props:{
 			todo:Object,
+			index:Number,
+			delTodo:Function
 		}
 	}
 </script>

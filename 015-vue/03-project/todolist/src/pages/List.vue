@@ -5,6 +5,7 @@
 			:key="''+index"
 			:todo='todo'
 			:index='index'
+			:delTodo='delTodo'
 		/>
 	</div>
 </template>
@@ -18,6 +19,7 @@
 		},
 		props:{
 			tasks:Array,
+			delTodo:Function,
 		}
 	}
 </script>
