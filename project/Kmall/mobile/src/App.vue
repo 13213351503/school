@@ -1,13 +1,14 @@
 <template>
 	<div id="App">
-		<Home />
+		<!-- 路由出口 -->
+		<router-view></router-view>
+		<Tabbar />
 	</div>
   
 </template>
 
 <script>
-	import Home from 'pages/home/index.vue'
-	
+	import Tabbar from './components/tabbar/index.vue'
 	export default {
 		name: 'App',
 		data(){
@@ -18,16 +19,15 @@
 		methods:{
 			
 		},
+		//注册组件
 		components: {
-			Home,
+			Tabbar
 		}
 	}
 </script>
 
 <style scoped>
 	#App{
-		width: 500px;
-		height: 500px;
-		margin: 100px auto;
+		
 	}
 </style>
