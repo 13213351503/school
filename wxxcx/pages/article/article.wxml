@@ -13,38 +13,25 @@
         </swiper-item>
     </swiper>
 
-
+    
     <view class='article-wrap'>
-      <view class='article-item'>
-        <view class='article-head'>
-          <image class='article-head-avatar' src='../image/avatar/u=1283079160,971140895&fm=26&gp=0.jpg'></image>
-          <text class='article-head-date'>2019-05-06</text>
+      <block wx:for="{{articles}}" wx:key="key">
+        <view class='article-item'>
+          <view class='article-head'>
+            <image class='article-head-avatar' src='{{item.avatar}}'></image>
+            <text class='article-head-date'>{{item.author}} 发表于{{item.time}}</text>
+          </view>
+          <text class='article-title'>{{item.title}}</text>
+          <image class='article-img' src='{{item.mainImage}}'></image>
+          <text class='article-desc'>{{item.desc}}</text>
+          <view class='article-footer'>
+            <image class='article-footer-icon' src='../image/icon/i1.jpg'></image>
+            <text class='article-footer-text'>{{item.star}}</text>
+            <image class='article-footer-icon' src='../image/icon/i2.jpg'></image>
+            <text class='article-footer-text'>{{item.view}}</text> 
+          </view>
         </view>
-        <text class='article-title'>我是文章标题</text>
-        <image class='article-img' src='../image/article/u=1412718983,1138680485&fm=26&gp=0.jpg'></image>
-        <text class='article-desc'>我是描述</text>
-        <view class='article-footer'>
-          <image class='article-footer-icon' src='../image/icon/i1.jpg'></image>
-          <text class='article-footer-text'>20</text>
-          <image class='article-footer-icon' src='../image/icon/i2.jpg'></image>
-          <text class='article-footer-text'>33</text> 
-        </view>
-      </view>
-      <view class='article-item'>
-        <view class='article-head'>
-          <image class='article-head-avatar' src='../image/avatar/111.jpg'></image>
-          <text class='article-head-date'>2019-05-06</text>
-        </view>
-        <text class='article-title'>我是文章标题</text>
-        <image class='article-img' src='../image/article/u=3604995668,4286802266&fm=26&gp=0.jpg'></image>
-        <text class='article-desc'>我是描述</text>
-        <view class='article-footer'>
-          <image class='article-footer-icon' src='../image/icon/i3.jpg'></image>
-          <text class='article-footer-text'>20</text>
-          <image class='article-footer-icon' src='../image/icon/i4.jpg'></image>
-          <text class='article-footer-text'>33</text>        
-        </view>
-      </view>
+      </block>
     </view>
 </view>
 
