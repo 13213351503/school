@@ -1,38 +1,23 @@
 // pages/article/article.js
+var {articles} = require('../../db/index.js')
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        articles:[
-            {
-                author:'K',
-                avatar:'/pages/image/avatar/111.jpg',
-                time:'2020-08-30',
-                title:'火锅',
-                mainImage:'/pages/image/article/u=1412718983,1138680485&fm=26&gp=0.jpg',
-                desc:'毛肚,牛肉',
-                star:'200',
-                view:'999',
-            },
-            {
-                author:'y',
-                avatar:'/pages/image/avatar/u=1283079160,971140895&fm=26&gp=0.jpg',
-                time:'2020-08-06',
-                title:'烧烤',
-                mainImage:'/pages/image/article/u=3604995668,4286802266&fm=26&gp=0.jpg',
-                desc:'五花肉',
-                star:'300',
-                view:'899',
-            }
-        ]
+        articles:[],
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        //页面加载完毕发送请求,获取数据
+        //setData 函数用于将数据从逻辑层发送到视图层（异步），同时改变对应的 this.data 的值（同步）。
+        this.setData({articles:articles},function(){
+
+        })
 
     },
 
@@ -40,7 +25,7 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
+        
     },
 
     /**
@@ -83,5 +68,12 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+    articleDetailTap:function(ev){
+        var detailId = ev.currentTarget.dataset.detail
+        // console.log(detailId)
+        wx.navigateTo({
+          url: '/pages/article/article-detail/article-detail?detailId='+ detailId,
+        })
     }
 })

@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/article/article",
+    "pages/article/article-detail/article-detail",
     "pages/index/index",
     "pages/logs/logs"
   ],
@@ -11,5 +12,6 @@
     "navigationBarTextStyle":"black"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "requiredBackgroundModes": ["audio", "location"]
 }
