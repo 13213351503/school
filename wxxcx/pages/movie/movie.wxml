@@ -1,0 +1,8 @@
+<!--pages/movie/movie.wxml-->
+<import src="./movie-list-tempalte/movie-list-tempalte.wxml"/>
+<view class="movie-list">
+  <template is="movieList" data="{{movies:inTheaters,tag:'正在热映'}}"/>
+  <template is="movieList" data="{{movies:comingSoon,tag:'即将上映'}}"/>
+  <template is="movieList" data="{{movies:top250,tag:'豆瓣Top250'}}"/>
+  
+</view>

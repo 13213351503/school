@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/movie/movie",
     "pages/article/article",
     "pages/article/article-detail/article-detail",
     "pages/index/index",
@@ -10,6 +11,29 @@
     "navigationBarBackgroundColor": "#8fbe0b",
     "navigationBarTitleText": "。",
     "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath":"images/icon/collection-none.png",
+        "selectedIconPath":"images/icon/collection.png"
+      }, 
+      {
+        "pagePath": "pages/article/article",
+        "text": "文章",
+        "iconPath":"images/icon/reading-none.png",
+        "selectedIconPath":"images/icon/reading.png"
+      },
+      {
+        "pagePath": "pages/movie/movie",
+        "text": "电影",
+        "iconPath":"images/icon/movie-none.png",
+        "selectedIconPath":"images/icon/movie.png"
+      }
+    ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",

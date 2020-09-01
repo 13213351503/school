@@ -1,0 +1,6 @@
+/* pages/movie/movie.wxss */
+@import './movie-list-tempalte/movie-list-tempalte.wxss';
+  
+ 
+  
+ 

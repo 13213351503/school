@@ -1,0 +1,12 @@
+
+<template name='movieStar' >
+    <view class='star-wrap'>
+        <image 
+            src="/images/icon/star.png">
+        </image>
+        <image 
+            src="/images/icon/star.png">
+        </image>
+        <text class='score'>{{average}}</text>
+    </view>
+</template>

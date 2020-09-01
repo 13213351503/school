@@ -45,8 +45,8 @@ Page({
   },
   tapJump:function(){
     // console.log('tapJump')
-    //跳转页面
-    wx.navigateTo({
+    //跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面
+    wx.switchTab({
       url: '/pages/article/article',
     })
   }
