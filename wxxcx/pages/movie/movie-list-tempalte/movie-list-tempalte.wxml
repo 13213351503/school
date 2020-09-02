@@ -2,10 +2,11 @@
 <template name='movieList'>
     <view class='movie-list-wrap'>
         <view class='head'>
-        <text class='tag'>正在热映</text>
+        <text class='tag'>{{tag}}</text>
         <text 
             catchtap='tapMore' 
             class='more'
+            data-type="{{type}}"
         >更多></text>
         </view>
         <view class='list'>

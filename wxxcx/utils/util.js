@@ -14,11 +14,23 @@ function formatMovieList(data){
       title:item.title,
       mainImage:item.images.large,
       average:item.rating.average,
-      star:item.rating.stars
+      star:getStars(item.rating.stars)
     }
   })
 }
+function getStars(star){
+  var arr = [];
+  var num = star.substring(0,1);
+  for(var i = 1;i<=5;i++){
+    if(i<=num){
+      arr.push(1)
+    }else{
+      arr.push(0)
+    }
+  };
+  return arr;
+}
 
 module.exports = {
-  getMovieList,
+  getMovieList:getMovieList,
 }

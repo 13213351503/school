@@ -1,12 +1,17 @@
 
 <template name='movieStar' >
     <view class='star-wrap'>
-        <image 
+        <!-- <image 
             src="/images/icon/star.png">
         </image>
         <image 
             src="/images/icon/star.png">
-        </image>
+        </image> -->
+        <block wx:for='{{star}}' wx:key='index'>
+            <image 
+                src="{{item == 1 ? '/images/icon/star-active.png' : '/images/icon/star.png'}}">
+            </image>
+        </block>
         <text class='score'>{{average}}</text>
     </view>
 </template>

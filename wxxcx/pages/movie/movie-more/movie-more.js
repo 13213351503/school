@@ -1,6 +1,7 @@
-// pages/movie/movie.js
-var {getMovieList} = require('../../utils/util.js')
+// pages/movie/movie-more/movie-more.js
 var app = getApp()
+var {getMovieList} = require('../../../utils/util.js')
+
 Page({
 
     /**
@@ -14,27 +15,32 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        var type = options.type;
         var _this = this;
-        var baseUrl = app.GLOBALDATA.baseUrl
-        getMovieList(baseUrl+'/in_theaters?start=6&count=3',function(data){
-            _this.setData({inTheaters:data})
-
+        //获取请求地址,请求数据
+        var baseUrl = app.GLOBALDATA.baseUrl;
+        var requestUrl = '';
+        if(type == 'inTheaters'){
+            requestUrl = baseUrl + '/in_theaters';
+        };
+        if(type == 'comingSoon'){
+            requestUrl = baseUrl + '/coming_soon';
+        };
+        if(type == 'top250'){
+            requestUrl = baseUrl + '/top250';
+        };
+        getMovieList(requestUrl,function(data){
+            _this.setData({movies:data})
+            console.log(data)
         })
-        getMovieList(baseUrl+'/coming_soon?start=19&count=3',function(data){
-            _this.setData({comingSoon:data})
-        })
-        getMovieList(baseUrl+'/top250?start=10&count=3',function(data){
-            _this.setData({top250:data})
-        })
-          
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function (options) {
+    onReady: function () {
 
-    },  
+    },
 
     /**
      * 生命周期函数--监听页面显示
@@ -75,15 +81,6 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
-
-    },
-    //点击跳转加载更多电影页面
-    tapMore:function(ev){
-        var movieMore = ev.target.dataset.type;
-        // console.log(movieMore)
-        wx.navigateTo({
-          url: '/pages/movie/movie-more/movie-more?type='+movieMore,
-        })
 
     }
 })

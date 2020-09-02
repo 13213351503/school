@@ -35,5 +35,8 @@ App({
   },
   globalData: {
     userInfo: null
+  },
+  GLOBALDATA:{
+    baseUrl:'http://t.yushu.im/v2/movie',
   }
 })
