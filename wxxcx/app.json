@@ -1,3 +1,4 @@
+
 {
   "pages":[
     "pages/movie/movie",
@@ -10,8 +11,8 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#8fbe0b",
-    "navigationBarTitleText": "。",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"white",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
 

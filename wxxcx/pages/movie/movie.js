@@ -15,10 +15,9 @@ Page({
      */
     onLoad: function (options) {
         var _this = this;
-        var baseUrl = app.GLOBALDATA.baseUrl
+        var baseUrl = app.GLOBALDATA.baseUrl;
         getMovieList(baseUrl+'/in_theaters?start=6&count=3',function(data){
             _this.setData({inTheaters:data})
-
         })
         getMovieList(baseUrl+'/coming_soon?start=19&count=3',function(data){
             _this.setData({comingSoon:data})
@@ -26,6 +25,7 @@ Page({
         getMovieList(baseUrl+'/top250?start=10&count=3',function(data){
             _this.setData({top250:data})
         })
+        
           
     },
 
