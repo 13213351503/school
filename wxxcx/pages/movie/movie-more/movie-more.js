@@ -94,6 +94,7 @@ Page({
 
         this.setData({movies:data},function(){
             wx.hideNavigationBarLoading();
+			
         })
     },
 

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="list">
+        <li>01<a href="#">删除</a></li>
+        <li>02<a href="#">删除</a></li>
+        <li>03<a href="#">删除</a></li>
+        <li>04<a href="#">删除</a></li>
+        <li>05<a href="#">删除</a></li>
+        <li>06<a href="#">删除</a></li>
+        <li>07<a href="#">删除</a></li>
+        <li>08<a href="#">删除</a></li>
+        <li>09<a href="#">删除</a></li>
+    </ul>
+</body>
+<script>
+    var oUl = document.getElementById('list')
+    oUl.onclick = function(ev){
+        var target = ev.target;
+        oUl.removeChild(target.parentNode);
+   }
+</script>
+</html>
