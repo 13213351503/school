@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		const arr = [
+		x => x * 1,
+		x => x * 2,
+		x => x * 3,
+		x => x * 4
+		];
+		
+		console.log(arr.reduce((agg, el) => agg + el(agg), 1));
+	</script>
+</html>

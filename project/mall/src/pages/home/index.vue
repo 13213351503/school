@@ -8,19 +8,58 @@
 				</van-col>
 			</van-swipe-item>
 		</van-swipe>
-		<van-grid :border="false" :column-num="5" :gutter="10" >
-			<van-grid-item v-for="(item, index) in items" :key="index" text="文字" />
-				<img src="item" />
-			</van-grid-item>	
-			<!-- <van-grid-item v-for="(image, index) in images" :key="index" icon="image" text="文字" /> -->
-		</van-grid>
+		<div id="item">
+			<div 
+				id="item-list" 
+				v-for="(item,index) in this.$store.state.home.homeList"
+				:key="''+index"
+			>
+				<img :src="item.icon"></img>
+				<div id="item-content">{{item.name}}</div>
+			</div>
+		</div>
+		
+		<ul id="product">
+			<li 
+				class="product-floors"
+				v-for="(item,index) in this.$store.state.home.products"
+				:key="''+index"
+			>
+				<div class="product-title">{{item.title}}</div>
+				<ul class="product-list">
+					<li 
+					
+						class="product-item"
+						v-for="(product,productindex) in item.products"
+						:key="''+productindex"
+					>
+						<div class="product-header">
+							<a href="#">
+								<img :src="product.mainImage"></img>
+							</a>
+							<div class="product-name">
+								{{product.name}}
+							</div>
+							<div class="produce-pi">
+								<div class="product-price">￥{{product.price}}</div>
+								<van-icon name="cart-o" color="#52c41a" size=".75rem" />
+							</div>
+						</div>
+					</li>
+				</ul>
+			</li>
+		</ul>
 	</div>
 </template>
 
 <script>
+	// import { mapGetters } from 'vuex'
+	import { GET_LIST,GET_PRODUCT } from './store/types.js'
 	import Search from 'components/search/index.vue'
+	
 	export default {
 		name:'Home',
+		
 		data() {
 			return {
 				images: [
@@ -29,23 +68,19 @@
 					'https://api.mall.kuazhu.com/ad-images/1599184975302.jpg',
 					'https://api.mall.kuazhu.com/ad-images/1599184987338.jpg',
 				],
-				items:[
-					"https://api.mall.kuazhu.com/category-icons/1595243404358.jpg", 
-					"https://api.mall.kuazhu.com/category-icons/1595243379743.jpg", 
-					"https://api.mall.kuazhu.com/category-icons/1595243323048.jpg", 
-					"https://api.mall.kuazhu.com/category-icons/1595243298132.jpg", 
-					"https://api.mall.kuazhu.com/category-icons/1595243270185.jpg", 
-					"https://api.mall.kuazhu.com/category-icons/1595243232631.jpg", 
-					"https://api.mall.kuazhu.com/category-icons/1595243206088.jpg", 
-					"https://api.mall.kuazhu.com/category-icons/1595243130830.jpg", 
-					"https://api.mall.kuazhu.com/category-icons/1595244144843.jpg", 
-					"https://api.mall.kuazhu.com/category-icons/1587973628877.png", 
-				]
 			};
+		},
+		mounted(){
+			//加载首页列表
+			this.$store.dispatch(GET_LIST);
+			//加载楼层
+			this.$store.dispatch(GET_PRODUCT)
+			
 		},
 		components: {
 			Search
-		}
+		},
+		
 	}
 </script>
 
@@ -63,23 +98,100 @@
 				height: 5rem;
 			}
 		};
-		.van-swipe__indicators{
-			position: absolute;
-			bottom: 20px;
-			left: 50%;
-		};
-		
-		.van-grid-item__content{
-			border: 1px solid #fff;
-			border-radius: 50%;
-			img{
-				width: 100%;
-				height: 100%;
+		#item{
+			display: flex;
+			flex-wrap:wrap;
+			#item-list{
+				box-sizing: border-box;
+				width: 20%;
+				overflow: hidden;
+				flex-direction:column;
+				img{
+					margin-top: 10px;
+					width: 1.5rem;
+					height: 1.5rem;
+					display: inline-block;
+					border-radius: 50%;
+					justify-content:center;
+					margin-left: 12px;
+				}
+				#item-content{
+					margin-top: .1rem;
+					color: #7d7e80;
+					font-size: .375rem;
+					text-align: center;
+				}
 			}
-		};
-		.van-grid-item__text{
-			display: block;
 		}
+		
+		#product{
+			display: flex;
+			flex-wrap:wrap;
+			flex-direction: column;
+			padding: 0 .3125rem;
+			margin-bottom: 1.25rem;
+			.product-floors{
+				margin-top: 20px;
+			}
+			.product-title{
+				margin-bottom: .15625rem;
+				line-height: .9375rem;
+				font-size: .5625rem;
+				text-align: center;
+			}
+			.product-list{
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				.product-item{
+					box-sizing: border-box;
+					width: 4.53125rem;
+					height: 6.875rem;
+					background-color: #fff;
+					margin-bottom: .3125rem;
+					padding: .15625rem;
+					.product-header{
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						img{
+							display: block;
+							width: 100%;
+							height: 100%;
+						}
+						
+						.product-name{
+							height: 1.25rem;
+							max-height: 1.25rem;
+							line-height: .625rem;
+							font-size: .4375rem;
+							overflow: hidden;
+							text-overflow: ellipsis;
+							word-break: break-all;
+							vertical-align: baseline;
+							font-weight: 400;
+						}
+						.produce-pi{
+							display: flex;
+							justify-content:space-between;
+							van-icon{
+								float: right;
+							}
+							.product-price{
+								line-height: .625rem;
+								display: inline-block;
+								color: #f44;
+								font-weight: 500;
+								font-size: 0.4375rem;
+							}
+						}
+					}
+				}
+			}
+		}
+		
 		
 		
 	}

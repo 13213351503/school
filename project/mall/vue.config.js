@@ -3,7 +3,7 @@ const path = require('path')
 module.exports = {
 	devServer:{
 		port:3003,
-		proxy: 'http://api.mall.kuazhu.com',
+		proxy: 'https://api.mall.kuazhu.com/',
 	},
 	pluginOptions: {
 		'style-resources-loader': {
