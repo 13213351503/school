@@ -1,10 +1,12 @@
 <template>
 	<div id="Home">
-		<Search />
+		<van-sticky>
+			<Search />
+		</van-sticky>
 		<van-swipe :autoplay="3000">
-			<van-swipe-item v-for="(image, index) in images" :key="index">
+			<van-swipe-item v-for="(image, index) in this.$store.state.home.ads" :key="index">
 				<van-col span="24">
-					<img v-lazy="image" />
+					<img v-lazy="image.image" />
 				</van-col>
 			</van-swipe-item>
 		</van-swipe>
@@ -13,6 +15,7 @@
 				id="item-list" 
 				v-for="(item,index) in this.$store.state.home.homeList"
 				:key="''+index"
+				@click="handleProducts"
 			>
 				<img :src="item.icon"></img>
 				<div id="item-content">{{item.name}}</div>
@@ -54,23 +57,15 @@
 
 <script>
 	// import { mapGetters } from 'vuex'
-	import { GET_LIST,GET_PRODUCT } from './store/types.js'
+	import { GET_LIST, GET_PRODUCT, GET_ADS,GET_PRODUCTS_DETAIL } from './store/types.js'
 	import Search from 'components/search/index.vue'
 	
 	export default {
 		name:'Home',
 		
-		data() {
-			return {
-				images: [
-					'https://api.mall.kuazhu.com/ad-images/1599184940642.jpg',
-					'https://api.mall.kuazhu.com/ad-images/1599184962033.jpg',
-					'https://api.mall.kuazhu.com/ad-images/1599184975302.jpg',
-					'https://api.mall.kuazhu.com/ad-images/1599184987338.jpg',
-				],
-			};
-		},
 		mounted(){
+			//加载轮播图
+			this.$store.dispatch(GET_ADS);
 			//加载首页列表
 			this.$store.dispatch(GET_LIST);
 			//加载楼层
@@ -80,6 +75,11 @@
 		components: {
 			Search
 		},
+		methods:{
+			handleProducts(){
+				this.$store.dispatch(GET_PRODUCTS_DETAIL)
+			}
+		}
 		
 	}
 </script>

@@ -1,7 +1,7 @@
 <template>
 	<div id="Center">
 		<p>
-			this is Center
+			this is Center aaa
 		</p>
 	</div>
 </template>

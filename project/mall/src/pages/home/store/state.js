@@ -1,5 +1,6 @@
 export default {
 	
 	homeList:[],
-	products:[]
+	products:[],
+	ads:[]
 }

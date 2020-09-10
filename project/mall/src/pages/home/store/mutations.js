@@ -1,4 +1,4 @@
-import { GET_LIST,GET_PRODUCT } from '../store/types.js'
+import { GET_LIST,GET_PRODUCT,GET_ADS } from '../store/types.js'
 
 export default {
 	[GET_LIST]:function(state,payload){
@@ -7,8 +7,12 @@ export default {
 	},
 	
 	[GET_PRODUCT]:function(state,floors){
-		console.log(state,floors)
+		// console.log(state,floors)
 		state.products = floors
+	},
+	[GET_ADS]:function(state,ads){
+		// console.log(state,ads)
+		state.ads = ads
 	},
 	
 }

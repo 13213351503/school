@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { Tabbar, TabbarItem, Search, Swipe, SwipeItem, Lazyload, Col, Row, Grid, GridItem, Icon   } from 'vant';
+import { Tabbar, TabbarItem, Search, Swipe, SwipeItem, Lazyload, Col, Row, Grid, GridItem, Icon, Sticky, Sidebar, SidebarItem    } from 'vant';
 
 Vue.use(Tabbar);
 Vue.use(TabbarItem);
@@ -12,3 +12,6 @@ Vue.use(Row);
 Vue.use(Grid);
 Vue.use(GridItem);
 Vue.use(Icon);
+Vue.use(Sticky);
+Vue.use(Sidebar);
+Vue.use(SidebarItem);
