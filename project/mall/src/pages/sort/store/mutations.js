@@ -7,7 +7,7 @@ export default {
 	},
 	
 	[GET_CHILDS]:function(state,payload){
-		// console.log(payload)
-		state.sidebar = payload
+		console.log(payload)
+		// state.sidebar = payload
 	},
 }
