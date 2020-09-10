@@ -14,9 +14,9 @@ export default {
 	},
 	
 	async [GET_CHILDS]({commit},payload){
-		const result = await api.getChildCategories(payload)
-		// console.log(result,payload)
-		console.log(payload)
+		const result = await api.getChildCategories()
+		console.log(result,payload)
+		// console.log(payload)
 		if(result.data.code == 0){
 			commit(GET_CHILDS,result.data.data,payload)
 		}

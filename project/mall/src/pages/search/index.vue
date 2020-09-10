@@ -6,9 +6,9 @@
 		</div>
 		<div class="recent-search">
 			<span class="title">最近搜索</span>
-			<span class="clear">清除</span>
+			<span class="clear" @click="empty">清除</span>
 		</div>
-		<div class="history-search">
+		<div class="history-search" v-for="(item,index) in historyList" :key="index" @click="goSearchDetail(item)">
 			<span>111</span>
 		</div>
 		
@@ -19,9 +19,62 @@
 <script>
 	export default {
 		name:'Search',
+		data() {
+			return {
+				search_val: '', //搜索的内容
+				historyList: [] //历史搜索记录，存本地
+			}
+		},
+		mounted() {
+			//如果本地存储的数据historyList有值，直接赋值给data中的historyList
+			if (JSON.parse(localStorage.getItem("historyList"))) {
+				this.historyList = JSON.parse(localStorage.getItem("historyList"));
+			}
+		},
 		methods:{
 			goBack(){
 				this.$router.replace('/')
+			},
+			get_search(){
+				if(this.search_val == ''){
+					this.$toast('请输入搜索内容');
+					return false;
+				}else{
+					// 没有搜索记录，把搜索值push进数组首位，存入本地
+					if (!this.historyList.includes(this.search_val)) {
+						this.historyList.unshift(this.search_val);
+						localStorage.setItem("historyList", JSON.stringify(this.historyList));
+					}else{
+						//有搜索记录，删除之前的旧记录，将新搜索值重新push到数组首位
+						let i =this.historyList.indexOf(this.search_val);
+						this.historyList.splice(i,1)
+						this.historyList.unshift(this.search_val);
+						localStorage.setItem("historyList", JSON.stringify(this.historyList));
+					}
+				}
+				//跳转到搜索结果页
+				this.$router.push({
+					path: "/list", 
+					query: { 
+						search_val: this.search_val,
+					},
+				});
+			},
+			//点击历史搜索，跳转搜索结果页
+			goSearchDetail(title){
+				this.$router.push({
+					path: "/list", 
+					query: { 
+						search_val: title,
+					},
+				});
+			},
+			
+			//清空历史搜索记录
+			empty(){
+				this.$toast.success('清空历史搜索成功');
+				localStorage.removeItem('historyList');
+				this.historyList = [];
 			}
 		}
 	}
