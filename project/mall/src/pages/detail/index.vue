@@ -5,7 +5,7 @@
 			left-text="返回"
 			left-arrow
 		/>
-		<div  v-for="(category, index) of this.$store.state.detail.detail" :key="index">
+		<div  v-for="(category, index) of this.$store.state.detail.details" :key="index">
 			<van-swipe :autoplay="3000">
 				<van-swipe-item >
 					<img v-lazy="" />

@@ -20,7 +20,12 @@ import {
 	Toast, 
 	GoodsAction, 
 	GoodsActionIcon, 
-	GoodsActionButton    
+	GoodsActionButton, 
+	Tab, 
+	Tabs,
+	Form,
+	Field,
+	Button,
 } from 'vant';
 
 Vue.use(Tabbar);
@@ -44,3 +49,8 @@ Vue.use(Toast);
 Vue.use(GoodsAction);
 Vue.use(GoodsActionButton);
 Vue.use(GoodsActionIcon);
+Vue.use(Tab);
+Vue.use(Tabs);
+Vue.use(Form);
+Vue.use(Field);
+Vue.use(Button);
