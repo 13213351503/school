@@ -16,9 +16,9 @@
 				</van-sidebar>
 			</van-col>
 			<van-col span="18" class="sidebar-icon" >
-				<div class="child-item">
-					<img src="">
-					<p>全屏手机</p>
+				<div class="child-item" v-for="(item,index) in this.$store.state.sort.categories" :key="''+index" >
+					<img :src="item.icon">
+					<p>{{item.name}}</p>
 				</div>
 			</van-col>
 		</van-row>

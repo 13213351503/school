@@ -13,12 +13,14 @@ export default {
 		}
 	},
 	
-	async [GET_CHILDS]({commit},payload){
-		const result = await api.getChildCategories()
-		console.log(result,payload)
-		// console.log(payload)
+	async [GET_CHILDS]({commit},id){
+		const result = await api.getChildCategories({
+			pid:id,
+			limit:20
+		})
+		// console.log(result)
 		if(result.data.code == 0){
-			commit(GET_CHILDS,result.data.data,payload)
+			commit(GET_CHILDS,result.data.data)
 		}
 	},
 	

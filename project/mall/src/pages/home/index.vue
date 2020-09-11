@@ -15,7 +15,7 @@
 				id="item-list" 
 				v-for="(item,index) in this.$store.state.home.homeList"
 				:key="''+index"
-				@click="handleProducts"
+				@click="handleProducts(item._id)"
 			>
 				<img :src="item.icon"></img>
 				<div id="item-content">{{item.name}}</div>
@@ -57,7 +57,7 @@
 
 <script>
 	// import { mapGetters } from 'vuex'
-	import { GET_LIST, GET_PRODUCT, GET_ADS,GET_PRODUCTS_DETAIL } from './store/types.js'
+	import { GET_LIST, GET_PRODUCT, GET_ADS } from './store/types.js'
 	import Search from 'components/search/index.vue'
 	
 	export default {
@@ -76,8 +76,13 @@
 			Search
 		},
 		methods:{
-			handleProducts(){
-				this.$store.dispatch(GET_PRODUCTS_DETAIL)
+			handleProducts(id){
+				this.$router.push({
+					path :'/list',
+					query:{
+						id:id
+					},
+				})
 			}
 		}
 		

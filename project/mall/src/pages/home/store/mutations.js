@@ -2,7 +2,7 @@ import { GET_LIST,GET_PRODUCT,GET_ADS } from '../store/types.js'
 
 export default {
 	[GET_LIST]:function(state,payload){
-		// console.log(state)
+		console.log(state)
 		state.homeList = payload
 	},
 	

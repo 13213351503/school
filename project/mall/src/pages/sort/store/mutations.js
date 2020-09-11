@@ -6,8 +6,8 @@ export default {
 		state.sidebar = payload
 	},
 	
-	[GET_CHILDS]:function(state,payload){
-		console.log(payload)
-		// state.sidebar = payload
+	[GET_CHILDS]:function(state,list){
+		// console.log(state)
+		state.categories = list
 	},
 }

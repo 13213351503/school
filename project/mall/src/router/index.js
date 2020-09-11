@@ -8,6 +8,8 @@ import Cart from 'pages/cart'
 import Center from 'pages/center'
 import Sort from 'pages/sort'
 import Search from 'pages/search'
+import List from 'pages/list'
+import Detail from 'pages/detail'
 
 //3.声明使用
 Vue.use(VueRouter)
@@ -16,11 +18,62 @@ Vue.use(VueRouter)
 //4.导出路由对象
 export default new VueRouter({
 	routes:[
-		{path:"/home",component:Home},
-		{path:"/sort",component:Sort},
-		{path:"/cart",component:Cart},
-		{path:"/center",component:Center},
-		{path:"/search",component:Search},
-		{path:"/",redirect:"/home"},
+		{
+			path:"/home",
+			component:Home,
+			meta: {
+				footShow: true, // true显示，false隐藏
+			},
+		},
+		{
+			path:"/sort",
+			component:Sort,
+			meta: {
+				footShow: true, // true显示，false隐藏
+			},
+		},
+		{
+			path:"/cart",
+			component:Cart,
+			meta: {
+				footShow: false, // true显示，false隐藏
+			},
+		},
+		{
+			path:"/center",
+			component:Center,
+			meta: {
+				footShow: false, // true显示，false隐藏
+			},
+		},
+		{
+			path:"/search",
+			component:Search,
+			meta: {
+				footShow: false, // true显示，false隐藏
+			},
+		},
+		{
+			path:"/list",
+			component:List,
+			meta: {
+				footShow: false, // true显示，false隐藏
+			},
+		},
+		{
+			path:"/detail",
+			component:Detail,
+			meta: {
+				footShow: false, // true显示，false隐藏
+			},
+		},
+		{
+			path:"/",
+			redirect:"/home",
+			meta: {
+				footShow: true, // true显示，false隐藏
+			},
+		},
+		
 	]
 })

@@ -1,12 +1,12 @@
 <template>
 	<div id="App">
 		<router-view></router-view>
-		<Tabbar />
+		<Tabbar v-if="$route.meta.footShow"/>
 	</div>
 </template>
 
 <script>
-	import Tabbar from './components/tabbar/index.vue'
+	import Tabbar from 'components/tabbar/index.vue'
 
 	export default {
 		name: 'App',
