@@ -26,6 +26,7 @@ import {
 	Form,
 	Field,
 	Button,
+	NumberKeyboard,
 } from 'vant';
 
 Vue.use(Tabbar);
@@ -54,3 +55,4 @@ Vue.use(Tabs);
 Vue.use(Form);
 Vue.use(Field);
 Vue.use(Button);
+Vue.use(NumberKeyboard);

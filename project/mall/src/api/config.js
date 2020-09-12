@@ -12,4 +12,7 @@ export const API_CONFIG = {
     getProductsList:         	['/products/list','get'],
 	//商品详情页
     getProductsDetail:         	['/products/detail','get'],
+	//密码登陆验证码
+	getCaptcha:         		['/users/captcha','get'],
+	
 }

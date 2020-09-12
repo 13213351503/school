@@ -11,7 +11,6 @@
 			finished-text="没有更多了"
 			@load="onLoad"
 		>
-			<van-cell />
 			<div class="card" v-for="(product,index) in this.$store.state.list.products" :key="''+index">
 				<div class="card-content" >
 					<a class="card-img" @click="handleDetail(product._id)"><img :src="product.mainImage"></a>

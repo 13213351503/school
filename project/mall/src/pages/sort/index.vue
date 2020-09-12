@@ -31,8 +31,14 @@
 	export default {
 		name:'Sort',
 		mounted(){
+			var _this = this;
 			//加载侧边栏
-			this.$store.dispatch(GET_LIST);
+			this.$store.dispatch(GET_LIST)
+			.then(()=>{
+				var _id = _this.$store.state.sort.sidebar[0]._id
+				_this.$store.dispatch(GET_CHILDS,_id)
+			})
+			
 		},
 		components: {
 			Search

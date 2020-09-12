@@ -1,8 +1,8 @@
-// export default {
-// 	homeList(state){
-// 		return state.homeList
-// 	},
-// 	// homeFloors(state){
-// 	// 	return state.floors
-// 	// },
-// }
+export default {
+	detailItem(state){
+		return state.details
+	},
+	// homeFloors(state){
+	// 	return state.floors
+	// },
+}

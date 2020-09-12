@@ -2,70 +2,115 @@
 	<div id="Center">
 		<div class="login">
 			<van-tabs v-model="active" class="van-tabs__wrap">
-				<van-tab title="密码登录" ></van-tab>
-				<van-tab title="手机号登录" ></van-tab>
-				<van-tab title="免费注册" ></van-tab>
+				<van-tab title="密码登录" >
+					<div class="van-tabs__content">
+						<van-form @submit="onSubmit">
+							<van-field
+								:value="shows"
+								name="用户名"
+								placeholder="请输入手机号"
+								:rules="[{ phone, required: true,message: '请输入正确内容', }]"
+								@touchstart.native.stop="show = true"
+							/>
+							<van-field
+								v-model="password"
+								type="password"
+								name="密码"
+								placeholder="请输入密码"
+								:rules="[{ cipher, required: true, message: '请填写密码' }]"
+							/>
+							<div class="checking">
+								<van-field
+									v-model="verification"
+									name="密码"
+									placeholder="请输入图形内验证码"
+									:rules="[{ required: true, message: '请输入图形内验证码' }]"
+								/>
+								<div class="captch" >
+									<div class="captch-img" v-html="captcha" @click="handleCaptch">
+									</div>
+								</div>
+							</div>
+							
+							<div style="margin: 16px;">
+								<van-button round block type="info" native-type="submit">
+									登录
+								</van-button>
+							</div>
+						</van-form>
+						<div class="backhome" @click="goback">返回首页</div>
+						
+						<van-number-keyboard
+							:show="show"
+							@input="onInput"
+							@blur="show = false"
+							v-model='shows'
+						/>
+					</div>
+				</van-tab>
+				<PhoneLogin />
+				<Register />
 			</van-tabs>
 			
-			<div class="van-tabs__content">
-				<van-form @submit="onSubmit">
-					<van-field
-						v-model="username"
-						name="用户名"
-						placeholder="请输入手机号"
-						:rules="[{ pattern, message: '请输入正确内容' }]"
-					/>
-					<van-field
-						v-model="password"
-						type="password"
-						name="密码"
-						placeholder="请输入密码"
-						:rules="[{ required: true, message: '请填写密码' }]"
-					/>
-					<div>
-						<van-field
-							v-model="verification"
-							type="password"
-							name="密码"
-							placeholder="请输入图形内验证码"
-							:rules="[{ required: true, message: '请输入图形内验证码' }]"
-						/>
-						<div>
-							
-						</div>
-					</div>
-					
-					<div style="margin: 16px;">
-						<van-button round block type="info" native-type="submit">
-							登录
-						</van-button>
-					</div>
-				</van-form>
-			</div>
-			<div class="backhome">返回首页</div>
+			
 		</div>
 	</div>
 </template>
 
 <script>
-	
+	import { mapGetters } from 'vuex'
+	import { Toast } from 'vant';
+	import { GET_CAPTCHA } from './store/types.js'
+	import Register from 'components/register/index.vue'
+	import PhoneLogin from 'components/phone-login/index.vue'
 	export default {
 		name:'Center',
 		data() {
 			return {
 				active: 0,
-				username: '',
 				password: '',
 				verification:'',
+				show: false,
+				shows:'',
 			};
 		},
+		mounted(){
+			this.$store.dispatch(GET_CAPTCHA)
+		},
 		methods: {
+			goback(){
+				this.$router.replace('/')
+			},
 			onSubmit(values) {
 				console.log('submit', values);
 			},
-			pattern(username) {
-				return /^((13[0-9])|(17[0-1,6-8])|(15[^4,\\D])|(18[0-9]))\d{8}$/.test(username);
+			
+			phone(val) {
+				return /^((13[0-9])|(17[0-1,6-8])|(15[^4,\\D])|(18[0-9]))\d{8}$/.test(val);
 			},
+			cipher(val){
+				return /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/.test(val)
+			},
+			
+			
+			onInput(value) {
+				Toast(value);
+			},
+			onDelete() {
+				Toast('删除');
+			},
+			handleCaptch(){
+				this.$store.dispatch(GET_CAPTCHA)
+			}
+		},
+		computed: {
+			...mapGetters([
+				'captcha',
+			])
+		},
+		components: {
+			Register,
+			PhoneLogin
 		},
 	}
 </script>
@@ -82,23 +127,10 @@
 		.login{
 			margin-top: 1.875rem;
 			.van-tabs__wrap{
-				overflow: hidden;
-				box-sizing: content-box;
-				height: 100%;
 				padding-bottom: .46875rem;
-				.van-tab{
-					position: relative;
-					flex: 1;
-					box-sizing: border-box;
-					min-width: 0;
-					padding: 0 .15625rem;
-					color: #7d7e80;
-					font-size: .4375rem;
-					line-height: 1.375rem;
-					text-align: center;
-					cursor: pointer;
-				}
-				
+			}
+			.van-cell{
+				line-height: 1.25rem;
 			}
 			
 			
@@ -108,6 +140,30 @@
 				font-size: .375rem;
 				color: #1890ff;
 			}
+			.van-button--info{
+				color: #fff;
+				background-color: #07c160;
+				border: .03125rem solid #07c160;
+			}
+			.checking{
+				display: flex;
+				.ckecking-button{
+					position: relative;
+					right: 0.625rem;
+					top: 0.175rem;
+					.van-button--small{
+						width: 2.4rem;
+						height: 2.1875rem;
+						height: 0.935rem;
+						line-height: .875rem;
+						overflow: hidden;
+					}
+					.van-button__text{
+						font-size: 0.375rem;
+					}
+				}
+			}
+			
 		}
 	}
 </style>
