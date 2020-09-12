@@ -12,11 +12,9 @@
 					/>
 					<div class="checking">
 						<van-field
-							v-model="phonePassword"
-							type="password"
 							name="密码"
 							placeholder="请输入密码"
-							:rules="[{ cipher, required: true, message: '请填写密码' }]"
+							:rules="[{ required: true, message: '请填写密码' }]"
 						/>
 						<div class="ckecking-button">
 							<van-button type="primary" size="small">发送验证码</van-button>
@@ -50,7 +48,6 @@
 		data() {
 			return {
 				active: 0,
-				phonePassword: '',
 				show: false,
 				shows:'',
 			};
@@ -65,9 +62,7 @@
 			phone(val) {
 				return /^((13[0-9])|(17[0-1,6-8])|(15[^4,\\D])|(18[0-9]))\d{8}$/.test(val);
 			},
-			cipher(val){
-				return /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/.test(val)
-			},
+			
 			
 			
 			onInput(value) {

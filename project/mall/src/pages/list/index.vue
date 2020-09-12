@@ -1,8 +1,10 @@
 <template>
 	<div id="List">
 		<van-sticky>
-			<!-- <i class="back-icon" @click='goBack'><van-icon name="arrow-left" /></i> -->
-			<Search  />
+			<div class="list-search">
+				<i class="back-icon" @click='goBack'><van-icon name="arrow-left" /></i>
+				<Search  />
+			</div>
 		</van-sticky>
 		
 		<van-list
@@ -93,10 +95,7 @@
 			font-size: .5625rem;
 			color: #1890ff;
 		}
-		// .van-search{
-		// 	margin-left: .46875rem;
-		// 	box-sizing: border-box;
-		// }
+		
 	}
 	.card{
 		margin-top: .25rem;

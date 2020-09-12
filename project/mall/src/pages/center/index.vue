@@ -22,7 +22,7 @@
 							<div class="checking">
 								<van-field
 									v-model="verification"
-									name="密码"
+									name="验证码"
 									placeholder="请输入图形内验证码"
 									:rules="[{ required: true, message: '请输入图形内验证码' }]"
 								/>
@@ -33,7 +33,7 @@
 							</div>
 							
 							<div style="margin: 16px;">
-								<van-button round block type="info" native-type="submit">
+								<van-button round block type="info" native-type="submit" @onSubmit='onSubmit(values)'>
 									登录
 								</van-button>
 							</div>
@@ -88,6 +88,7 @@
 			phone(val) {
 				return /^((13[0-9])|(17[0-1,6-8])|(15[^4,\\D])|(18[0-9]))\d{8}$/.test(val);
 			},
+			//密码至少包含 数字和英文，长度6-20
 			cipher(val){
 				return /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/.test(val)
 			},

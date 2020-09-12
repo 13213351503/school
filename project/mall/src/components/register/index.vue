@@ -12,11 +12,9 @@
 					/>
 					<div class="checking">
 						<van-field
-							v-model="password"
-							type="password"
-							name="密码"
+							name="验证码"
 							placeholder="请输入短信验证码"
-							:rules="[{ cipher, required: true, message: '请填写短信验证码' }]"
+							:rules="[{ required: true, message: '请填写短信验证码' }]"
 						/>
 						<div class="ckecking-button">
 							<van-button type="primary" size="small">发送验证码</van-button>
@@ -24,19 +22,19 @@
 					</div>
 					
 					<van-field
-						:value="shows"
-						name="用户名"
+						name="密码"
+						v-model="registerPassword"
 						type="password"
 						placeholder="请输入密码"
-						:rules="[{ phone, required: true,message: '请输入密码', }]"
+						:rules="[{ cipher,required: true,message: '请输入密码', }]"
 						@touchstart.native.stop="show = true"
 					/>
 					<van-field
-						v-model="password"
+						v-model="againPassword"
 						type="password"
-						name="密码"
+						name="确认密码"
 						placeholder="请再次输入密码"
-						:rules="[{ cipher, required: true, message: '请再次输入密码' }]"
+						:rules="[{ required: true, message: '请再次输入密码' }]"
 					/>
 					
 					<div style="margin: 16px;">
@@ -66,7 +64,7 @@
 			return {
 				active: 0,
 				registerPassword: '',
-				verification:'',
+				againPassword:'',
 				show: false,
 				shows:'',
 			};
@@ -81,6 +79,8 @@
 			phone(val) {
 				return /^((13[0-9])|(17[0-1,6-8])|(15[^4,\\D])|(18[0-9]))\d{8}$/.test(val);
 			},
+			
+			//密码至少包含 数字和英文，长度6-20
 			cipher(val){
 				return /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/.test(val)
 			},
