@@ -18,5 +18,6 @@ module.exports = {
 	    .set('pages',path.resolve(__dirname,'./src/pages'))
 	    .set('api',path.resolve(__dirname,'./src/api'))
 	    .set('components',path.resolve(__dirname,'./src/components'))
+	    .set('utils',path.resolve(__dirname,'./src/utils'))
 	} 
 }

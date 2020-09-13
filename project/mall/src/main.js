@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+
+
+
 Vue.config.productionTip = false
 //加载全局css样式
 import './assets/css/common.css'

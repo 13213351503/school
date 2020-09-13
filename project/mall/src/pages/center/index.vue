@@ -7,9 +7,12 @@
 						<van-form @submit="onSubmit">
 							<van-field
 								:value="shows"
+								v-model.trim="form.mobilePhone"
 								name="用户名"
 								placeholder="请输入手机号"
-								:rules="[{ phone, required: true,message: '请输入正确内容', }]"
+								:error-message="errMsg.mobilePhone"
+								clearable
+								@blur="isPhone"
 								@touchstart.native.stop="show = true"
 							/>
 							<van-field
@@ -17,14 +20,14 @@
 								type="password"
 								name="密码"
 								placeholder="请输入密码"
-								:rules="[{ cipher, required: true, message: '请填写密码' }]"
+								:rules="[{ cipher, required: true,message: '请输入正确的密码',trigger:'blur' }]"
 							/>
 							<div class="checking">
 								<van-field
 									v-model="verification"
 									name="验证码"
 									placeholder="请输入图形内验证码"
-									:rules="[{ required: true, message: '请输入图形内验证码' }]"
+									:rules="[{ required: true }]"
 								/>
 								<div class="captch" >
 									<div class="captch-img" v-html="captcha" @click="handleCaptch">
@@ -59,6 +62,7 @@
 
 <script>
 	import { mapGetters } from 'vuex'
+	import { isPhone } from 'utils/validate.js'
 	import { Toast } from 'vant';
 	import { GET_CAPTCHA } from './store/types.js'
 	import Register from 'components/register/index.vue'
@@ -72,6 +76,12 @@
 				verification:'',
 				show: false,
 				shows:'',
+				form: {
+					mobilePhone: ''
+				},
+				errMsg: {
+					mobilePhone: ''
+				}
 			};
 		},
 		mounted(){
@@ -85,12 +95,21 @@
 				console.log('submit', values);
 			},
 			
-			phone(val) {
-				return /^((13[0-9])|(17[0-1,6-8])|(15[^4,\\D])|(18[0-9]))\d{8}$/.test(val);
-			},
 			//密码至少包含 数字和英文，长度6-20
 			cipher(val){
 				return /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/.test(val)
+			},
+			isPhone(){
+				if (!this.form.mobilePhone){
+					this.errMsg.mobilePhone = '请填写手机号码！'
+					return false
+				}else if(!isPhone(this.form.mobilePhone)) {
+					this.errMsg.mobilePhone = '手机号格式不正确！'
+					return false
+				} else {
+					this.errMsg.mobilePhone = ''
+					return true
+				}
 			},
 			
 			
