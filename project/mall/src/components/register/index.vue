@@ -7,7 +7,10 @@
 						:value="shows"
 						name="用户名"
 						placeholder="请输入手机号"
-						:rules="[{ phone, required: true,message: '请输入正确内容', }]"
+						v-model="form.mobilePhone"
+						:error-message="errMsg.mobilePhone"
+						@blur="isPhone"
+						clearable
 						@touchstart.native.stop="show = true"
 					/>
 					<div class="checking">
@@ -23,14 +26,19 @@
 					
 					<van-field
 						name="密码"
-						v-model="registerPassword"
 						type="password"
 						placeholder="请输入密码"
-						:rules="[{ cipher,required: true,message: '请输入密码', }]"
+						v-model="form.mobilePassword"
+						@blur="isPassword"
+						clearable
+						:error-message="errMsg.mobilePassword"
 						@touchstart.native.stop="show = true"
 					/>
 					<van-field
 						v-model="againPassword"
+						@blur="isAgainPassword"
+						:error-message="errMsg.againPassword"
+						clearable
 						type="password"
 						name="确认密码"
 						placeholder="请再次输入密码"
@@ -58,15 +66,24 @@
 
 <script>
 	import { Toast } from 'vant';
+	import { isPhone,isPassword } from 'utils/validate.js'
 	export default {
 		name:'Register',
 		data() {
 			return {
 				active: 0,
-				registerPassword: '',
 				againPassword:'',
 				show: false,
 				shows:'',
+				form: {
+					mobilePhone: '',
+					mobilePassword:'',
+				},
+				errMsg: {
+					mobilePhone: '',
+					mobilePassword:'',
+					againPassword:'',
+				}
 			};
 		},
 		methods: {
@@ -76,15 +93,42 @@
 			onSubmit(values) {
 				console.log('submit', values);
 			},
-			phone(val) {
-				return /^((13[0-9])|(17[0-1,6-8])|(15[^4,\\D])|(18[0-9]))\d{8}$/.test(val);
+			isPhone(){
+				if (!this.form.mobilePhone){
+					this.errMsg.mobilePhone = '请填写手机号码！'
+					return false
+				}else if(!isPhone(this.form.mobilePhone)) {
+					this.errMsg.mobilePhone = '手机号格式不正确！'
+					return false
+				} else {
+					this.errMsg.mobilePhone = ''
+					return true
+				}
 			},
-			
-			//密码至少包含 数字和英文，长度6-20
-			cipher(val){
-				return /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/.test(val)
+			isPassword(){
+				if (!this.form.mobilePassword){
+					this.errMsg.mobilePassword = '请填写密码！'
+					return false
+				}else if(!isPassword(this.form.mobilePassword)) {
+					this.errMsg.mobilePassword = '以首字母开头，必须包含数字的6-18位！'
+					return false
+				} else {
+					this.errMsg.mobilePassword = ''
+					return true
+				}
 			},
-			
+			isAgainPassword(){
+				if (!this.form.mobilePassword){
+					this.errMsg.mobilePassword = '请填写密码！'
+					return false
+				}else if(this.againPassword !== this.form.mobilePassword) {
+					this.errMsg.againPassword = '两次输入密码不一致！'
+					return false
+				} else {
+					this.errMsg.againPassword = ''
+					return true
+				}
+			},
 			
 			onInput(value) {
 				Toast(value);

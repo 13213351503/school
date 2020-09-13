@@ -7,14 +7,21 @@
 						:value="shows"
 						name="用户名"
 						placeholder="请输入手机号"
-						:rules="[{ phone, required: true,message: '请输入正确内容', }]"
+						v-model="form.mobilePhone"
+						:error-message="errMsg.mobilePhone"
+						@blur="isPhone"
+						clearable
 						@touchstart.native.stop="show = true"
 					/>
 					<div class="checking">
 						<van-field
 							name="密码"
+							type="password"
 							placeholder="请输入密码"
-							:rules="[{ required: true, message: '请填写密码' }]"
+							v-model="form.mobilePassword"
+							@blur="isPassword"
+							clearable
+							:error-message="errMsg.mobilePassword"
 						/>
 						<div class="ckecking-button">
 							<van-button type="primary" size="small">发送验证码</van-button>
@@ -43,6 +50,7 @@
 
 <script>
 	import { Toast } from 'vant';
+	import { isPhone,isPassword } from 'utils/validate.js'
 	export default {
 		name:'PhoneLogin',
 		data() {
@@ -50,6 +58,14 @@
 				active: 0,
 				show: false,
 				shows:'',
+				form: {
+					mobilePhone: '',
+					mobilePassword:'',
+				},
+				errMsg: {
+					mobilePhone: '',
+					mobilePassword:'',
+				}
 			};
 		},
 		methods: {
@@ -59,10 +75,31 @@
 			onSubmit(values) {
 				console.log('submit', values);
 			},
-			phone(val) {
-				return /^((13[0-9])|(17[0-1,6-8])|(15[^4,\\D])|(18[0-9]))\d{8}$/.test(val);
-			},
 			
+			isPhone(){
+				if (!this.form.mobilePhone){
+					this.errMsg.mobilePhone = '请填写手机号码！'
+					return false
+				}else if(!isPhone(this.form.mobilePhone)) {
+					this.errMsg.mobilePhone = '手机号格式不正确！'
+					return false
+				} else {
+					this.errMsg.mobilePhone = ''
+					return true
+				}
+			},
+			isPassword(){
+				if (!this.form.mobilePassword){
+					this.errMsg.mobilePassword = '请填写密码！'
+					return false
+				}else if(!isPassword(this.form.mobilePassword)) {
+					this.errMsg.mobilePassword = '以首字母开头，必须包含数字的6-18位！'
+					return false
+				} else {
+					this.errMsg.mobilePassword = ''
+					return true
+				}
+			},
 			
 			
 			onInput(value) {

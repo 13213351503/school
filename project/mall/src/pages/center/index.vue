@@ -7,7 +7,7 @@
 						<van-form @submit="onSubmit">
 							<van-field
 								:value="shows"
-								v-model.trim="form.mobilePhone"
+								v-model="form.mobilePhone"
 								name="用户名"
 								placeholder="请输入手机号"
 								:error-message="errMsg.mobilePhone"
@@ -16,11 +16,13 @@
 								@touchstart.native.stop="show = true"
 							/>
 							<van-field
-								v-model="password"
+								v-model="form.mobilePassword"
 								type="password"
 								name="密码"
 								placeholder="请输入密码"
-								:rules="[{ cipher, required: true,message: '请输入正确的密码',trigger:'blur' }]"
+								@blur="isPassword"
+								clearable
+								:error-message="errMsg.mobilePassword"
 							/>
 							<div class="checking">
 								<van-field
@@ -62,7 +64,7 @@
 
 <script>
 	import { mapGetters } from 'vuex'
-	import { isPhone } from 'utils/validate.js'
+	import { isPhone,isPassword } from 'utils/validate.js'
 	import { Toast } from 'vant';
 	import { GET_CAPTCHA } from './store/types.js'
 	import Register from 'components/register/index.vue'
@@ -77,10 +79,12 @@
 				show: false,
 				shows:'',
 				form: {
-					mobilePhone: ''
+					mobilePhone: '',
+					mobilePassword:'',
 				},
 				errMsg: {
-					mobilePhone: ''
+					mobilePhone: '',
+					mobilePassword:'',
 				}
 			};
 		},
@@ -95,10 +99,7 @@
 				console.log('submit', values);
 			},
 			
-			//密码至少包含 数字和英文，长度6-20
-			cipher(val){
-				return /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/.test(val)
-			},
+			
 			isPhone(){
 				if (!this.form.mobilePhone){
 					this.errMsg.mobilePhone = '请填写手机号码！'
@@ -108,6 +109,18 @@
 					return false
 				} else {
 					this.errMsg.mobilePhone = ''
+					return true
+				}
+			},
+			isPassword(){
+				if (!this.form.mobilePassword){
+					this.errMsg.mobilePassword = '请填写密码！'
+					return false
+				}else if(!isPassword(this.form.mobilePassword)) {
+					this.errMsg.mobilePassword = '以首字母开头，必须包含数字的6-18位！'
+					return false
+				} else {
+					this.errMsg.mobilePassword = ''
 					return true
 				}
 			},
