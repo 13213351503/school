@@ -14,5 +14,8 @@ export const API_CONFIG = {
     getProductsDetail:         	['/products/detail','get'],
 	//密码登陆验证码
 	getCaptcha:         		['/users/captcha','get'],
-	
+	//发送手机验证码
+	getRegister:         		['/users/registerVerifyCode','get'],
+	//登陆
+	getLogin:         			['/users/login','post'],
 }

@@ -4,7 +4,7 @@
 			<div class="van-tabs__content">
 				<van-form @submit="onSubmit">
 					<van-field
-						:value="shows"
+						:value="form.mobilePhone"
 						name="用户名"
 						placeholder="请输入手机号"
 						v-model="form.mobilePhone"
@@ -41,7 +41,7 @@
 					:show="show"
 					@input="onInput"
 					@blur="show = false"
-					v-model='shows'
+					v-model='form.mobilePhone'
 				/>
 			</div>
 		</van-tab>
@@ -57,7 +57,6 @@
 			return {
 				active: 0,
 				show: false,
-				shows:'',
 				form: {
 					mobilePhone: '',
 					mobilePassword:'',

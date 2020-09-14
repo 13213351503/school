@@ -13,5 +13,5 @@ export function isPhone(value) {
 
 export function isPassword(value) {
 	
-	return /^(?![^A-Za-z]+$)(?![^0-9]+$)[\x21-x7e]{6,18}$/.test(value);
+	return /^[A-Za-z0-9]{6,12}$/.test(value);
 }

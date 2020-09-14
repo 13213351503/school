@@ -5,6 +5,7 @@ import App from './App.vue'
 
 
 Vue.config.productionTip = false
+Vue.prototype.$bus=new Vue();
 //加载全局css样式
 import './assets/css/common.css'
 import router from './router/index.js'

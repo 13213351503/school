@@ -10,6 +10,12 @@ import Sort from 'pages/sort'
 import Search from 'pages/search'
 import List from 'pages/list'
 import Detail from 'pages/detail'
+import Me from 'pages/me'
+import TobePaid from '../pages/me/pages/tobepaid'
+import Tobedelivered from '../pages/me/pages/tobedelivered'
+import Delivered from '../pages/me/pages/delivered'
+import Completed from '../pages/me/pages/completed'
+import Allorders from '../pages/me/pages/allorders'
 
 //3.声明使用
 Vue.use(VueRouter)
@@ -36,7 +42,7 @@ export default new VueRouter({
 			path:"/cart",
 			component:Cart,
 			meta: {
-				footShow: false, // true显示，false隐藏
+				footShow: true, // true显示，false隐藏
 			},
 		},
 		{
@@ -72,6 +78,48 @@ export default new VueRouter({
 			redirect:"/home",
 			meta: {
 				footShow: true, // true显示，false隐藏
+			},
+		},
+		{
+			path:"/me",
+			component:Me,
+			meta: {
+				footShow: true, // true显示，false隐藏
+			},
+		},
+		{
+			path:"/me/tobepaid",
+			component:TobePaid,
+			meta: {
+				footShow: false, // true显示，false隐藏
+			},
+		},
+		{
+			path:"/me/tobedelivered",
+			component:Tobedelivered,
+			meta: {
+				footShow: false, // true显示，false隐藏
+			},
+		},
+		{
+			path:"/me/delivered",
+			component:Delivered,
+			meta: {
+				footShow: false, // true显示，false隐藏
+			},
+		},
+		{
+			path:"/me/completed",
+			component:Completed,
+			meta: {
+				footShow: false, // true显示，false隐藏
+			},
+		},
+		{
+			path:"/me/allorders",
+			component:Allorders,
+			meta: {
+				footShow: false, // true显示，false隐藏
 			},
 		},
 		

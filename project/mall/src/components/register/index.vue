@@ -4,7 +4,7 @@
 			<div class="van-tabs__content">
 				<van-form @submit="onSubmit">
 					<van-field
-						:value="shows"
+						:value="form.mobilePhone"
 						name="用户名"
 						placeholder="请输入手机号"
 						v-model="form.mobilePhone"
@@ -20,7 +20,7 @@
 							:rules="[{ required: true, message: '请填写短信验证码' }]"
 						/>
 						<div class="ckecking-button">
-							<van-button type="primary" size="small">发送验证码</van-button>
+							<van-button type="primary" size="small" @click="handleDialog">发送验证码</van-button>
 						</div>
 					</div>
 					
@@ -32,7 +32,6 @@
 						@blur="isPassword"
 						clearable
 						:error-message="errMsg.mobilePassword"
-						@touchstart.native.stop="show = true"
 					/>
 					<van-field
 						v-model="againPassword"
@@ -57,7 +56,7 @@
 					:show="show"
 					@input="onInput"
 					@blur="show = false"
-					v-model='shows'
+					v-model='form.mobilePhone'
 				/>
 			</div>
 		</van-tab>
@@ -65,6 +64,7 @@
 </template>
 
 <script>
+	import { Dialog } from 'vant';
 	import { Toast } from 'vant';
 	import { isPhone,isPassword } from 'utils/validate.js'
 	export default {
@@ -74,7 +74,6 @@
 				active: 0,
 				againPassword:'',
 				show: false,
-				shows:'',
 				form: {
 					mobilePhone: '',
 					mobilePassword:'',
@@ -136,7 +135,19 @@
 			onDelete() {
 				Toast('删除');
 			},
-			
+			//手机验证码弹出框
+			handleDialog(){
+				Dialog.confirm({
+					title: '',
+					message: '弹窗内容',
+				})
+				.then(() => {
+					// on confirm
+				})
+				.catch(() => {
+					// on cancel
+				});
+			}
 		},
 	}
 </script>

@@ -7,17 +7,16 @@
 
 <script>
 	import Tabbar from 'components/tabbar/index.vue'
-
 	export default {
 		name: 'App',
 		components: {
-			Tabbar
-		}
+			Tabbar,
+		},
 	}
 </script>
 
 <style>
 #app {
-  
+	background: #fff;
 }
 </style>

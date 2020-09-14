@@ -6,9 +6,9 @@
 					<div class="van-tabs__content">
 						<van-form @submit="onSubmit">
 							<van-field
-								:value="shows"
+								:value="form.mobilePhone"
 								v-model="form.mobilePhone"
-								name="用户名"
+								name="username"
 								placeholder="请输入手机号"
 								:error-message="errMsg.mobilePhone"
 								clearable
@@ -18,7 +18,7 @@
 							<van-field
 								v-model="form.mobilePassword"
 								type="password"
-								name="密码"
+								name="password"
 								placeholder="请输入密码"
 								@blur="isPassword"
 								clearable
@@ -27,7 +27,7 @@
 							<div class="checking">
 								<van-field
 									v-model="verification"
-									name="验证码"
+									name="captchaCode"
 									placeholder="请输入图形内验证码"
 									:rules="[{ required: true }]"
 								/>
@@ -49,7 +49,7 @@
 							:show="show"
 							@input="onInput"
 							@blur="show = false"
-							v-model='shows'
+							v-model='form.mobilePhone'
 						/>
 					</div>
 				</van-tab>
@@ -69,6 +69,7 @@
 	import { GET_CAPTCHA } from './store/types.js'
 	import Register from 'components/register/index.vue'
 	import PhoneLogin from 'components/phone-login/index.vue'
+	import api from 'api/index.js'
 	export default {
 		name:'Center',
 		data() {
@@ -77,7 +78,6 @@
 				password: '',
 				verification:'',
 				show: false,
-				shows:'',
 				form: {
 					mobilePhone: '',
 					mobilePassword:'',
@@ -96,9 +96,21 @@
 				this.$router.replace('/')
 			},
 			onSubmit(values) {
-				console.log('submit', values);
+				var _this = this
+				api.getLogin({
+					username:values.username,
+					password:values.password,
+					captchaCode:values.captchaCode
+				})
+				.then((data)=>{
+					if(data.data.code == 0){
+						localStorage.setItem('username',values.username)
+						_this.$router.push({
+							path :'/me',
+						})
+					}
+				})
 			},
-			
 			
 			isPhone(){
 				if (!this.form.mobilePhone){
@@ -125,7 +137,6 @@
 				}
 			},
 			
-			
 			onInput(value) {
 				Toast(value);
 			},
@@ -134,7 +145,8 @@
 			},
 			handleCaptch(){
 				this.$store.dispatch(GET_CAPTCHA)
-			}
+			},
+			
 		},
 		computed: {
 			...mapGetters([
