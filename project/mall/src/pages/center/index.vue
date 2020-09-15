@@ -89,6 +89,7 @@
 			};
 		},
 		mounted(){
+			
 			this.$store.dispatch(GET_CAPTCHA)
 		},
 		methods: {

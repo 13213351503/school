@@ -24,9 +24,9 @@
 			<div class="detail">
 				<div class="detail-grop">
 					<div class="detail-title">查看商品详情</div>
-					<i class="detail-icon" @click='handleShow'><van-icon name="arrow" /></i>
+					<i class="detail-icon" ><van-icon name="arrow" @click="shows = true" /></i>
 				</div>
-				<div class="product-detail" >
+				<div class="product-detail" v-show="shows" >
 					<div><img :src="detailItem.mainImage"></img></div>
 				</div>
 			</div>
@@ -34,11 +34,20 @@
 			<van-goods-action>
 				<van-goods-action-icon icon="cart-o" text="购物车" @click="onClickIcon" />
 				<van-goods-action-button
-					type="danger"
-					text="立即购买"
 					@click="onClickButton"
+					type="danger"
+					text="加入购物车"
 				/>
 			</van-goods-action>
+			<van-sku
+				v-model="show"
+				:sku="sku"
+				:goods="goods"
+				:goods-id="goodsId"
+				:quota="quota"
+				:quota-used="quotaUsed"
+				:hide-stock="sku.hide_stock"
+			/>
 		</div>
 	</div>
 </template>
@@ -49,31 +58,107 @@
 	import { Toast } from '../../plugins/vant/index.js';
 	export default {
 		name:'Detail',
-		// data(){
-		// 	isDetail:false
-		// },
 		
-		mounted(){
-			var id = this.$route.query.id;
-			// console.log(id);
-			this.$store.dispatch(GET_PRODUCTS_DETAIL,id)
+		data() {
+			return {
+				show: false,
+				shows:false,
+				goodsId: '946755',
+				quota:0,
+				quotaUsed:0,
+				sku: {},
+				goods: {
+					// 默认商品 sku 缩略图
+					picture: '',
+				},
+			};
 		},
+		mounted(){
+			var _this = this
+			var id = this.$route.query.id;
+			this.$store.dispatch(GET_PRODUCTS_DETAIL,id)
+			.then(()=>{
+				// console.log(this.detailItem)
+				_this.sku = _this.makeSku()
+			})
+		},
+		
 		methods: {
+			onClickButton() {
+				
+				this.show = true
+			},
 			onClickLeft() {
 				window.history.go(-1)
 			},
 			onClickIcon() {
 				Toast('点击图标');
 			},
-			onClickButton() {
-				Toast('点击按钮');
-			},
-			handleShow(){
-				this.isDetail = !this.isDetail;
-				if(this.isDetail){
-					this.isDetail=false
+			makeSku(){
+				// console.log(this.detailItem.attrs[0].value);
+				var values = this.detailItem.attrs[0].value; 
+				
+				
+				var name = [];	
+				for(var i = 0;i<values.length;i++){
+					name.push({
+						id:values[i],
+						name:values[i]
+					})
 				}
-			}
+				console.log(name)
+				var sku = {
+					tree: [
+						{
+							k: '颜色', // skuKeyName：规格类目名称
+							k_s: 's1', // skuKeyStr：sku 组合列表（下方 list）中当前类目对应的 key 值，value 值会是从属于当前类目的一个规格值 id
+							v: [
+								{
+									id: '1', // skuValueId：规格值 id
+									name: '红色', // skuValueName：规格值名称
+								},
+								{
+									id: '2',
+									name: '蓝色',
+								},
+								{
+									id: '3',
+									name: '绿色',
+								}
+							],
+						}
+					],
+					list: [
+						{
+							id: 2259, // skuId
+							s1: '1', // 规格类目 k_s 为 s1 的对应规格值 id
+							price: '9990', // 价格（单位分）
+							stock_num: 110 // 当前 sku 组合对应的库存
+						},
+						{
+							id: 2259, // skuId
+							s1: '2', // 规格类目 k_s 为 s1 的对应规格值 id
+							price: '9990', // 价格（单位分）
+							stock_num: 180 // 当前 sku 组合对应的库存
+						},
+						{
+							id: 2259, // skuId
+							s1: '3', // 规格类目 k_s 为 s1 的对应规格值 id
+							price: '9990', // 价格（单位分）
+							stock_num: 180 // 当前 sku 组合对应的库存
+						},
+					],
+					
+					price: '', // 默认价格（单位元）
+					stock_num: 227, // 商品总库存
+					collection_id: 2261, // 无规格商品 skuId 取 collection_id，否则取所选 sku 组合对应的 id
+					none_sku: false, // 是否无规格商品
+					hide_stock: false ,// 是否隐藏剩余库存
+				}
+				return sku
+			},
+			
+			
 		},
 		computed: {
 			...mapGetters([

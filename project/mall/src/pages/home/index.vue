@@ -35,9 +35,10 @@
 						class="product-item"
 						v-for="(product,productindex) in item.products"
 						:key="''+productindex"
+						@click="handleDetail(product._id)"
 					>
 						<div class="product-header">
-							<a href="#">
+							<a href="javascript:">
 								<img :src="product.mainImage"></img>
 							</a>
 							<div class="product-name">
@@ -79,6 +80,14 @@
 			handleProducts(id){
 				this.$router.push({
 					path :'/list',
+					query:{
+						id:id
+					},
+				})
+			},
+			handleDetail(id){
+				this.$router.push({
+					path :'/detail',
 					query:{
 						id:id
 					},

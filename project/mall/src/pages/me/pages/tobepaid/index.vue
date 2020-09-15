@@ -13,6 +13,15 @@
 	import { Toast } from 'vant';
 	export default {
 		name:'TobePaid',
+		mounted(){
+			var username = localStorage.getItem('username')
+			console.log(username)
+			// if(!localStorage.getItem('username')){
+			// 	this.$router.push({
+			// 		path :'/center',
+			// 	})
+			// }
+		},
 		methods:{
 			
 			onClickLeft() {

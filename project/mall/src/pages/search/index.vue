@@ -2,14 +2,14 @@
 	<div id="Search">
 		<div>
 			<i class="back-icon" @click='goBack'><van-icon name="arrow-left" /></i>
-			<van-search class="van-search"  placeholder="请输入搜索关键词" />
+			<van-search class="van-search"  placeholder="请输入搜索关键词" @blur="get_search" v-model="search_val"/>
 		</div>
 		<div class="recent-search">
-			<span class="title">最近搜索</span>
+			<span class="title" >最近搜索</span>
 			<span class="clear" @click="empty">清除</span>
 		</div>
-		<div class="history-search" v-for="(item,index) in historyList" :key="index" @click="goSearchDetail(item)">
-			<span>111</span>
+		<div class="history-search" v-for="(item,index) in historyList" :key="index" >
+			<span>{{item}}</span>
 		</div>
 		
 		
@@ -44,6 +44,7 @@
 					if (!this.historyList.includes(this.search_val)) {
 						this.historyList.unshift(this.search_val);
 						localStorage.setItem("historyList", JSON.stringify(this.historyList));
+						this.search_val = '';
 					}else{
 						//有搜索记录，删除之前的旧记录，将新搜索值重新push到数组首位
 						let i =this.historyList.indexOf(this.search_val);
@@ -52,22 +53,6 @@
 						localStorage.setItem("historyList", JSON.stringify(this.historyList));
 					}
 				}
-				//跳转到搜索结果页
-				this.$router.push({
-					path: "/list", 
-					query: { 
-						search_val: this.search_val,
-					},
-				});
-			},
-			//点击历史搜索，跳转搜索结果页
-			goSearchDetail(title){
-				this.$router.push({
-					path: "/list", 
-					query: { 
-						search_val: title,
-					},
-				});
 			},
 			
 			//清空历史搜索记录

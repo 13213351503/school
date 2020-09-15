@@ -17,6 +17,5 @@
 
 <style>
 #app {
-	background: #fff;
 }
 </style>

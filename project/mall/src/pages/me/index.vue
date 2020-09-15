@@ -38,6 +38,14 @@
 				user:localStorage.getItem('username')
 			}
 		},
+		mounted(){
+			var username = localStorage.getItem('username')
+			if(!username){
+				this.$router.push({
+					path :'/center',
+				})
+			}
+		},
 		methods:{
 			handleTobePaid(){
 				this.$router.push({

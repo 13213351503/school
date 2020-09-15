@@ -14,12 +14,9 @@
 </template>
 
 <script>
-	import { GET_CAPTCHA_IMG } from './store/types.js'
 	export default {
 		name:'Cart',
-		mounted(){
-			this.$store.dispatch(GET_CAPTCHA_IMG)
-		}
+		
 	}
 </script>
 
