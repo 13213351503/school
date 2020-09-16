@@ -24,7 +24,7 @@
 			<div class="detail">
 				<div class="detail-grop">
 					<div class="detail-title">查看商品详情</div>
-					<i class="detail-icon" ><van-icon name="arrow" @click="shows = true" /></i>
+					<i class="detail-icon" ><van-icon name="arrow" @click="handleshows" /></i>
 				</div>
 				<div class="product-detail" v-show="shows" >
 					<div><img :src="detailItem.mainImage"></img></div>
@@ -84,6 +84,13 @@
 		},
 		
 		methods: {
+			handleshows(){
+				if(!this.shows){
+					this.shows = true
+				}else{
+					this.shows = false
+				}
+			},
 			onClickButton() {
 				
 				this.show = true
@@ -98,32 +105,32 @@
 				// console.log(this.detailItem.attrs[0].value);
 				var values = this.detailItem.attrs[0].value; 
 				
-				
-				var name = [];	
+				var name = [];
+				console.log(this.detailItem.price)
 				for(var i = 0;i<values.length;i++){
 					name.push({
 						id:values[i],
 						name:values[i]
 					})
 				}
-				console.log(name)
+				
 				var sku = {
 					tree: [
 						{
-							k: '颜色', // skuKeyName：规格类目名称
+							k: '', // skuKeyName：规格类目名称
 							k_s: 's1', // skuKeyStr：sku 组合列表（下方 list）中当前类目对应的 key 值，value 值会是从属于当前类目的一个规格值 id
 							v: [
 								{
 									id: '1', // skuValueId：规格值 id
-									name: '红色', // skuValueName：规格值名称
+									name: '', // skuValueName：规格值名称
 								},
 								{
 									id: '2',
-									name: '蓝色',
+									name: '',
 								},
 								{
 									id: '3',
-									name: '绿色',
+									name: '',
 								}
 							],
 						}
@@ -132,29 +139,32 @@
 						{
 							id: 2259, // skuId
 							s1: '1', // 规格类目 k_s 为 s1 的对应规格值 id
-							price: '9990', // 价格（单位分）
-							stock_num: 110 // 当前 sku 组合对应的库存
+							price: this.detailItem.price, // 价格（单位分）
+							stock_num: this.detailItem.stock // 当前 sku 组合对应的库存
 						},
 						{
 							id: 2259, // skuId
 							s1: '2', // 规格类目 k_s 为 s1 的对应规格值 id
-							price: '9990', // 价格（单位分）
-							stock_num: 180 // 当前 sku 组合对应的库存
+							price: this.detailItem.price, // 价格（单位分）
+							stock_num: this.detailItem.stock // 当前 sku 组合对应的库存
 						},
 						{
 							id: 2259, // skuId
 							s1: '3', // 规格类目 k_s 为 s1 的对应规格值 id
-							price: '9990', // 价格（单位分）
-							stock_num: 180 // 当前 sku 组合对应的库存
+							price: this.detailItem.price, // 价格（单位分）
+							stock_num: this.detailItem.stock // 当前 sku 组合对应的库存
 						},
 					],
-					
-					price: '', // 默认价格（单位元）
-					stock_num: 227, // 商品总库存
+					price: this.detailItem.price, // 默认价格（单位元）
+					stock_num: this.detailItem.stock, // 商品总库存
 					collection_id: 2261, // 无规格商品 skuId 取 collection_id，否则取所选 sku 组合对应的 id
 					none_sku: false, // 是否无规格商品
 					hide_stock: false ,// 是否隐藏剩余库存
-				}
+					mainImage:this.detailItem.mainImage
+				};
+				sku.tree[0].v = name;
+				sku.tree[0].k = this.detailItem.attrs[0].key;
+				
 				return sku
 			},
 			
